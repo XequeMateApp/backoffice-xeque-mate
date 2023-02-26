@@ -21,6 +21,8 @@ input{
     border-radius: 10px;
     border: 1px solid;
     height: 39px;
+    font-size: 12px;
+    padding-left: 10px;
 }
 
 .btn{
@@ -32,6 +34,27 @@ input{
 .btn-secondary{
 background-color: #fff;
 color: RGB(15, 33, 79);
+}
+
+.btn-primary-rp{
+color: RGB(15, 33, 79);
+background-color: #fff;
+border: none;
+}
+
+.btn-secondary-ra{
+    background-color: RGB(15, 33, 79);
+    color: #fff;
+    border-radius: 10px;
+}
+
+.btn-outline-danger{
+    background-color: #fff;
+}
+
+.btn-secondary-cof{
+    background-color: RGB(15, 33, 79);
+    color: #fff;
 }
 
 p{
@@ -67,12 +90,13 @@ a{
 
 
   @media (max-width: 991px ) {
-   
-        
-    
     .col-mobile {
         flex: 0 0 100% !important;
         max-width: 100% !important;
     
     }
+}
+
+#placeholder{
+    font-size: 50px;
 }
