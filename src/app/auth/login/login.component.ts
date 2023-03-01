@@ -16,4 +16,7 @@ export class LoginComponent implements OnInit {
 confirm(){
 this.router.navigate(['auth/send-email'])
 }
+entrar(){
+  this.router.navigate(['logged/dashboard'])
+  }
 }
