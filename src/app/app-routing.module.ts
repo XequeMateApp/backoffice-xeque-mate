@@ -10,6 +10,12 @@ const routes: Routes = [
       import('./logged/logged.module')
         .then(a => a.LoggedModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/auth.module')
+        .then(a => a.AuthModule)
+  },
 ];
 
 @NgModule({
