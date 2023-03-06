@@ -1,0 +1,29 @@
+<section class="background-logged container-fluid">
+  <div class="container pt-5">
+    <div class="search-box d-flex w-100 d-flex flex-row">
+      <input type='text' placeholder="Search" class="w-100 body-400-md text-white" />
+      <img src="../../../assets/icons/icon-search.svg" class="mt-2" width="20" height="16" />
+    </div>
+    <div class="container-scroll mt-4">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th class="table-th-1 m-0 ms-1 text-white subtitle-700-lg" scope="col">Name</th>
+            <th class="table-th-2 m-0 ms-1 text-white subtitle-700-lg" scope="col">Date of Request</th>
+            <th class="table-th-3 m-0 ms-1 text-white subtitle-700-lg" scope="col">Status</th>
+            <th class="table-th-6 m-0 ms-1 text-white subtitle-700-lg" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of array" class="background-table">
+          <tr>
+            <td class="ms-1 text-white subtitle-700-lg">Name</td>
+            <td class="ms-1 text-white subtitle-700-lg">00/00/00</td>
+            <td class="ms-1 text-white subtitle-700-lg">Pendente</td>
+            <td><img class="cursor-pointer" [routerLink]="'/pages/kyc-information'"
+                src="../../../assets/icons/arrow-icon.svg"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

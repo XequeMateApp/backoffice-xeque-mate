@@ -9,11 +9,13 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxPaginationModule } from "ngx-pagination";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgxStarsModule } from "ngx-stars";
+import { KycManagerComponent } from './kyc-manager/kyc-manager.component';
 
 @NgModule({
     declarations: [
         LoggedComponent,
         DashboardComponent,
+        KycManagerComponent,
     ],
     imports: [
         CommonModule,

@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { KycManagerComponent } from "./kyc-manager/kyc-manager.component";
 import { LoggedComponent } from "./logged.component";
 
 const routerConfig: Routes = [
@@ -10,6 +11,9 @@ const routerConfig: Routes = [
     children: [
       {
         path: 'dashboard', component: DashboardComponent
+      },
+      {
+        path: 'kyc', component: KycManagerComponent
       },
     ],
   }
