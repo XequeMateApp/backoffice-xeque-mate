@@ -7,7 +7,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KycManagerComponent implements OnInit {
 
-  array = new Array(10);
+  kycInformations = [
+    {
+      name: 'José Feliz Felix',
+      email: 'Jose@email.com',
+      cnpj: '000000000000',
+      date: '00/00/0000',
+      verification: 'Verificar'
+    },
+    {
+      name: 'José Feliz Felix',
+      email: 'Jose@email.com',
+      cnpj: '000000000000',
+      date: '00/00/0000',
+      verification: 'Verificar'
+    },
+    {
+      name: 'José Feliz Felix',
+      email: 'Jose@email.com',
+      cnpj: '000000000000',
+      date: '00/00/0000',
+      verification: 'Verificar'
+    },
+    {
+      name: 'José Feliz Felix',
+      email: 'Jose@email.com',
+      cnpj: '000000000000',
+      date: '00/00/0000',
+      verification: 'Verificar'
+    },
+    {
+      name: 'José Feliz Felix',
+      email: 'Jose@email.com',
+      cnpj: '000000000000',
+      date: '00/00/0000',
+      verification: 'Verificar'
+    },
+  ];
 
   constructor() { }
 
