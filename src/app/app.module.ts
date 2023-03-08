@@ -9,7 +9,6 @@ import { NgxMaskModule } from 'ngx-mask';
 import { LoggedModule } from './logged/logged.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
-import { NgxSelectModule } from 'ngx-select-ex';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { NgxSelectModule } from 'ngx-select-ex';
   ],
   imports: [
     BrowserModule,
-    NgxSelectModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AuthModule,
