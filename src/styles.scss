@@ -12,6 +12,13 @@
     font-family: 'Josefin Sans' !important;
 }
 
+.corpo {
+    background-image: url(./assets/images/surface.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -25,34 +32,52 @@
     background: #01FF5F !important;
 }
 
-body {
-    background-image: url(./assets/images/surface.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-header {
+ .nav-link{
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    border: 3px solid;
+    border-radius: 50%;
     background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #0F214F;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+  }
 
+  #subNav{
+    border: 1px solid #CCD1EB;
+   border-radius: 20px;
+    max-height: 174px;
+     width: 650px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+.section-dashboard {
+    border-radius: 20px;
+    border: 1px solid #CCD1EB;
+    padding: 25px 30px 30px 30px;
+    width: 100%;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.434);
 }
 
-
-section {
-    border-radius: 10px;
-    padding: 35px;
-    box-shadow: 0px 0px 5px 0px;
-    background-color: #fff;
+.dashboardInfor {
+    color: #2C61E8;
 }
+
 
 
 .input-form-auth {
-    border-radius: 10px;
-    border: 1px solid;
-    height: 39px;
-    font-size: 12px;
+    border-radius: 16px;
     padding-left: 10px;
+}
+
+.max-h-669{
+    max-height: 669px;
 }
 
 // global
@@ -212,51 +237,10 @@ section {
 }
 
 .mt-8 {
-    margin-top: 8rem;
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    margin-top: 5rem;
 }
 
 
-
-.btn {
-    background-color: RGB(15, 33, 79);
-    border-radius: 15px;
-    font-size: 15px;
-}
-
-.btn-secondary {
-    background-color: #fff;
-    color: RGB(15, 33, 79);
-}
-
-.btn-primary-rp {
-    color: RGB(15, 33, 79);
-    background-color: #fff;
-    border: none;
-}
-
-.btn-secondary-ra {
-    background-color: RGB(15, 33, 79);
-    color: #fff;
-    border-radius: 10px;
-}
-
-.btn-outline-danger {
-    background-color: #fff;
-}
-
-.btn-secondary-cof {
-    background-color: RGB(15, 33, 79);
-    color: #fff;
-}
-
-// toll´s
 
 
 // background
@@ -296,6 +280,10 @@ main {
     letter-spacing: 8px;
 }
 
+.letter-3{
+    letter-spacing: 3px;
+}
+
 .h-56 {
     height: 56px;
 }
@@ -304,24 +292,28 @@ main {
     border-radius: 16px;
 }
 
+.pl-2{
+    padding-left: 10px !important;
+}
+.pr-2{
+    padding-right: 10px !important;
+}
+
 .br-100 {
     border-radius: 100px;
 }
-
+.border-dark-blue{
+    border: 1px solid var(--darkblue)
+}
 .w24h24{
     width: 24px;
     height: 24px;
 }
-
-
-p {
-    font-size: 14px;
-    opacity: 0.5;
+.logo{
+    max-height: 120px;
+    max-width: 254px;
 }
 
-a {
-    font-size: 14px;
-}
 
 h1 .input-icon-right {
     background-image: url('../src/assets/images/envelope-fill.svg');
@@ -352,7 +344,9 @@ h1 .input-icon-right {
     .col-mobile {
         flex: 0 0 100% !important;
         max-width: 100% !important;
-
+    }
+    .confirm-password{
+        padding: 0 !important;
     }
 }
 
@@ -360,8 +354,4 @@ h1 .input-icon-right {
     .modal-dialog {
         max-width: 600px !important;
     }
-}
-
-#placeholder {
-    font-size: 50px;
 }
