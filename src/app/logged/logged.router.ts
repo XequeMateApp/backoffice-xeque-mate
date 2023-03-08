@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { KycManagerComponent } from "./kyc-manager/kyc-manager.component";
 import { LoggedComponent } from "./logged.component";
+import { NotificationComponent } from "./notification/notification.component";
 
 const routerConfig: Routes = [
   {
@@ -13,8 +14,11 @@ const routerConfig: Routes = [
         path: 'dashboard', component: DashboardComponent
       },
       {
-        path: 'kyc', component: KycManagerComponent
+        path: 'notification', component: NotificationComponent
       },
+      {
+        path: 'kyc', component: KycManagerComponent
+      }
     ],
   }
 ]

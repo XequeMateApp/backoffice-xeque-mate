@@ -9,12 +9,22 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxPaginationModule } from "ngx-pagination";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgxStarsModule } from "ngx-stars";
+import { NavbarComponent } from "../shared/navbar/navbar.component";
+import { NotificationComponent } from './notification/notification.component';
+import { CreateNotificationComponent } from './notification/components/create-notification/create-notification.component';
+import { EditNotificationComponent } from './notification/components/edit-notification/edit-notification.component';
+import { DeleteNotificationComponent } from './notification/components/delete-notification/delete-notification.component';
 import { KycManagerComponent } from './kyc-manager/kyc-manager.component';
 
 @NgModule({
     declarations: [
         LoggedComponent,
         DashboardComponent,
+        NavbarComponent,
+        NotificationComponent,
+        CreateNotificationComponent,
+        EditNotificationComponent,
+        DeleteNotificationComponent,
         KycManagerComponent,
     ],
     imports: [
