@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoggedComponent } from "./logged.component";
+import { NotificationComponent } from "./notification/notification.component";
 
 const routerConfig: Routes = [
   {
@@ -10,6 +11,9 @@ const routerConfig: Routes = [
     children: [
       {
         path: 'dashboard', component: DashboardComponent
+      },
+      {
+        path: 'notification', component: NotificationComponent
       },
     ],
   }
