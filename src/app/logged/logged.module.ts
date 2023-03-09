@@ -15,6 +15,7 @@ import { CreateNotificationComponent } from './notification/components/create-no
 import { EditNotificationComponent } from './notification/components/edit-notification/edit-notification.component';
 import { DeleteNotificationComponent } from './notification/components/delete-notification/delete-notification.component';
 import { KycManagerComponent } from './kyc-manager/kyc-manager.component';
+import { UserManagementComponent } from './user-management/user-management.component';
 import { SupplierComponent } from './supplier/supplier.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SupplierComponent } from './supplier/supplier.component';
         EditNotificationComponent,
         DeleteNotificationComponent,
         KycManagerComponent,
+        UserManagementComponent,
         SupplierComponent,
     ],
     imports: [

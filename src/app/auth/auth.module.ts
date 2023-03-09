@@ -19,7 +19,7 @@ import { AuthComponent } from './auth.component';
     LoginComponent,
     SendEmailComponent,
     ConfirmPasswordComponent,
-    ConfirmCodeComponent
+    ConfirmCodeComponent,
   ],
   imports: [
     CommonModule,
