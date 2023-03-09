@@ -15,7 +15,7 @@ export class NotificationComponent implements OnInit {
 
   notifications: any[];
   paginationProduct: number = 1;
-  
+
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -26,15 +26,13 @@ export class NotificationComponent implements OnInit {
     this.notifications = this.datamockService.notificationList;
   }
 
-  openModals(tabName: string){
-    if(tabName == 'create'){
+  openModals(tabName: string) {
+    if (tabName == 'create') {
       this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if(tabName == 'edit'){
+    } else if (tabName == 'edit') {
       this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-    }else if(tabName == 'delete'){
+    } else if (tabName == 'delete') {
       this.modalService.open(DeleteNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-  
     }
   }
-
 }
