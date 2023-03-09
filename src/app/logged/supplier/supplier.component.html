@@ -1,18 +1,12 @@
-<!-- <main class="w-100 d-flex justify-content-center mt-5 mb-5">
+<main class="w-100 d-flex justify-content-center mt-5 mb-5">
     <div class="row px-0 mt-5 container">
         <div class="col-12">
             <div class="row px-0 justify-content-between">
                 <div class="col-md mt-3">
                     <div class="w-auto h-100 d-flex align-items-center">
                         <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
-                        <h1 class="text-dark-blue mb-0">Notificações</h1>
+                        <h1 class="text-dark fw-bolder mb-0">Solicitações de Fornecedor</h1>
                     </div>
-                </div>
-                <div class="col-md-4 mt-3 d-flex justify-content-end">
-                    <button type="button" (click)="openModals('create')"
-                        class="btn w-100 px-5 bg-dark-blue br-16 py-3 text-light">
-                        <h4 class="mb-0">Nova Notificação</h4>
-                    </button>
                 </div>
             </div>
         </div>
@@ -30,8 +24,8 @@
                     <select class="form-select py-3 br-16" aria-label="Default select example">
                         <option selected>Ordenar por</option>
                         <option value="1">Nome A-Z</option> &nbsp;
-                        <option value="2">Status</option>
-                        <option value="3">Sla</option>
+                        <option value="2">Cnpj</option>
+                        <option value="3">Emial</option>
                     </select>
                 </div>
             </div>
@@ -42,54 +36,41 @@
                     <b class="mb-0 h3" style="max-width: 230px;">Nome</b>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3">Conteúdo</b>
+                    <b class="mb-0 h3">E-mail</b>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3">Horário</b>
+                    <b class="mb-0 h3">CNPJ</b>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3">Filtro</b>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3">Status</b>
+                    <b class="mb-0 h3">Data de solicitação</b>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
                 </div>
             </div>
         </div>
         <div class="col-12 mt-3">
-            <div *ngFor="let item of notifications | paginate: config; let i= index"
+            <div *ngFor="let item of supplier | paginate: config; let i= index"
                 class="row bg-blur align-items-center bg-light border mb-2 br-16 p-3">
                 <div class="col h-100 br-16-circle align-items-center d-flex">
                     <h4 class="fw-500 mb-0 font-size-21 line-21 d-inline-block" style="max-width: 230px;">
-                        {{item.name}}weofwe fjioefwejfow ejfoiwejoiweofjw eoifwoeifowef</h4>
+                        {{item.name}}</h4>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
                     <h4 class="fw-400 mb-0 font-size-21 text-secondary line-21 d-inline-block" style="max-width: 90%;">
-                        {{item.content}}</h4>
+                        {{item.email}}</h4>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.time}}</h4>
+                    <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.cnpj}}</h4>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.filter}}</h4>
+                    <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.date}}</h4>
                 </div>
                 <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 *ngIf="item.status === 'Ativo'" class="fw-700 mb-0 font-size-21 text-success line-21">
-                        {{item.status}}</h4>
-                    <h4 *ngIf="item.status === 'Inativo'" class="fw-700 mb-0 text-danger font-size-21 line-21">
-                        {{item.status}}</h4>
-                </div>
-                <div class="col h-100 br-16-circle justify-content-end align-items-center d-flex">
-                    <div class="w-50 d-flex justify-content-between align-items-center">
-                        <i role='button' (click)="openModals('edit')" class="bi h3 bi-gear"></i>
-                        <i role='button' (click)="openModals('delete')"
-                            class="bi h3 text-danger bi-trash3"></i>
-                    </div>
+                    <h4 class="text-">Verificar</h4>
                 </div>
             </div>
         </div>
-        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="notifications.length >= 3">
+        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="supplier.length >= 3">
             <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
                 <div class="custom-pagination">
                     <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
@@ -110,4 +91,4 @@
             </pagination-template>
         </div>
     </div>
-</main> -->
+</main>

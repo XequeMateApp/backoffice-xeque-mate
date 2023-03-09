@@ -7,12 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  userName: string;
+  user: any;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if (this.user !== null){
+      this.userName = this.user.email;
+    }
+    console.log(this.userName);
   }
-logout(){
-  this.router.navigate(['/'])
-}
+  logout() {
+    this.router.navigate(['/'])
+  }
 }
