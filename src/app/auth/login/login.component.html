@@ -1,37 +1,34 @@
-<div class="container pt-5 h-100 w-100">
-    <div class="row justify-content-center d-flex align-items-center m-3 text-center">
+<div class="d-flex justify-content-center align-items-center pt-5 h-100 w-100">
+    <div class="row container justify-content-center d-flex align-items-center m-3 text-center">
         <section class="col-md-5 mb-5 shadow py-4 px-5 w3-white br-16">
             <div class="w-100 d-flex justify-content-center">
                 <img src="../../../assets/images/logo.png" class="logo w-100 h-100 mb-4">
             </div>
-            <form class="pt-4">
+            <div class="pt-4">
                 <h3 class="text-start"><b>Entrar</b></h3>
                 <p class="text-start">It is a long established fact that a reader will be distracted by the readable</p>
-            </form>
-            <form class="">
+            </div>
+            <form [formGroup]="form">
                 <div class="col-sm-12 col-md-12 form-group my-1 mx-auto">
                     <div class="d-sm-flex flex-column form-group col-sm-12 col-dm-7 my-1">
                         <label class="mb-0 small text-start">E-mail</label>
-                        <input type="email" class="input-icon-right input-form-auth btn h-56 br-16 border text-start w-100" placeholder="e-mail">                    </div>
+                        <input type="email" class="input-icon-right btn br-16 border text-start w-100" placeholder="e-mail">                    </div>
                     <div class="d-sm-flex flex-column form-group col-sm-12 col-dm-7 my-3">
                         <label class="mb-0 small text-start">Senha</label>
-                        <input type="password" class="input-icon-key-right input-form-auth btn h-56 br-16 border text-start w-100" placeholder="senha">                    </div>
+                        <input type="password" class="input-icon-key-right br-16 btn w-100" placeholder="Senha"
+                            formControlName="password" required>
+                    </div>
                     <div class="text-end">
-                        <a class="text-end" (click)="confirm()">Esqueci a senha</a>
+                        <a class="text-end" (click)="handlePasswordRecovery();">Esqueci a senha</a>
                     </div>
 
                 </div>
-                <div class="form-group col-sm-12 my-2 pt-3 mx-auto">
-                    <div class="row mx-0 px-0">
-                        <div class="col-md-12 px-0">
-                            <button (click)="entrar()" type="button"
-                                class="btn w-100 bg-dark-blue fw-700 font-size-21 line-21 text-light br-16 h-56 my-1">Entrar</button>
-                        </div>
-                        <div class="col-md-12 px-0">
-                            <button type="button"
-                                class="btn w-100 border-dark-blue h-56  fw-700 font-size-21 line-21  br-16 text-dark-blue my-1">Primeiro
-                                acesso</button>
-                        </div>
+                <div class="d-sm-flex flex-column form-group col-sm-12 col-dm-7 my-2 pt-3 mx-auto">
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <button (click)="confirm();" type="button" class="btn btn-primary btn-lg my-1">Entrar</button>
+                    </div>
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <button type="button" class="btn btn-secondary btn-lg my-1">Primeiro acesso</button>
                     </div>
                 </div>
             </form>

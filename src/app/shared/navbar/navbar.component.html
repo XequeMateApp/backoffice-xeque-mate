@@ -1,4 +1,4 @@
-<nav class="navbar shadow navbar-light fixed-top bg-light-blur">
+<nav class="navbar shadow navbar-light fixed-top bg-light">
     <div class="d-flex container justify-content-between align-items-center">
         <img class="img-fluid logo mb-2" src="../../../assets/images/logo.png" alt="Logo">
         <div class="w-auto d-flex align-items-center justify-content-between">
@@ -10,7 +10,7 @@
                       <li><a class="dropdown-item" href="#">Home</a></li>
                       <li><a class="dropdown-item" href="#">Perfil</a></li>
                       <li><a class="dropdown-item" href="#">Painel de Controle</a></li>
-                      <li><a class="dropdown-item" href="#">Controle de Notificações</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/logged/notification']" >Controle de Notificações</a></li>
                       <li><a class="dropdown-item" href="#">Gerenciamento de Produtos</a></li>
                       <li><a class="dropdown-item" href="#">Fornecedores e Clientes</a></li>
                       <li><a class="dropdown-item" href="#">KYC Fornecedores</a></li>
@@ -20,9 +20,7 @@
                    </ul>
                 </li>
             </ul>
-            
-            <i class="bi font-size-22 text-danger ml-3 bi-box-arrow-in-right" role="button" (click)="logout()"></i> 
-            <!-- <h2 class="fw-700 text-primary rounded-circle border border-primary p-name font-size-21 line-21">W</h2>-->
+            <i class="bi text-danger h4 mb-0 bi-box-arrow-in-right" role="button" (click)="logout()"></i> 
         </div>
     </div>
 </nav> 

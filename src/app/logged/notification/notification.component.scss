@@ -1,0 +1,24 @@
+.custom-pagination {
+    display: flex;
+    max-width: 300px;
+    margin: auto
+}
+
+.custom-pagination>div {
+    flex: 1;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 1rem;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none
+}
+
+.custom-pagination>div.current {
+    border-bottom: 2px solid rgb(0, 128, 255);
+    padding: 0 1rem;
+    cursor: pointer;
+
+}
