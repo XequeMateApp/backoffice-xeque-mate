@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
   handlePasswordRecovery() {
     this.router.navigate(['auth/send-email']);
   }
