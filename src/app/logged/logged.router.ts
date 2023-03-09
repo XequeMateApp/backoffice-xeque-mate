@@ -4,6 +4,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { KycManagerComponent } from "./kyc-manager/kyc-manager.component";
 import { LoggedComponent } from "./logged.component";
 import { NotificationComponent } from "./notification/notification.component";
+import { SupplierComponent } from "./supplier/supplier.component";
 
 const routerConfig: Routes = [
   {
@@ -15,6 +16,9 @@ const routerConfig: Routes = [
       },
       {
         path: 'notification', component: NotificationComponent
+      },
+      {
+        path: 'supplier', component: SupplierComponent
       },
       {
         path: 'kyc', component: KycManagerComponent
