@@ -102,4 +102,88 @@ export class DatamockService {
     },
 
   ]
+
+  supplier = [
+    {
+      name: 'Abraham linkon',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Brad Pit',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Katy Pary',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Vin Disel',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Drake',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Travis Scots',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Avril Lavine',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Ana maria braga',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Faustão',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Al abduh jaba mohamed mia khalifa',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Bolsonaro',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Putin',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+    {
+      name: 'Donald trump',
+      email: 'exemplo@xequemate.com',
+      cnpj: '48301815293',
+      date: '25122001'
+    },
+
+  ]
+
+
 }
