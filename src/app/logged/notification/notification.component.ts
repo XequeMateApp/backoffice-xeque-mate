@@ -33,6 +33,10 @@ export class NotificationComponent implements OnInit {
     this.notifications = this.datamockService.notificationList;
   }
 
+  backHome(){
+    this.router.navigate(['/logged/dashboard']);
+  }
+
   openModals(tabName: string) {
     if (tabName == 'create') {
       this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })

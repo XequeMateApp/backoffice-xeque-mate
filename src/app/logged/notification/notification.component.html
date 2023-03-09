@@ -1,27 +1,33 @@
-<main class="w-100 d-flex justify-content-center mt-8 mb-5">
-    <div class="row px-0 container">
+<main class="w-100 d-flex justify-content-center mt-5 mb-5">
+    <div class="row px-0 mt-5 container">
         <div class="col-12">
             <div class="row px-0 justify-content-between">
                 <div class="col-md mt-3">
                     <div class="w-auto h-100 d-flex align-items-center">
-                        <img src="../../../assets/icons/arrow-left.svg" class="pr-6" />
-                        <h6 class="text-dark-blue mb-0 fw-700 font-size-41 line-41">Notificações</h6>
+                        <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
+                        <h1 class="text-dark-blue mb-0">Notificações</h1>
                     </div>
                 </div>
-                <div class="col-md mt-3 d-flex justify-content-end">
+                <div class="col-md-4 mt-3 d-flex justify-content-end">
                     <button type="button" (click)="openModals('create')"
-                        class="btn fw-700  w-100 px-5 bg-dark-blue font-size-21 h-56 br-16 line-21 text-light letter-3">Nova Notificação</button>
+                        class="btn w-100 px-5 bg-dark-blue br-16 py-3 text-light">
+                        <h4 class="mb-0">Nova Notificação</h4>
+                    </button>
                 </div>
             </div>
         </div>
         <div class="col-12 mt-2">
             <div class="row align-items-center px-0">
                 <div class="col-md-8 mt-3">
-                    <input type="search" class="form-control br-16 bg-search h-56 fw-400 font-size-16 line-16"
-                        placeholder="Pesquisar" />
+                    <div class="input-group">
+                        <input type="search" class="form-control py-3 br-16-strt" placeholder="Pesquisar" />
+                        <span class="input-group-text w3-white br-16-end">
+                            <img src="https://i.ibb.co/mCfBBp0/search.png" alt="search-icon"/>
+                        </span>
+                      </div>
                 </div>
                 <div class="col-md-4 mt-3">
-                    <select class="form-select h-56 br-16" aria-label="Default select example">
+                    <select class="form-select py-3 br-16" aria-label="Default select example">
                         <option selected>Ordenar por</option>
                         <option value="1">Nome A-Z</option> &nbsp;
                         <option value="2">Status</option>
@@ -31,54 +37,54 @@
             </div>
         </div>
         <div class="col-12 mt-5">
-            <div class="row bg-blur h-56 bg-pattern border br-100 px-3">
-                <div class="col h-100 rounded-circle align-items-center d-flex">
-                    <h4 class="fw-700 mb-0 font-size-21 line-21" style="max-width: 230px;">Nome</h4>
+            <div class="row bg-light border br-16 p-3">
+                <div class="col h-100 br-16-circle align-items-center d-flex">
+                    <b class="mb-0 h3" style="max-width: 230px;">Nome</b>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
-                    <h4 class="fw-700 mb-0 font-size-21 line-21">Conteúdo</h4>
+                <div class="col h-100 br-16-circle align-items-center d-flex">
+                    <b class="mb-0 h3">Conteúdo</b>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
-                    <h4 class="fw-700 mb-0 font-size-21 line-21">Horário</h4>
+                <div class="col h-100 br-16-circle align-items-center d-flex">
+                    <b class="mb-0 h3">Horário</b>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
-                    <h4 class="fw-700 mb-0 font-size-21 line-21">Filtro</h4>
+                <div class="col h-100 br-16-circle align-items-center d-flex">
+                    <b class="mb-0 h3">Filtro</b>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
-                    <h4 class="fw-700 mb-0 font-size-21 line-21">Status</h4>
+                <div class="col h-100 br-16-circle align-items-center d-flex">
+                    <b class="mb-0 h3">Status</b>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
+                <div class="col h-100 br-16-circle align-items-center d-flex">
                 </div>
             </div>
         </div>
         <div class="col-12 mt-3">
             <div *ngFor="let item of notifications | paginate: config; let i= index"
-                class="row bg-blur align-items-center bg-pattern border mb-2 br-16 p-3">
-                <div class="col h-100 rounded-circle align-items-center d-flex">
+                class="row bg-blur align-items-center bg-light border mb-2 br-16 p-3">
+                <div class="col h-100 br-16-circle align-items-center d-flex">
                     <h4 class="fw-500 mb-0 font-size-21 line-21 d-inline-block" style="max-width: 230px;">
                         {{item.name}}weofwe fjioefwejfow ejfoiwejoiweofjw eoifwoeifowef</h4>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
+                <div class="col h-100 br-16-circle align-items-center d-flex">
                     <h4 class="fw-400 mb-0 font-size-21 text-secondary line-21 d-inline-block" style="max-width: 90%;">
                         {{item.content}}</h4>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
+                <div class="col h-100 br-16-circle align-items-center d-flex">
                     <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.time}}</h4>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
+                <div class="col h-100 br-16-circle align-items-center d-flex">
                     <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.filter}}</h4>
                 </div>
-                <div class="col h-100 rounded-circle align-items-center d-flex">
+                <div class="col h-100 br-16-circle align-items-center d-flex">
                     <h4 *ngIf="item.status === 'Ativo'" class="fw-700 mb-0 font-size-21 text-success line-21">
                         {{item.status}}</h4>
                     <h4 *ngIf="item.status === 'Inativo'" class="fw-700 mb-0 text-danger font-size-21 line-21">
                         {{item.status}}</h4>
                 </div>
-                <div class="col h-100 rounded-circle justify-content-end align-items-center d-flex">
+                <div class="col h-100 br-16-circle justify-content-end align-items-center d-flex">
                     <div class="w-50 d-flex justify-content-between align-items-center">
-                        <i role='button' (click)="openModals('edit')" class="bi font-size-24 bi-gear"></i>
+                        <i role='button' (click)="openModals('edit')" class="bi h3 bi-gear"></i>
                         <i role='button' (click)="openModals('delete')"
-                            class="bi font-size-24 text-danger bi-trash3"></i>
+                            class="bi h3 text-danger bi-trash3"></i>
                     </div>
                 </div>
             </div>
