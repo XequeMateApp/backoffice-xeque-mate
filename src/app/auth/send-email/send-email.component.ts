@@ -17,4 +17,7 @@ export class SendEmailComponent implements OnInit {
 confirm(){
   this.router.navigate(['auth/confirm-code'])
 }
+confirmHome(){
+  this.router.navigate(['/'])
+}
 }

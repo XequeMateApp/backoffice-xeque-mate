@@ -2,8 +2,27 @@
     <div class="d-flex container justify-content-between align-items-center">
         <img class="img-fluid logo mb-2" src="../../../assets/images/logo.png" alt="Logo">
         <div class="w-auto d-flex align-items-center justify-content-between">
-            <h2 class="fw-700 text-primary rounded-circle border border-primary p-name font-size-21 line-21">W</h2>
-            <i class="bi text-danger ml-3 bi-box-arrow-in-right"></i>
+            <ul class="d-flex list-unstyled align-items-center pt-1">
+                <li class="dropdown">
+                   <a class="nav-link mx-5" href="#" id="navbarDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false"></a>
+                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Home</a></li>
+                      <li><a class="dropdown-item" href="#">Perfil</a></li>
+                      <li><a class="dropdown-item" href="#">Painel de Controle</a></li>
+                      <li><a class="dropdown-item" href="#">Controle de Notificações</a></li>
+                      <li><a class="dropdown-item" href="#">Gerenciamento de Produtos</a></li>
+                      <li><a class="dropdown-item" href="#">Fornecedores e Clientes</a></li>
+                      <li><a class="dropdown-item" href="#">KYC Fornecedores</a></li>
+                      <li><a class="dropdown-item" href="#">Categorias</a></li>
+                      <li><a class="dropdown-item" href="#">Marketing</a></li>
+                      <li><a class="dropdown-item" href="#">Controle de Acesso</a></li>
+                   </ul>
+                </li>
+            </ul>
+            
+            <i class="bi font-size-22 text-danger ml-3 bi-box-arrow-in-right" role="button" (click)="logout()"></i> 
+            <!-- <h2 class="fw-700 text-primary rounded-circle border border-primary p-name font-size-21 line-21">W</h2>-->
         </div>
     </div>
 </nav> 

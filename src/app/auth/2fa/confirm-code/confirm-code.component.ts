@@ -17,4 +17,7 @@ export class ConfirmCodeComponent implements OnInit {
   confirm(){
     this.router.navigate(['auth/confirm-password'])
   }
+  confirmCode(){
+    this.router.navigate(['auth/send-email'])
+  }
 }

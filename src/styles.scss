@@ -2,7 +2,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
-
 :root {
     --darkblue: #0F214F;
     --graylight: rgba(255, 255, 255, 0.8);
@@ -11,6 +10,13 @@
 
 * {
     font-family: 'Josefin Sans' !important;
+}
+
+.corpo {
+    background-image: url(./assets/images/surface.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 ::-webkit-scrollbar {
@@ -26,39 +32,68 @@
     background: #01FF5F !important;
 }
 
-body {
-    background-image: url(./assets/images/surface.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-header {
+ .nav-link{
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    border: 3px solid;
+    border-radius: 50%;
     background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #0F214F;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+  }
 
+  #subNav{
+    border: 1px solid #CCD1EB;
+   border-radius: 20px;
+    max-height: 174px;
+     width: 650px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+.section-dashboard {
+    border-radius: 20px;
+    border: 1px solid #CCD1EB;
+    padding: 25px 30px 30px 30px;
+    width: 100%;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.434);
 }
 
-
-section {
-    border-radius: 10px;
-    padding: 35px;
-    box-shadow: 0px 0px 5px 0px;
-    background-color: #fff;
+.dashboardInfor {
+    color: #2C61E8;
 }
+
 
 
 .input-form-auth {
-    border-radius: 10px;
-    border: 1px solid;
-    height: 39px;
-    font-size: 12px;
+    border-radius: 16px;
     padding-left: 10px;
 }
 
+.max-h-669{
+    max-height: 669px;
+}
+
 // global
-.modal{
+.modal {
     backdrop-filter: blur(5px) !important;
+}
+
+.modal-content {
+    border-radius: 16px !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--darkblue);
+    border-color: var(--darkblue);
 }
 
 /* fonts */
@@ -120,8 +155,8 @@ section {
     font-size: 24px;
 }
 
-.font-size-28 {
-    font-size: 28px;
+.font-size-29 {
+    font-size: 29px;
 }
 
 .font-size-32 {
@@ -164,8 +199,8 @@ section {
     line-height: 24px !important;
 }
 
-.line-26 {
-    line-height: 26px !important;
+.line-29 {
+    line-height: 29px !important;
 }
 
 .line-32 {
@@ -200,60 +235,23 @@ section {
 .mr-3 {
     margin-right: 1rem !important;
 }
-.mt-8{
-    margin-top: 8rem;
-}
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
+.mt-8 {
+    margin-top: 5rem;
 }
 
 
-
-.btn {
-    background-color: RGB(15, 33, 79);
-    border-radius: 15px;
-    font-size: 15px;
-}
-
-.btn-secondary {
-    background-color: #fff;
-    color: RGB(15, 33, 79);
-}
-
-.btn-primary-rp {
-    color: RGB(15, 33, 79);
-    background-color: #fff;
-    border: none;
-}
-
-.btn-secondary-ra {
-    background-color: RGB(15, 33, 79);
-    color: #fff;
-    border-radius: 10px;
-}
-
-.btn-outline-danger {
-    background-color: #fff;
-}
-
-.btn-secondary-cof {
-    background-color: RGB(15, 33, 79);
-    color: #fff;
-}
-
-// toll´s
 
 
 // background
-.bg-pattern{
+.bg-pattern {
     background-color: var(--graylight);
 }
+
 .bg-blur {
     backdrop-filter: blur(10px);
 }
+
 .bg-light-blur {
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.596);
@@ -270,8 +268,6 @@ main {
     background-position: right;
     background-repeat: no-repeat;
 }
-
-
 .text-dark-blue {
     color: var(--darkblue);
 }
@@ -284,27 +280,40 @@ main {
     letter-spacing: 8px;
 }
 
-.h-56{
+.letter-3{
+    letter-spacing: 3px;
+}
+
+.h-56 {
     height: 56px;
 }
 
-.br-16{
+.br-16 {
     border-radius: 16px;
 }
-.br-100{
+
+.pl-2{
+    padding-left: 10px !important;
+}
+.pr-2{
+    padding-right: 10px !important;
+}
+
+.br-100 {
     border-radius: 100px;
 }
-
-
-
-p {
-    font-size: 14px;
-    opacity: 0.5;
+.border-dark-blue{
+    border: 1px solid var(--darkblue)
+}
+.w24h24{
+    width: 24px;
+    height: 24px;
+}
+.logo{
+    max-height: 120px;
+    max-width: 254px;
 }
 
-a {
-    font-size: 14px;
-}
 
 h1 .input-icon-right {
     background-image: url('../src/assets/images/envelope-fill.svg');
@@ -335,10 +344,14 @@ h1 .input-icon-right {
     .col-mobile {
         flex: 0 0 100% !important;
         max-width: 100% !important;
-
+    }
+    .confirm-password{
+        padding: 0 !important;
     }
 }
 
-#placeholder {
-    font-size: 50px;
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 600px !important;
+    }
 }
