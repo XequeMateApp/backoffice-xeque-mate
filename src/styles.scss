@@ -94,9 +94,20 @@
     /* espaço para o ícone */
 }
 
+.bg-search {
+    background-image: url(https://i.ibb.co/mCfBBp0/search.png);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
 // necessary-tool´s
 .bg-dark-blue {
     background-color: var(--darkblue);
+}
+
+.bg-blur {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.637);
 }
 
 .text-dark-blue {
@@ -105,6 +116,10 @@
 
 .br-16 {
     border-radius: 16px;
+}
+
+.overflow-x {
+    overflow-x: scroll;
 }
 
 .modal-content {
