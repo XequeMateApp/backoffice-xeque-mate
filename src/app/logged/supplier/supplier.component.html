@@ -29,19 +29,19 @@
             </div>
         </div>
         <div class="row mx-0 overflow-x">
-            <div style="min-width: 960px;" class="col-12 mt-5 px-0">
-                <div class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                    <div style="width: 24.7% !important;" class="col-3 h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h4 fw-bolder">Nome</b>
+            <div class="col-12 mt-5 px-0">
+                <div style="min-width: 960px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
+                    <div style="width: 290px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">Nome</b>
                     </div>
-                    <div style="width: 33.53333333% !important;"  class="col-4 h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h4 fw-bolder">E-mail</b>
+                    <div style="width: 288px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">E-mail</b>
                     </div>
-                    <div class="col-2 h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h4 fw-bolder">CNPJ</b>
+                    <div style="width: 275px;"  class="col-2 col-bar-3 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">CNPJ</b>
                     </div>
                     <div class="col h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h4 text-nowrap fw-bolder">Data da Solicitação</b>
+                        <b class="mb-0 h5 text-nowrap fw-bolder">Data da Solicitação</b>
                     </div>
                     <div class="col h-100 br-16 align-items-center d-flex">
                     </div>
@@ -53,9 +53,9 @@
                       <tr *ngFor="let item of supplier | paginate: config; let i= index">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}EWOIFJWEIOFIOEFOIWEIPFWEJIOFWEIOFJOIWEFJOWEOIFE</h5></td>
                         <td style="width: 280px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
-                        <td style="width:;"><h5 class="mb-0 py-3">{{item.cnpj}}</h5></td>
-                        <td style="width:;"><h5 class="mb-0 py-3">{{item.date}}</h5></td>
-                        <td style="width:;"><h5 (click)="openModals('verificar')" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
+                        <td><h5 class="mb-0 py-3">{{item.cnpj}}</h5></td>
+                        <td><h5 class="mb-0 py-3">{{item.date}}</h5></td>
+                        <td><h5 (click)="openModals('verificar')" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
                       </tr>
                     </tbody>
                 </table>
