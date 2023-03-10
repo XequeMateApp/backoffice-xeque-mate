@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
@@ -12,6 +11,32 @@
     margin: 0;
     padding: 0;
     font-family: 'Josefin Sans' !important;
+}
+
+.custom-pagination {
+    display: flex;
+    max-width: 300px;
+    margin: auto
+}
+
+
+.custom-pagination>div {
+    flex: 1;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 1rem;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none
+}
+
+.custom-pagination>div.current {
+    border-bottom: 2px solid rgb(0, 128, 255);
+    padding: 0 1rem;
+    cursor: pointer;
+
 }
 
 .corpo {
@@ -70,6 +95,10 @@
     color: #2C61E8;
 }
 
+.l-auto{
+    left: auto !important;;
+}
+
 .input-icon-right {
     background-image: url('../src/assets/images/envelope-fill.svg');
     background-position: right 10px center;
@@ -118,6 +147,14 @@
     border-radius: 16px;
 }
 
+.table-office {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+.cursor{
+    cursor: pointer;
+}
 .overflow-x {
     overflow-x: scroll;
 }

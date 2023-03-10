@@ -4,15 +4,15 @@
         <div class="w-auto d-flex align-items-center justify-content-between">
             <ul class="d-flex list-unstyled align-items-center pt-1">
                 <li class="dropdown">
-                    <a class="nav-link p-0 mx-5" id="navbarDropdown" role="button"
+                    <a class="nav-link p-0 mx-3" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">{{userName | slice:0:1}}</a>
-                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                   <ul class="dropdown-menu l-auto end-0" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="#">Home</a></li>
                       <li><a class="dropdown-item" href="#">Perfil</a></li>
                       <li><a class="dropdown-item" href="#">Painel de Controle</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/logged/notification']" >Controle de Notificações</a></li>
                       <li><a class="dropdown-item" href="#">Gerenciamento de Produtos</a></li>
-                      <li><a class="dropdown-item" href="#">Fornecedores e Clientes</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/logged/supplier']">Fornecedores e Clientes</a></li>
                       <li><a class="dropdown-item" href="#">KYC Fornecedores</a></li>
                       <li><a class="dropdown-item" href="#">Categorias</a></li>
                       <li><a class="dropdown-item" href="#">Marketing</a></li>
@@ -20,7 +20,7 @@
                    </ul>
                 </li>
             </ul>
-            <i class="bi text-danger h4 mb-0 bi-box-arrow-in-right" role="button" (click)="logout()"></i> 
+            <i class="bi text-danger h2 mb-0 bi-box-arrow-in-right" role="button" (click)="logout()"></i> 
         </div>
     </div>
 </nav> 

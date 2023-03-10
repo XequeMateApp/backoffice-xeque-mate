@@ -11,11 +11,11 @@
           <th class="table-th-2 m-0 ms-1 text-black subtitle-700-lg" scope="col">Email</th>
           <th class="table-th-3 m-0 ms-1 text-black subtitle-700-lg" scope="col">CNPJ</th>
           <th class="table-th-6 m-0 ms-1 text-black subtitle-700-lg" scope="col">Data da Solicitação</th>
-          <th class="table-th-6 m-0 ms-1 text-black subtitle-700-lg" scope="col"></th>
+          <th colspan="2" class="table-th-6 m-0 ms-1 text-black subtitle-700-lg" scope="col"></th>
         </tr>
 
         <tr *ngFor="let item of kycInformations">
-          <td class="py-3">{{item.name}}</td>
+          <td class="py-3">{{item.name}}</td> 
           <td>{{item.email}}</td>
           <td>{{item.cnpj}}</td>
           <td>{{item.date}}</td>
