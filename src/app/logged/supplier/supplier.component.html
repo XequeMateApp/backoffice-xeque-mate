@@ -51,7 +51,7 @@
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                       <tr *ngFor="let item of supplier | paginate: config; let i= index">
-                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}EWOIFJWEIOFIOEFOIWEIPFWEJIOFWEIOFJOIWEFJOWEOIFE</h5></td>
+                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
                         <td style="width: 280px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
                         <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 165px;">{{item.cnpj | mask: '00.000.000/0000-00'}}</h5></td>
                         <td><h5 class="mb-0 py-3 text-start">{{item.date | mask: '00/00/0000'}}</h5></td>
