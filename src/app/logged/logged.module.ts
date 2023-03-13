@@ -17,6 +17,8 @@ import { DeleteNotificationComponent } from './notification/components/delete-no
 import { KycManagerComponent } from './kyc-manager/kyc-manager.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { SupplierComponent } from './supplier/supplier.component';
+import { ValidateSupplierComponent } from './supplier/components/validate-supplier/validate-supplier.component';
+import { NgxMaskModule } from "ngx-mask";
 
 @NgModule({
     declarations: [
@@ -30,6 +32,7 @@ import { SupplierComponent } from './supplier/supplier.component';
         KycManagerComponent,
         UserManagementComponent,
         SupplierComponent,
+        ValidateSupplierComponent,
     ],
     imports: [
         CommonModule,
@@ -37,6 +40,7 @@ import { SupplierComponent } from './supplier/supplier.component';
         FormsModule,
         ReactiveFormsModule,
         NgxPageScrollModule,
+        NgxMaskModule.forRoot(),
         NgxPageScrollCoreModule,
         NgxPaginationModule,
         NgbModule,
@@ -46,7 +50,7 @@ import { SupplierComponent } from './supplier/supplier.component';
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA
-      ],
+    ],
 
 })
 export class LoggedModule { }
