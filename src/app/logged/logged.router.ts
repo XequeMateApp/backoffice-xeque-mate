@@ -25,7 +25,7 @@ const routerConfig: Routes = [
       {
         path: 'user-manegement', component: UserManagementComponent
       },
-         {
+      {
         path: 'suppliers-customers', component: SuppliersCustomersComponent
       },
       {
