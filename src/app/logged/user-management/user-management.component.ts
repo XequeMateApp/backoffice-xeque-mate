@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import { DatamockService } from 'src/services/datamock.service';
 
@@ -11,17 +12,19 @@ import { DatamockService } from 'src/services/datamock.service';
 export class UserManagementComponent implements OnInit {
 
 
+
   supplier: any[];
   @Input('data') meals: string[] = [];
 
   public config: PaginationInstance = {
     id: 'custom',
-    itemsPerPage: 4,
+    itemsPerPage: 8,
     currentPage: 1
   };
   constructor(
     private datamockService: DatamockService,
     private router: Router,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -33,12 +36,8 @@ export class UserManagementComponent implements OnInit {
   }
 
   openModals(tabName: string) {
-    // if (tabName == 'create') {
-    //   this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-    // } else if (tabName == 'edit') {
-    //   this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-    // } else if (tabName == 'delete') {
-    //   this.modalService.open(DeleteNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-    // }
+    if (tabName == 'verificar') {
+      // this.modalService.open(ValidateSupplierComponent, { centered: true, backdrop: 'static', keyboard: false })
+    }
   }
 }

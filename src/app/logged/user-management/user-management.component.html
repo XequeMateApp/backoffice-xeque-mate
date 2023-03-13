@@ -1,7 +1,8 @@
+
 <main class="w-100 d-flex justify-content-center mt-5 mb-5">
     <div class="row px-0 mt-5 container">
         <div class="col-12">
-            <div class="row px-0 justify-content-between">
+            <div class="row px-0 mt-4 justify-content-between">
                 <div class="col-md mt-3">
                     <div class="w-auto h-100 d-flex align-items-center">
                         <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
@@ -11,66 +12,57 @@
             </div>
         </div>
         <div class="col-12 mt-2">
-            <div class="row align-items-center px-0">
+            <div class="row align-items-center">
                 <div class="col-md-8 mt-3">
                     <div class="input-group">
-                        <input type="search" class="form-control py-3 br-16-strt" placeholder="Pesquisar" />
-                        <span class="input-group-text w3-white br-16-end">
-                            <img src="https://i.ibb.co/mCfBBp0/search.png" alt="search-icon"/>
-                        </span>
-                      </div>
+                        <input type="search" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
+                    </div>
                 </div>
                 <div class="col-md-4 mt-3">
                     <select class="form-select py-3 br-16" aria-label="Default select example">
                         <option selected>Ordenar por</option>
                         <option value="1">Nome A-Z</option> &nbsp;
-                        <option value="2">Cnpj</option>
-                        <option value="3">Emial</option>
+                        <option value="2">Status</option>
+                        <option value="3">Sla</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="col-12 mt-5">
-            <div class="row bg-light border br-16 p-3">
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3" style="max-width: 230px;">Nome</b>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3">E-mail</b>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3">CNPJ</b>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <b class="mb-0 h3">Data de solicitação</b>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                </div>
-            </div>
-        </div>
-        <div class="col-12 mt-3">
-            <div *ngFor="let item of supplier | paginate: config; let i= index"
-                class="row bg-blur align-items-center bg-light border mb-2 br-16 p-3">
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 class="fw-500 mb-0 font-size-21 line-21 d-inline-block" style="max-width: 230px;">
-                        {{item.name}}</h4>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 class="fw-400 mb-0 font-size-21 text-secondary line-21 d-inline-block" style="max-width: 90%;">
-                        {{item.email}}</h4>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.cnpj}}</h4>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 class="fw-500 mb-0 font-size-21 line-21">{{item.date}}</h4>
-                </div>
-                <div class="col h-100 br-16-circle align-items-center d-flex">
-                    <h4 class="text-">Verificar</h4>
+        <div class="row mx-0 overflow-x">
+            <div class="col-12 mt-5 px-0">
+                <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
+                    <div style="width: 295px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">Nome</b>
+                    </div>
+                    <div style="width: 280px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">E-mail</b>
+                    </div>
+                    <div style="width: 330px;"  class="col-2 col-bar-3 colum-cnpj h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">CNPJ</b>
+                    </div>
+                    <div class="col h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 text-nowrap fw-bolder">Data da Solicitação</b>
+                    </div>
+                    <div class="col h-100 br-16 align-items-center d-flex">
+                    </div>
                 </div>
             </div>
+            <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
+                <table class="table table-office mb-0 table-striped">
+                    <tbody>
+                      <tr *ngFor="let item of supplier | paginate: config; let i= index">
+                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
+                        <td style="width: 280px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
+                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 165px;">{{item.cnpj | mask: '00.000.000/0000-00'}}</h5></td>
+                        <td><h5 class="mb-0 py-3 text-start">{{item.date | mask: '00/00/0000'}}</h5></td>
+                        <td><h5 (click)="openModals('verificar')" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="supplier.length >= 3">
+
+        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="supplier.length >= 0">
             <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
                 <div class="custom-pagination">
                     <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
