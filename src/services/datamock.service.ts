@@ -106,81 +106,81 @@ export class DatamockService {
   supplier = [
     {
       name: 'Abraham linkon Abraham linkon',
-      email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      email: 'o@x.com',
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Brad Pit',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Katy Pary',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Vin Disel',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Drake',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Travis Scots',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Avril Lavine',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Inativo'
     },
     {
       name: 'Ana maria braga',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Inativo'
     },
     {
       name: 'Faustão',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Al abduh jaba mohamed mia khalifa',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Bolsonaro',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Putin',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
     {
       name: 'Donald trump',
       email: 'exemplo@xequemate.com',
-      cnpj: '42788247000164',
-      date: '25122001'
+      funcoes: 'Função A',
+      status: 'Ativo'
     },
 
   ]

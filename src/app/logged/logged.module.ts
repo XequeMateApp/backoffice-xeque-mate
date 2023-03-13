@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoggedComponent } from "./logged.component";
@@ -19,6 +19,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { SupplierComponent } from './supplier/supplier.component';
 import { ValidateSupplierComponent } from './supplier/components/validate-supplier/validate-supplier.component';
 import { NgxMaskModule } from "ngx-mask";
+
 
 @NgModule({
     declarations: [
