@@ -6,10 +6,10 @@
     <form [formGroup]="form" class="col-12 mt-4">
         <div class="row">
             <div class="col-md-6">
-                <div *ngFor="let file of selectFile" style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; height:251px; max-width: 377px;" class="br-16 w-100 border"></div>
-                <div *ngIf="notImage" style="height:251px;max-width: 377px;" class="br-16 w-100 d-flex align-content-center justify-content-center p-5 border">
-                   <div class="text-center">
-                   <img src="../../../../../assets/images/not-image.svg" class="w-100 h-auto"/>
+                <div *ngFor="let file of selectFile" style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; height:251px;" class="br-16 w-100 border"></div>
+                <div *ngIf="notImage" style="height:251px;" class="br-16 w-100 d-flex align-content-center justify-content-center p-5 border">
+                   <div class="text-center p-3">
+                   <img src="../../../../../assets/images/not-image.svg" class="w-auto h-100"/>
                    <h4 class="mb-0 mt-4">Selecione o arquivo</h4>
                    </div>
                 </div>
@@ -40,12 +40,12 @@
             </div>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-3">
                         <button class="btn br-16 btn-danger  text-light w-100"  (click)="exit()" type="button">
                             <h6 class="fw-bolder mb-0 py-2">Recusar</h6>
                         </button>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-3">
                         <button class="btn br-16 btn-success text-dark w-100"  (click)="confirm()" type="button">
                             <h6 class="fw-bolder mb-0 py-2">Aprovar</h6>
                         </button>

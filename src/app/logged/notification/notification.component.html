@@ -55,10 +55,10 @@
                     </div>
                 </div>
             </div>
-            <div style="min-width: 960px;"class="col-12 mt-3 br-16 p-2">
+            <div style="min-width: 960px;"class="col-12 mt-3 br-16 py-2 mx-0 px-0">
                 <div *ngFor="let item of notifications | paginate: config; let i= index" class="row mx-0 align-items-center bg-blur border mb-2 br-16 p-3">
                     <div class="col h-100 br-16-circle align-items-center d-flex">
-                        <h4 class="mb-0 d-inline-block" style="max-width: 230px;">
+                        <h4 class="mb-0 d-inline-block text-truncate colum-name">
                             {{item.name}}</h4>
                     </div>
                     <div class="col h-100 br-16-circle align-items-center d-flex">
@@ -70,7 +70,7 @@
                         <h4 class="mb-0">{{item.time}}</h4>
                     </div>
                     <div class="col h-100 br-16-circle align-items-center d-flex">
-                        <h4 class="mb-0">{{item.filter}}</h4>
+                        <h4 class="mb-0 d-inline-block text-truncate  colum-name">{{item.filter}}</h4>
                     </div>
                     <div class="col h-100 br-16-circle align-items-center d-flex">
                         <h4 *ngIf="item.status === 'Ativo'" class="mb-0 text-success">

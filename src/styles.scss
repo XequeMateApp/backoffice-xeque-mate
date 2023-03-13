@@ -95,8 +95,9 @@
     color: #2C61E8;
 }
 
-.l-auto{
-    left: auto !important;;
+.l-auto {
+    left: auto !important;
+    ;
 }
 
 .input-icon-right {
@@ -152,9 +153,11 @@
     border-radius: 1em;
     overflow: hidden;
 }
-.cursor{
+
+.cursor {
     cursor: pointer;
 }
+
 .overflow-x {
     overflow-x: scroll;
 }
@@ -180,4 +183,32 @@
     .modal-dialog {
         max-width: 600px !important;
     }
+}
+
+@media(max-width:1399px) {
+    .col-bar-3 {
+        width: 244px !important;
+    }
+
+}
+
+@media(max-width:1199px) {
+    .col-bar-3 {
+        width: 216px !important;
+    }
+
+
+    .colum-cnpj {
+        width: 89px;
+    }
+
+
+}
+@media(max-width:768px) {
+
+
+    .colum-cnpj {
+        width: 89px;
+    }
+
 }

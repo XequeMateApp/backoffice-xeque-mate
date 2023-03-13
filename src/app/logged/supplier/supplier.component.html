@@ -30,14 +30,14 @@
         </div>
         <div class="row mx-0 overflow-x">
             <div class="col-12 mt-5 px-0">
-                <div style="min-width: 960px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                    <div style="width: 290px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+                <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
+                    <div style="width: 295px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Nome</b>
                     </div>
-                    <div style="width: 288px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 280px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">E-mail</b>
                     </div>
-                    <div style="width: 275px;"  class="col-2 col-bar-3 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 330px;"  class="col-2 col-bar-3 colum-cnpj h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">CNPJ</b>
                     </div>
                     <div class="col h-100 br-16 align-items-center d-flex">
@@ -47,14 +47,14 @@
                     </div>
                 </div>
             </div>
-            <div style="min-width: 960px;"class="col-12 w3-white mt-3 px-0">
+            <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                       <tr *ngFor="let item of supplier | paginate: config; let i= index">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}EWOIFJWEIOFIOEFOIWEIPFWEJIOFWEIOFJOIWEFJOWEOIFE</h5></td>
                         <td style="width: 280px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
-                        <td><h5 class="mb-0 py-3">{{item.cnpj}}</h5></td>
-                        <td><h5 class="mb-0 py-3">{{item.date}}</h5></td>
+                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 165px;">{{item.cnpj | mask: '00.000.000/0000-00'}}</h5></td>
+                        <td><h5 class="mb-0 py-3 text-start">{{item.date | mask: '00/00/0000'}}</h5></td>
                         <td><h5 (click)="openModals('verificar')" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
                       </tr>
                     </tbody>
