@@ -5,5 +5,6 @@ export interface SupplierInterface {
     date: string,
     tel: string,
     type: string,
+    funcoes: string;
     status: string
 }
