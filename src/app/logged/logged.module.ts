@@ -19,6 +19,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { SupplierComponent } from './supplier/supplier.component';
 import { ValidateSupplierComponent } from './supplier/components/validate-supplier/validate-supplier.component';
 import { NgxMaskModule } from "ngx-mask";
+import { SuppliersCustomersComponent } from './suppliers-customers/suppliers-customers.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { NgxMaskModule } from "ngx-mask";
         UserManagementComponent,
         SupplierComponent,
         ValidateSupplierComponent,
+        SuppliersCustomersComponent,
     ],
     imports: [
         CommonModule,
