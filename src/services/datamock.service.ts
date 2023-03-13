@@ -113,6 +113,7 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Fornecedor',
+      funcoes: 'Função A',
       status: 'Ativo'
     },
     {
@@ -122,6 +123,7 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Fornecedor',
+      funcoes: 'Função A',
       status: 'Ativo'
     },
     {
@@ -131,6 +133,7 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Fornecedor',
+      funcoes: 'Função A',
       status: 'Ativo'
     },
     {
@@ -140,6 +143,7 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Fornecedor',
+      funcoes: 'Função A',
       status: 'Ativo'
     },
     {
@@ -149,6 +153,7 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Fornecedor',
+      funcoes: 'Função A',
       status: 'Ativo'
     },
     {
@@ -158,7 +163,8 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Fornecedor',
-      status: 'Inativo'
+      status: 'Inativo',
+      funcoes: 'Função A',
     },
     {
       name: 'Avril Lavine',
@@ -167,6 +173,7 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Cliente',
+      funcoes: 'Função A',
       status: 'Inativo'
     },
     {
@@ -176,6 +183,7 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Cliente',
+      funcoes: 'Função A',
       status: 'Inativo'
     },
     {
@@ -185,7 +193,8 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Cliente',
-      status: 'Inativo'
+      status: 'Inativo',
+      funcoes: 'Função A',
     },
     {
       name: 'Al abduh jaba mohamed mia khalifa',
@@ -194,7 +203,8 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Cliente',
-      status: 'Inativo'
+      status: 'Inativo',
+      funcoes: 'Função A',
     },
     {
       name: 'Bolsonaro',
@@ -203,7 +213,8 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Cliente',
-      status: 'Inativo'
+      status: 'Inativo',
+      funcoes: 'Função A',
     },
     {
       name: 'Putin',
@@ -212,7 +223,8 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Cliente',
-      status: 'Inativo'
+      status: 'Inativo',
+      funcoes: 'Função A',
     },
     {
       name: 'Donald trump',
@@ -221,7 +233,8 @@ export class DatamockService {
       date: '25122001',
       tel: '6140028922',
       type: 'Cliente',
-      status: 'Inativo'
+      status: 'Inativo',
+      funcoes: 'Função A',
     },
 
   ]

@@ -5,21 +5,16 @@
     --darkblue: #0F214F;
     --graylight: rgba(255, 255, 255, 0.8);
 }
-
-
 * {
     margin: 0;
     padding: 0;
     font-family: 'Josefin Sans' !important;
 }
-
 .custom-pagination {
     display: flex;
     max-width: 300px;
     margin: auto
 }
-
-
 .custom-pagination>div {
     flex: 1;
     font-size: 18px;
@@ -31,33 +26,26 @@
     -webkit-user-select: none;
     -ms-user-select: none
 }
-
 .custom-pagination>div.current {
     border-bottom: 2px solid rgb(0, 128, 255);
     padding: 0 1rem;
     cursor: pointer;
 
 }
-
 .bg-body {
     background-image: url(./assets/images/surface.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 ::-webkit-scrollbar {
     width: 0px;
 }
-
 ::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0);
 }
-
 ::-webkit-scrollbar-thumb {
     // background: var(--darkblue) !important;
 }
-
-
 .nav-link {
     width: 40px;
     height: 40px;
@@ -65,7 +53,6 @@
     text-align: center;
     line-height: 40px;
 }
-
 .section-dashboard {
     border-radius: 20px;
     border: 1px solid #CCD1EB;
@@ -75,11 +62,9 @@
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.434);
 }
-
 .l-auto {
     left: auto !important;
 }
-
 .input-icon-right {
     background-image: url('../src/assets/images/envelope-fill.svg');
     background-position: right 10px center;
@@ -87,7 +72,6 @@
     padding-right: 35px;
     /* espaço para o ícone */
 }
-
 .input-icon-key-right {
     background-image: url('../src/assets/images/key-fill.svg');
     background-position: right 10px center;
@@ -95,7 +79,6 @@
     padding-right: 35px;
     /* espaço para o ícone */
 }
-
 .input-icon-lock-right {
     background-image: url('../src/assets/images/lock-fill.svg');
     background-position: right 10px center;
@@ -103,49 +86,39 @@
     padding-right: 35px;
     /* espaço para o ícone */
 }
-
 .bg-search {
     background-image: url(https://i.ibb.co/mCfBBp0/search.png);
     background-position: right;
     background-repeat: no-repeat;
 }
-
 // necessary-tool´s
 .bg-dark-blue {
     background-color: var(--darkblue);
 }
-
 .bg-blur {
     backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.637);
 }
-
 .text-dark-blue {
     color: var(--darkblue);
 }
-
 .br-16 {
     border-radius: 16px;
 }
-
 .table-office {
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
 }
-
 .overflow-x {
     overflow-x: scroll;
 }
-
 .logo {
     max-height: 54px !important;
 }
-
 .p-name {
     padding: 10px 5px 1px 5px;
 }
-
 .modal-content {
     border-radius: 16px !important;
     background-color: transparent !important;
@@ -157,13 +130,11 @@
         padding: 0 !important;
     }
 }
-
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 600px !important;
     }
 }
-
 @media(max-width:1399px) {
     .col-bar-3 {
         width: 244px !important;
@@ -174,8 +145,10 @@
     .col-tel {
         max-width: 163px !important;
     }
+    .col-funcion {
+        width: 259px !important;
+    }
 }
-
 @media(max-width:1199px) {
     .col-bar-3 {
         width: 216px !important;
@@ -185,5 +158,8 @@
     }
     .col-tel {
         max-width: 149px !important;
+    }
+    .col-funcion {
+        width: 233px !important;
     }
 }
