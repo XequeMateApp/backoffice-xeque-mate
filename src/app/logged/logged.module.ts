@@ -20,6 +20,10 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { ValidateSupplierComponent } from './supplier/components/validate-supplier/validate-supplier.component';
 import { NgxMaskModule } from "ngx-mask";
 import { SuppliersCustomersComponent } from './suppliers-customers/suppliers-customers.component';
+import { EditSupplierCustomersClientComponent } from './suppliers-customers/components/edit-supplier-customers-client/edit-supplier-customers-client.component';
+import { EditSupplierCustomersComponent } from './suppliers-customers/components/edit-supplier-customers/edit-supplier-customers.component';
+import { CloseSupplierCustomersComponent } from './suppliers-customers/components/close-supplier-customers/close-supplier-customers.component';
+import { CloseSupplierCustomersClientComponent } from './suppliers-customers/components/close-supplier-customers-client/close-supplier-customers-client.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +39,10 @@ import { SuppliersCustomersComponent } from './suppliers-customers/suppliers-cus
         SupplierComponent,
         ValidateSupplierComponent,
         SuppliersCustomersComponent,
+        EditSupplierCustomersClientComponent,
+        EditSupplierCustomersComponent,
+        CloseSupplierCustomersComponent,
+        CloseSupplierCustomersClientComponent,
     ],
     imports: [
         CommonModule,

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { NotificIationnterface } from 'src/app/interface/notification.interface';
+import { SupplierInterface } from 'src/app/interface/supplier.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class DatamockService {
   constructor() { }
 
 
-  notificationList = [
+  notificationList:NotificIationnterface[] = [
     {
       name: 'Abraham linkon',
       content: 't is a long established fact that a reader will be distracted by the readable',
@@ -103,84 +105,123 @@ export class DatamockService {
 
   ]
 
-  supplier = [
+  supplier:SupplierInterface[] = [
     {
       name: 'Abraham linkon Abraham linkon',
-      email: 'exemplo@xequemate.com',
+      email: 'exemplo@xequematervqwetbbqgbeedewfrebrbqeebrtbwrtre.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Fornecedor',
+      status: 'Ativo'
     },
     {
       name: 'Brad Pit',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Fornecedor',
+      status: 'Ativo'
     },
     {
       name: 'Katy Pary',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Fornecedor',
+      status: 'Ativo'
     },
     {
       name: 'Vin Disel',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Fornecedor',
+      status: 'Ativo'
     },
     {
       name: 'Drake',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Fornecedor',
+      status: 'Ativo'
     },
     {
       name: 'Travis Scots',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Fornecedor',
+      status: 'Inativo'
     },
     {
       name: 'Avril Lavine',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Cliente',
+      status: 'Inativo'
     },
     {
       name: 'Ana maria braga',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Cliente',
+      status: 'Inativo'
     },
     {
       name: 'Faustão',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Cliente',
+      status: 'Inativo'
     },
     {
       name: 'Al abduh jaba mohamed mia khalifa',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Cliente',
+      status: 'Inativo'
     },
     {
       name: 'Bolsonaro',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Cliente',
+      status: 'Inativo'
     },
     {
       name: 'Putin',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Cliente',
+      status: 'Inativo'
     },
     {
       name: 'Donald trump',
       email: 'exemplo@xequemate.com',
       cnpj: '42788247000164',
-      date: '25122001'
+      date: '25122001',
+      tel: '6140028922',
+      type: 'Cliente',
+      status: 'Inativo'
     },
 
   ]

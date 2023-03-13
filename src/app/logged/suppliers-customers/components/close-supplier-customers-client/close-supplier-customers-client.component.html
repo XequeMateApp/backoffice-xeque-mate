@@ -1,0 +1,31 @@
+<form [formGroup]="form" class="row d-flex justify-content-center">
+    <div style="max-width: 373px;" class="col-12 d-flex bg-light br-16 align-items-center mx-0 p-3">
+        <div class="row px-0 w-100 mx-0">
+            <div class="col-12 d-flex align-items-center">
+                <div class="w-100 d-flex align-items-center">
+                    <h3 class="w-100 mb-0 text-center">Confirmação</h3>
+                    <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
+                </div>
+            </div>
+            <div class="col-12 my-3">
+                <p class="h5 text-center">
+                    Tem certeza que deseja excluir a notificação <strong class="text-primary">“nome”</strong>.
+                </p>
+            </div>
+            <div class="col-12 px-0">
+                <div class="row w-100 px-0 mx-0">
+                    <div class="col-md-6 mt-3">
+                        <button (click)="exit()" class="btn py-3 w-100 bg-light br-16 text-dark-blue">
+                            <h5 class="mb-0">Cancelar</h5>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button (click)="delete()" class="btn py-3 w-100 br-16 fw-700 font-size-21 text-light btn-danger">
+                            <h5 class="mb-0">Excluir</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

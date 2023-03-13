@@ -46,16 +46,15 @@
 }
 
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 0px;
 }
 
 ::-webkit-scrollbar-track {
-    background: white;
+    background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--darkblue) !important;
+    // background: var(--darkblue) !important;
 }
 
 
@@ -135,18 +134,15 @@
     overflow: hidden;
 }
 
-.cursor {
-    cursor: pointer;
-}
-
 .overflow-x {
     overflow-x: scroll;
 }
-.logo{
+
+.logo {
     max-height: 54px !important;
 }
 
-.p-name{
+.p-name {
     padding: 10px 5px 1px 5px;
 }
 
@@ -172,10 +168,22 @@
     .col-bar-3 {
         width: 244px !important;
     }
+    .col-type {
+        width: 137px !important;
+    }
+    .col-tel {
+        max-width: 163px !important;
+    }
 }
 
 @media(max-width:1199px) {
     .col-bar-3 {
         width: 216px !important;
+    }
+    .col-type {
+        width: 122px !important;
+    }
+    .col-tel {
+        max-width: 149px !important;
     }
 }
