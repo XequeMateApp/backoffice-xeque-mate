@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoggedComponent } from "./logged.component";
@@ -17,6 +17,8 @@ import { DeleteNotificationComponent } from './notification/components/delete-no
 import { KycManagerComponent } from './kyc-manager/kyc-manager.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { SupplierComponent } from './supplier/supplier.component';
+import { ValidateSupplierComponent } from './supplier/components/validate-supplier/validate-supplier.component';
+import { NgxMaskModule } from "ngx-mask";
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { SupplierComponent } from './supplier/supplier.component';
         KycManagerComponent,
         UserManagementComponent,
         SupplierComponent,
+        ValidateSupplierComponent,
     ],
     imports: [
         CommonModule,
@@ -38,13 +41,17 @@ import { SupplierComponent } from './supplier/supplier.component';
         FormsModule,
         ReactiveFormsModule,
         NgxPageScrollModule,
+        NgxMaskModule.forRoot(),
         NgxPageScrollCoreModule,
         NgxPaginationModule,
         NgbModule,
         NgxStarsModule,
     ],
     providers: [],
-  
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
+    ],
 
 })
 export class LoggedModule { }

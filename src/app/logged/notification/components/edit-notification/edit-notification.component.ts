@@ -16,7 +16,7 @@ export class EditNotificationComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       status: [''],
-      content: [''],
+      textarea: [''],
       repetition: [''],
       dateStart: [''],
       time: [''],

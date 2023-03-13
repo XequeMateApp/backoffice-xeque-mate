@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
@@ -14,7 +13,33 @@
     font-family: 'Josefin Sans' !important;
 }
 
-.corpo {
+.custom-pagination {
+    display: flex;
+    max-width: 300px;
+    margin: auto
+}
+
+
+.custom-pagination>div {
+    flex: 1;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 1rem;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none
+}
+
+.custom-pagination>div.current {
+    border-bottom: 2px solid rgb(0, 128, 255);
+    padding: 0 1rem;
+    cursor: pointer;
+
+}
+
+.bg-body {
     background-image: url(./assets/images/surface.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,30 +55,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #01FF5F !important;
+    background: var(--darkblue) !important;
 }
 
 
 .nav-link {
     width: 40px;
     height: 40px;
-    align-items: center;
-    border: 3px solid;
-    border-radius: 50%;
-    background-color: #fff;
-    color: #0F214F;
-    font-size: 20px;
+    border: 3px solid var(--darkblue);
     text-align: center;
     line-height: 40px;
-    cursor: pointer;
-}
-
-#subNav {
-    border: 1px solid #CCD1EB;
-    border-radius: 20px;
-    max-height: 174px;
-    width: 650px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .section-dashboard {
@@ -66,8 +77,8 @@
     background-color: rgba(255, 255, 255, 0.434);
 }
 
-.dashboardInfor {
-    color: #2C61E8;
+.l-auto {
+    left: auto !important;
 }
 
 .input-icon-right {
@@ -94,9 +105,20 @@
     /* espaço para o ícone */
 }
 
+.bg-search {
+    background-image: url(https://i.ibb.co/mCfBBp0/search.png);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
 // necessary-tool´s
 .bg-dark-blue {
     background-color: var(--darkblue);
+}
+
+.bg-blur {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.637);
 }
 
 .text-dark-blue {
@@ -107,6 +129,27 @@
     border-radius: 16px;
 }
 
+.table-office {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.overflow-x {
+    overflow-x: scroll;
+}
+.logo{
+    max-height: 54px !important;
+}
+
+.p-name{
+    padding: 10px 5px 1px 5px;
+}
+
 .modal-content {
     border-radius: 16px !important;
     background-color: transparent !important;
@@ -114,11 +157,6 @@
 }
 
 @media (max-width: 991px) {
-    .col-mobile {
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-    }
-
     .p0-important {
         padding: 0 !important;
     }
@@ -127,5 +165,17 @@
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 600px !important;
+    }
+}
+
+@media(max-width:1399px) {
+    .col-bar-3 {
+        width: 244px !important;
+    }
+}
+
+@media(max-width:1199px) {
+    .col-bar-3 {
+        width: 216px !important;
     }
 }
