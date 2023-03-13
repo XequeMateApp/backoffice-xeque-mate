@@ -39,7 +39,7 @@
 
 }
 
-.corpo {
+.bg-body {
     background-image: url(./assets/images/surface.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -55,30 +55,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #01FF5F !important;
+    background: var(--darkblue) !important;
 }
 
 
 .nav-link {
     width: 40px;
     height: 40px;
-    align-items: center;
-    border: 3px solid;
-    border-radius: 50%;
-    background-color: #fff;
-    color: #0F214F;
-    font-size: 20px;
+    border: 3px solid var(--darkblue);
     text-align: center;
     line-height: 40px;
-    cursor: pointer;
-}
-
-#subNav {
-    border: 1px solid #CCD1EB;
-    border-radius: 20px;
-    max-height: 174px;
-    width: 650px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .section-dashboard {
@@ -91,13 +77,8 @@
     background-color: rgba(255, 255, 255, 0.434);
 }
 
-.dashboardInfor {
-    color: #2C61E8;
-}
-
 .l-auto {
     left: auto !important;
-    ;
 }
 
 .input-icon-right {
@@ -161,6 +142,13 @@
 .overflow-x {
     overflow-x: scroll;
 }
+.logo{
+    max-height: 54px !important;
+}
+
+.p-name{
+    padding: 10px 5px 1px 5px;
+}
 
 .modal-content {
     border-radius: 16px !important;
@@ -169,11 +157,6 @@
 }
 
 @media (max-width: 991px) {
-    .col-mobile {
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-    }
-
     .p0-important {
         padding: 0 !important;
     }
@@ -189,26 +172,10 @@
     .col-bar-3 {
         width: 244px !important;
     }
-
 }
 
 @media(max-width:1199px) {
     .col-bar-3 {
         width: 216px !important;
     }
-
-
-    .colum-cnpj {
-        width: 89px;
-    }
-
-
-}
-@media(max-width:768px) {
-
-
-    .colum-cnpj {
-        width: 89px;
-    }
-
 }
