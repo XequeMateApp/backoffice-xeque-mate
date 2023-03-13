@@ -21,4 +21,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+  opUser() {
+    this.router.navigate(['logged/userManegement'])
+  }
+
 }

@@ -22,7 +22,6 @@ export class SupplierComponent implements OnInit {
   constructor(
     private datamockService: DatamockService,
     private router: Router,
-    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoggedComponent } from "./logged.component";
@@ -17,6 +17,7 @@ import { DeleteNotificationComponent } from './notification/components/delete-no
 import { KycManagerComponent } from './kyc-manager/kyc-manager.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { SupplierComponent } from './supplier/supplier.component';
+
 
 @NgModule({
     declarations: [
@@ -43,10 +44,7 @@ import { SupplierComponent } from './supplier/supplier.component';
         NgxStarsModule,
     ],
     providers: [],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-        NO_ERRORS_SCHEMA
-      ],
+  
 
 })
 export class LoggedModule { }
