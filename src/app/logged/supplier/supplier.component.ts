@@ -20,6 +20,7 @@ export class SupplierComponent implements OnInit {
     itemsPerPage: 8,
     currentPage: 1
   };
+  filterTerm!: string;
   constructor(
     private datamockService: DatamockService,
     private router: Router,

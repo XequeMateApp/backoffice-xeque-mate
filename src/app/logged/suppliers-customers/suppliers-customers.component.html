@@ -15,7 +15,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8 mt-3">
                     <div class="input-group mt-3">
-                        <input type="search" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
+                        <input type="search" name="search" [(ngModel)]="filterTerm"  class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
                     </div>
                 </div>
                 <div class="col-md-4 mt-3">
@@ -68,19 +68,24 @@
             <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
-                      <tr *ngFor="let item of supplier | paginate: config; let i= index">
+                      <tr *ngFor="let item of supplier| paginate: config | filter: filterTerm;  let i= index; ">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
                         <td style="width: 265px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
-                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 100px;">{{item.type}}rverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</h5></td>
+                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 100px;">{{item.type}}</h5></td>
                         <td><h5 class="mb-0 py-3 text-start">{{item.tel | mask: '(00) 0000-0000'}}</h5></td>
                         <td>
                             <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success"> {{item.status}}</h4>
                             <h4 *ngIf="item.status === 'Inativo'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
                         </td>
                         <td>
-                            <h4 class="mb-0  py-3">
-                                <i role='button' (click)="openModals('edit')" class="bi h3 px-2 py-3 bi-gear"></i>
-                                <i role='button' (click)="openModals('delete')" class="bi h3 px-2 py-3 text-danger bi-trash3"></i>
+                            <!-- caso email seja padrão para o fornecedores -->
+                            <h4 *ngIf="officerAdm !== 'luis.com'" class="mb-0  py-3">
+                                <i role='button' (click)="openModals('editclient', item)" class="bi h3 px-2 py-3 bi-gear"></i>
+                                <i role='button' (click)="openModals('deleteclient', item)" class="bi h3 px-2 py-3 text-danger bi-trash3"></i>
+                            </h4>
+                            <h4 *ngIf="officerAdm == 'luis.com'" class="mb-0  py-3">
+                                <i role='button' (click)="openModals('editsupplier' , item)" class="bi h3 px-2 py-3 bi-gear"></i>
+                                <i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 px-2 py-3 text-danger bi-trash3"></i>
                             </h4>
                         </td>
                       </tr>

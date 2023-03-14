@@ -9,6 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CloseSupplierCustomersComponent implements OnInit {
   form: FormGroup;
+  user: any;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -18,7 +19,7 @@ export class CloseSupplierCustomersComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-
+    
   }
   exit() {
     this.modalService.dismissAll()

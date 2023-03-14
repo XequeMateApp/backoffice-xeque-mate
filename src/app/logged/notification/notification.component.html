@@ -20,7 +20,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8 mt-3">
                     <div class="input-group">
-                        <input type="search" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
+                        <input type="search"  name="search" [(ngModel)]="filterTerm" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
                     </div>
                 </div>
                 <div class="col-md-4 mt-3">
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div style="min-width: 960px;"class="col-12 mt-3 br-16 py-2 mx-0 px-0">
-                <div *ngFor="let item of notifications | paginate: config; let i= index" class="row mx-0 align-items-center bg-blur border mb-2 br-16 p-3">
+                <div *ngFor="let item of notifications | filter: filterTerm | paginate: config; let i= index" class="row mx-0 align-items-center bg-blur border mb-2 br-16 p-3">
                     <div class="col h-100 br-16-circle align-items-center d-flex">
                         <h4 class="mb-0 d-inline-block text-truncate" style="max-width: 133px;">
                             {{item.name}}</h4>

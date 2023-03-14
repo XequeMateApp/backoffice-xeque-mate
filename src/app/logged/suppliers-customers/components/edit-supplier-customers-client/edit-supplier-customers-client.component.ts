@@ -17,7 +17,7 @@ export class EditSupplierCustomersClientComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       name: [''],
-      cnpj: [''],
+      cnpjcpf: [''],
       contact: [''],
       email: [''],
       doc: [''],

@@ -1,4 +1,5 @@
 export interface SupplierInterface {
+    _id: number,
     name: string;
     email: string,
     cnpj: string,
