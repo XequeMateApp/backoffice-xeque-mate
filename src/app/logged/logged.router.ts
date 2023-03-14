@@ -6,6 +6,7 @@ import { LoggedComponent } from "./logged.component";
 import { NotificationComponent } from "./notification/notification.component";
 import { SupplierComponent } from "./supplier/supplier.component";
 import { UserManagementComponent } from "./user-management/user-management.component";
+import { SuppliersCustomersComponent } from "./suppliers-customers/suppliers-customers.component";
 
 const routerConfig: Routes = [
   {
@@ -24,7 +25,9 @@ const routerConfig: Routes = [
       {
         path: 'user-manegement', component: UserManagementComponent
       },
-
+      {
+        path: 'suppliers-customers', component: SuppliersCustomersComponent
+      },
       {
         path: 'kyc', component: KycManagerComponent
       }

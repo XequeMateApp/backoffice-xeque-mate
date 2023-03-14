@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import { DatamockService } from 'src/services/datamock.service';
 import { ValidateSupplierComponent } from './components/validate-supplier/validate-supplier.component';
+import { SupplierInterface } from 'src/app/interface/supplier.interface';
 
 @Component({
   selector: 'app-supplier',
@@ -12,14 +13,14 @@ import { ValidateSupplierComponent } from './components/validate-supplier/valida
 })
 export class SupplierComponent implements OnInit {
 
-  supplier: any[];
+  supplier: SupplierInterface[];
   @Input('data') meals: string[] = [];
-
   public config: PaginationInstance = {
     id: 'custom',
     itemsPerPage: 8,
     currentPage: 1
   };
+  filterTerm!: string;
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -30,7 +31,7 @@ export class SupplierComponent implements OnInit {
     this.supplier = this.datamockService.supplier;
   }
 
-  backHome(){
+  backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
 
@@ -39,4 +40,12 @@ export class SupplierComponent implements OnInit {
       this.modalService.open(ValidateSupplierComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
   }
+  sortListByAlphabeticalOrder(): void {
+    this.supplier.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    }
+    );
+    console.log(this.supplier);
+  }
+
 }

@@ -6,6 +6,7 @@ import { CreateNotificationComponent } from './components/create-notification/cr
 import { EditNotificationComponent } from './components/edit-notification/edit-notification.component';
 import { DeleteNotificationComponent } from './components/delete-notification/delete-notification.component';
 import { PaginationInstance } from 'ngx-pagination';
+import { NotificIationnterface } from 'src/app/interface/notification.interface';
 
 @Component({
   selector: 'app-notification',
@@ -15,14 +16,15 @@ import { PaginationInstance } from 'ngx-pagination';
 })
 export class NotificationComponent implements OnInit {
 
-  notifications: any[];
+  notifications:NotificIationnterface[];
+
   @Input('data') meals: string[] = [];
 
   public config: PaginationInstance = {
     id: 'custom',
     itemsPerPage: 4,
     currentPage: 1
-  };
+  };filterTerm!: string;
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -45,5 +47,12 @@ export class NotificationComponent implements OnInit {
     } else if (tabName == 'delete') {
       this.modalService.open(DeleteNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
+  }
+  sortListByAlphabeticalOrder(): void {
+    this.notifications.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    }
+    );
+    console.log(this.notifications);
   }
 }
