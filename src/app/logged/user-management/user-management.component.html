@@ -1,13 +1,19 @@
 
 <main class="w-100 d-flex justify-content-center mt-5 mb-5">
     <div class="row px-0 mt-5 container">
-        <div class="col-12">
-            <div class="row px-0 mt-4 justify-content-between">
-                <div class="col-md mt-3">
-                    <div class="w-auto h-100 d-flex align-items-center">
+        <div class="col-12 ">
+            <div class="row justify-content-between px-0 mt-4">
+                <div class="col-md mt-4">
+                    <div class="w-auto h-100 d-flex align-items-center ">
                         <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
                         <h1 class="text-dark fw-bolder mb-0">Gestão de usuario</h1>
                     </div>
+
+                </div>
+                <div class="col-md-4 mt-4 d-flex justify-content-end">
+                        <button type="button" class="btn px-5 bg-dark-blue br-16 text-light my-1 w-100">
+                            <h5 class="mb-0 py-2">Entrar</h5>
+                        </button>
                 </div>
             </div>
         </div>
@@ -18,12 +24,20 @@
                         <input type="search" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
                     </div>
                 </div>
-                <div class="col-md-4 mt-3">
+                <div class="col-md-2 mt-3">
+                    <select class="form-select py-3 br-16" aria-label="Default select example">
+                        <option selected>Tipo</option>
+                        <option value="1">Nome A-Z</option> &nbsp;
+                        <option value="2">Status</option>
+                        <option value="3">Preço</option>
+                    </select>
+                </div>
+                <div class="col-md-2 mt-3">
                     <select class="form-select py-3 br-16" aria-label="Default select example">
                         <option selected>Ordenar por</option>
                         <option value="1">Nome A-Z</option> &nbsp;
                         <option value="2">Status</option>
-                        <option value="3">Sla</option>
+                        <option value="3">Preço</option>
                     </select>
                 </div>
             </div>
@@ -53,12 +67,12 @@
                       <tr *ngFor="let item of supplier | paginate: config; let i= index">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
                         <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item.email}}</h5></td>
-                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 115px;">{{item.funcoes}}                                                                   khckhcmhcmn hcvkhm mhcjhcjmyjyj</h5></td>
+                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 115px;">{{item.funcoes}}</h5></td>
                         <td>
                             <h5 class="mb-0 py-3  text-start text-success" *ngIf="item.status === 'Ativo'">{{item.status}}</h5>
                         <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item.status === 'Inativo'">{{item.status}}</h5>
                     </td>
-                        <td><h5 (click)="openModals('verificar')" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
+                        <td><h5  class="mb-0 fw-bolder text-center text-dark-blue py-3"><i class="bi mx-3 bi-gear"></i> <i class="bi bi-trash text-danger"></i></h5></td>
                       </tr>
                     </tbody>
                 </table>

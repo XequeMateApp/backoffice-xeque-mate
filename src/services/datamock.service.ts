@@ -107,79 +107,79 @@ export class DatamockService {
     {
       name: 'Abraham linkon Abraham linkon',
       email: 'o@x.com',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
       name: 'Brad Pit',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
       name: 'Katy Pary',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
       name: 'Vin Disel',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
     {
       name: 'Drake',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
     {
       name: 'Travis Scots',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
     {
       name: 'Avril Lavine',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Inativo'
     },
     {
       name: 'Ana maria braga',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Inativo'
     },
     {
       name: 'Faustão',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
     {
       name: 'Al abduh jaba mohamed mia khalifa',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
     {
       name: 'Bolsonaro',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
     {
       name: 'Putin',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
     {
       name: 'Donald trump',
       email: 'exemplo@xequemate.com',
-      funcoes: 'Função A',
+      funcoes: 'Clientes',
       status: 'Ativo'
     },
 
