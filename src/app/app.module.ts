@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,11 +10,9 @@ import { LoggedModule } from './logged/logged.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -26,13 +24,12 @@ import { AuthModule } from './auth/auth.module';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     NgxMaskModule.forRoot(),
-    HttpClientModule
-
+    HttpClientModule,
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
-  ],
+  // schemas: [
+  //   CUSTOM_ELEMENTS_SCHEMA,
+  //   NO_ERRORS_SCHEMA
+  // ],
   providers: [],
   bootstrap: [AppComponent]
 })
