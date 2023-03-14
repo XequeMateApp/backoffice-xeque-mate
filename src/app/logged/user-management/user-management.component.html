@@ -11,8 +11,8 @@
 
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
-                        <button type="button" class="btn px-5 bg-dark-blue br-16 text-light my-1 w-100">
-                            <h5 class="mb-0 py-2">Entrar</h5>
+                        <button (click)="openModals('Criar')" type="button" class="btn px-5 bg-dark-blue br-16 text-light my-1 w-100">
+                            <h5 class="mb-0 py-2">Cadastrar</h5>
                         </button>
                 </div>
             </div>
@@ -20,27 +20,38 @@
         <div class="col-12 mt-2">
             <div class="row align-items-center">
                 <div class="col-md-8 mt-3">
-                    <div class="input-group">
-                        <input type="search" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
+                    <div class="input-group mt-3">
+                        <input type="search" name="search" [(ngModel)]="filterTerm" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
                     </div>
                 </div>
-                <div class="col-md-2 mt-3">
-                    <select class="form-select py-3 br-16" aria-label="Default select example">
-                        <option selected>Tipo</option>
-                        <option value="1">Nome A-Z</option> &nbsp;
-                        <option value="2">Status</option>
-                        <option value="3">Preço</option>
-                    </select>
-                </div>
-                <div class="col-md-2 mt-3">
-                    <select class="form-select py-3 br-16" aria-label="Default select example">
-                        <option selected>Ordenar por</option>
-                        <option value="1">Nome A-Z</option> &nbsp;
-                        <option value="2">Status</option>
-                        <option value="3">Preço</option>
-                    </select>
-                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="row mx-0 px-0">
+                     <div class="col-md-6 mt-3 p0-important">
+                         <div class="dropdown">
+                             <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
+                               Tipo
+                             </button>
+                             <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
+                               <li role="button"><a (click)="sortListByType('fornecedor')" class="dropdown-item">Fornecedor</a></li>
+                               <li role="button"><a (click)="sortListByType('cliente')" class="dropdown-item">Cliente</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                     <div class="col-md-6 mt-3 p0-important">
+                         <div class="dropdown">
+                             <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
+                               Ordenar por
+                             </button>
+                             <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
+                               <li role="button"><a (click)="sortListByAlphabeticalOrder()" class="dropdown-item">Nome A-Z</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                    </div>
+                 </div>
+ 
             </div>
+
         </div>
         <div class="row mx-0 overflow-x">
             <div class="col-12 mt-5 px-0">
@@ -64,7 +75,7 @@
             <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
-                      <tr *ngFor="let item of supplier | paginate: config; let i= index">
+                      <tr *ngFor="let item of supplier | filter: filterTerm  | paginate: config; let i= index">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
                         <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item.email}}</h5></td>
                         <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 115px;">{{item.funcoes}}</h5></td>

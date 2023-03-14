@@ -1,0 +1,78 @@
+<form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+        <h2 class="text-dark mb-0 fw-bolder">Cadastrar Função</h2>
+        <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
+    </div>
+    <div class="col-12 mt-3">
+        <div class="row px-0">
+            <div class="col-md-8">
+                <label for="edit-name">Nome</label>
+                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" />
+            </div>
+            <div class="col-md-4">
+                <label for="edit-status">Status</label>
+                <select formControlName="status" id="edit-status" class="form-select py-3 br-16"
+                    aria-label="Default status">
+                    <option [disabled]="true" [selected]="true">Selecione</option>
+                    <option value="active">:large_green_circle: Ativo</option>
+                    <option value="inactive">:red_circle: Inativo</option>
+                </select>
+            </div>
+            <div class="col-12 mt-4 mb-2">
+                <label class="" for="edit-content">Filtro</label>
+                <div class="w-auto d-flex align-items-center">
+                    <div role="button" class="form-check align-items-baseline d-flex">
+                        <input formControlName="supplier" class="form-check-input p-2" type="checkbox" value=""
+                            id="filterForner">
+                        <label class="form-check-label px-2" for="filterForner">
+                            Fornecedores
+                        </label>
+                    </div>
+                    <div role="button" class="form-check align-items-baseline d-flex mx-3">
+                        <input formControlName="clinet" class="form-check-input p-2" type="checkbox" value=""
+                            id="filterClients">
+                        <label class="form-check-label px-2" for="filterClients">
+                            Clientes
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row px-0">
+                    <div class="col-md-6 mt-3">
+                        <button type="button" (click)="exit()"  class="btn w3-white h3 text-dark-blue w-100 py-3">
+                            <h4 class="mb-0">Cancelar</h4>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                            <h4 class="mb-0">Concluir</h4>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                            <h4 class="mb-0">Concluir</h4>
+                        </button>
+                    </div>
+                </div>
+                <div class="row px-0">
+                    <div class="col-md-6 mt-3">
+                        <button type="button" (click)="exit()"  class="btn w3-white h3 text-dark-blue w-100 py-3">
+                            <h4 class="mb-0">Cancelar</h4>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                            <h4 class="mb-0">Concluir</h4>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                            <h4 class="mb-0">Concluir</h4>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
