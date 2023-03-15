@@ -7,6 +7,8 @@ import { NotificationComponent } from "./notification/notification.component";
 import { SupplierComponent } from "./supplier/supplier.component";
 import { UserManagementComponent } from "./user-management/user-management.component";
 import { SuppliersCustomersComponent } from "./suppliers-customers/suppliers-customers.component";
+import { FunctionManagementComponent } from "./function-management/function-management.component";
+import { ProductsComponent } from "./products/products.component";
 
 const routerConfig: Routes = [
   {
@@ -29,7 +31,13 @@ const routerConfig: Routes = [
         path: 'suppliers-customers', component: SuppliersCustomersComponent
       },
       {
+        path: 'function-management', component: FunctionManagementComponent
+      },
+      {
         path: 'kyc', component: KycManagerComponent
+      },
+      {
+        path: 'products', component: ProductsComponent
       }
     ],
   }

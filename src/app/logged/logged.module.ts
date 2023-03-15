@@ -29,6 +29,11 @@ import { FunctionManagementComponent } from './function-management/function-mana
 import { CreateFunctionComponent } from './function-management/components/create-function/create-function.component';
 import { EditFunctionComponent } from './function-management/components/edit-function/edit-function.component';
 import { DeleteFunctionComponent } from './function-management/components/delete-function/delete-function.component';
+import { ProductsComponent } from './products/products.component';
+import { AnalysisProductComponent } from './products/components/analysis-product/analysis-product.component';
+import { CreateProductComponent } from './products/components/create-product/create-product.component';
+import { EditProductComponent } from './products/components/edit-product/edit-product.component';
+import { DeleteProductComponent } from './products/components/delete-product/delete-product.component';
 
 
 @NgModule({
@@ -53,6 +58,11 @@ import { DeleteFunctionComponent } from './function-management/components/delete
         CreateFunctionComponent,
         EditFunctionComponent,
         DeleteFunctionComponent,
+        ProductsComponent,
+        AnalysisProductComponent,
+        CreateProductComponent,
+        EditProductComponent,
+        DeleteProductComponent,
     ],
     imports: [
         CommonModule,
