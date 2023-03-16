@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import { DatamockService } from 'src/services/datamock.service';
+import { ConfirUserComponent } from './components/confir-user/confir-user.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @Component({
   selector: 'app-user-management',
@@ -56,8 +58,15 @@ export class UserManagementComponent implements OnInit {
 
 
   openModals(tabName: string) {
-    if (tabName == 'Criar') {
+    if (tabName === 'Criar') {
        this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
+    } else if(tabName === 'Edit'){
+      this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
+
+    }
+    else if(tabName === 'Delete'){
+      this.modalService.open(ConfirUserComponent, { centered: true, backdrop: 'static', keyboard: false })
+
     }
   }
 }

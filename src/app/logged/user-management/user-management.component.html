@@ -83,7 +83,9 @@
                             <h5 class="mb-0 py-3  text-start text-success" *ngIf="item.status === 'Ativo'">{{item.status}}</h5>
                         <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item.status === 'Inativo'">{{item.status}}</h5>
                     </td>
-                        <td><h5  class="mb-0 fw-bolder text-center text-dark-blue py-3"><i class="bi mx-3 bi-gear"></i> <i class="bi bi-trash text-danger"></i></h5></td>
+                        <td><h5  class="mb-0 fw-bolder text-center text-dark-blue py-3">
+                            <i (click)="openModals('Edit')" class="bi mx-3 bi-gear"></i> 
+                            <i (click)="openModals('Delete')" class="bi bi-trash text-danger"></i></h5></td>
                       </tr>
                     </tbody>
                 </table>

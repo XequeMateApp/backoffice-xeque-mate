@@ -8,33 +8,26 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
-  form: FormGroup;
-  constructor(
-    private modalService: NgbModal,
-    private formBuilder: FormBuilder,
-  ) {
+  form:FormGroup;
+  constructor(private modalService:NgbModal, private formBuilder:FormBuilder) { 
     this.form = this.formBuilder.group({
-      name: [''],
-      status: [''],
-      textarea: [''],
-      repetition: [''],
-      dateStart: [''],
-      time: [''],
-      supplier: [''],
-      client: ['']
+name: [''],
+email: [''],
+tel: [''],
+adm: [''],
+client: [''],
+products: [''],
+kyc: [''],
+accessControl: [''],
+notification: [''],
+status: [''],
     })
   }
+
   ngOnInit(): void {
-
   }
-
-
-  exit() {
-    this.modalService.dismissAll()
-  }
-
-
-  confirm(): void {
-
-  }
+exit(){
+  this.modalService.dismissAll()
+}
+confirm():void{}
 }
