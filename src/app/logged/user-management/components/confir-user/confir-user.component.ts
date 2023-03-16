@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-confir-user',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirUserComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  form: FormGroup;
+  user: any;
+  constructor(
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder,
+  ) {
+    this.form = this.formBuilder.group({
+      delete: [''],
+    })
   }
-
+  ngOnInit(): void {
+    
+  }
+  exit() {
+    this.modalService.dismissAll()
+  }
+  delete(){
+    window.alert('Delete  ')
+  }
 }

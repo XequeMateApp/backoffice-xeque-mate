@@ -1,20 +1,30 @@
-<form [formGroup]=""  class="row mx-2 w3-white p-4 br-16">
-    <div class="col-12 d-flex align-items-center justify-content-center">
-        <h2 class="text-dark mb-0 fw-bolder">Confirmação</h2>
-        <img   role="button" src="../../../../../assets/icons/x.png" class="" />
-    </div>
-    <div class="col-12">
-        <p class="d-flex p-4 justify-content-center">Tem certeza que deseja excluir o usuário?</p>
-        <div class="row px-0">
-            <div class="col-md-6 mt-3">
-                <button type="button"  class="btn w3-white h3 text-dark-blue w-100 py-3">
-                    <h4 class="mb-0">Cancelar</h4>
-                </button>
+<form [formGroup]="form" class="row mx-2 d-flex justify-content-center">
+    <div style="max-width: 373px;" class="col-12 d-flex bg-light br-16 align-items-center mx-0 p-3">
+        <div class="row px-0 w-100 mx-0">
+            <div class="col-12 d-flex align-items-center">
+                <div class="w-100 d-flex align-items-center">
+                    <h3 class="w-100 mb-0 text-center">Confirmação</h3>
+                    <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
+                </div>
             </div>
-            <div class="col-md-6 mt-3">
-                <button type="submit" class="btn bg-danger h1 text-light w-100 py-3 br-16">
-                    <h4 class="mb-0">Excluir</h4>
-                </button>
+            <div class="col-12 my-3">
+                <p class="h5 text-center">
+                    Tem certeza que deseja excluir o usuário <strong class="text-primary">“{{user}}”</strong>.
+                </p>
+            </div>
+            <div class="col-12 px-0">
+                <div class="row w-100 px-0 mx-0">
+                    <div class="col-md-6 mt-3">
+                        <button (click)="exit()" class="btn py-3 w-100 bg-light br-16 text-dark-blue">
+                            <h5 class="mb-0">Cancelar</h5>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button (click)="delete()" class="btn py-3 w-100 br-16 fw-700 font-size-21 text-light btn-danger">
+                            <h5 class="mb-0">Excluir</h5>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
