@@ -32,8 +32,7 @@
                               Tipo
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                              <li role="button"><a (click)="sortListByType('fornecedor')" class="dropdown-item">Fornecedor</a></li>
-                              <li role="button"><a (click)="sortListByType('cliente')" class="dropdown-item">Cliente</a></li>
+                              <li *ngFor="let item of supplier" role="button"><a (click)="sortListByType('{{item.material}}')" class="dropdown-item">{{item.material}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -80,7 +79,7 @@
                         <td style="width: 130px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 134px;">{{item.material}}</h5></td>
                         <td style="width: 220px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 160px;">{{item.price | currency : 'R$'}}</h5></td>
                         <td>
-                            <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success"> {{item.status}}</h4>
+                            <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success">{{item.status}}</h4>
                             <h4 *ngIf="item.status === 'Inativo'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
                         </td>
                         <td>

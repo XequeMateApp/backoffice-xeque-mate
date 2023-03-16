@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit {
   filterTerm!: string;
   user: any;
   officerAdm: string;
+  suppliermaterial: any;
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -33,6 +34,12 @@ export class ProductsComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.supplier = this.datamockService.supplier;
+    // for (let i = 0; i < this.supplier.length; i++) {
+    //   let o: string;
+    //   o = this.supplier[i].category;
+    //   console.log(o)
+    // }
+    console.log()
     this.user = JSON.parse(localStorage.getItem('user'));
     const domain = this.user.email.split("@")[1];
     this.officerAdm = domain;
@@ -47,7 +54,7 @@ export class ProductsComponent implements OnInit {
       this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'editproduct') {
       this.modalService.open(EditProductComponent, { centered: true, backdrop: 'static', keyboard: false })
-    }else if (tabName == 'deleteproduct') {
+    } else if (tabName == 'deleteproduct') {
       this.modalService.open(DeleteProductComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
     // this.ArrayInfoUser = [infoUser._id, infoUser.name]
@@ -60,6 +67,14 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  removeDuplicates(material: any): void {
+    for (const key in material) {
+      if (material.hasOwnProperty(key)) {
+        const value = material[key];
+        console.log(key + ': ' + value);
+      }
+    }
+  }
 
   sortListByType(value: string) {
     if (value === 'cliente') this.supplier.sort((a, b) => { return a.type.localeCompare(b.type); });

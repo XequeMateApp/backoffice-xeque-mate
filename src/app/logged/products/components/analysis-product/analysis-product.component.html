@@ -1,1 +1,89 @@
-<p>analysis-product works!</p>
+<main class="row mx-2 justify-content-center">
+    <div class="col-12 w3-white br-16 p-4 ">
+        <div class="row px-0">
+            <div class="col-12 d-flex align-content-center justify-content-between">
+                <h2 class="mb-0 fw-bolder text-center">Analisar Produto</h2>
+                <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png"
+                    style="height: fit-content;">
+            </div>
+            <form [formGroup]="form" class="col-12 mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
+                        <input type="text" id="edit-name" class="form-control fw-bolder br-16 bordder py-3" [value]=""
+                            placeholder="Digite o nome" formControlName="name" />
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
+                                <input type="tel" id="edit-code" [maxLength]="15" required="true"
+                                    class="form-control br-16 text-dark-blue fw-bolder bordder py-3" [value]=""
+                                    placeholder="Digite o código" formControlName="code" />
+                            </div>
+                            <div class="col-md-5">
+                                <label class="h6 mt-3 text-dark" for="edit-valor">Valor</label>
+                                <input type="tel" id="edit-valor" [maxlength]="15" mask="separator.2"
+                                    thousandSeparator="." prefix="R$ " required="true"
+                                    class="form-control fw-bolder br-16 bordder py-3" [value]=""
+                                    placeholder="Digite o valor" formControlName="price" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label class="h6 mt-3 text-dark" for="edit-category">Categoria</label>
+                        <select #selectOptions class="form-select fw-bolder text-dark-blue br-16 border py-3"
+                            aria-label="Default select category" formControlName="selectCategory"
+                            (change)="onOptionSelected(selectOptions.value)">
+                            <option [selected]="true" [disabled]="true">Selecione uma categoria</option>
+                            <option (click)="addItem()" *ngFor="let option of options" [value]="option._id">{{
+                                option.category }}</option>
+                        </select>
+                        <ul class="list-group mt-3 br-16 ">
+                            <li class="list-group-item d-flex justify-content-between align-content-center"
+                                *ngFor="let item of selectedItems">
+                                <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate"
+                                    style="max-width: 200px;"> {{ item.category }}</h6>
+                                <i (click)="removeItem(item)" role="button" class="bi mb-0 bi-x h3 text-danger"></i>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <label class="h6 mt-3 text-dark" for="edit-doc">Documento</label>
+                    <div role="button" id="edit-doc"
+                        class="border br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+                        <span *ngIf="!!selectFileName">{{selectFileName}}</span>
+                        <span class="cursor" *ngIf="!selectFileName">Seu documento</span>
+                        <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
+                        <input type="file" class="position-absolute w-100 cursor start-0" style="opacity: 0;"
+                            (change)="onSelectFileName($event)" accept="image/*, .doc , .pdf, .docx"
+                            formControlName="doc" />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-6 mt-4">
+                                <button class="btn br-16 w3-white text-dark-blue w-100" (click)="exit()" type="button">
+                                    <h6 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h6>
+                                </button>
+                            </div>
+                            <div class="col-md-6 mt-4">
+                                <button class="btn br-16 text-light bg-dark-blue w-100" (click)="confirm()"
+                                    type="button">
+                                    <h6 class="fw-bolder mb-0 py-2">Salvar</h6>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn br-16 text-dark-blue w3-white w-100 text-center"
+                            style="border: 3px solid var(--darkblue)">
+                            <h6 class="fw-bolder mb-0 py-2"> Gerar Nova Senha</h6>
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+</main>

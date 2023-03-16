@@ -7,19 +7,16 @@
         <div class="row px-0">
             <div class="col-md-8">
                 <label for="edit-name">Nome</label>
-                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome"
-                    formControlName="name" />
+                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" />
             </div>
             <div class="col-md-4">
                 <label for="edit-status">Status</label>
-                <select formControlName="status" id="edit-status" class="form-select py-3 br-16"
-                    aria-label="Default status">
+                <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
                     <option [disabled]="true" [selected]="true">Selecione</option>
                     <option value="active">🟢 Ativo</option>
                     <option value="inactive">🔴 Inativo</option>
                 </select>
             </div>
-
             <div class="col-12 mt-4 mb-2">
                 <label class="" for="edit-content">Filtro</label>
                 <div class="row">
