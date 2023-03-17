@@ -12,13 +12,15 @@ import { DatamockService } from 'src/services/datamock.service';
 export class AnalysisProductComponent implements OnInit {
   form: FormGroup;
 
-  FileNameDoc: String;
+  selectFileName: String;
   supplierImg: string[];
   selectedItems: SupplierInterface[] = [];
-  supplier: SupplierInterface[];
   FilesDoc: SupplierInterface[];
+  FileNameDoc: String;
+
   productsData: any;
 
+  supplier: SupplierInterface[];
   selectedImageUrl: string;
   selectFile: any = [];
   notImage = true;
@@ -44,13 +46,12 @@ export class AnalysisProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplier = this.datamockService.getsupplier();
-
     this.productsData = JSON.parse(localStorage.getItem('productsData'));
     console.log(this.productsData)
     this.supplierImg = this.productsData.img;
     this.FilesDoc = this.productsData.doc;
 
-    console.log(this.supplierImg)
+    console.log(this.supplierImg);
     this.form.controls['name'].setValue(this.productsData.name)
     this.form.controls['price'].setValue(this.productsData.price)
     this.form.controls['code'].setValue(this.productsData.code)
@@ -102,16 +103,36 @@ export class AnalysisProductComponent implements OnInit {
         reader.readAsDataURL(event.target.files[i]);
       }
     }
-
   }
-  removeFile() {
+
+  onSelectFileProductImage(event) {
+    if (event.target.files && event.target.files[0]) {
+      this.notImage = false;
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.supplierImg.push(event.target.result as string);
+        };
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+
+  addImages() {
+    this.supplier.push()
+  }
+
+  removeFile(index: number) {
+    this.supplierImg.splice(index, 1);
     console.log('ué')
     this.form.controls['selectPhotos'].setValue(null);
-    this.selectFile = null;
+    // this.selectFile = null;
     this.notImage = true;
     this.selectedImageUrl = '';
   }
 
+  // docs
   downloadFile() {
 
   }
