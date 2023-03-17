@@ -24,7 +24,8 @@ export class NotificationComponent implements OnInit {
     id: 'custom',
     itemsPerPage: 4,
     currentPage: 1
-  };filterTerm!: string;
+  };
+  filterTerm!: string;
   constructor(
     private datamockService: DatamockService,
     private router: Router,

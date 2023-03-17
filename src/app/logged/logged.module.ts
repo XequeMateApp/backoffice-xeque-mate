@@ -34,6 +34,9 @@ import { AnalysisProductComponent } from './products/components/analysis-product
 import { CreateProductComponent } from './products/components/create-product/create-product.component';
 import { EditProductComponent } from './products/components/edit-product/edit-product.component';
 import { DeleteProductComponent } from './products/components/delete-product/delete-product.component';
+import { CreateUserComponent } from './user-management/components/create-user/create-user.component';
+import { EditUserComponent } from './user-management/components/edit-user/edit-user.component';
+import { ConfirUserComponent } from './user-management/components/confir-user/confir-user.component';
 
 
 @NgModule({
@@ -63,6 +66,9 @@ import { DeleteProductComponent } from './products/components/delete-product/del
     CreateProductComponent,
     EditProductComponent,
     DeleteProductComponent,
+    CreateUserComponent,
+    EditUserComponent,
+    ConfirUserComponent,
   ],
   imports: [
     CommonModule,

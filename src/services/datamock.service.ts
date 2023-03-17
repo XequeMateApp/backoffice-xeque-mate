@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NotificIationnterface } from 'src/app/interface/notification.interface';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -143,7 +142,7 @@ export class DatamockService {
       price: '1499349374783939484',
       tel: '6140028922',
       type: 'Fornecedor',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
@@ -170,7 +169,7 @@ export class DatamockService {
       price: '1499349374783939484',
       tel: '6140028922',
       type: 'Fornecedor',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
@@ -197,7 +196,7 @@ export class DatamockService {
       price: '1499349374783939484',
       tel: '6140028922',
       type: 'Fornecedor',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
@@ -224,7 +223,7 @@ export class DatamockService {
       price: '1499349374783939484',
       tel: '6140028922',
       type: 'Fornecedor',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
@@ -251,7 +250,7 @@ export class DatamockService {
       price: '1499349374783939484',
       tel: '6140028922',
       type: 'Fornecedor',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
       status: 'Ativo'
     },
     {
@@ -279,7 +278,7 @@ export class DatamockService {
       tel: '6140028922',
       type: 'Fornecedor',
       status: 'Inativo',
-      funcoes: 'Função A',
+      funcoes: 'Cliente',
     },
     {
       _id: 7,
@@ -305,7 +304,7 @@ export class DatamockService {
       price: '1499349374783939484',
       tel: '6140028922',
       type: 'Cliente',
-      funcoes: 'Função A',
+      funcoes: 'Cliente',
       status: 'Inativo'
     },
     {
@@ -332,7 +331,7 @@ export class DatamockService {
       price: '1499349374783939484',
       tel: '6140028922',
       type: 'Cliente',
-      funcoes: 'Função A',
+      funcoes: 'Cliente',
       status: 'Inativo'
     },
     {
@@ -360,7 +359,7 @@ export class DatamockService {
       tel: '6140028922',
       type: 'Cliente',
       status: 'Inativo',
-      funcoes: 'Função A',
+      funcoes: 'Cliente',
     },
     {
       _id: 10,
@@ -387,7 +386,7 @@ export class DatamockService {
       tel: '6140028922',
       type: 'Cliente',
       status: 'Inativo',
-      funcoes: 'Função A',
+      funcoes: 'Cliente',
     },
     {
       _id: 11,
@@ -414,7 +413,7 @@ export class DatamockService {
       tel: '6140028922',
       type: 'Cliente',
       status: 'Inativo',
-      funcoes: 'Função A',
+      funcoes: 'Cliente',
     },
     {
       _id: 12,
@@ -441,7 +440,7 @@ export class DatamockService {
       tel: '6140028922',
       type: 'Cliente',
       status: 'Inativo',
-      funcoes: 'Função A',
+      funcoes: 'Cliente',
     },
     {
       _id: 13,
@@ -468,7 +467,7 @@ export class DatamockService {
       tel: '6140028922',
       type: 'Cliente',
       status: 'Inativo',
-      funcoes: 'Função A',
+      funcoes: 'Administrador',
     },
 
   ];
