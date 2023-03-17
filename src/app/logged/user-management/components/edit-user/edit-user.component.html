@@ -33,8 +33,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="adm" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterADM">
+                                    <input formControlName="adm" type="radio" id="filterADM" name="filter" class="form-check-input p-2">
+                                    
                                     <label class="form-check-label px-2" for="filterADM">
                                         Administrador
                                     </label>
@@ -42,17 +42,16 @@
                             </div>
                             <div class="col-md-4">
                                 <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="products" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterProducts">
-                                    <label class="form-check-label px-2" for="filterProducts">
+                                    <input type="radio" id="filterProducts" formControlName="products" name="filter" class="form-check-input p-2" >    
+                                              <label class="form-check-label px-2" for="filterProducts">
                                         Produtos
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="kyc" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterKYC">
+                                    <input formControlName="kyc" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterKYC">
                                     <label class="form-check-label px-2" for="filterKYC">
                                         KYC
                                     </label>
@@ -62,8 +61,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="client" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterClients">
+                                    <input formControlName="client" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterClients">
                                     <label class="form-check-label px-2" for="filterClients">
                                         Clientes
                                     </label>
@@ -71,8 +70,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="accessControl" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterControl">
+                                    <input formControlName="accessControl" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterControl">
                                     <label class="form-check-label text-nowrap px-2" for="filterControl">
                                         Controle de acesso
                                     </label>
@@ -80,8 +79,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="notification" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterNotification">
+                                    <input formControlName="notification" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterNotification">
                                     <label class="form-check-label px-2" for="filterNotification">
                                         Notificações
                                     </label>

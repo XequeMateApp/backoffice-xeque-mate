@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DatamockService } from 'src/services/datamock.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -9,7 +10,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EditUserComponent implements OnInit {
 form:FormGroup;
-  constructor(private modalService:NgbModal, private formBuilder:FormBuilder) { 
+  constructor(
+    private modalService:NgbModal,
+     private formBuilder:FormBuilder) { 
     this.form = this.formBuilder.group({
 name: [''],
 email: [''],
