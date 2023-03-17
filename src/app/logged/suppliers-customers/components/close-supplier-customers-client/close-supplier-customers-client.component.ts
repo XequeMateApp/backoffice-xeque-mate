@@ -8,7 +8,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./close-supplier-customers-client.component.scss']
 })
 export class CloseSupplierCustomersClientComponent implements OnInit {
-  changeSubscriptionClose: Subscription;
   form: FormGroup;
   constructor(
     private modalService: NgbModal,

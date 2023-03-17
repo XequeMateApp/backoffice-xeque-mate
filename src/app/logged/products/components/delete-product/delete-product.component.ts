@@ -3,38 +3,28 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-create-function',
-  templateUrl: './create-function.component.html',
-  styleUrls: ['./create-function.component.scss']
+  selector: 'app-delete-product',
+  templateUrl: './delete-product.component.html',
+  styleUrls: ['./delete-product.component.scss']
 })
-export class CreateFunctionComponent implements OnInit {
+export class DeleteProductComponent implements OnInit {
+
   form: FormGroup;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
-      name: [''],
-      status: [''],
-      administrator: [''],
-      products: [''],
-      kyc: [''],
-      client: [''],
-      accessControl: [''],
-      notification: [''],
+      delete: [''],
     })
   }
   ngOnInit(): void {
 
   }
-
-
   exit() {
     this.modalService.dismissAll()
   }
-
-
-  confirm(): void {
-
+  delete(){
+    window.alert('Delete  ')
   }
 }

@@ -1,18 +1,18 @@
 
 <main class="w-100 d-flex justify-content-center mt-5 mb-5">
     <div class="row px-0 mt-5 container">
-        <div class="col-12 mt-4">
+        <div class="col-12">
             <div class="row px-0 justify-content-between">
                 <div class="col-md mt-4">
                     <div class="w-auto h-100 d-flex align-items-center">
                         <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg"
                             class="me-5" />
-                        <h1 class="text-dark fw-bolder mb-0">Gestão de Funções</h1>
+                        <h1 class="text-dark fw-bolder mb-0">Produto</h1>
                     </div>
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
-                    <button type="button" (click)="openModals('create')" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
-                        <h4 class="mb-0 py-2">Cadastrar</h4>
+                    <button type="button" (click)="createOpenModals()" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
+                        <h4 class="mb-0 py-2">Novo Produto</h4>
                     </button>
                 </div>
             </div>
@@ -32,8 +32,7 @@
                               Tipo
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                              <li role="button"><a (click)="sortListByType('permitiona')" class="dropdown-item">Permição A</a></li>
-                              <li role="button"><a (click)="sortListByType('permitionb')" class="dropdown-item">Permição B</a></li>
+                              <li *ngFor="let item of supplier" role="button"><a (click)="sortListByType('{{item.material}}')" class="dropdown-item">{{item.material}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -54,11 +53,17 @@
         <div class="row mx-0 overflow-x">
             <div class="col-12 mt-5 px-0">
                 <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                    <div style="width: 322px;" class="col-3 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 195px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Nome</b>
                     </div>
-                    <div style="width: 422px;" class="col-2 h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 fw-bolder">Permições</b>
+                    <div style="width: 292px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">Categoria</b>
+                    </div>
+                    <div style="width: 150px;"  class="col-2 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">Material</b>
+                    </div>
+                    <div style="max-width: 221px;" class="col h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 text-nowrap fw-bolder">Preço Suguerido</b>
                     </div>
                     <div class="col h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
@@ -69,16 +74,20 @@
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                       <tr *ngFor="let item of supplier| paginate: config | filter: filterTerm;  let i= index; ">
-                        <td style="width: 325px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 325px;">{{item.name}}</h5></td>
-                        <td style="width: 410px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 410px;">{{item.permition}}</h5></td>
+                        <td style="width: 200px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 200px;">{{item.name}}</h5></td>
+                        <td style="width: 265px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.category}}</h5></td>
+                        <td style="width: 130px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 134px;">{{item.material}}</h5></td>
+                        <td style="width: 220px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 160px;">{{item.price | currency : 'R$'}}</h5></td>
                         <td>
-                            <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success"> {{item.status}}</h4>
+                            <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success">{{item.status}}</h4>
                             <h4 *ngIf="item.status === 'Inativo'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
                         </td>
-                        <td class="text-center">
-                            <h4 class="mb-0  py-3">
-                                <i role='button' (click)="openModals('create')" class="bi h3 px-3 py-3 bi-gear"></i>
-                                <i role='button' (click)="openModals('delete')" class="bi h3 px-3 py-3 text-danger bi-trash3"></i>
+                        <td>
+                            <!-- caso email seja padrão para o fornecedores -->
+                            <h4 class="mb-0 d-flex text-nowrap text-end py-3">
+                                <i role='button' (click)="openModals('analysisproduct', item)" class="bi h3 px-2 bi-sliders2"></i>
+                                <i role='button' (click)="openModals('editproduct', item)" class="bi h3 px-2 bi-gear"></i>
+                                <i role='button' (click)="openModals('deleteproduct', item)" class="bi h3 px-2 text-danger bi-trash3"></i>
                             </h4>
                         </td>
                       </tr>

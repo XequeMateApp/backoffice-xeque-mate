@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoggedComponent } from "./logged.component";
@@ -29,55 +29,65 @@ import { FunctionManagementComponent } from './function-management/function-mana
 import { CreateFunctionComponent } from './function-management/components/create-function/create-function.component';
 import { EditFunctionComponent } from './function-management/components/edit-function/edit-function.component';
 import { DeleteFunctionComponent } from './function-management/components/delete-function/delete-function.component';
+import { ProductsComponent } from './products/products.component';
+import { AnalysisProductComponent } from './products/components/analysis-product/analysis-product.component';
+import { CreateProductComponent } from './products/components/create-product/create-product.component';
+import { EditProductComponent } from './products/components/edit-product/edit-product.component';
+import { DeleteProductComponent } from './products/components/delete-product/delete-product.component';
 import { CreateUserComponent } from './user-management/components/create-user/create-user.component';
 import { EditUserComponent } from './user-management/components/edit-user/edit-user.component';
 import { ConfirUserComponent } from './user-management/components/confir-user/confir-user.component';
 
 
 @NgModule({
-    declarations: [
-        LoggedComponent,
-        DashboardComponent,
-        NavbarComponent,
-        NotificationComponent,
-        CreateNotificationComponent,
-        EditNotificationComponent,
-        DeleteNotificationComponent,
-        KycManagerComponent,
-        UserManagementComponent,
-        SupplierComponent,
-        ValidateSupplierComponent,
-        SuppliersCustomersComponent,
-        EditSupplierCustomersClientComponent,
-        EditSupplierCustomersComponent,
-        CloseSupplierCustomersComponent,
-        CloseSupplierCustomersClientComponent,
-        FunctionManagementComponent,
-        CreateFunctionComponent,
-        EditFunctionComponent,
-        DeleteFunctionComponent,
-        CreateUserComponent,
-        EditUserComponent,
-        ConfirUserComponent,
-    ],
-    imports: [
-        CommonModule,
-        LoggedRouteModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgxPageScrollModule,
-        NgxMaskModule.forRoot(),
-        NgxPageScrollCoreModule,
-        NgxPaginationModule,
-        NgbModule,
+  declarations: [
+    LoggedComponent,
+    DashboardComponent,
+    NavbarComponent,
+    NotificationComponent,
+    CreateNotificationComponent,
+    EditNotificationComponent,
+    DeleteNotificationComponent,
+    KycManagerComponent,
+    UserManagementComponent,
+    SupplierComponent,
+    ValidateSupplierComponent,
+    SuppliersCustomersComponent,
+    EditSupplierCustomersClientComponent,
+    EditSupplierCustomersComponent,
+    CloseSupplierCustomersComponent,
+    CloseSupplierCustomersClientComponent,
+    FunctionManagementComponent,
+    CreateFunctionComponent,
+    EditFunctionComponent,
+    DeleteFunctionComponent,
+    ProductsComponent,
+    AnalysisProductComponent,
+    CreateProductComponent,
+    EditProductComponent,
+    DeleteProductComponent,
+    CreateUserComponent,
+    EditUserComponent,
+    ConfirUserComponent,
+  ],
+  imports: [
+    CommonModule,
+    LoggedRouteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPageScrollModule,
+    NgxMaskModule.forRoot(),
+    NgxPageScrollCoreModule,
+    NgxPaginationModule,
+    NgbModule,
     Ng2SearchPipeModule,
-        NgxStarsModule,
-    ],
-    providers: [],
-    // schemas: [
-    //     CUSTOM_ELEMENTS_SCHEMA,
-    //     NO_ERRORS_SCHEMA
-    // ],
+    NgxStarsModule,
+  ],
+  providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ],
 
 })
 export class LoggedModule { }

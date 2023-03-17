@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,10 +26,10 @@ import { AuthModule } from './auth/auth.module';
     NgxMaskModule.forRoot(),
     HttpClientModule,
   ],
-  // schemas: [
-  //   CUSTOM_ELEMENTS_SCHEMA,
-  //   NO_ERRORS_SCHEMA
-  // ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
