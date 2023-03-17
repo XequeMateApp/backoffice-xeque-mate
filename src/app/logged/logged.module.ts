@@ -29,6 +29,9 @@ import { FunctionManagementComponent } from './function-management/function-mana
 import { CreateFunctionComponent } from './function-management/components/create-function/create-function.component';
 import { EditFunctionComponent } from './function-management/components/edit-function/edit-function.component';
 import { DeleteFunctionComponent } from './function-management/components/delete-function/delete-function.component';
+import { CreateUserComponent } from './user-management/components/create-user/create-user.component';
+import { EditUserComponent } from './user-management/components/edit-user/edit-user.component';
+import { ConfirUserComponent } from './user-management/components/confir-user/confir-user.component';
 
 
 @NgModule({
@@ -53,6 +56,9 @@ import { DeleteFunctionComponent } from './function-management/components/delete
         CreateFunctionComponent,
         EditFunctionComponent,
         DeleteFunctionComponent,
+        CreateUserComponent,
+        EditUserComponent,
+        ConfirUserComponent,
     ],
     imports: [
         CommonModule,
