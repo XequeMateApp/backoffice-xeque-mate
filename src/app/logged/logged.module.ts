@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoggedComponent } from "./logged.component";
@@ -37,51 +37,51 @@ import { DeleteProductComponent } from './products/components/delete-product/del
 
 
 @NgModule({
-    declarations: [
-        LoggedComponent,
-        DashboardComponent,
-        NavbarComponent,
-        NotificationComponent,
-        CreateNotificationComponent,
-        EditNotificationComponent,
-        DeleteNotificationComponent,
-        KycManagerComponent,
-        UserManagementComponent,
-        SupplierComponent,
-        ValidateSupplierComponent,
-        SuppliersCustomersComponent,
-        EditSupplierCustomersClientComponent,
-        EditSupplierCustomersComponent,
-        CloseSupplierCustomersComponent,
-        CloseSupplierCustomersClientComponent,
-        FunctionManagementComponent,
-        CreateFunctionComponent,
-        EditFunctionComponent,
-        DeleteFunctionComponent,
-        ProductsComponent,
-        AnalysisProductComponent,
-        CreateProductComponent,
-        EditProductComponent,
-        DeleteProductComponent,
-    ],
-    imports: [
-        CommonModule,
-        LoggedRouteModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgxPageScrollModule,
-        NgxMaskModule.forRoot(),
-        NgxPageScrollCoreModule,
-        NgxPaginationModule,
-        NgbModule,
+  declarations: [
+    LoggedComponent,
+    DashboardComponent,
+    NavbarComponent,
+    NotificationComponent,
+    CreateNotificationComponent,
+    EditNotificationComponent,
+    DeleteNotificationComponent,
+    KycManagerComponent,
+    UserManagementComponent,
+    SupplierComponent,
+    ValidateSupplierComponent,
+    SuppliersCustomersComponent,
+    EditSupplierCustomersClientComponent,
+    EditSupplierCustomersComponent,
+    CloseSupplierCustomersComponent,
+    CloseSupplierCustomersClientComponent,
+    FunctionManagementComponent,
+    CreateFunctionComponent,
+    EditFunctionComponent,
+    DeleteFunctionComponent,
+    ProductsComponent,
+    AnalysisProductComponent,
+    CreateProductComponent,
+    EditProductComponent,
+    DeleteProductComponent,
+  ],
+  imports: [
+    CommonModule,
+    LoggedRouteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPageScrollModule,
+    NgxMaskModule.forRoot(),
+    NgxPageScrollCoreModule,
+    NgxPaginationModule,
+    NgbModule,
     Ng2SearchPipeModule,
-        NgxStarsModule,
-    ],
-    providers: [],
-    // schemas: [
-    //     CUSTOM_ELEMENTS_SCHEMA,
-    //     NO_ERRORS_SCHEMA
-    // ],
+    NgxStarsModule,
+  ],
+  providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ],
 
 })
 export class LoggedModule { }

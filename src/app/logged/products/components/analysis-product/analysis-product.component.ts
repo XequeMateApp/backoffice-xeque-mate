@@ -11,16 +11,17 @@ import { DatamockService } from 'src/services/datamock.service';
 })
 export class AnalysisProductComponent implements OnInit {
   form: FormGroup;
-  selectFile: any = [];
+
   selectFileName: String;
-  notImage = true;
-  
-  supplier: SupplierInterface[];
-  supplierImg: SupplierInterface[];
+  supplierImg: string[];
   selectedItems: SupplierInterface[] = [];
 
   productsData: any;
-  selectedImageUrl: SupplierInterface;
+
+  supplier: SupplierInterface[];
+  selectedImageUrl: string;
+  selectFile: any = [];
+  notImage = true;
 
 
   constructor(
@@ -46,8 +47,8 @@ export class AnalysisProductComponent implements OnInit {
     this.productsData = JSON.parse(localStorage.getItem('productsData'));
     console.log(this.productsData)
     this.supplierImg = this.productsData.img;
-    
-  
+
+
     console.log(this.supplierImg)
     this.form.controls['name'].setValue(this.productsData.name)
     this.form.controls['price'].setValue(this.productsData.price)
@@ -56,6 +57,9 @@ export class AnalysisProductComponent implements OnInit {
     this.form.controls['selectCategory'].setValue(this.productsData.category)
     this.form.controls['status'].setValue(this.productsData.status)
   }
+
+
+  // functions-select
 
   onOptionSelected(optionId: string) {
     const selectedOption = this.supplier.find(option => option._id === +optionId);
@@ -80,37 +84,36 @@ export class AnalysisProductComponent implements OnInit {
     }
   }
 
-  onSelectFile(event, id: string) {
+
+  // functions-photos
+
+  onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       this.notImage = false;
       var filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         var reader = new FileReader();
         reader.onload = (event: any) => {
-          this.selectFile = [];
+          // this.selectFile = [];
           this.selectFile.push(event.target.result);
+           this.selectedImageUrl = null;
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
+
   }
   removeFile() {
     console.log('ué')
     this.form.controls['selectPhotos'].setValue(null);
     this.selectFile = null;
     this.notImage = true;
+    this.selectedImageUrl = '';
   }
 
-  
-  onImageSelected(url: SupplierInterface) {
-    this.selectedImageUrl = url;
-  }
 
-  removeImage(url: SupplierInterface) {
-    this.supplierImg = this.supplierImg.filter(u => u !== url);
-    this.selectedImageUrl = null;
-  }
 
+  // general-functions
   exit() {
     this.modalService.dismissAll()
   }
