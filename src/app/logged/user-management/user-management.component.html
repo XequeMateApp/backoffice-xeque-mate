@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
-                        <button (click)="openModals('Criar')" type="button" class="btn px-5 bg-dark-blue br-16 text-light my-1 w-100">
+                        <button (click)="createOpenModal()" type="button" class="btn px-5 bg-dark-blue br-16 text-light my-1 w-100">
                             <h5 class="mb-0 py-2">Cadastrar</h5>
                         </button>
                 </div>
@@ -84,8 +84,8 @@
                         <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item.status === 'Inativo'">{{item.status}}</h5>
                     </td>
                         <td><h5  class="mb-0 fw-bolder text-center text-dark-blue py-3">
-                            <i (click)="openModals('Edit')" class="bi mx-3 bi-gear"></i> 
-                            <i (click)="openModals('Delete')" class="bi bi-trash text-danger"></i></h5></td>
+                            <i (click)="openModals('Edit', item)" class="bi mx-3 bi-gear"></i> 
+                            <i (click)="openModals('Delete', item)" class="bi bi-trash text-danger"></i></h5></td>
                       </tr>
                     </tbody>
                 </table>

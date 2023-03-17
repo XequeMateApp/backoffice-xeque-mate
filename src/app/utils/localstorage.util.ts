@@ -21,6 +21,6 @@ export default class LocalStorageUtil {
 }
 export enum LocalStorageKeys {
   user = 'user',
-  productsData = 'productsData'
-
+  productsData = 'productsData',
+  userData = 'userData'
 }
