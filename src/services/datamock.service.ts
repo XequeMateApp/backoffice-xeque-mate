@@ -7,7 +7,7 @@ import { SupplierInterface } from 'src/app/interface/supplier.interface';
 })
 export class DatamockService {
 
-  notificationList:NotificIationnterface[] = [
+  notificationList: NotificIationnterface[] = [
     {
       _id: 1,
       name: 'Abraham linkon',
@@ -118,7 +118,7 @@ export class DatamockService {
 
 
 
-  supplier:SupplierInterface[] = [
+  supplier: SupplierInterface[] = [
     {
       _id: 1,
       name: 'Abraham linkon Abraham linkon Abraham linkonAbraham linkonAbraham linkonAbraham linkonAbraham linkon',
@@ -126,6 +126,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'plastico arararararararararararar',
       price: '1499349374783939484',
@@ -141,6 +149,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'plastico arararararararararararar',
       price: '1499349374783939484',
@@ -156,6 +172,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'plastico arararararararararararar',
       price: '1499349374783939484',
@@ -171,6 +195,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'plastico arararararararararararar',
       price: '1499349374783939484',
@@ -186,6 +218,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'plastico arararararararararararar',
       price: '1499349374783939484',
@@ -201,6 +241,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'plastico arararararararararararar',
       price: '1499349374783939484',
@@ -216,6 +264,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'madeira arararararararararararar',
       price: '1499349374783939484',
@@ -231,6 +287,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'madeira arararararararararararar',
       price: '1499349374783939484',
@@ -246,6 +310,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'madeira arararararararararararar',
       price: '1499349374783939484',
@@ -261,6 +333,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'madeira arararararararararararar',
       price: '1499349374783939484',
@@ -276,6 +356,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'madeira arararararararararararar',
       price: '1499349374783939484',
@@ -291,6 +379,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'madeira arararararararararararar',
       price: '1499349374783939484',
@@ -306,6 +402,14 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      code: '000000007',
+      img: [
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+           '../../../../../assets/images/illustration.jpg',
+      ],
       category: 'Material de construçãooooooooooooooooooooooooooooooooooooooooooooooooooo',
       material: 'madeira arararararararararararar',
       price: '1499349374783939484',
@@ -316,4 +420,8 @@ export class DatamockService {
     },
 
   ];
+
+  getsupplier(): SupplierInterface[] {
+    return this.supplier;
+  }
 }

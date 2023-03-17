@@ -9,6 +9,8 @@ export interface SupplierInterface {
     price: string,
     category: string,
     tel: string,
+    code: string,
+    img: string[],
     type: string,
     funcoes: string;
     status: string

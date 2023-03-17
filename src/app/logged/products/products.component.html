@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
-                    <button type="button" (click)="openModals('create')" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
+                    <button type="button" (click)="createOpenModals()" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
                         <h4 class="mb-0 py-2">Novo Produto</h4>
                     </button>
                 </div>
@@ -85,9 +85,9 @@
                         <td>
                             <!-- caso email seja padrão para o fornecedores -->
                             <h4 class="mb-0 d-flex text-nowrap text-end py-3">
-                                <i role='button' (click)="openModals('analysisproduct')" class="bi h3 px-2 bi-sliders2"></i>
-                                <i role='button' (click)="openModals('editproduct')" class="bi h3 px-2 bi-gear"></i>
-                                <i role='button' (click)="openModals('deleteproduct')" class="bi h3 px-2 text-danger bi-trash3"></i>
+                                <i role='button' (click)="openModals('analysisproduct', item)" class="bi h3 px-2 bi-sliders2"></i>
+                                <i role='button' (click)="openModals('editproduct', item)" class="bi h3 px-2 bi-gear"></i>
+                                <i role='button' (click)="openModals('deleteproduct', item)" class="bi h3 px-2 text-danger bi-trash3"></i>
                             </h4>
                         </td>
                       </tr>

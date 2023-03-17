@@ -8,6 +8,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { AnalysisProductComponent } from './components/analysis-product/analysis-product.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
+import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 
 @Component({
   selector: 'app-products',
@@ -34,24 +35,17 @@ export class ProductsComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.supplier = this.datamockService.supplier;
-    // for (let i = 0; i < this.supplier.length; i++) {
-    //   let o: string;
-    //   o = this.supplier[i].category;
-    //   console.log(o)
-    // }
-    console.log()
-    this.user = JSON.parse(localStorage.getItem('user'));
-    const domain = this.user.email.split("@")[1];
-    this.officerAdm = domain;
   }
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
-  openModals(tabName: string) {
+  createOpenModals(){
+    this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+  }
+  openModals(tabName: string, info: any) {
+    LocalStorageUtil.set(LocalStorageKeys.productsData, info);
     if (tabName == 'analysisproduct') {
       this.modalService.open(AnalysisProductComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if (tabName == 'createproduct') {
-      this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'editproduct') {
       this.modalService.open(EditProductComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'deleteproduct') {
@@ -60,6 +54,7 @@ export class ProductsComponent implements OnInit {
     // this.ArrayInfoUser = [infoUser._id, infoUser.name]
     // localStorage.setItem('userinfo', this.ArrayInfoUser);
   }
+
   sortListByAlphabeticalOrder(): void {
     this.supplier.sort((a, b) => {
       return a.name.localeCompare(b.name);
