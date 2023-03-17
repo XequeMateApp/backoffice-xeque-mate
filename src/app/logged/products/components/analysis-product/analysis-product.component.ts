@@ -12,13 +12,13 @@ import { DatamockService } from 'src/services/datamock.service';
 export class AnalysisProductComponent implements OnInit {
   form: FormGroup;
 
-  selectFileName: String;
+  FileNameDoc: String;
   supplierImg: string[];
   selectedItems: SupplierInterface[] = [];
-
+  supplier: SupplierInterface[];
+  FilesDoc: SupplierInterface[];
   productsData: any;
 
-  supplier: SupplierInterface[];
   selectedImageUrl: string;
   selectFile: any = [];
   notImage = true;
@@ -44,10 +44,11 @@ export class AnalysisProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplier = this.datamockService.getsupplier();
+
     this.productsData = JSON.parse(localStorage.getItem('productsData'));
     console.log(this.productsData)
     this.supplierImg = this.productsData.img;
-
+    this.FilesDoc = this.productsData.doc;
 
     console.log(this.supplierImg)
     this.form.controls['name'].setValue(this.productsData.name)
@@ -96,7 +97,7 @@ export class AnalysisProductComponent implements OnInit {
         reader.onload = (event: any) => {
           // this.selectFile = [];
           this.selectFile.push(event.target.result);
-           this.selectedImageUrl = null;
+          this.selectedImageUrl = null;
         }
         reader.readAsDataURL(event.target.files[i]);
       }
@@ -111,6 +112,10 @@ export class AnalysisProductComponent implements OnInit {
     this.selectedImageUrl = '';
   }
 
+  downloadFile() {
+
+  }
+
 
 
   // general-functions
@@ -119,8 +124,5 @@ export class AnalysisProductComponent implements OnInit {
   }
   confirm() {
     window.alert('confirm ')
-  }
-  onSelectFileName(event) {
-    this.selectFileName = event.target.files[0].name;
   }
 }

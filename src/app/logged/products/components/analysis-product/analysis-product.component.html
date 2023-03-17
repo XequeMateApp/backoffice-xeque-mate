@@ -76,36 +76,19 @@
 
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-doc">Images</label>
-            <div class="d-flex align-items-center w-100">
-              <div class="kitten-list">
-                <div *ngFor="let imgs of supplierImg" class="d-flex align-items-center"> <!-- repetidor da lista 5x -->
-                  <img class="illustration br-16" [src]="imgs" *ngIf="selectedImageUrl !== null"> <!-- trump aparece 5x e só desaparece se selectedImageUrl for diferente de uma das listas -->
-                  <div  *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});" class="br-16 d-flex justify-content-end illustration border">
-                    <i role="button" (click)="removeFile()" class="bi m-2 br-16 bi-x-circle h4 text-danger"></i>
-                  </div>
-                  <input type="file" formControlName="selectPhotos" (change)="onSelectFile($event)">
-                  <button (click)="removeFile()">Remove</button>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-doc">Documento</label>
-            <div role="button" id="edit-doc"
-              class="border br-16 w3-white p-3 d-flex justify-content-between
-              w-100 align-content-center">
-              <span *ngIf="!!selectFileName">{{selectFileName}}</span>
-              <span class="cursor" *ngIf="!selectFileName">Seu documento</span>
-              <img src="../../../../../assets/icons/upload.png" style="height:
-                fit-content;" />
-              <input type="file" class="position-absolute w-100 cursor start-0"
-                style="opacity: 0;" (change)="onSelectFileName($event)"
-                accept="image/*, .doc , .pdf, .docx" formControlName="doc" />
+            <div role="button" id="edit-doc" class="border br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+              <div *ngFor="let doc of FilesDoc" class="d-flex w-100 align-items-center justify-content-between">
+                <span (click)="downloadFile()" *ngIf="FilesDoc">{{FilesDoc}}</span>
+                <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
+              </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="row">
-              <div class="col-md-6 mt-4">
+              <div class="col-md-6 mt-4"> 
                 <button class="btn br-16 w3-white text-dark-blue w-100"
                   (click)="exit()" type="button">
                   <h6 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h6>

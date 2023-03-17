@@ -11,6 +11,7 @@ export interface SupplierInterface {
     tel: string,
     code: string,
     img: string[],
+    doc: string[],
     type: string,
     funcoes: string;
     status: string
