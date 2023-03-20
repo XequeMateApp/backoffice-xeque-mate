@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
+import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { DatamockService } from 'src/services/datamock.service';
 import { ConfirUserComponent } from './components/confir-user/confir-user.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
@@ -36,7 +37,7 @@ export class UserManagementComponent implements OnInit {
     this.supplier = this.datamockService.supplier;
   }
 
-  backHome(){
+  backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
   sortListByAlphabeticalOrder(): void {
@@ -56,15 +57,17 @@ export class UserManagementComponent implements OnInit {
 
   }
 
+  createOpenModal() {
+    this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
 
-  openModals(tabName: string) {
-    if (tabName === 'Criar') {
-       this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if(tabName === 'Edit'){
+  }
+  openModals(tabName: string, info: any) {
+    LocalStorageUtil.set(LocalStorageKeys.userData, info)
+    if (tabName === 'Edit') {
       this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
 
     }
-    else if(tabName === 'Delete'){
+    else if (tabName === 'Delete') {
       this.modalService.open(ConfirUserComponent, { centered: true, backdrop: 'static', keyboard: false })
 
     }
