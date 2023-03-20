@@ -125,6 +125,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -152,6 +154,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -179,6 +183,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -206,6 +212,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição BBBBBBBBBBBB',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -233,6 +241,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -260,6 +270,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -287,6 +299,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -314,6 +328,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -341,6 +357,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -368,6 +386,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -395,6 +415,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -422,6 +444,8 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
       doc: [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
@@ -449,7 +473,9 @@ export class DatamockService {
       cnpj: '42788247000164',
       permition: 'Permição AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
       date: '25122001',
-      doc: [
+      description: 'A casa é um lar aconchegante e acolhedor, com uma fachada em estilo clássico e bem cuidada. Ao entrar, há uma sala de estar ampla e confortável, decorada com móveis de madeira e estofados macios',
+      specification: ' A cozinha é moderna e equipada com todos os utensílios necessários para cozinhar refeições deliciosas. No andar de cima, há três quartos espaçosos, todos com camas confortáveis e decoração agradável',
+      doc:[] = [
         '../../../../../assets/images/eee.pdf',
         '../../../../../assets/images/eee.pdf',
       ],
