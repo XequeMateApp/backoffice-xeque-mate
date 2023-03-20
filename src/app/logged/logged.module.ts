@@ -37,6 +37,7 @@ import { DeleteProductComponent } from './products/components/delete-product/del
 import { CreateUserComponent } from './user-management/components/create-user/create-user.component';
 import { EditUserComponent } from './user-management/components/edit-user/edit-user.component';
 import { ConfirUserComponent } from './user-management/components/confir-user/confir-user.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ConfirUserComponent } from './user-management/components/confir-user/co
     CreateUserComponent,
     EditUserComponent,
     ConfirUserComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
