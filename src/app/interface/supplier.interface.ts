@@ -12,6 +12,8 @@ export interface SupplierInterface {
     code: string,
     img: string[],
     doc: string[],
+    specification: string,
+    description: string,
     type: string,
     funcoes: string;
     status: string
