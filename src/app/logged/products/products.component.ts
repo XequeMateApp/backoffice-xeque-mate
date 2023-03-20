@@ -39,7 +39,7 @@ export class ProductsComponent implements OnInit {
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
-  createOpenModals(){
+  createOpenModals() {
     this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
   openModals(tabName: string, info: any) {
