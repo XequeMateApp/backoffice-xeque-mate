@@ -9,6 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DeleteNotificationComponent implements OnInit {
   form: FormGroup;
+  userData: any;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -18,7 +19,7 @@ export class DeleteNotificationComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-
+    this.userData = JSON.parse(localStorage.getItem('userData'));
   }
   exit() {
     this.modalService.dismissAll()
