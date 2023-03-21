@@ -4,5 +4,8 @@ export interface NotificIationnterface {
     content: string,
     time: string,
     filter: string,
+    function: string,
     status: string
+    repetition: string,
+    startIn:  string
 }

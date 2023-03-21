@@ -9,8 +9,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CreateFunctionComponent implements OnInit {
   form: FormGroup;
-  productsData: any;
-
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -18,18 +16,10 @@ export class CreateFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       status: [''],
-      adm: [''],
-      products: [''],
-      kyc: [''],
-      client: [''],
-      accessControl: [''],
-      notification: [''],
+      funtions: [''],
     })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    this.form.controls['name'].setValue(this.productsData.name)
-    this.form.controls['name'].setValue(this.productsData.name)
   }
 
 
