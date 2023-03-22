@@ -3,11 +3,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-delete-product',
-  templateUrl: './delete-product.component.html',
-  styleUrls: ['./delete-product.component.scss']
+  selector: 'app-delete-category',
+  templateUrl: './delete-category.component.html',
+  styleUrls: ['./delete-category.component.scss']
 })
-export class DeleteProductComponent implements OnInit {
+export class DeleteCategoryComponent implements OnInit {
   productsData: any;
   form: FormGroup;
   constructor(

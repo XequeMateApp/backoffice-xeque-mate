@@ -8,9 +8,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./confir-user.component.scss']
 })
 export class ConfirUserComponent implements OnInit {
-
+  productsData: any;
   form: FormGroup;
-  user: any;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -20,12 +19,12 @@ export class ConfirUserComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    
+    this.productsData = JSON.parse(localStorage.getItem('productsData'));
   }
   exit() {
     this.modalService.dismissAll()
   }
-  delete(){
+  delete() {
     window.alert('Delete  ')
   }
 }

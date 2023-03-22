@@ -16,16 +16,10 @@ export class CreateFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       status: [''],
-      administrator: [''],
-      products: [''],
-      kyc: [''],
-      client: [''],
-      accessControl: [''],
-      notification: [''],
+      functions: [''],
     })
   }
   ngOnInit(): void {
-
   }
 
 

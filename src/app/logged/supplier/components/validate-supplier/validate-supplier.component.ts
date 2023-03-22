@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ValidateSupplierComponent implements OnInit {
   form: FormGroup;
   notImage = true;
+  productsData: any;
   selectFile: any = [];
   selectFileName: String;
   constructor(
@@ -26,7 +27,11 @@ export class ValidateSupplierComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-
+    this.productsData = JSON.parse(localStorage.getItem('productsData'));
+    this.form.controls['name'].setValue(this.productsData.name);
+    this.form.controls['cnpj'].setValue(this.productsData.cnpj);
+    this.form.controls['contact'].setValue(this.productsData.tel);
+    this.form.controls['email'].setValue(this.productsData.email);
   }
   exit() {
     this.modalService.dismissAll()
@@ -48,7 +53,7 @@ export class ValidateSupplierComponent implements OnInit {
       }
     }
   }
-  onSelectFileName(event) {    
+  onSelectFileName(event) {
     this.selectFileName = event.target.files[0].name;
   }
 }

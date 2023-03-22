@@ -9,7 +9,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CloseSupplierCustomersComponent implements OnInit {
   form: FormGroup;
-  user: any;
+  productsData: any;
+
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -19,12 +20,13 @@ export class CloseSupplierCustomersComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    
+    this.productsData = JSON.parse(localStorage.getItem('productsData'));
+
   }
   exit() {
     this.modalService.dismissAll()
   }
-  delete(){
+  delete() {
     window.alert('Delete  ')
   }
 }

@@ -14,7 +14,7 @@
                             placeholder="Digite o nome" formControlName="name" />
 
                         <label class="h6 mt-3 text-dark" for="edit-cnpj">CNPJ/CPF</label>
-                        <input type="tel" id="edit-cnpj" mask="00.000.000/0000-00" mask="000.000.000-00" required="true"
+                        <input type="tel" id="edit-cnpj" mask="00.000.000/0000-00" required="true"
                             class="form-control br-16 bordder py-3" [value]="" placeholder="Digite o cnpj/cpf"
                             formControlName="cnpjcpf" />
 
@@ -28,17 +28,12 @@
                             placeholder="Digite o e-mail" formControlName="email" />
 
                         <label class="h6 mt-3 text-dark" for="edit-doc">Documento</label>
-                        <div role="button" id="edit-doc"
-                            class="border br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
-                            <span *ngIf="!!selectFileName">{{selectFileName}}</span>
-                            <span class="cursor" *ngIf="!selectFileName">Seu documento</span>
+                        <div *ngFor="let doc of FilesDoc" role="button" (click)="downloadFile()" id="edit-doc" class="border my-2 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+                            <span>{{doc}}</span>
                             <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
-                            <input type="file" class="position-absolute w-100 cursor start-0" style="opacity: 0;"
-                                (change)="onSelectFileName($event)" accept="image/*, .doc , .pdf, .docx"
-                                formControlName="doc" />
                         </div>
                         <div class="form-check mt-4 form-switch">
-                            <input class="form-check-input sz-md" formControlName="supplier" type="checkbox" id="switchEdit">
+                            <input class="form-check-input sz-md" formControlName="supplier" [checked]="emphasis" type="checkbox" id="switchEdit">
                             <label class="form-check-label h6 text-dark" for="switchEdit">Colocar fornecedor em destaque</label>
                         </div>
                     </div>

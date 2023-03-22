@@ -16,8 +16,8 @@
                 <select formControlName="status" id="edit-status" class="form-select py-3 br-16"
                     aria-label="Default status">
                     <option [disabled]="true" [selected]="true">Selecione</option>
-                    <option value="active">🟢 Ativo</option>
-                    <option value="inactive">🔴 Inativo</option>
+                    <option [selected]="editNotStatus === 'Ativo'" value="Active" value="active">🟢 Ativo</option>
+                    <option [selected]="editNotStatus === 'Inativo'" value="Inactive" value="inactive">🔴 Inativo</option>
                 </select>
             </div>
             <div class="col-12 mt-3">
@@ -33,9 +33,9 @@
                         <select formControlName="repetition" id="edit-reapet" class="form-select py-3 br-16"
                             aria-label="Default repeat">
                             <option [disabled]="true" [selected]="true">Selecione</option>
-                            <option value="1">Diariamente</option>
-                            <option value="2">Semanalmente</option>
-                            <option value="3">Mensalmente</option>
+                            <option [selected]="editNotRepetition === 'diary'" value="diary">Diariamente</option>
+                            <option [selected]="editNotRepetition === 'week'" value="week">Semanalmente</option>
+                            <option [selected]="editNotRepetition === 'mouth'" value="month">Mensalmente</option>
                         </select>
                     </div>
                     <div class="col-md-8 mt-3 d-flex align-items-center">
@@ -43,7 +43,7 @@
                             <div class="col-md-6 px-1">
                                 <div class="w-100">
                                     <label for="edit-date">Inicia em</label>
-                                    <input type="date" id="edit-date" 
+                                    <input type="date" id="edit-date"
                                         class="form-control w-100 br-16 p-3 bordder  text-dark-blue"
                                         formControlName="dateStart">
                                 </div>
@@ -64,14 +64,14 @@
                 <label class="" for="edit-content">Filtro</label>
                 <div class="w-auto d-flex align-items-center">
                     <div role="button" class="form-check align-items-baseline d-flex">
-                        <input formControlName="supplier" class="form-check-input p-2" type="checkbox" value=""
+                        <input formControlName="function" [checked]="editNotFunction === 'supplier'" name="filter" class="form-check-input p-2" type="radio"
                             id="filterForner">
                         <label class="form-check-label px-2" for="filterForner">
                             Fornecedores
                         </label>
                     </div>
                     <div role="button" class="form-check align-items-baseline d-flex mx-3">
-                        <input formControlName="client" class="form-check-input p-2" type="checkbox" value=""
+                        <input formControlName="function" [checked]="editNotFunction === 'client'" name="filter" class="form-check-input p-2" type="radio"
                             id="filterClients">
                         <label class="form-check-label px-2" for="filterClients">
                             Clientes

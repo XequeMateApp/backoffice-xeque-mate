@@ -1,68 +1,60 @@
 <main class="row mx-2 justify-content-center">
-    <div class="col-md-8 w3-white br-16 p-4 ">
-        <div class="row px-0">
-            <div class="col-12 d-flex align-content-center justify-content-between">
-                <h2 class="mb-0 fw-bolder text-center">Editar</h2>
-                <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png"
-                    style="height: fit-content;">
-            </div>
-            <form [formGroup]="form" class="col-12 mt-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
-                        <input type="text" id="edit-name" class="form-control br-16 bordder py-3" [value]=""
-                            placeholder="Digite o nome" formControlName="name" />
+  <div class="col-md-8 w3-white br-16 p-4 ">
+      <div class="row px-0">
+          <div class="col-12 d-flex align-content-center justify-content-between">
+              <h2 class="mb-0 fw-bolder text-center">Editar</h2>
+              <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png"
+                  style="height: fit-content;">
+          </div>
+          <form [formGroup]="form" class="col-12 mt-4">
+              <div class="row">
+                  <div class="col-md-12">
+                      <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
+                      <input type="text" id="edit-name" class="form-control br-16 bordder py-3" [value]=""
+                          placeholder="Digite o nome" formControlName="name" />
 
-                        <label class="h6 mt-3 text-dark" for="edit-cnpj">CNPJ/CPF</label>
-                        <input type="tel" id="edit-cnpj" mask="00.000.000/0000-00" mask="000.000.000-00" required="true"
-                            class="form-control br-16 bordder py-3" [value]="" placeholder="Digite o cnpj/cpf"
-                            formControlName="cnpjcpf" />
+                      <label class="h6 mt-3 text-dark" for="edit-cnpj">CNPJ/CPF</label>
+                      <input type="tel" id="edit-cnpj" mask="00.000.000/0000-00" required="true"
+                          class="form-control br-16 bordder py-3" [value]="" placeholder="Digite o cnpj/cpf"
+                          formControlName="cnpjcpf" />
 
-                        <label class="h6 mt-3 text-dark" for="edit-contact">Contato</label>
-                        <input type="tel" id="edit-contact" mask="(00) 00000-0000" required="true"
-                            class="form-control br-16 bordder py-3" [value]="" placeholder="Digite o contato"
-                            formControlName="contact" />
+                      <label class="h6 mt-3 text-dark" for="edit-contact">Contato</label>
+                      <input type="tel" id="edit-contact" mask="(00) 00000-0000" required="true"
+                          class="form-control br-16 bordder py-3" [value]="" placeholder="Digite o contato"
+                          formControlName="contact" />
 
-                        <label class="h6 mt-3 text-dark" for="edit-email">E-mail</label>
-                        <input type="email" id="edit-email" class="form-control br-16 bordder py-3" [value]=""
-                            placeholder="Digite o e-mail" formControlName="email" />
+                      <label class="h6 mt-3 text-dark" for="edit-email">E-mail</label>
+                      <input type="email" id="edit-email" class="form-control br-16 bordder py-3" [value]=""
+                          placeholder="Digite o e-mail" formControlName="email" />
 
-
-                        <label class="h6 mt-3 text-dark" for="edit-doc">Documento</label>
-                        <div role="button" id="edit-doc"
-                            class="border br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
-                            <span *ngIf="!!selectFileName">{{selectFileName}}</span>
-                            <span class="cursor" *ngIf="!selectFileName">Seu documento</span>
-                            <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
-                            <input type="file" class="position-absolute w-100 cursor start-0" style="opacity: 0;"
-                                (change)="onSelectFileName($event)" accept="image/*, .doc , .pdf, .docx"
-                                formControlName="doc" />
-                        </div>
-                    </div>
-                    <div class="col-12 mb-3">
-                        <div class="row">
-                            <div class="col-md-6 mt-4">
-                                <button class="btn br-16 w3-white text-dark-blue w-100" (click)="exit()" type="button">
-                                    <h6 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h6>
-                                </button>
-                            </div>
-                            <div class="col-md-6 mt-4">
-                                <button class="btn br-16 text-light bg-dark-blue w-100" (click)="confirm()"
-                                    type="button">
-                                    <h6 class="fw-bolder mb-0 py-2">Salvar</h6>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn br-16 text-dark-blue w3-white w-100 text-center" style="border: 3px solid var(--darkblue)">
-                            <h6 class="fw-bolder mb-0 py-2"> Gerar Nova Senha</h6>
-                        </button>
-                    </div>
-                    
-                </div>
-            </form>
-        </div>
-    </div>
-
+                      <label class="h6 mt-3 text-dark" for="edit-doc">Documento</label>
+                      <div *ngFor="let doc of FilesDoc" role="button" (click)="downloadFile()" id="edit-doc" class="border my-2 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+                          <span>{{doc}}</span>
+                          <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
+                      </div>
+                  </div>
+                  <div class="col-12 mb-3">
+                      <div class="row">
+                          <div class="col-md-6 mt-4">
+                              <button class="btn br-16 w3-white text-dark-blue w-100" (click)="exit()" type="button">
+                                  <h6 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h6>
+                              </button>
+                          </div>
+                          <div class="col-md-6 mt-4">
+                              <button class="btn br-16 text-light bg-dark-blue w-100" (click)="confirm()"
+                                  type="button">
+                                  <h6 class="fw-bolder mb-0 py-2">Salvar</h6>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <button class="btn br-16 text-dark-blue w3-white w-100 text-center" style="border: 3px solid var(--darkblue)">
+                          <h6 class="fw-bolder mb-0 py-2"> Gerar Nova Senha</h6>
+                      </button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
 </main>
