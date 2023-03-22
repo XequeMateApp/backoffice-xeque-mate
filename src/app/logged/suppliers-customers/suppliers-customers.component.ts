@@ -8,6 +8,7 @@ import { EditSupplierCustomersClientComponent } from './components/edit-supplier
 import { CloseSupplierCustomersClientComponent } from './components/close-supplier-customers-client/close-supplier-customers-client.component';
 import { EditSupplierCustomersComponent } from './components/edit-supplier-customers/edit-supplier-customers.component';
 import { CloseSupplierCustomersComponent } from './components/close-supplier-customers/close-supplier-customers.component';
+import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 @Component({
   selector: 'app-suppliers-customers',
   templateUrl: './suppliers-customers.component.html',
@@ -44,7 +45,7 @@ export class SuppliersCustomersComponent implements OnInit {
     this.router.navigate(['/logged/dashboard']);
   }
 
-  openModals(tabName: string, infoUser: any) {
+  openModals(tabName: string, info: any) {
     if (tabName == 'editclient') {
       this.modalService.open(EditSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'deleteclient') {
@@ -54,8 +55,8 @@ export class SuppliersCustomersComponent implements OnInit {
     } else if (tabName == 'deletesupplier') {
       this.modalService.open(CloseSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
-    this.ArrayInfoUser = [infoUser._id, infoUser.name]
-    localStorage.setItem('userinfo', this.ArrayInfoUser);
+    LocalStorageUtil.set(LocalStorageKeys.productsData, info);
+
   }
 
 
