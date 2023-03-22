@@ -8,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./delete-product.component.scss']
 })
 export class DeleteProductComponent implements OnInit {
-
+  productsData: any;
   form: FormGroup;
   constructor(
     private modalService: NgbModal,
@@ -19,12 +19,12 @@ export class DeleteProductComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-
+    this.productsData = JSON.parse(localStorage.getItem('productsData'));
   }
   exit() {
     this.modalService.dismissAll()
   }
-  delete(){
+  delete() {
     window.alert('Delete  ')
   }
 }
