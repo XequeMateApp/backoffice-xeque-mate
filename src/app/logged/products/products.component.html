@@ -32,7 +32,7 @@
                               Tipo
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                              <li *ngFor="let item of supplier" role="button"><a (click)="sortListByType('{{item.material}}')" class="dropdown-item">{{item.material}}</a></li>
+                              <li *ngFor="let item of supplier" role="button"><a (click)="sortListByType(item.material)" class="dropdown-item">{{item.material}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -50,13 +50,13 @@
                 </div>
             </div>
         </div>
-        <div class="row mx-0 overflow-x">
+        <div class="row mx-0 overflow-y-scroll ">
             <div class="col-12 mt-5 px-0">
                 <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
                     <div style="width: 195px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Nome</b>
                     </div>
-                    <div style="width: 292px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 264px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Categoria</b>
                     </div>
                     <div style="width: 150px;"  class="col-2 h-100 br-16 align-items-center d-flex">

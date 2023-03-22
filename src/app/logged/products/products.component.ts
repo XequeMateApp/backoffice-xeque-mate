@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit {
   createOpenModals() {
     this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
-  openModals(tabName: string, info: any) {
+  openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.productsData, info);
     if (tabName == 'analysisproduct') {
       this.modalService.open(AnalysisProductComponent, { centered: true, backdrop: 'static', keyboard: false })
@@ -72,7 +72,8 @@ export class ProductsComponent implements OnInit {
   }
 
   sortListByType(value: string) {
-    if (value === 'cliente') this.supplier.sort((a, b) => { return a.type.localeCompare(b.type); });
-    else if (value === 'fornecedor') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
+    console.log(value)
+    if (value === 'madeirararara') this.supplier.sort((a, b) => { return a.material.localeCompare(b.material); });
+    else if (value === 'plasticococococo') this.supplier.sort((a, b) => { return b.material.localeCompare(a.material); });
   }
 }
