@@ -16,7 +16,7 @@ export class CreateFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       status: [''],
-      funtions: [''],
+      functions: [''],
     })
   }
   ngOnInit(): void {
