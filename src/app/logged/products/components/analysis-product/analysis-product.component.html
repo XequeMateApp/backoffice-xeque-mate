@@ -76,43 +76,55 @@
 
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-doc">Images</label>
-            <input type="file" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"
-              accept="image/png, image/jpeg">
-            <div class="d-flex align-items-center w-100">
-              <div class="kitten-list">
+            <div class="w-100 d-flex overflow-y border p-2 br-16 align-items-center">
+              <div class="d-flex align-items-center overflow-x-scroll overflow-y-hidden">
                 <div *ngFor="let imgs of supplierImg; let i = index" class="d-flex align-items-center">
-                  <!-- repetidor da lista 5x -->
-                  <img class="illustration br-16" [src]="imgs" *ngIf="selectedImageUrl !== null">
-                  <!-- trump aparece 5x e só desaparece se selectedImageUrl for diferente de uma das listas -->
-                  <div *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});"
-                    class="br-16 d-flex justify-content-end illustration border">
-                    <i role="button" (click)="removeFile(i)" class="bi m-2 br-16 bi-x-circle h4 text-danger"></i>
+                  <div *ngIf="selectedImageUrl !== null" style="background-image: url({{imgs}});"class="br-16 d-flex justify-content-end illustration border">
+                    <img src="../../../../../assets/icons/x.svg" class="w3-white rounded-pill w-fit h-fit mt-2 me-2" (click)="removeFile(i)" role="button"/>
                   </div>
-                  <!-- <input type="file" formControlName="selectPhotos" (change)="onSelectFile($event)"> -->
-                  <button (click)="removeFile(i)">Remove</button>
+                  <div *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});"class="br-16 d-flex justify-content-end illustration border">
+                  </div>
                 </div>
+                <div class="br-16 ms-1 d-flex justify-content-end illustration border">
+                  <div class="br-16  d-block justify-content-end illustration border">
+                    <input role="button" type="file" class="illustration position-relative z-10" style="opacity:0;" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"  accept="image/*">
+                    <i role="button" class="bi mb-0 bi-plus position-relative" style="bottom: 77%; font-size: 40px;left: 29%;"></i>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-12 mt-4 pb-3">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="exempleDescription">Descrição</label>
+                <textarea formControlName="description" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label for="exempleSpecification">Especificações</label>
+                <textarea formControlName="specification" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
               </div>
             </div>
           </div>
+          </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-doc">Documento</label>
-            <div role="button" id="edit-doc" class="border br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
-              <div *ngFor="let doc of FilesDoc" class="d-flex w-100 align-items-center justify-content-between">
-                <span (click)="downloadFile()" *ngIf="FilesDoc">{{FilesDoc}}</span>
-                <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
+            <div role="button" id="edit-doc" class="border br-16 w3-white p-3 w-100 align-content-center">
+              <div *ngFor="let doc of FilesDoc" class="d-flex border-bottom py-3 w-100 align-items-ceenter justify-content-between">
+                <span class="text-dark" (click)="downloadFile()">{{doc}}</span>
+                <img src="../../../../../assets/icons/upload.png" class="h-fit" />
               </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="row">
               <div class="col-md-6 mt-4">
-                <button class="btn br-16 w3-white text-dark-blue w-100"
+                <button class="btn btn-danger br-16 text-light w-100"
                   (click)="exit()" type="button">
-                  <h6 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h6>
+                  <h6 class="fw-bolder text-light mb-0 py-2">Cancelar</h6>
                 </button>
               </div>
               <div class="col-md-6 mt-4">
-                <button class="btn br-16 text-light bg-dark-blue w-100"
+                <button class="btn br-16 bg-success text-dark w-100"
                   (click)="confirm()"
                   type="button">
                   <h6 class="fw-bolder mb-0 py-2">Salvar</h6>
@@ -120,16 +132,8 @@
               </div>
             </div>
           </div>
-          <div class="col-12">
-            <button class="btn br-16 text-dark-blue w3-white w-100 text-center"
-              style="border: 3px solid var(--darkblue)">
-              <h6 class="fw-bolder mb-0 py-2"> Gerar Nova Senha</h6>
-            </button>
-          </div>
-
         </div>
       </form>
     </div>
   </div>
-
 </main>

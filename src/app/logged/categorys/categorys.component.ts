@@ -3,19 +3,20 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
-import { DatamockService } from 'src/services/datamock.service';
-import { EditProductComponent } from './components/edit-product/edit-product.component';
-import { AnalysisProductComponent } from './components/analysis-product/analysis-product.component';
-import { CreateProductComponent } from './components/create-product/create-product.component';
-import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
+import { DatamockService } from 'src/services/datamock.service';
+import { AnalysisProductComponent } from '../products/components/analysis-product/analysis-product.component';
+import { CreateProductComponent } from '../products/components/create-product/create-product.component';
+import { DeleteProductComponent } from '../products/components/delete-product/delete-product.component';
+import { EditProductComponent } from '../products/components/edit-product/edit-product.component';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-categorys',
+  templateUrl: './categorys.component.html',
+  styleUrls: ['./categorys.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class CategorysComponent implements OnInit {
+
   supplier: SupplierInterface[];
   ArrayInfoUser: any = [];
   @Input('data') meals: string[] = [];

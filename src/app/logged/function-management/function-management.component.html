@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
-                    <button type="button" (click)="openModals('create')" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
+                    <button type="button" (click)="createOpenmodal()" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
                         <h4 class="mb-0 py-2">Cadastrar</h4>
                     </button>
                 </div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mx-0 overflow-x">
+        <div class="row mx-0 overflow-x-scroll">
             <div class="col-12 mt-5 px-0">
                 <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
                     <div style="width: 322px;" class="col-3 h-100 br-16 align-items-center d-flex">
@@ -77,8 +77,8 @@
                         </td>
                         <td class="text-center">
                             <h4 class="mb-0  py-3">
-                                <i role='button' (click)="openModals('create')" class="bi h3 px-3 py-3 bi-gear"></i>
-                                <i role='button' (click)="openModals('delete')" class="bi h3 px-3 py-3 text-danger bi-trash3"></i>
+                                <i role='button' (click)="openModals('edit', item)" class="bi h3 px-3 py-3 bi-gear"></i>
+                                <i role='button' (click)="openModals('delete', item)" class="bi h3 px-3 py-3 text-danger bi-trash3"></i>
                             </h4>
                         </td>
                       </tr>

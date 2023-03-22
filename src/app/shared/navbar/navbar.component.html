@@ -11,19 +11,18 @@
                       <li><a class="dropdown-item" [routerLink]="['/logged/user-profile']">Perfil</a></li>
                       <li><a class="dropdown-item">Painel de Controle</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/logged/notification']" >Controle de Notificações</a></li>
-                      <li><a class="dropdown-item">Gerenciamento de Produtos</a></li>
+                      <li><a class="dropdown-item"  [routerLink]="['/logged/products']">Gerenciamento de Produtos</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/logged/function-management']">Gerenciamento de Funções</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/logged/suppliers-customers']" >Fornecedores e Clientes</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/logged/supplier']">Solicitações do Fornecedore</a></li>
                       <li><a class="dropdown-item">KYC Fornecedores</a></li>
-                      <li><a class="dropdown-item">Categorias</a></li>
-                      <li><a class="dropdown-item" [routerLink]="['/logged/products']">Produtos</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/logged/categorys']">Categorias</a></li>
                       <li><a class="dropdown-item">Marketing</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/logged/user-manegement']">Controle de Acesso</a></li>
                    </ul>
                 </li>
             </ul>
-            <i class="bi text-danger h2 mb-0 bi-box-arrow-in-right" role="button" (click)="logout()"></i> 
+            <i class="bi text-danger h2 mb-0 bi-box-arrow-in-right" role="button" (click)="logout()"></i>
         </div>
     </div>
-</nav> 
+</nav>

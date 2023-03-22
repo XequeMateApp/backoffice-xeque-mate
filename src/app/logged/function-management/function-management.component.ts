@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { DatamockService } from 'src/services/datamock.service';
+import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 
 @Component({
   selector: 'app-function-management',
@@ -42,17 +43,16 @@ export class FunctionManagementComponent implements OnInit {
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
-
-  openModals(tabName: string) {
-    if (tabName == 'create') {
-      this.modalService.open(CreateFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if (tabName == 'delete') {
+  createOpenmodal() {
+    this.modalService.open(CreateFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
+  }
+  openModals(tabName: string, info: string[]) {
+    LocalStorageUtil.set(LocalStorageKeys.productsData, info);
+    if (tabName == 'delete') {
       this.modalService.open(DeleteFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'edit') {
       this.modalService.open(EditFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
-    // this.ArrayInfoUser = [infoUser._id, infoUser.name]
-    // localStorage.setItem('userinfo', this.ArrayInfoUser);
   }
 
 

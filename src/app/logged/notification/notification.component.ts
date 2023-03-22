@@ -7,6 +7,7 @@ import { EditNotificationComponent } from './components/edit-notification/edit-n
 import { DeleteNotificationComponent } from './components/delete-notification/delete-notification.component';
 import { PaginationInstance } from 'ngx-pagination';
 import { NotificationInterface } from 'src/app/interface/notification.interface';
+import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 
 @Component({
   selector: 'app-notification',
@@ -40,10 +41,13 @@ export class NotificationComponent implements OnInit {
     this.router.navigate(['/logged/dashboard']);
   }
 
-  openModals(tabName: string) {
-    if (tabName == 'create') {
-      this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if (tabName == 'edit') {
+  createOpenModal(){
+    this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+  }
+
+  openModals(tabName: string, info: string[]) {
+    LocalStorageUtil.set(LocalStorageKeys.userData, info);
+    if (tabName == 'edit') {
       this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'delete') {
       this.modalService.open(DeleteNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })

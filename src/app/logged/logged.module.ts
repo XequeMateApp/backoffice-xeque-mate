@@ -39,6 +39,10 @@ import { EditUserComponent } from './user-management/components/edit-user/edit-u
 import { ConfirUserComponent } from './user-management/components/confir-user/confir-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserPasswordComponent } from './user-profile/components/user-password/user-password.component';
+import { CategorysComponent } from './categorys/categorys.component';
+import { CreateCategoryComponent } from './categorys/components/create-category/create-category.component';
+import { EditCategoryComponent } from './categorys/components/edit-category/edit-category.component';
+import { DeleteCategoryComponent } from './categorys/components/delete-category/delete-category.component';
 
 
 @NgModule({
@@ -73,6 +77,10 @@ import { UserPasswordComponent } from './user-profile/components/user-password/u
     ConfirUserComponent,
     UserProfileComponent,
     UserPasswordComponent,
+    CategorysComponent,
+    CreateCategoryComponent,
+    EditCategoryComponent,
+    DeleteCategoryComponent,
   ],
   imports: [
     CommonModule,

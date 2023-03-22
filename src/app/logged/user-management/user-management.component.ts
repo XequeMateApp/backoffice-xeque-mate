@@ -61,11 +61,10 @@ export class UserManagementComponent implements OnInit {
     this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
 
   }
-  openModals(tabName: string, info: any) {
+  openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.userData, info)
     if (tabName === 'Edit') {
       this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
-
     }
     else if (tabName === 'Delete') {
       this.modalService.open(ConfirUserComponent, { centered: true, backdrop: 'static', keyboard: false })

@@ -10,6 +10,7 @@ import { SuppliersCustomersComponent } from "./suppliers-customers/suppliers-cus
 import { FunctionManagementComponent } from "./function-management/function-management.component";
 import { ProductsComponent } from "./products/products.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { CategorysComponent } from "./categorys/categorys.component";
 const routerConfig: Routes = [
   {
     path: 'logged',
@@ -29,6 +30,9 @@ const routerConfig: Routes = [
       },
       {
         path: 'user-manegement', component: UserManagementComponent
+      },
+      {
+        path: 'categorys', component: CategorysComponent
       },
       {
         path: 'suppliers-customers', component: SuppliersCustomersComponent

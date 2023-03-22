@@ -15,7 +15,6 @@ export class AnalysisProductComponent implements OnInit {
   selectFileName: String;
   supplierImg: string[];
   selectedItems: SupplierInterface[] = [];
-  FilesDoc: SupplierInterface[];
   FileNameDoc: String;
 
   productsData: any;
@@ -24,6 +23,8 @@ export class AnalysisProductComponent implements OnInit {
   selectedImageUrl: string;
   selectFile: any = [];
   notImage = true;
+  pdfFileName: string;
+  FilesDoc: any;
 
 
   constructor(
@@ -37,26 +38,31 @@ export class AnalysisProductComponent implements OnInit {
       code: [''],
       selectCategory: [''],
       selectPhotos: [''],
+      description: [''],
+      specification: [''],
       price: [''],
       status: [''],
       doc: [''],
     })
   }
 
-
   ngOnInit(): void {
     this.supplier = this.datamockService.getsupplier();
     this.productsData = JSON.parse(localStorage.getItem('productsData'));
     console.log(this.productsData)
     this.supplierImg = this.productsData.img;
+
     this.FilesDoc = this.productsData.doc;
 
+    console.log(this.FilesDoc);
     console.log(this.supplierImg);
     this.form.controls['name'].setValue(this.productsData.name)
     this.form.controls['price'].setValue(this.productsData.price)
     this.form.controls['code'].setValue(this.productsData.code)
     this.form.controls['material'].setValue(this.productsData.material)
     this.form.controls['selectCategory'].setValue(this.productsData.category)
+    this.form.controls['description'].setValue(this.productsData.description)
+    this.form.controls['specification'].setValue(this.productsData.specification)
     this.form.controls['status'].setValue(this.productsData.status)
   }
 
@@ -134,9 +140,13 @@ export class AnalysisProductComponent implements OnInit {
 
   // docs
   downloadFile() {
-
+    const link = document.createElement('a');
+    link.href = 'data:application/pdf;base64,' + btoa(this.FilesDoc);
+    link.download = this.FilesDoc;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
-
 
 
   // general-functions

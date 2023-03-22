@@ -10,8 +10,11 @@ export interface SupplierInterface {
     category: string,
     tel: string,
     code: string,
+    emphasis: boolean,
     img: string[],
     doc: string[],
+    specification: string,
+    description: string,
     type: string,
     funcoes: string;
     status: string
