@@ -11,6 +11,7 @@ import { FunctionManagementComponent } from "./function-management/function-mana
 import { ProductsComponent } from "./products/products.component";
 import { AnalysisProductComponent } from "./products/components/analysis-product/analysis-product.component";
 import { EditProductComponent } from "./products/components/edit-product/edit-product.component";
+import { CategorysComponent } from "./categorys/categorys.component";
 const routerConfig: Routes = [
   {
     path: 'logged',
@@ -27,6 +28,9 @@ const routerConfig: Routes = [
       },
       {
         path: 'user-manegement', component: UserManagementComponent
+      },
+      {
+        path: 'categorys', component: CategorysComponent
       },
       {
         path: 'suppliers-customers', component: SuppliersCustomersComponent
