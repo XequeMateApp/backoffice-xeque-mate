@@ -6,7 +6,7 @@ import { CreateNotificationComponent } from './components/create-notification/cr
 import { EditNotificationComponent } from './components/edit-notification/edit-notification.component';
 import { DeleteNotificationComponent } from './components/delete-notification/delete-notification.component';
 import { PaginationInstance } from 'ngx-pagination';
-import { NotificIationnterface } from 'src/app/interface/notification.interface';
+import { NotificationInterface } from 'src/app/interface/notification.interface';
 
 @Component({
   selector: 'app-notification',
@@ -16,7 +16,7 @@ import { NotificIationnterface } from 'src/app/interface/notification.interface'
 })
 export class NotificationComponent implements OnInit {
 
-  notifications:NotificIationnterface[];
+  notifications:NotificationInterface[];
 
   @Input('data') meals: string[] = [];
 
