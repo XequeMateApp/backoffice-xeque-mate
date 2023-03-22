@@ -45,7 +45,7 @@ export class NotificationComponent implements OnInit {
     this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
 
-  openModals(tabName: string, info: any) {
+  openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.userData, info);
     if (tabName == 'edit') {
       this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })

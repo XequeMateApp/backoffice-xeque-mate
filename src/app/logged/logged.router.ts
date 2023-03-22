@@ -10,6 +10,7 @@ import { SuppliersCustomersComponent } from "./suppliers-customers/suppliers-cus
 import { FunctionManagementComponent } from "./function-management/function-management.component";
 import { ProductsComponent } from "./products/products.component";
 import { AnalysisProductComponent } from "./products/components/analysis-product/analysis-product.component";
+import { EditProductComponent } from "./products/components/edit-product/edit-product.component";
 const routerConfig: Routes = [
   {
     path: 'logged',
