@@ -27,7 +27,7 @@
 
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="edit-cnpj">Fornecedor CNPJ</label>
-            <input type="text" id="edit-cnpj" class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
+            <input type="text" id="edit-cnpj" mask="00.000.000/0000-00"  class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
           </div>
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
@@ -94,13 +94,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="exempleDescription">Descrição</label>
-                  <textarea formControlName="description" class="form-control
+                  <textarea maxlength="200" formControlName="description" class="form-control
                     overflow-scroll border w3-white br-16 p-3"
                     id="exempleDescription" rows="3"></textarea>
                 </div>
                 <div class="col-md-6">
                   <label for="exempleSpecification">Especificações</label>
-                  <textarea formControlName="specification" class="form-control
+                  <textarea maxlength="200" formControlName="specification" class="form-control
                     overflow-scroll border w3-white br-16 p-3"
                     id="exempleSpecification" rows="3"></textarea>
                 </div>
