@@ -9,6 +9,8 @@ import { Subscription } from 'rxjs';
 })
 export class CloseSupplierCustomersClientComponent implements OnInit {
   form: FormGroup;
+  productsData: any;
+
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -18,6 +20,7 @@ export class CloseSupplierCustomersClientComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    this.productsData = JSON.parse(localStorage.getItem('productsData'));
   }
   exit() {
     this.modalService.dismissAll()
