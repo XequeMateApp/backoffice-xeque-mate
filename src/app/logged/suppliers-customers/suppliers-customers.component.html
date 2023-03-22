@@ -81,11 +81,11 @@
                             <!-- caso email seja padrão para o fornecedores -->
                             <h4 *ngIf="officerAdm !== 'luis.com'" class="mb-0  py-3">
                                 <i role='button' (click)="openModals('editclient', item)" class="bi h3 px-2 py-3 bi-gear"></i>
-                                <i role='button' (click)="openModals('deleteclient', item)" class="bi h3 px-2 py-3 text-danger bi-trash3"></i>
+                                <i role='button' (click)="openModals('deleteclient', item)" class="bi h3 ms-3 px-2 py-3 text-danger bi-trash3"></i>
                             </h4>
                             <h4 *ngIf="officerAdm == 'luis.com'" class="mb-0  py-3">
                                 <i role='button' (click)="openModals('editsupplier' , item)" class="bi h3 px-2 py-3 bi-gear"></i>
-                                <i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 px-2 py-3 text-danger bi-trash3"></i>
+                                <i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 ms-3 px-2 py-3 text-danger bi-trash3"></i>
                             </h4>
                         </td>
                       </tr>
