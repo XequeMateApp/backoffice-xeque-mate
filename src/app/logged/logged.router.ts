@@ -9,8 +9,7 @@ import { UserManagementComponent } from "./user-management/user-management.compo
 import { SuppliersCustomersComponent } from "./suppliers-customers/suppliers-customers.component";
 import { FunctionManagementComponent } from "./function-management/function-management.component";
 import { ProductsComponent } from "./products/products.component";
-import { AnalysisProductComponent } from "./products/components/analysis-product/analysis-product.component";
-import { EditProductComponent } from "./products/components/edit-product/edit-product.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { CategorysComponent } from "./categorys/categorys.component";
 const routerConfig: Routes = [
   {
@@ -22,6 +21,9 @@ const routerConfig: Routes = [
       },
       {
         path: 'notification', component: NotificationComponent
+      },
+      {
+        path: 'user-profile', component: UserProfileComponent
       },
       {
         path: 'supplier', component: SupplierComponent
