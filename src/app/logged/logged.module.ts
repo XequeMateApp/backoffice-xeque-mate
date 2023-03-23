@@ -43,6 +43,9 @@ import { CategorysComponent } from './categorys/categorys.component';
 import { CreateCategoryComponent } from './categorys/components/create-category/create-category.component';
 import { EditCategoryComponent } from './categorys/components/edit-category/edit-category.component';
 import { DeleteCategoryComponent } from './categorys/components/delete-category/delete-category.component';
+import { MarketingComponent } from './marketing/marketing.component';
+import { CreateAdComponent } from './marketing/components/create-ad/create-ad.component';
+import { EditAdComponent } from './marketing/components/edit-ad/edit-ad.component';
 
 
 @NgModule({
@@ -81,6 +84,9 @@ import { DeleteCategoryComponent } from './categorys/components/delete-category/
     CreateCategoryComponent,
     EditCategoryComponent,
     DeleteCategoryComponent,
+    MarketingComponent,
+    CreateAdComponent,
+    EditAdComponent,
   ],
   imports: [
     CommonModule,
