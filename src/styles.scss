@@ -193,9 +193,10 @@
 }
 
 @media (max-width: 991px) {
-  .p0-important {
-    padding: 0 !important;
-  }
+    .p0-important {
+        padding-left: 0 !important;
+         padding-right: 0 !important;
+    }
 }
 
 @media (min-width: 576px) {

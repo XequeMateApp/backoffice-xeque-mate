@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { NotificIationnterface } from 'src/app/interface/notification.interface';
+import { NotificationInterface } from 'src/app/interface/notification.interface';
+import { ProfileInterface } from 'src/app/interface/profile.interface';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class DatamockService {
 
-  notificationList: NotificIationnterface[] = [
+  notificationList: NotificationInterface[] = [
     {
       _id: 1,
       name: 'Abraham linkon',
@@ -562,8 +563,18 @@ export class DatamockService {
     },
 
   ];
-
+  profile: ProfileInterface[] = [
+    {
+      name: 'Iuri',
+      email: 'luisk@funko.com',
+      funcoes: 'Administrador'
+    }
+  ]
   getsupplier(): SupplierInterface[] {
     return this.supplier;
+  }
+
+  getprofile(): ProfileInterface[] {
+    return this.profile;
   }
 }
