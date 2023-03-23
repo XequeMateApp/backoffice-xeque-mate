@@ -49,11 +49,11 @@
                      </div>
                     </div>
                  </div>
- 
+
             </div>
 
         </div>
-        <div class="row mx-0 overflow-x">
+        <div class="row mx-0 overflow-x-scroll">
             <div class="col-12 mt-5 px-0">
                 <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
                     <div style="width: 295px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
@@ -68,8 +68,6 @@
                     <div class="col h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
                     </div>
-                    <div class="col h-100 br-16 align-items-center d-flex">
-                    </div>
                 </div>
             </div>
             <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
@@ -78,14 +76,14 @@
                       <tr *ngFor="let item of supplier | filter: filterTerm  | paginate: config; let i= index">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
                         <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item.email}}</h5></td>
-                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 115px;">{{item.funcoes}}</h5></td>
+                        <td  style="width: 340px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 215px;">{{item.funcoes}}kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</h5></td>
                         <td>
                             <h5 class="mb-0 py-3  text-start text-success" *ngIf="item.status === 'Ativo'">{{item.status}}</h5>
                         <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item.status === 'Inativo'">{{item.status}}</h5>
                     </td>
                         <td><h5  class="mb-0 fw-bolder text-center text-dark-blue py-3">
-                            <i (click)="openModals('Edit', item)" class="bi mx-3 bi-gear"></i> 
-                            <i (click)="openModals('Delete', item)" class="bi bi-trash text-danger"></i></h5></td>
+                            <i (click)="openModals('Edit', item)" role="button" class="bi text-dark h3 px-1 mx-3 mb-0 bi-gear"></i>
+                            <i (click)="openModals('Delete', item)" role="button" class="bi bi-trash h3 px-1 mb-0 text-danger"></i></h5></td>
                       </tr>
                     </tbody>
                 </table>
