@@ -27,6 +27,7 @@ export class NotificationComponent implements OnInit {
     currentPage: 1
   };
   filterTerm!: string;
+  orderby = 'Ordenar por';
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -58,6 +59,7 @@ export class NotificationComponent implements OnInit {
       return a.name.localeCompare(b.name);
     }
     );
+    this.orderby = 'Nome A-Z'
     console.log(this.notifications);
   }
 }

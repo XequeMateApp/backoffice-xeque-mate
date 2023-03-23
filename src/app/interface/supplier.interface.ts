@@ -7,6 +7,7 @@ export interface SupplierInterface {
     permition: string,
     material: string,
     price: string,
+    namecategory: string,
     category: string,
     tel: string,
     code: string,

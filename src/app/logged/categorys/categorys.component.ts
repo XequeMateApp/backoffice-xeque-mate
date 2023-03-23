@@ -5,10 +5,9 @@ import { PaginationInstance } from 'ngx-pagination';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { DatamockService } from 'src/services/datamock.service';
-import { AnalysisProductComponent } from '../products/components/analysis-product/analysis-product.component';
-import { CreateProductComponent } from '../products/components/create-product/create-product.component';
-import { DeleteProductComponent } from '../products/components/delete-product/delete-product.component';
-import { EditProductComponent } from '../products/components/edit-product/edit-product.component';
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { DeleteCategoryComponent } from './components/delete-category/delete-category.component';
 
 @Component({
   selector: 'app-categorys',
@@ -28,7 +27,10 @@ export class CategorysComponent implements OnInit {
   filterTerm!: string;
   user: any;
   officerAdm: string;
+  typeCategory = 'Tipo';
+  orderby = 'Ordenar por'
   suppliermaterial: any;
+  uniqueCategory: string[];
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -36,45 +38,39 @@ export class CategorysComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.supplier = this.datamockService.supplier;
+    this.removeDuplicates(this.supplier)
   }
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
   createOpenModals() {
-    this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+    this.modalService.open(CreateCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.productsData, info);
-    if (tabName == 'analysisproduct') {
-      this.modalService.open(AnalysisProductComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if (tabName == 'editproduct') {
-      this.modalService.open(EditProductComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if (tabName == 'deleteproduct') {
-      this.modalService.open(DeleteProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+     if (tabName === 'edit') {
+      this.modalService.open(EditCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
+    } else if (tabName === 'delete') {
+      this.modalService.open(DeleteCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
-    // this.ArrayInfoUser = [infoUser._id, infoUser.name]
-    // localStorage.setItem('userinfo', this.ArrayInfoUser);
   }
 
   sortListByAlphabeticalOrder(): void {
     this.supplier.sort((a, b) => {
-      return a.name.localeCompare(b.name);
+      return a.namecategory.localeCompare(b.namecategory);
     }
     );
+    this.orderby = 'Nome A-Z'
   }
 
-  removeDuplicates(material: any): void {
-    for (const key in material) {
-      if (material.hasOwnProperty(key)) {
-        const value = material[key];
-        console.log(key + ': ' + value);
-      }
-    }
+  removeDuplicates(list: SupplierInterface[]) {
+    this.uniqueCategory = [...new Set(list.map(obj => obj.category))];
   }
 
   sortListByType(value: string) {
     console.log(value)
-    if (value === 'madeirararara') this.supplier.sort((a, b) => { return a.material.localeCompare(b.material); });
-    else if (value === 'plasticococococo') this.supplier.sort((a, b) => { return b.material.localeCompare(a.material); });
+    this.typeCategory = value;
+    if (value === 'Material de construção') this.supplier.sort((a, b) => { return a.category.localeCompare(b.category); });
+    else if (value === 'Material de madeira') this.supplier.sort((a, b) => { return b.category.localeCompare(a.category); });
   }
 }
