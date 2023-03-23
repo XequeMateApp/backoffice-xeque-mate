@@ -90,6 +90,10 @@
   z-index: 10;
 }
 
+.line-21 {
+  line-height: 21px;
+}
+
 .input-icon-right {
   background-image: url('../src/assets/images/envelope-fill.svg');
   background-position: right 10px center;
@@ -148,6 +152,13 @@
   max-height: 54px !important;
 }
 
+.i-file {
+  height: 174px;
+  top: -103px;
+  width: 189px;
+  height: 174px;
+}
+
 .p-name {
   padding: 10px 5px 1px 5px;
 }
@@ -156,6 +167,10 @@
   border-radius: 16px !important;
   background-color: transparent !important;
   border: none !important
+}
+
+.col-discription {
+  width: 633px !important;
 }
 
 .overflow-x-scroll {
@@ -170,6 +185,12 @@
   overflow-y: hidden;
 }
 
+@media (max-width: 768px) {
+  .p0-important-mobile {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
 
 @media (max-width: 991px) {
   .p0-important {
@@ -192,12 +213,20 @@
     width: 137px !important;
   }
 
+  .col-price {
+    width: 230px !important;
+  }
+
   .col-tel {
     max-width: 163px !important;
   }
 
+  .col-discription {
+    width: 584px !important;
+  }
+
   .col-funcion {
-    width: 259px !important;
+    width: 336px !important;
   }
 }
 
@@ -210,12 +239,20 @@
     width: 122px !important;
   }
 
+  .col-price {
+    width: 198px !important;
+  }
+
   .col-tel {
     max-width: 149px !important;
   }
 
+  .col-discription {
+    width: 577px !important;
+  }
+
   .col-funcion {
-    width: 233px !important;
+    width: 334px !important;
   }
 }
 
