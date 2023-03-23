@@ -16,6 +16,7 @@ export interface SupplierInterface {
     specification: string,
     description: string,
     type: string,
-    funcoes: string;
-    status: string
+    funcoes: string,
+    status: string,
+    imgmarketing: string,
 }
