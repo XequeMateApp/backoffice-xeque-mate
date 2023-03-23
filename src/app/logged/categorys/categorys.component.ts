@@ -48,9 +48,9 @@ export class CategorysComponent implements OnInit {
   }
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.productsData, info);
-     if (tabName == 'edit' || 'analysis') {
+     if (tabName === 'edit') {
       this.modalService.open(EditCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if (tabName == 'delete') {
+    } else if (tabName === 'delete') {
       this.modalService.open(DeleteCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
   }
