@@ -19,5 +19,5 @@ export interface SupplierInterface {
     type: string,
     funcoes: string,
     status: string,
-    imgmarketing: string,
+    imgcategory: string[],
 }

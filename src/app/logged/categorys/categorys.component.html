@@ -29,17 +29,17 @@
                   <div class="col-md-6 mt-3 p0-important">
                       <div class="dropdown">
                           <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{typeCategory}}
+                            <span class="d-inline-block text-truncate" style="max-width: 90%;">{{typeCategory}}</span>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                            <li *ngFor="let item of supplier" role="button"><a (click)="sortListByType(item.category)" class="dropdown-item">{{item.category}}</a></li>
+                            <li *ngFor="let item of uniqueCategory" role="button"><a (click)="sortListByType(item)" class="dropdown-item">{{item}}</a></li>
                           </ul>
                       </div>
                   </div>
                   <div class="col-md-6 mt-3 p0-important">
                       <div class="dropdown">
                           <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{orderby}}
+                            <span class="d-inline-block text-truncate" style="max-width: 90%;">{{orderby}}</span>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
                             <li role="button"><a (click)="sortListByAlphabeticalOrder()" class="dropdown-item">Nome A-Z</a></li>

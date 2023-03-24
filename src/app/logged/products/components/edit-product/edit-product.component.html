@@ -3,55 +3,51 @@
     <div class="row px-0">
       <div class="col-12 d-flex align-content-center justify-content-between">
         <h2 class="mb-0 fw-bolder text-center">Editar Produto</h2>
-        <img (click)="exit()" role="button"
-          src="../../../../../assets/icons/x.png"
-          style="height: fit-content;">
+        <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" style="height: fit-content;">
       </div>
       <form [formGroup]="form" class="col-12 mt-4">
         <div class="row">
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
             <input type="text" id="edit-name" class="form-control fw-bolder
-              br-16 bordder py-3"
-              placeholder="Digite o nome" formControlName="name" />
+              br-16 bordder py-3" placeholder="Digite o nome" formControlName="name" />
           </div>
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="edit-valor">Valor</label>
-            <input type="tel" id="edit-valor" [maxlength]="15"
-              mask="separator.2"
-              thousandSeparator="." prefix="R$ " required="true"
-              class="form-control fw-bolder br-16 bordder py-3"
-              placeholder="Digite o valor"
+            <input type="tel" id="edit-valor" [maxlength]="15" mask="separator.2" thousandSeparator="." prefix="R$ "
+              required="true" class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o valor"
               formControlName="price" />
           </div>
 
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="edit-cnpj">Fornecedor CNPJ</label>
-            <input type="text" id="edit-cnpj" mask="00.000.000/0000-00"  class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
+            <input type="text" id="edit-cnpj" mask="00.000.000/0000-00"
+              class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
           </div>
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
             <input type="tel" id="edit-code" [maxLength]="15" required="true"
-              class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
-              [value]=""
-              placeholder="Digite o código" formControlName="code" />
+              class="form-control br-16 text-dark-blue fw-bolder bordder py-3" [value]="" placeholder="Digite o código"
+              formControlName="code" />
           </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-category">Categoria</label>
             <select #selectOptions class="form-select fw-bolder text-dark-blue
-              br-16 border py-3"
-              aria-label="Default select category"
-              formControlName="selectCategory"
+              br-16 border py-3" aria-label="Default select category" formControlName="selectCategory"
               (change)="onOptionSelected(selectOptions.value)">
-              <option [selected]="true" [disabled]="true" >Selecione uma categoria</option>
-              <option (click)="addItem()" [selected]="option.category != '' "
-                *ngFor="let option of supplier" [value]="option._id">{{option.category
+              <option [selected]="true" [disabled]="true">Selecione uma
+                categoria</option>
+              <option (click)="addItem()" [selected]="option.category != '' " *ngFor="let option of supplier"
+                [value]="option._id">{{option.category
                 }}</option>
             </select>
             <ul class="list-group mt-3 br-16 ">
-              <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
-                <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item.category }}</h6>
-                <i (click)="removeItem(item)" role="button" class="bi mb-0 bi-x h3 text-danger"></i>
+              <li class="list-group-item d-flex justify-content-between
+                align-content-center" *ngFor="let item of selectedItems">
+                <h6 class="text-dark mb-0 align-self-center d-inline-block
+                  text-truncate" style="max-width: 200px;"> {{ item.category }}</h6>
+                <i (click)="removeItem(item)" role="button" class="bi mb-0 bi-x
+                  h3 text-danger"></i>
               </li>
             </ul>
           </div>
@@ -61,17 +57,13 @@
               align-items-center">
               <div class="d-flex align-items-center overflow-x-scroll
                 overflow-y-hidden">
-                <div *ngFor="let imgs of supplierImg; let i= index"
-                  class="d-flex align-items-center">
-                  <div *ngIf="selectedImageUrl !== null"
-                    style="background-image: url({{imgs}});" class="br-16 d-flex
+                <div *ngFor="let imgs of supplierImg; let i= index" class="d-flex align-items-center">
+                  <div *ngIf="selectedImageUrl !== null" style="background-image: url({{imgs}});" class="br-16 d-flex
                     justify-content-end illustration border">
                     <img src="../../../../../assets/icons/x.svg" class="w3-white
-                      rounded-pill w-fit h-fit mt-2 me-2"
-                      (click)="removeFile(i)" role="button"/>
+                      rounded-pill w-fit h-fit mt-2 me-2" (click)="removeFile(i)" role="button" />
                   </div>
-                  <div *ngIf="selectedImageUrl === null"
-                    style="background-image: url({{selectFile}});" class="br-16
+                  <div *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});" class="br-16
                     d-flex justify-content-end illustration border">
                   </div>
                 </div>
@@ -80,10 +72,8 @@
                   <div class="br-16 d-block justify-content-end illustration
                     border">
                     <input role="button" type="file" class="illustration
-                      position-relative z-10" style="opacity:0;"
-                      formControlName="selectPhotos"
-                      (change)="onSelectFileProductImage($event)"
-                      accept="image/*">
+                      position-relative z-10" style="opacity:0;" formControlName="selectPhotos"
+                      (change)="onSelectFileProductImage($event)" accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative"
                       style="bottom: 77%; font-size: 40px;left: 29%;"></i>
                   </div>
@@ -95,14 +85,12 @@
                 <div class="col-md-6">
                   <label for="exempleDescription">Descrição</label>
                   <textarea maxlength="200" formControlName="description" class="form-control
-                    overflow-scroll border w3-white br-16 p-3"
-                    id="exempleDescription" rows="3"></textarea>
+                    overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
                 </div>
                 <div class="col-md-6">
                   <label for="exempleSpecification">Especificações</label>
                   <textarea maxlength="200" formControlName="specification" class="form-control
-                    overflow-scroll border w3-white br-16 p-3"
-                    id="exempleSpecification" rows="3"></textarea>
+                    overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
                 </div>
               </div>
             </div>
@@ -110,15 +98,12 @@
           <div class="col-12 mb-3">
             <div class="row">
               <div class="col-md-6 mt-4">
-                <button class="btn w3-white br-16 text-dark-blue w-100"
-                  (click)="exit()" type="button">
+                <button class="btn w3-white br-16 text-dark-blue w-100" (click)="exit()" type="button">
                   <h6 class="fw-bolder mb-0 py-2">Cancelar</h6>
                 </button>
               </div>
               <div class="col-md-6 mt-4">
-                <button class="btn br-16 bg-dark-blue text-light w-100"
-                  (click)="confirm()"
-                  type="button">
+                <button class="btn br-16 bg-dark-blue text-light w-100" (click)="confirm()" type="button">
                   <h6 class="fw-bolder mb-0 py-2">Salvar</h6>
                 </button>
               </div>

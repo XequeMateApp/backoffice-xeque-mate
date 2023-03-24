@@ -48,15 +48,11 @@ export class DatamockService {
 
   ];
 
-
-
-
   supplier: SupplierInterface[] = [
     {
       _id: 1,
       name: 'Abraham linkon Abraham linkon Abraham linkonAbraham linkonAbraham linkonAbraham linkonAbraham linkon',
       email: 'exemplo@xequematervqwetbbqgbeedewfrebrbqeebrtbwrtre.com',
-      imgmarketing: 'https://blog.feicon.com.br/wp-content/uploads/2021/07/aprenda-como-vender-material-de-construcao-na-internet.jpeg',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira do norte do canada',
       permition: 'Funcionário',
@@ -68,12 +64,14 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: [
+        '../../../../../assets/images/material.jpg',
+      ],
       img: [
-        '../../../../../assets/images/illustration.jpg',
-        '../../../../../assets/images/illustration.jpg',
-        '../../../../../assets/images/illustration.jpg',
-        '../../../../../assets/images/illustration.jpg',
-        '../../../../../assets/images/illustration.jpg',
+        '../../../../../assets/images/material.jpg',
+        '../../../../../assets/images/material.jpg',
+        '../../../../../assets/images/material.jpg',
+        '../../../../../assets/images/material.jpg',
       ],
       category: 'Material de construção especificamente para uso em casas urbanas',
       emphasis: true,
@@ -88,7 +86,6 @@ export class DatamockService {
       _id: 2,
       name: 'Brad Pit',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Funcionário',
@@ -100,6 +97,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -120,7 +118,6 @@ export class DatamockService {
       _id: 3,
       name: 'Katy Pary',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Funcionário',
@@ -132,6 +129,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -152,7 +150,6 @@ export class DatamockService {
       _id: 4,
       name: 'Vin Disel',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Funcionário',
@@ -164,6 +161,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -184,7 +182,6 @@ export class DatamockService {
       _id: 5,
       name: 'Drake',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -196,6 +193,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -216,7 +214,6 @@ export class DatamockService {
       _id: 6,
       name: 'Travis Scots',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -228,6 +225,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -248,7 +246,6 @@ export class DatamockService {
       _id: 7,
       name: 'Avril Lavine',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -260,6 +257,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -280,7 +278,6 @@ export class DatamockService {
       _id: 8,
       name: 'Ana maria braga',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -292,6 +289,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -312,7 +310,6 @@ export class DatamockService {
       _id: 9,
       name: 'Faustão',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -324,6 +321,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -344,7 +342,6 @@ export class DatamockService {
       _id: 10,
       name: 'Al abduh jaba mohamed mia khalifa',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -356,6 +353,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -376,7 +374,6 @@ export class DatamockService {
       _id: 11,
       name: 'Bolsonaro',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -388,6 +385,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -408,7 +406,6 @@ export class DatamockService {
       _id: 12,
       name: 'Putin',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -420,6 +417,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -440,7 +438,6 @@ export class DatamockService {
       _id: 13,
       name: 'Donald trump',
       email: 'exemplo@xequemate.com',
-      imgmarketing: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fimages%2Fsearch%2Fpessoa%2F&psig=AOvVaw3Q09LdTXGdNbaQunT4Gz3y&ust=1679669205247000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDClsal8v0CFQAAAAAdAAAAABAY',
       cnpj: '42788247000164',
       namecategory: 'chapa de madeira',
       permition: 'Administrador',
@@ -452,6 +449,7 @@ export class DatamockService {
         '../../../../../assets/images/eee.pdf',
       ],
       code: '000000007',
+      imgcategory: ['https://obrasconstrucaocivil.com/wp-content/uploads/2022/08/materiais-baratos-para-construcao.jpg'],
       img: [
         '../../../../../assets/images/illustration.jpg',
         '../../../../../assets/images/illustration.jpg',
@@ -470,6 +468,8 @@ export class DatamockService {
     },
 
   ];
+
+
   profile: ProfileInterface[] = [
     {
       name: 'Mohamed Ali Gusta de Alencar Alves Prado',
