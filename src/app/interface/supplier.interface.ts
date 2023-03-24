@@ -7,6 +7,7 @@ export interface SupplierInterface {
     permition: string,
     material: string,
     price: string,
+    namecategory: string,
     category: string,
     tel: string,
     code: string,
@@ -16,6 +17,7 @@ export interface SupplierInterface {
     specification: string,
     description: string,
     type: string,
-    funcoes: string;
-    status: string
+    funcoes: string,
+    status: string,
+    imgcategory: string[],
 }

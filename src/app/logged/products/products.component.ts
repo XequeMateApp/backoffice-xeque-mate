@@ -25,9 +25,10 @@ export class ProductsComponent implements OnInit {
     currentPage: 1
   };
   filterTerm!: string;
-  user: any;
   officerAdm: string;
-  suppliermaterial: any;
+  uniqueMaterials: string[];
+  typeFilter = 'Tipo';
+  OrderBy = 'Ordenar por'
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -35,6 +36,7 @@ export class ProductsComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.supplier = this.datamockService.supplier;
+    this.removeDuplicates(this.supplier)
   }
   backHome() {
     this.router.navigate(['/logged/dashboard']);
@@ -51,8 +53,6 @@ export class ProductsComponent implements OnInit {
     } else if (tabName == 'deleteproduct') {
       this.modalService.open(DeleteProductComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
-    // this.ArrayInfoUser = [infoUser._id, infoUser.name]
-    // localStorage.setItem('userinfo', this.ArrayInfoUser);
   }
 
   sortListByAlphabeticalOrder(): void {
@@ -60,20 +60,17 @@ export class ProductsComponent implements OnInit {
       return a.name.localeCompare(b.name);
     }
     );
+    this.OrderBy = 'Nome A-Z'
   }
 
-  removeDuplicates(material: any): void {
-    for (const key in material) {
-      if (material.hasOwnProperty(key)) {
-        const value = material[key];
-        console.log(key + ': ' + value);
-      }
-    }
+  removeDuplicates(list: SupplierInterface[]) {
+    this.uniqueMaterials = [...new Set(list.map(obj => obj.material))];
   }
 
   sortListByType(value: string) {
     console.log(value)
-    if (value === 'madeirararara') this.supplier.sort((a, b) => { return a.material.localeCompare(b.material); });
-    else if (value === 'plasticococococo') this.supplier.sort((a, b) => { return b.material.localeCompare(a.material); });
+    this.typeFilter = value;
+    if (value === 'madeira') this.supplier.sort((a, b) => { return a.material.localeCompare(b.material); });
+    else if (value === 'plastico') this.supplier.sort((a, b) => { return b.material.localeCompare(a.material); });
   }
 }

@@ -10,6 +10,7 @@ import { AuthenticationService } from 'src/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   form: FormGroup;
   constructor(
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   handlePasswordRecovery() {
     this.router.navigate(['auth/send-email']);

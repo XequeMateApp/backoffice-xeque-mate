@@ -5,7 +5,8 @@ export interface NotificationInterface {
     time: string,
     filter: string,
     function: string,
-    status: string
+    status: string,
     repetition: string,
-    startIn:  string
+    startIn:  string,
+    imgmarketing: string,
 }

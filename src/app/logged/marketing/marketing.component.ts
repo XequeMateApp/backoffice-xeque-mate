@@ -1,21 +1,20 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DatamockService } from 'src/services/datamock.service';
-import { CreateNotificationComponent } from './components/create-notification/create-notification.component';
-import { EditNotificationComponent } from './components/edit-notification/edit-notification.component';
-import { DeleteNotificationComponent } from './components/delete-notification/delete-notification.component';
 import { PaginationInstance } from 'ngx-pagination';
 import { NotificationInterface } from 'src/app/interface/notification.interface';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
+import { DatamockService } from 'src/services/datamock.service';
+import { CreateNotificationComponent } from '../notification/components/create-notification/create-notification.component';
+import { DeleteNotificationComponent } from '../notification/components/delete-notification/delete-notification.component';
+import { EditNotificationComponent } from '../notification/components/edit-notification/edit-notification.component';
 
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-marketing',
+  templateUrl: './marketing.component.html',
+  styleUrls: ['./marketing.component.scss']
 })
-export class NotificationComponent implements OnInit {
+export class MarketingComponent implements OnInit {
 
   notifications:NotificationInterface[];
 
@@ -27,7 +26,6 @@ export class NotificationComponent implements OnInit {
     currentPage: 1
   };
   filterTerm!: string;
-  orderby = 'Ordenar por';
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -59,7 +57,14 @@ export class NotificationComponent implements OnInit {
       return a.name.localeCompare(b.name);
     }
     );
-    this.orderby = 'Nome A-Z'
     console.log(this.notifications);
   }
+  sortListByType(value: string) {
+   
+   
+    if (value === 'Ativo') this.notifications.sort((a, b) => { return a.status.localeCompare(b.status); });
+    else if (value === 'Inativo') this.notifications.sort((a, b) => { return b.status.localeCompare(a.status); });
+  }
 }
+
+

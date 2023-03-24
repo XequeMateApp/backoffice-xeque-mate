@@ -26,6 +26,8 @@ export class FunctionManagementComponent implements OnInit {
   filterTerm!: string;
   user: any;
   officerAdm: string;
+  uniquePermition: string[];
+  typeFilter = 'tipo'
   constructor(
     private datamockService: DatamockService,
     private router: Router,
@@ -37,6 +39,7 @@ export class FunctionManagementComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     const domain = this.user.email.split("@")[1];
     this.officerAdm = domain;
+    this.removeDuplicates(this.supplier)
   }
 
 
@@ -63,9 +66,12 @@ export class FunctionManagementComponent implements OnInit {
     );
   }
 
-
+  removeDuplicates(list: SupplierInterface[]) {
+    this.uniquePermition = [...new Set(list.map(obj => obj.permition))];
+  }
   sortListByType(value: string) {
-    if (value === 'permitiona') this.supplier.sort((a, b) => { return a.permition.localeCompare(b.permition); });
-    else if (value === 'permitionb') this.supplier.sort((a, b) => { return b.permition.localeCompare(a.permition); });
+    this.typeFilter = value;
+    if (value === 'Administrador') this.supplier.sort((a, b) => { return a.permition.localeCompare(b.permition); });
+    else if (value === 'Funcionário') this.supplier.sort((a, b) => { return b.permition.localeCompare(a.permition); });
   }
 }
