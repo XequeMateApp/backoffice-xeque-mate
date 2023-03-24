@@ -15,6 +15,8 @@ export class CreateUserComponent implements OnInit {
   request: UserRegisterRequestDto;
   productsData: any;
   editNotStatus: string;
+  alertFields: boolean;
+  alertFieldsName: boolean;
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -31,44 +33,60 @@ export class CreateUserComponent implements OnInit {
   }
   ngOnInit(): void {
     this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    if (this.userService.modalRegisterForm){
-      this.form.patchValue({
-        phone: this.userService.modalRegisterForm.phone,
-        email: this.userService.modalRegisterForm.email,
-        status: this.userService.modalRegisterForm.status,
-        name: this.userService.modalRegisterForm.name,
-        // funtions: this.userService.modalRegisterForm.funtions,
-      })
-    }
   }
-
 
   exit() {
     this.userService.modalRegisterForm = null;
     this.modalService.dismissAll();
   }
 
+  verifiField() {
+    const fieldName = document.getElementById(
+      '#create-name'
+    ) as HTMLElement;
+    const fieldEmail = document.getElementById(
+      '#create-email'
+    ) as HTMLElement;
+    const fieldPhone = document.getElementById(
+      '#create-phone'
+    ) as HTMLElement;
+    const fieldStatus = document.getElementById(
+      '#create-status'
+    ) as HTMLElement;
+    if (this.form.controls['name'].value === '') {
+      fieldName.classList.add("border-danger", "text-danger");
+      this.alertFieldsName = true;
+      setInterval(() => {
+        fieldName.classList.remove("border-danger", "text-danger");
+        this.alertFields = false;
+      }, 2000);
+    }
+  }
 
   confirm(): void {
-
+    this.verifiField();
     this.request = {
-      phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
+      // phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
       email: this.form.controls['email'].value,
       name: this.form.controls['name'].value,
       status: this.form.controls['status'].value,
-      kyc: ''
+      password: 'string',
+      kyc: 'PENDING'
     }
     console.log(this.request)
-    this.userService.register(this.request).subscribe(
-      success => {
-        this.userService.modalRegisterForm = null;
-        this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-        this.modalService.dismissAll();
-      },
-      error => {
-        console.log(error)
-        this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
-      }
-    )
+    // this.userService.register(this.request).subscribe(
+    //   success => {
+    //     this.userService.modalRegisterForm = null;
+    //     this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+    //     this.modalService.dismissAll();
+    //   },
+    //   error => {
+    //     console.log(error)
+    //     this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+    //   }
+    // )
   }
 }
+
+// função é permição
+// trocar nome das funções em cadastrar função pelos nomes das telas que ele tem permição de entrar
