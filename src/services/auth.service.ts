@@ -27,7 +27,7 @@ export class AuthenticationService extends BaseService {
 
   authenticate(dto: AuthenticationRequestDto): Observable<UserAuthenticatedDto> {
     return this.httpClient
-      .post(`${this.url}/authetication/authenticate`, dto, this.anonymousHeader)
+      .post(`${this.url}/authetication/authenticate`, dto, this.anonymousHeader())
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 

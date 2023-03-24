@@ -1,110 +1,107 @@
 <form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
-    <div class="col-12 d-flex align-items-center justify-content-between">
-        <h2 class="text-dark mb-0 fw-bolder">Cadastrar Usuário</h2>
-        <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
-    </div>
-    <div class="col-12 mt-3">
-        <div class="row px-0">
-            <div class="col-md-8">
-                <label for="edit-name">Nome</label>
-                <input type="text" id="edit-name" class="form-control br-16 mb-2 bordder py-3" placeholder="Digite o nome" formControlName="name" />
-            </div>
-            <div class="col-md-4">
-                <label for="edit-status">Status</label>
-                <select formControlName="status" id="edit-status" class="form-select py-3 mb-2 br-16"
-                    aria-label="Default status">
-                    <option class="" [disabled]="true" [selected]="true">Selecione</option>
-                    <option class="" value="active">🟢 Ativo</option>
-                    <option class="" value="inactive">🔴 Inativo</option>
-                </select>
-            </div>
-             <div class="col-md-6">
-                <label for="edit-name">E-mail</label>
-                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="name" />
-            </div>
-             <div class="col-md-6">
-                <label for="edit-name">Telefone</label>
-                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="name" />
-            </div>
-            <div class="col-12 mt-4 mb-2">
-                <label class="" for="edit-content">Filtro</label>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="adm" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterADM">
-                                    <label class="form-check-label px-2" for="filterADM">
-                                        Administrador
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="products" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterProducts">
-                                    <label class="form-check-label px-2" for="filterProducts">
-                                        Produtos
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="kyc" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterKYC">
-                                    <label class="form-check-label px-2" for="filterKYC">
-                                        KYC
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="client" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterClients">
-                                    <label class="form-check-label px-2" for="filterClients">
-                                        Clientes
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="accessControl" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterControl">
-                                    <label class="form-check-label text-nowrap px-2" for="filterControl">
-                                        Controle de acesso
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div role="button" class="form-check align-items-baseline d-flex">
-                                    <input formControlName="notification" class="form-check-input p-2" type="checkbox"
-                                        value="" id="filterNotification">
-                                    <label class="form-check-label px-2" for="filterNotification">
-                                        Notificações
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="row px-0">
-                        <div class="col-md-6 mt-3">
-                            <button type="button" (click)="exit()" class="btn w3-white h3 text-dark-blue w-100 py-3">
-                                <h4 class="mb-0">Cancelar</h4>
-                            </button>
-                        </div>
-                        <div class="col-md-6 mt-3">
-                            <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
-                                <h4 class="mb-0">Cadastrar</h4>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="col-12 d-flex align-items-center justify-content-between">
+      <h2 class="text-dark mb-0 fw-bolder">Cadastrar Usuário</h2>
+      <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class="" />
+  </div>
+  <div class="col-12 mt-3">
+      <div class="row px-0">
+          <div class="col-md-8">
+              <label for="edit-name">Nome</label>
+              <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" />
+          </div>
+          <div class="col-md-4">
+              <label for="edit-status">Status</label>
+              <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
+                  <option [disabled]="true" [selected]="true">Selecione</option>
+                  <option value="active">🟢 Ativo</option>
+                  <option value="inactive">🔴 Inativo</option>
+              </select>
+          </div>
+          <div class="col-md-6 mt-3">
+            <label for="edit-name">E-mail</label>
+            <input type="email" id="edit-name"  class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="email" />
         </div>
-    </div>
+         <div class="col-md-6 mt-3">
+            <label for="edit-name">Telefone</label>
+            <input type="text" id="edit-name" mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="phone" />
+        </div>
+          <div class="col-12 mt-4 mb-2">
+            <label class="" for="edit-content">Filtro</label>
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="functions" [value]="productsData.funcoes === 'administrador'" type="radio" id="filterADM" name="functions" class="form-check-input p-2">
+                              <label class="form-check-label px-2" for="filterADM">
+                                  Administrador
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input type="radio" [value]="productsData.funcoes === 'produtos'" id="filterProducts" formControlName="functions" name="functions" class="form-check-input p-2" >
+                                        <label class="form-check-label px-2" for="filterProducts">
+                                  Produtos
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="functions" [value]="productsData.funcoes === 'kyc'"  class="form-check-input p-2" name="functions" type="radio"
+                                  id="filterKYC">
+                              <label class="form-check-label px-2" for="filterKYC">
+                                  KYC
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="functions" [value]="productsData.funcoes === 'cliente'"   class="form-check-input p-2" name="functions" type="radio"
+                                  id="filterClients">
+                              <label class="form-check-label px-2" for="filterClients">
+                                  Clientes
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="functions" [value]="productsData.funcoes === 'controledeacesso'"  class="form-check-input p-2" name="functions" type="radio"
+                                  id="filterControl">
+                              <label class="form-check-label text-nowrap px-2" for="filterControl">
+                                  Controle de acesso
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="functions" [value]="productsData.funcoes === 'notificacoes'"    class="form-check-input p-2" name="functions" type="radio"
+                                  id="filterNotification">
+                              <label class="form-check-label px-2" for="filterNotification">
+                                  Notificações
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+              <div class="col-12">
+                  <div class="row px-0">
+                      <div class="col-md-6 mt-3">
+                          <button type="button" (click)="exit()" class="btn w3-white h3 text-dark-blue w-100 py-3">
+                              <h4 class="mb-0">Cancelar</h4>
+                          </button>
+                      </div>
+                      <div class="col-md-6 mt-3">
+                          <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                              <h4 class="mb-0">Salvar</h4>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </form>

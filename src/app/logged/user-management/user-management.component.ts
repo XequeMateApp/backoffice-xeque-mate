@@ -7,6 +7,8 @@ import { DatamockService } from 'src/services/datamock.service';
 import { ConfirUserComponent } from './components/confir-user/confir-user.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { UserRegisterRequestDto } from 'src/app/dto/logged/user.register-request.dto';
+
 
 @Component({
   selector: 'app-user-management',
@@ -14,24 +16,21 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
-
-
-
-  supplier: any[];
   @Input('data') meals: string[] = [];
-
   public config: PaginationInstance = {
     id: 'custom',
     itemsPerPage: 8,
     currentPage: 1
   };
+  request: UserRegisterRequestDto;
   filterTerm!: string;
-
+  supplier: any[];
   constructor(
     private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.supplier = this.datamockService.supplier;
@@ -62,7 +61,7 @@ export class UserManagementComponent implements OnInit {
 
   }
   openModals(tabName: string, info: string[]) {
-    LocalStorageUtil.set(LocalStorageKeys.userData, info)
+    LocalStorageUtil.set(LocalStorageKeys.productsData, info)
     if (tabName === 'Edit') {
       this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
