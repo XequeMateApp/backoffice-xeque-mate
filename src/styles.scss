@@ -193,10 +193,10 @@
 }
 
 @media (max-width: 991px) {
-    .p0-important {
-        padding-left: 0 !important;
-         padding-right: 0 !important;
-    }
+  .p0-important {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 @media (min-width: 576px) {
@@ -264,4 +264,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
