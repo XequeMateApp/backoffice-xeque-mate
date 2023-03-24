@@ -1,65 +1,65 @@
+
 <main class="row w3-white br-16 mx-2 p-4">
-    <div class="col-12 d-flex align-content-center justify-content-between">
-      <h2 class="mb-0 fw-bolder text-center">Criar anúncio</h2>
-      <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png"
-        style="height: fit-content;">
-    </div>
-    <form [formGroup]="form" class="col-12 mt-4">
-      <div class="row">
-        <div class="col-md-5">
-          <label class="h6 mt-3 text-dark" for="edit-status">Adicionar imagem</label>
-          <div *ngFor="let file of selectFile" style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; width: 189px; height: 174px;" class="br-16 border"></div>
-          <div *ngIf="notImage" style="width: 189px; height: 174px;" class="br-16 d-flex align-content-center justify-content-center p-5 border">
-            <div class="text-center p-3">
-              <img role="button" src="../../../../../assets/icons/+.svg" class=""/>
-              <input role="button" type="file" class="position-relative i-file cursor start-0" style="opacity: 0;" (change)="onSelectFile($event)" accept="image/*, .doc , .pdf, .docx" formControlName="img"/>
-            </div>
+  <div class="col-12 d-flex align-content-center justify-content-between">
+    <h2 class="mb-0 fw-bolder text-center">Criar anúncio</h2>
+    <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png"
+      style="height: fit-content; width:max-content;">
+  </div>
+  <form [formGroup]="form" class="col-12 mt-4">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-12">
+            <label class="h6 mt-3 text-dark" for="edit-name">Título</label>
+            <input type="text" id="edit-name" class="form-control line-21
+                  br-16 bordder py-3" [value]="" placeholder="Digite o título" formControlName="name" />
           </div>
-          <br/>
+          <div class="col-md-12">
+            <label class="h6 mt-3 text-dark" for="edit-description">Descrição</label>
+            <textarea type="description" id="edit-description" maxlength="200"
+              class="form-control br-16 bordder p-3 overflow-scroll text-dark" [value]=""
+              placeholder="Digite a descrição" formControlName="description"></textarea>
           </div>
-          <div class="col-md-7">
-            <div class="row">
-              <div class="col-md-8">
-                <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
-                <input type="text" id="edit-name" class="form-control line-21
-                  br-16 bordder py-3"
-                  [value]="" placeholder="Digite o nome" formControlName="name" />
-              </div>
-                <div class="col-md-4 ">
-                  <label class="h6 mt-3 text-dark" for="edit-status">Status</label>
-                  <select formControlName="status" id="edit-status"
-                    class="form-select py-3 line-21 br-16"
-                    aria-label="Default status">
-                    <option [disabled]="true" [selected]="true">Selecione</option>
-                    <option value="active">🟢 Ativo</option>
-                    <option value="inactive">🔴 Inativo</option>
-                  </select>
-                </div>
-              <div class="col-md-12">
-                <label class="h6 mt-3 text-dark" for="edit-description">Descrição</label>
-                <textarea type="description" id="edit-description" maxlength="200"
-                  class="form-control br-16 bordder p-3 overflow-scroll text-dark"
-                  [value]="" placeholder="Digite a descrição" formControlName="description"></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 px-0">
-            <div class="row">
-              <div class="col-md-6 mt-3">
-                <button class="btn br-16 w3-white  w-100"
-                  (click)="exit()" type="button">
-                  <h5 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h5>
-                </button>
-              </div>
-              <div class="col-md-6 mt-3">
-                <button class="btn br-16 bg-dark-blue  w-100"
-                  (click)="confirm()" type="button">
-                  <h5 class="fw-bolder text-light mb-0 py-2">Cadastrar</h5>
-                </button>
-              </div>
-            </div>
+          <div class="col-md-12 ">
+            <label class="h6 mt-3 text-dark" for="edit-status">Status</label>
+            <select formControlName="status" id="edit-status" class="form-select py-3 line-21 br-16"
+              aria-label="Default status">
+              <option [disabled]="true" [selected]="true">Selecione</option>
+              <option value="active">🟢 Ativo</option>
+              <option value="inactive">🔴 Inativo</option>
+            </select>
           </div>
         </div>
-      </form>
-    </main>
-  
+      </div>
+      <div class="col-md-5">
+        <label class="h6 mt-3 text-dark" for="edit-status">Adicionar imagem</label>
+        <div *ngFor="let file of selectFile"
+          style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; height: 279px;"
+          class="br-16 border w-100"></div>
+        <div *ngIf="notImage"
+          class="br-16 d-flex align-content-center justify-content-center py-5 border " style="height: 279px;">
+          <div class="text-center w-100 p-3 ">
+            <img class="position-relative" role="button" src="../../../../../assets/icons/+.svg"  style="top: 37%;"  />
+            <input role="button" type="file" class="position-relative i-file-marketing cursor end-0 w-100" style="opacity: 0;"
+              (change)="onSelectFile($event)" accept="image/*," formControlName="img" />
+          </div>
+        </div>
+        <br />
+      </div>
+      <div class="col-12 px-0">
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <button class="btn br-16 w3-white  w-100" (click)="exit()" type="button">
+              <h5 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h5>
+            </button>
+          </div>
+          <div class="col-md-6 mt-3">
+            <button class="btn br-16 bg-dark-blue  w-100" (click)="confirm()" type="button">
+              <h5 class="fw-bolder text-light mb-0 py-2">Cadastrar</h5>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</main>
