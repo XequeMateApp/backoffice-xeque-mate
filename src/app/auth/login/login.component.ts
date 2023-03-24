@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   handlePasswordRecovery() {
-    this.router.navigate(['auth/send-email']);
+    this.router.navigate(['auth/forgot-password']);
   }
 
   confirm() {

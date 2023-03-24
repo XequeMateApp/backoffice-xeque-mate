@@ -16,7 +16,7 @@
 .custom-pagination {
   display: flex;
   max-width: 300px;
-  margin: auto
+  margin: auto;
 }
 
 .custom-pagination>div {
@@ -28,7 +28,7 @@
   border-bottom: 3px solid transparent;
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none
+  -ms-user-select: none;
 }
 
 .custom-pagination>div.current {
@@ -156,7 +156,13 @@
   height: 174px;
   top: -103px;
   width: 189px;
-  height: 174px;
+  
+}
+.i-file-marketing {
+ 
+   height: 279px;
+  top: -103px;
+  
 }
 
 .p-name {
@@ -193,15 +199,15 @@
 }
 
 @media (max-width: 991px) {
-    .p0-important {
-        padding-left: 0 !important;
-         padding-right: 0 !important;
-    }
+  .p0-important {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 600px !important;
+    max-width: 720px !important;
   }
 }
 
@@ -264,4 +270,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

@@ -10,8 +10,8 @@ export class DatamockService {
   notificationList: NotificationInterface[] = [
     {
       _id: 1,
-      name: 'Abraham linkon',
-      content: 't is a long established fact that a reader will be distracted by the readable',
+      name: 'Ferramentas',
+      content: 'Promoção imperdível! Ferramentas com 25% de desconto. Furadeiras, serras elétricas, chaves de fenda e muito mais. Aproveite agora e economize em suas compras.',
       time: '13:23:02',
       filter: '..',
       imgmarketing:'../../../../../assets/images/P1.png',
@@ -22,8 +22,8 @@ export class DatamockService {
     },
     {
       _id: 2,
-      name: 'Brad Pit',
-      content: 't is a long established fact that a reader will be distracted by the readable',
+      name: 'A casa dos sonhos',
+      content: 'asa dos sonhos: o lar perfeito. Com arquitetura moderna e decoração elegante, é o lugar para relaxar e entreter. Janelas amplas com vista para o jardim e piscina cristalina. Viva em um ambiente luxuoso e aconchegante que combina com seu estilo de vida.',
       time: '13:23:02',
       filter: '..',
       imgmarketing:'../../../../../assets/images/P2.png',
@@ -34,8 +34,8 @@ export class DatamockService {
     },
     {
       _id: 3,
-      name: 'Katy Pary',
-      content: 't is a long established fact that a reader will be distracted by the readable',
+      name: 'Eletrodos e arames de solda',
+      content: 'Semana da soldagem! Arame de solda e eletrodos com desconto. Tenha um resultado profissional com qualidade e segurança. Aproveite agora para abastecer seu estoque de soldagem e concluir seus projetos com sucesso.',
       time: '13:23:02',
       filter: '..',
       imgmarketing:'../../../../../assets/images/P3.png',

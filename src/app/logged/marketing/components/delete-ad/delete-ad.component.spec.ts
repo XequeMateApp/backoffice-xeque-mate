@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SendEmailComponent } from './send-email.component';
+import { DeleteAdComponent } from './delete-ad.component';
 
-describe('SendEmailComponent', () => {
-  let component: SendEmailComponent;
-  let fixture: ComponentFixture<SendEmailComponent>;
+describe('DeleteAdComponent', () => {
+  let component: DeleteAdComponent;
+  let fixture: ComponentFixture<DeleteAdComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SendEmailComponent ]
+      declarations: [ DeleteAdComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SendEmailComponent);
+    fixture = TestBed.createComponent(DeleteAdComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
