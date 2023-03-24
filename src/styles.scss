@@ -16,7 +16,7 @@
 .custom-pagination {
   display: flex;
   max-width: 300px;
-  margin: auto
+  margin: auto;
 }
 
 .custom-pagination>div {
@@ -28,7 +28,7 @@
   border-bottom: 3px solid transparent;
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none
+  -ms-user-select: none;
 }
 
 .custom-pagination>div.current {
