@@ -60,7 +60,7 @@ export class CategorysComponent implements OnInit {
       return a.namecategory.localeCompare(b.namecategory);
     }
     );
-    this.orderby = 'Nome A-Z'
+    this.orderby = 'Nome A-Z' 
   }
 
   removeDuplicates(list: SupplierInterface[]) {
