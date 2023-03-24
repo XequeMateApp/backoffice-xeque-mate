@@ -7,7 +7,8 @@
       <div class="row px-0">
           <div class="col-md-8">
               <label for="create-name">Nome</label>
-              <input type="text" id="create-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true"/>
+              <input type="text" id="create-name" #createname class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true"/>
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo <b>NOME</b> está vazio</label>
           </div>
           <div class="col-md-4">
               <label for="create-status">Status</label>
@@ -23,7 +24,7 @@
         </div>
          <div class="col-md-6 mt-3">
             <label for="create-phone">Telefone</label>
-            <input type="text" id="create-phone" mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="phone" />
+            <input type="text" id="create-phone" #createphone  mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="phone" />
         </div>
           <div class="col-12 mt-4 mb-2">
             <label class="" for="create-content">Filtro</label>

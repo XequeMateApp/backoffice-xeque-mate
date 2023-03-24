@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -11,12 +11,12 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
+  @ViewChild('createname') createname: ElementRef;
   form: FormGroup;
   request: UserRegisterRequestDto;
   productsData: any;
   editNotStatus: string;
-  alertFields: boolean;
-  alertFieldsName: boolean;
+  alertFieldsName = false;
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -41,9 +41,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   verifiField() {
-    const fieldName = document.getElementById(
-      '#create-name'
-    ) as HTMLElement;
     const fieldEmail = document.getElementById(
       '#create-email'
     ) as HTMLElement;
@@ -54,12 +51,12 @@ export class CreateUserComponent implements OnInit {
       '#create-status'
     ) as HTMLElement;
     if (this.form.controls['name'].value === '') {
-      fieldName.classList.add("border-danger", "text-danger");
+      this.createname.nativeElement.classList.add("border-danger","border", "text-danger");
       this.alertFieldsName = true;
       setInterval(() => {
-        fieldName.classList.remove("border-danger", "text-danger");
-        this.alertFields = false;
-      }, 2000);
+        this.createname.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.alertFieldsName = false;
+      }, 5000);
     }
   }
 
