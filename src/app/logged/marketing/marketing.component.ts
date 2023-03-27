@@ -8,6 +8,9 @@ import { DatamockService } from 'src/services/datamock.service';
 import { CreateNotificationComponent } from '../notification/components/create-notification/create-notification.component';
 import { DeleteNotificationComponent } from '../notification/components/delete-notification/delete-notification.component';
 import { EditNotificationComponent } from '../notification/components/edit-notification/edit-notification.component';
+import { CreateAdComponent } from './components/create-ad/create-ad.component';
+import { EditAdComponent } from './components/edit-ad/edit-ad.component';
+import { DeleteAdComponent } from './components/delete-ad/delete-ad.component';
 
 @Component({
   selector: 'app-marketing',
@@ -41,15 +44,15 @@ export class MarketingComponent implements OnInit {
   }
 
   createOpenModal(){
-    this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+    this.modalService.open(CreateAdComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
 
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.userData, info);
-    if (tabName == 'edit') {
-      this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
-    } else if (tabName == 'delete') {
-      this.modalService.open(DeleteNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+    if (tabName === 'edit') {
+      this.modalService.open(EditAdComponent, { centered: true, backdrop: 'static', keyboard: false })
+    } else if (tabName === 'delete') {
+      this.modalService.open(DeleteAdComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
   }
   sortListByAlphabeticalOrder(): void {
