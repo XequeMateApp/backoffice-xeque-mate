@@ -1,9 +1,9 @@
 export class UserGetResponseDto {
   _id: string;
-  name: string;
+  email?: string;
+  name?: string;
+  phone?: string;
+  password: string;
   status: string;
-  email: string;
-  phone: string;
-  functions: string;
-  kyc: string;
+  filter?: string;
 }

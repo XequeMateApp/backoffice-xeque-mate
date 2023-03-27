@@ -29,9 +29,9 @@ export class UserService extends BaseService {
             );
     }
 
-    getUser(): Observable<UserGetResponseDto> {
+    getUsers(): Observable<UserGetResponseDto[]> {
         return this.httpClient
-            .get(`${this.url}user-client/authenticated`, this.authorizedHeader())
+            .get(`${this.url}user`, this.authorizedHeader())
             .pipe(map(this.extractData), catchError(this.serviceError));
     }
 }

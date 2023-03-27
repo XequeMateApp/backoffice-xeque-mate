@@ -33,7 +33,7 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'administrador'" type="radio" id="filterADM" name="functions" class="form-check-input p-2">
+                              <input formControlName="filter" value="ADMINISTRATOR" type="radio" id="filterADM" name="filter" class="form-check-input p-2">
                               <label class="form-check-label px-2" for="filterADM">
                                   Administrador
                               </label>
@@ -41,7 +41,7 @@
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input type="radio" [value]="productsData.funcoes === 'produtos'" id="filterProducts" formControlName="functions" name="functions" class="form-check-input p-2" >
+                              <input type="radio" value="PRODUCTS" id="filterProducts" formControlName="filter" name="filter" class="form-check-input p-2" >
                                         <label class="form-check-label px-2" for="filterProducts">
                                   Produtos
                               </label>
@@ -49,7 +49,7 @@
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'kyc'"  class="form-check-input p-2" name="functions" type="radio"
+                              <input formControlName="filter" value="KYC"  class="form-check-input p-2" name="filter" type="radio"
                                   id="filterKYC">
                               <label class="form-check-label px-2" for="filterKYC">
                                   KYC
@@ -60,7 +60,7 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'cliente'"   class="form-check-input p-2" name="functions" type="radio"
+                              <input formControlName="filter" value="CUSTUMERS"  class="form-check-input p-2" name="filter" type="radio"
                                   id="filterClients">
                               <label class="form-check-label px-2" for="filterClients">
                                   Clientes
@@ -69,7 +69,7 @@
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'controledeacesso'"  class="form-check-input p-2" name="functions" type="radio"
+                              <input formControlName="filter" value="ACCESCONTROL" class="form-check-input p-2" name="filter" type="radio"
                                   id="filterControl">
                               <label class="form-check-label text-nowrap px-2" for="filterControl">
                                   Controle de acesso
@@ -78,7 +78,7 @@
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'notificacoes'"    class="form-check-input p-2" name="functions" type="radio"
+                              <input formControlName="filter" value="NOTIFICATIONS"    class="form-check-input p-2" name="filter" type="radio"
                                   id="filterNotification">
                               <label class="form-check-label px-2" for="filterNotification">
                                   Notificações

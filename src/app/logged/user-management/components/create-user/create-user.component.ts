@@ -28,7 +28,7 @@ export class CreateUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       status: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-      funtions: ['', [Validators.required]],
+      filter: ['', [Validators.required]],
     })
   }
   ngOnInit(): void {
@@ -63,27 +63,24 @@ export class CreateUserComponent implements OnInit {
   confirm(): void {
     this.verifiField();
     this.request = {
-      // phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
+      phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
       email: this.form.controls['email'].value,
       name: this.form.controls['name'].value,
       status: this.form.controls['status'].value,
+      filter: this.form.controls['filter'].value,
       password: 'string',
-      kyc: 'PENDING'
     }
     console.log(this.request)
-    // this.userService.register(this.request).subscribe(
-    //   success => {
-    //     this.userService.modalRegisterForm = null;
-    //     this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-    //     this.modalService.dismissAll();
-    //   },
-    //   error => {
-    //     console.log(error)
-    //     this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
-    //   }
-    // )
+    this.userService.register(this.request).subscribe(
+      success => {
+        this.userService.modalRegisterForm = null;
+        this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+      }
+    )
   }
 }
-
-// função é permição
-// trocar nome das funções em cadastrar função pelos nomes das telas que ele tem permição de entrar
