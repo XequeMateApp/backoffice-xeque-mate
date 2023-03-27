@@ -40,11 +40,6 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  confirmStepTwo() {
-    this.stepTwo = false;
-    this.stepThree = true;
-  }
-
   goBackStepOne() {
     this.stepOne = true;
     this.stepTwo = false;
@@ -54,14 +49,12 @@ export class ForgotPasswordComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  confirmPasswordChange() {
-    this.router.navigate(['/']);
-  }
-
   confirmSendEmail() {
     let request = {
       email: this.formOne.controls['email'].value
     }
+    console.log(request);
+
     this.userService.resetPasswordVerification(request).subscribe({
       next: data => {
         console.log(data);
@@ -69,59 +62,54 @@ export class ForgotPasswordComponent implements OnInit {
         this.stepTwo = true;
       },
       error: error => {
+        console.log(request);
         this.toastrService.error('Email inválido!', '', { progressBar: true });
       }
     })
   }
 
-  // confirmSendCode() {
-  //   let requestEmail = this.form.controls['email'].value
-  //   let requestCode = this.form.controls['code1'].value + this.form.controls['code2'].value + this.form.controls['code3'].value + this.form.controls['code4'].value + this.form.controls['code5'].value + this.form.controls['code6'].value;
+  confirmSendCode() {
+    let requestEmail = this.formOne.controls['email'].value;
+    let requestCode = this.formTwo.controls['code'].value;
 
-  //   this.userService.verifyCode(requestCode, requestEmail).subscribe({
-  //     next: data => {
+    this.userService.verifyCode(requestCode, requestEmail).subscribe({
+      next: data => {
+        if (this.formTwo.controls['code'].value !== '') {
+          this.stepTwo = false;
+          this.stepThree = true;
+        } else {
+          this.toastrService.error('Preencha o codigo completo!', '', { progressBar: true })
+        }
+      },
+      error: error => {
+        this.toastrService.error('Email inválido!', '', { progressBar: true })
+      }
+    })
 
-  //       if (this.form.controls['code1'].value !== '' && this.form.controls['code2'].value !== '' && this.form.controls['code3'].value !== '' && this.form.controls['code4'].value !== '' && this.form.controls['code5'].value !== '' && this.form.controls['code5'].value !== '' && this.form.controls['code6'].value !== '') {
-  //         this.sendEmail = false;
-  //         this.sendCode = false;
-  //         this.forgotPassword = true;
-  //         let personalDataBorder = document.getElementById('borda-botao-credentials');
-  //         personalDataBorder.classList.remove('border-button-step-register-disabled');
-  //         personalDataBorder.classList.add('border-button-step-register-active');
+  }
 
-  //         console.log("aqui");
+  confirmNewPassword() {
+    let requestPassword = {
+      email: this.formOne.controls['email'].value,
+      code: this.formTwo.controls['code'].value,
+      newPassword: this.formThree.controls['password'].value
+    }
 
-  //       } else {
-  //         this.toastrService.error('Preencha o codigo completo!', '', { progressBar: true })
-  //       }
-  //     },
-  //     error: error => {
-  //       this.toastrService.error('Email inválido!', '', { progressBar: true })
-  //     }
-  //   })
+    this.userService.updatePassword(requestPassword).subscribe({
+      next: data => {
+        if (this.formThree.controls['password'].value !== '' && this.formThree.controls['confirmPassword'].value !== '') {
+          if (this.formThree.controls['password'].value !== this.formThree.controls['confirmPassword'].value || this.formThree.controls['confirmPassword'].value !== this.formThree.controls['password'].value) {
+            this.toastrService.success('Senha alterada com sucesso!', '', { progressBar: true })
+            this.router.navigate(['/']);
+          }
+        } else {
+          this.toastrService.error('Preencha os campos de senha!', '', { progressBar: true })
+        }
+      }, error: error => {
+        this.toastrService.error('Erro ao atualizar a senha!', '', { progressBar: true })
+      }
 
-  // }
+    })
 
-  // confirmNewPassword() {
-  //   let requestPassword = {
-  //     email: this.form.controls['email'].value,
-  //     code: this.form.controls['code1'].value + this.form.controls['code2'].value + this.form.controls['code3'].value + this.form.controls['code4'].value + this.form.controls['code5'].value + this.form.controls['code6'].value,
-  //     newPassword: this.form.controls['newPassword'].value
-  //   }
-
-  //   this.userService.updatePassword(requestPassword).subscribe({
-  //     next: data => {
-  //       if (this.form.controls['password'].value !== '' && this.form.controls['newPassword'].value !== '') {
-  //         this.toastrService.success('Senha alterada com sucesso!', '', { progressBar: true })
-  //         this.router.navigate(['/']);
-  //       } else {
-  //         this.toastrService.error('Preencha os campos de senha!', '', { progressBar: true })
-  //       }
-  //     }, error: error => {
-  //       this.toastrService.error('Erro ao atualizar a senha!', '', { progressBar: true })
-  //     }
-
-  //   })
-
-  // }
+  }
 }
