@@ -5,6 +5,7 @@ import CryptoUtil from "src/app/utils/crypto.util";
 import { environment } from "src/environments/environment";
 
 export abstract class BaseService {
+
   protected get anonymousHeader() {
     return {
       headers: new HttpHeaders({

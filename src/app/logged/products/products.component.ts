@@ -36,6 +36,7 @@ export class ProductsComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.supplier = this.datamockService.supplier;
+    console.log(this.supplier)
     this.removeDuplicates(this.supplier)
   }
   backHome() {
