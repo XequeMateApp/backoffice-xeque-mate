@@ -3,12 +3,10 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
+import { DatamockService } from 'src/services/datamock.service';
 import { ConfirUserComponent } from './components/confir-user/confir-user.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { UserGetResponseDto } from 'src/app/dto/logged/user-get-response.dto';
-import { UserService } from 'src/services/user.service';
-
 
 @Component({
   selector: 'app-user-management',
@@ -16,80 +14,47 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
+
+
+
+  supplier: any[];
   @Input('data') meals: string[] = [];
+
   public config: PaginationInstance = {
     id: 'custom',
     itemsPerPage: 8,
     currentPage: 1
   };
-  response: UserGetResponseDto[] = [];
-  responseFilter: UserGetResponseDto[] = [];
-
   filterTerm!: string;
-  responsestatus: string;
-  uniqueFilter: string[];
+
   constructor(
-    private userService: UserService,
+    private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
-  ) {
-  }
-  ngAfterViewInit(): void {
-    this.getUsers();
-  }
+  ) { }
 
   ngOnInit(): void {
+    this.supplier = this.datamockService.supplier;
   }
 
-
-  getUsers() {
-    this.userService.getUsers().subscribe(
-      response => {
-        this.response = response;
-        this.responseFilter = response.map(response => {
-          this.translateFilter(response);
-          return response;
-        });
-        const uniqueFilterDict = response.reduce<{ [filter: string]: boolean }>(
-          (uniqueFilter, { filter }) => {
-            uniqueFilter[filter] = true;
-            return uniqueFilter;
-          },
-          {}
-        );
-        this.uniqueFilter = Object.keys(uniqueFilterDict);
-        console.log(this.uniqueFilter);
-        console.log(this.response);
-      },
-      error => { console.error(error, 'data not collected') }
-    )
-  }
-  translateFilter(response: UserGetResponseDto) {
-    if (response.filter === 'ADMINISTRATOR') response.filter = 'Administrador';
-    else if (response.filter === 'PRODUCTS') response.filter = 'Produto';
-    else if (response.filter === 'KYC') response.filter = 'Kyc';
-    else if (response.filter === 'CUSTOMERS') response.filter = 'Cliente';
-    else if (response.filter === 'ACCESCONTROL') response.filter = 'Controle de acesso';
-    else if (response.filter === 'NOTIFICATIONS') response.filter = 'Notificações';
-  }
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
-
   sortListByAlphabeticalOrder(): void {
-    this.response.sort((a, b) => {
+    this.supplier.sort((a, b) => {
       return a.name.localeCompare(b.name);
-    });
+    }
+    );
   }
+  sortListByType(value: string) {
+    if (value === 'cliente') this.supplier.sort((a, b) => { return a.type.localeCompare(b.type); });
+    else if (value === 'KYC') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
+    else if (value === 'clientes') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
+    else if (value === 'controledeacesso') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
+    else if (value === 'notificacoes') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
+    else if (value === 'produtos') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
+    else if (value === 'administrador') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
 
-  sortListByType(value: string): void {
-    // console.log(value)
-    // if (value === 'Administrador') this.response.sort((a, b) => { return a.filter.localeCompare(b.filter); });
-    // else if (value === 'Produto') this.response.sort((a, b) => { return b.filter.localeCompare(a.filter); });
-    // else if (value === 'Kyc') this.response.sort((a, b) => { return b.filter.localeCompare(a.filter); });
-    // else if (value === 'Cliente') this.response.sort((a, b) => { return b.filter.localeCompare(a.filter); });
-    // else if (value === 'Controle de acesso') this.response.sort((a, b) => { return b.filter.localeCompare(a.filter); });
-    // else if (value === 'Notificações') this.response.sort((a, b) => { return b.filter.localeCompare(a.filter); });
   }
 
   createOpenModal() {
@@ -97,8 +62,7 @@ export class UserManagementComponent implements OnInit {
 
   }
   openModals(tabName: string, info: string[]) {
-    // enviando dados pro localhost
-    LocalStorageUtil.set(LocalStorageKeys.productsData, info)
+    LocalStorageUtil.set(LocalStorageKeys.userData, info)
     if (tabName === 'Edit') {
       this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
