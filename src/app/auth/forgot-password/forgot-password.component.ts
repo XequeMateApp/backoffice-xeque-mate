@@ -94,20 +94,21 @@ export class ForgotPasswordComponent implements OnInit {
       code: this.formTwo.controls['code'].value,
       newPassword: this.formThree.controls['password'].value
     }
-
-    this.userService.updatePassword(requestPassword).subscribe({
-      next: data => {
-        if (this.formThree.controls['password'].value !== '' && this.formThree.controls['confirmPassword'].value !== '') {
-          this.toastrService.success('Senha alterada com sucesso!', '', { progressBar: true })
-          this.router.navigate(['/']);
-        } else {
-          this.toastrService.error('Preencha os campos de senha!', '', { progressBar: true })
-        }
-      }, error: error => {
-        this.toastrService.error('Erro ao atualizar a senha!', '', { progressBar: true })
+    if (this.formThree.controls['password'].value !== '' && this.formThree.controls['confirmPassword'].value !== '') {
+      if (this.formThree.controls['password'].value == this.formThree.controls['confirmPassword'].value) {
+        this.userService.updatePassword(requestPassword).subscribe({
+          next: data => {
+            this.toastrService.success('Senha alterada com sucesso!', '', { progressBar: true });
+            this.router.navigate(['/']);
+          }, error: error => {
+            this.toastrService.error('Erro ao atualizar a senha!', '', { progressBar: true });
+          }
+        })
+      } else {
+        this.toastrService.error('As senhas precisam ser iguais!', '', { progressBar: true });
       }
-
-    })
-
+    } else {
+      this.toastrService.error('Preencha os campos de senha!', '', { progressBar: true });
+    }
   }
 }
