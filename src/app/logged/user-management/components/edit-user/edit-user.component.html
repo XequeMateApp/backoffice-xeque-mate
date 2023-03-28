@@ -1,114 +1,108 @@
-<form [formGroup]="form" class="row mx-2 w3-white p-4 br-16">
-  <div class="col-12 d-flex align-items-center justify-content-between">
-      <h2 class="text-dark mb-0 fw-bolder">Editar Usuário</h2>
-      <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class="" />
-  </div>
-  <div class="col-12 mt-3">
-      <div class="row px-0">
-          <div class="col-md-8">
-              <label for="edit-name">Nome</label>
-              <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" />
-          </div>
-          <div class="col-md-4">
-              <label for="edit-status">Status</label>
-              <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
-                  <option [disabled]="true" [selected]="true">Selecione</option>
-                  <option [selected]="editNotStatus === 'active'" value="Active" value="active">🟢 Ativo</option>
-                  <option [selected]="editNotStatus === 'inactive'" value="Inactive" value="inactive">🔴 Inativo</option>
-              </select>
-          </div>
-          <div class="col-md-6 mt-3">
-            <label for="edit-name">E-mail</label>
-            <input type="text" id="edit-name"  class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="email" />
+<form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+        <h2 class="text-dark mb-0 fw-bolder">Editar Usuário</h2>
+        <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
+    </div>
+    <div class="col-12 mt-3">
+        <div class="row px-0">
+            <div class="col-md-8">
+                <label for="edit-name">Nome</label>
+                <input type="text" id="edit-name" class="form-control br-16 mb-2 bordder py-3" placeholder="Digite o nome" formControlName="name" />
+            </div>
+            <div class="col-md-4">
+                <label for="edit-status">Status</label>
+                <select formControlName="status" id="edit-status" class="form-select py-3 mb-2 br-16"
+                    aria-label="Default status">
+                    <option [disabled]="true" [selected]="true">Selecione</option>
+                    <option [selected]="!userDataStatus" value="active">🟢 Ativo</option>
+                    <option [selected]="userDataStatus" value="inactive">🔴 Inativo</option> 
+                </select>
+            </div>
+             <div class="col-md-6">
+                <label for="edit-name">E-mail</label>
+                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="email" />
+            </div>
+             <div class="col-md-6">
+                <label for="edit-name">Telefone</label>
+                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="tel" />
+            </div>
+            <div class="col-12 mt-4 mb-2">
+                <label class="" for="edit-content">Filtro</label>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div role="button" class="form-check align-items-baseline d-flex">
+                                    <input formControlName="funcoes" [checked]="checkAdm === 'administrador'" type="radio" id="filterADM" name="filter" class="form-check-input p-2">
+                                    <label class="form-check-label px-2" for="filterADM">
+                                        Administrador
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div role="button" class="form-check align-items-baseline d-flex">
+                                    <input type="radio" [checked]="checkProd === 'produtos'" id="filterProducts" formControlName="funcoes" name="filter" class="form-check-input p-2" >    
+                                              <label class="form-check-label px-2" for="filterProducts">
+                                        Produtos
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div role="button" class="form-check align-items-baseline d-flex">
+                                    <input formControlName="funcoes"[checked]="checkKyc === 'kyc'" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterKYC">
+                                    <label class="form-check-label px-2" for="filterKYC">
+                                        KYC
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div role="button" class="form-check align-items-baseline d-flex">
+                                    <input formControlName="funcoes"[checked]="checkClient === 'clientes'" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterClients">
+                                    <label class="form-check-label px-2" for="filterClients">
+                                        Clientes
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div role="button" class="form-check align-items-baseline d-flex">
+                                    <input formControlName="funcoes"[checked]="checkControlAccess === 'controledeacesso'" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterControl">
+                                    <label class="form-check-label text-nowrap px-2" for="filterControl">
+                                        Controle de acesso
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div role="button" class="form-check align-items-baseline d-flex">
+                                    <input formControlName="funcoes" [checked]="checkNot === 'notificacoes'" class="form-check-input p-2" name="filter" type="radio"
+                                        id="filterNotification">
+                                    <label class="form-check-label px-2" for="filterNotification">
+                                        Notificações
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row px-0">
+                        <div class="col-md-6 mt-3">
+                            <button type="button" (click)="exit()" class="btn w3-white h3 text-dark-blue w-100 py-3">
+                                <h4 class="mb-0">Cancelar</h4>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                                <h4 class="mb-0">Salvar</h4>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-         <div class="col-md-6 mt-3">
-            <label for="edit-name">Telefone</label>
-            <input type="text" id="edit-name" mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="phone" />
-        </div>
-          <div class="col-12 mt-4 mb-2">
-            <label class="" for="edit-content">Filtro</label>
-            <div class="row">
-              <div class="col-md-12">
-                  <div class="row">
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="ADMINISTRATOR"
-                              [checked]="form.controls['filter'].value === 'ADMINISTRATOR'" type="radio"
-                              id="filterADM" class="form-check-input p-2">
-                              <label class="form-check-label px-2" for="filterADM">
-                                  Administrador
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input type="radio" [checked]="form.controls['filter'].value === 'PRODUCTS'" id="filterProducts"
-                              formControlName="filter" value="PRODUCTS" class="form-check-input p-2" >
-                              <label class="form-check-label px-2" for="filterProducts">
-                                  Produtos
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="KYC"  [checked]="form.controls['filter'].value === 'KYC'"
-                              class="form-check-input p-2" type="radio" id="filterKYC">
-                              <label class="form-check-label px-2" for="filterKYC">
-                                  KYC
-                              </label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="CUSTOMERS"
-                              [checked]="form.controls['filter'].value === 'CUSTOMERS'" class="form-check-input p-2"
-                              type="radio" id="filterClients">
-                              <label class="form-check-label px-2" for="filterClients">
-                                  Clientes
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="ACCESCONTROL"
-                              [checked]="form.controls['filter'].value === 'ACCESCONTROL'"
-                              class="form-check-input p-2"
-                              type="radio" id="filterControl">
-                              <label class="form-check-label text-nowrap px-2" for="filterControl">
-                                  Controle de acesso
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="NOTIFICATIONS"
-                              [checked]="form.controls['filter'].value === 'NOTIFICATIONS'" class="form-check-input p-2"
-                              type="radio" id="filterNotification">
-                              <label class="form-check-label px-2" for="filterNotification">
-                                  Notificações
-                              </label>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-              <div class="col-12">
-                  <div class="row px-0">
-                      <div class="col-md-6 mt-3">
-                          <button type="button" (click)="exit()" class="btn w3-white h3 text-dark-blue w-100 py-3">
-                              <h4 class="mb-0">Cancelar</h4>
-                          </button>
-                      </div>
-                      <div class="col-md-6 mt-3">
-                          <button (click)="confirm()" type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
-                              <h4 class="mb-0">Salvar</h4>
-                          </button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    </div>
 </form>

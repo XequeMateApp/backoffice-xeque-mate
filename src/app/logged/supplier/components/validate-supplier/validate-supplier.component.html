@@ -3,7 +3,7 @@
         <h2 class="mb-0 fw-bolder text-center">Validar Fornecedor</h2>
         <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" style="height: fit-content;">
     </div>
-    <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
+    <form [formGroup]="form" class="col-12 mt-4">
         <div class="row">
             <div class="col-md-6">
                 <div *ngFor="let file of selectFile" style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; height:251px;" class="br-16 w-100 border"></div>

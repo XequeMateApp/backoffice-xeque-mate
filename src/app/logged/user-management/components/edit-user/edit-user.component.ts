@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
-import { UserPutRequestDto } from 'src/app/dto/logged/user-put-request.dto';
-import { UserService } from 'src/services/user.service';
+import { SupplierInterface } from 'src/app/interface/supplier.interface';
+import { DatamockService } from 'src/services/datamock.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -12,78 +11,46 @@ import { UserService } from 'src/services/user.service';
 })
 export class EditUserComponent implements OnInit {
   form: FormGroup;
-  productsData: any;
-  editNotStatus: string;
-  filtername = 'filter'
-  request: UserPutRequestDto;
-  checked: string;
-  truephone: any;
+  userEdit: SupplierInterface[];
+  userDataStatus: any;
+  userData: any;
+  checkAdm: any;
+  checkProd: any;
+  checkKyc: any;
+  checkClient: any;
+  checkControlAccess: any;
+  checkNot: any;
   constructor(
+    private datamockService: DatamockService,
     private modalService: NgbModal,
-    private userService: UserService,
-    private formBuilder: FormBuilder,
-    private toastrService: ToastrService,
-  ) {
-
+    private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      status: ['', [Validators.required]],
-      phone: [''],
-      filter: ['', [Validators.required]],
-    });
-
+      name: [''],
+      email: [''],
+      tel: [''],
+      funcoes: [''],
+      status: [''],
+    })
   }
-
 
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    this.editNotStatus = this.productsData.status;
-    if (this.productsData.filter === 'Administrador') this.productsData.filter = 'ADMINISTRATOR';
-    else if (this.productsData.filter === 'Produto') this.productsData.filter = 'PRODUCTS';
-    else if (this.productsData.filter === 'Kyc') this.productsData.filter = 'KYC';
-    else if (this.productsData.filter === 'Cliente') this.productsData.filter = 'CUSTOMERS';
-    else if (this.productsData.filter === 'Controle de acesso') this.productsData.filter = 'ACCESCONTROL';
-    else if (this.productsData.filter === 'Notificações') this.productsData.filter = 'NOTIFICATIONS';
-    this.form.controls['name'].setValue(this.productsData.name)
-    this.form.controls['email'].setValue(this.productsData.email)
-    this.form.controls['status'].setValue(this.productsData.status)
-    this.form.controls['phone'].setValue(this.productsData.phone)
-    this.checked = this.productsData.filter;
-    this.form.patchValue({ filter: this.productsData.filter });
-    console.log(this.checked)
+    this.userData = JSON.parse(localStorage.getItem('userData'))
+    this.userEdit = this.datamockService.getsupplier();
+    this.form.controls['name'].setValue(this.userData.name)
+    this.form.controls['email'].setValue(this.userData.email)
+    this.form.controls['tel'].setValue(this.userData.tel)
+    
+    this.checkAdm = this.form.controls['funcoes'].setValue(this.userData.funcoes)
+    this.checkProd = this.form.controls['funcoes'].setValue(this.userData.funcoes)
+    this.checkKyc = this.form.controls['funcoes'].setValue(this.userData.funcoes)
+    this.checkClient = this.form.controls['funcoes'].setValue(this.userData.funcoes)
+    this.checkControlAccess = this.form.controls['funcoes'].setValue(this.userData.funcoes)
+    this.checkNot = this.form.controls['funcoes'].setValue(this.userData.funcoes)
+
+
   }
-
-
   exit() {
     this.modalService.dismissAll()
   }
-
-
-  confirm() {
-    console.log(this.form.controls['phone'].value,' tipo ofi')
-    if(this.form.controls['phone'].value === undefined) this.truephone = '';
-    else this.truephone = `+55${this.form.controls['phone'].value}`;
-    this.request = {
-      phone: this.truephone,
-      email: this.form.controls['email'].value,
-      name: this.form.controls['name'].value,
-      status: this.form.controls['status'].value,
-      filter: this.form.controls['filter'].value,
-    }
-    console.log(this.request)
-    // this.userService.editUsers(this.productsData._id, this.request).subscribe(
-    //   success => {
-    //     // mostar card dizendo tudo bem
-    //       // window.location.reload();
-    //     this.toastrService.success('DEU BOM!', '', { progressBar: true });
-    //     // função somir todos os modais
-    //     this.modalService.dismissAll();
-    //   },
-    //   error => {
-    //     console.log(error)
-    //     this.toastrService.error('DEU RUIM!!!!!', '', { progressBar: true });
-    //   }
-    // )
-  }
+  confirm(): void { }
 }
