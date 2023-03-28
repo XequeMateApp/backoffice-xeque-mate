@@ -98,10 +98,8 @@ export class ForgotPasswordComponent implements OnInit {
     this.userService.updatePassword(requestPassword).subscribe({
       next: data => {
         if (this.formThree.controls['password'].value !== '' && this.formThree.controls['confirmPassword'].value !== '') {
-          if (this.formThree.controls['password'].value !== this.formThree.controls['confirmPassword'].value || this.formThree.controls['confirmPassword'].value !== this.formThree.controls['password'].value) {
-            this.toastrService.success('Senha alterada com sucesso!', '', { progressBar: true })
-            this.router.navigate(['/']);
-          }
+          this.toastrService.success('Senha alterada com sucesso!', '', { progressBar: true })
+          this.router.navigate(['/']);
         } else {
           this.toastrService.error('Preencha os campos de senha!', '', { progressBar: true })
         }
