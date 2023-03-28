@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
 
 export abstract class BaseService {
 
-  protected anonymousHeader() {
+  protected get anonymousHeader() {
     return {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
@@ -14,7 +14,7 @@ export abstract class BaseService {
     };
   }
 
-  protected authorizedHeader() {
+  protected get authorizedHeader() {
     const userJson = localStorage.getItem("user") as string;
     const user: UserAuthenticatedDto = JSON.parse(userJson);
 
