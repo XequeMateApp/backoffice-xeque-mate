@@ -16,7 +16,7 @@ export const environment = {
   maxImgageSize: 10485760,
   maxDocumentSize: 10485760,
   api: {
-    xequeMateApi: 'http://localhost:3000/'
+    xequeMateApi: 'http://localhost:3000/backoffice/'
   },
   encryptKey: '567e61fddbe8a715df61d805f2551b8a'
 
