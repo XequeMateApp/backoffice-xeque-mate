@@ -1,6 +1,6 @@
-<form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
+<form [formGroup]="form" class="row mx-2 w3-white p-4 br-16">
   <div class="col-12 d-flex align-items-center justify-content-between">
-      <h2 class="text-dark mb-0 fw-bolder">Cadastrar Usuário</h2>
+      <h2 class="text-dark mb-0 fw-bolder">Editar Usuário</h2>
       <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class="" />
   </div>
   <div class="col-12 mt-3">
@@ -13,8 +13,8 @@
               <label for="edit-status">Status</label>
               <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
                   <option [disabled]="true" [selected]="true">Selecione</option>
-                  <option [selected]="editNotStatus === 'Ativo'" value="Active" value="active">🟢 Ativo</option>
-                  <option [selected]="editNotStatus === 'Inativo'" value="Inactive" value="inactive">🔴 Inativo</option>
+                  <option [selected]="editNotStatus === 'active'" value="Active" value="active">🟢 Ativo</option>
+                  <option [selected]="editNotStatus === 'inactive'" value="Inactive" value="inactive">🔴 Inativo</option>
               </select>
           </div>
           <div class="col-md-6 mt-3">
@@ -23,7 +23,7 @@
         </div>
          <div class="col-md-6 mt-3">
             <label for="edit-name">Telefone</label>
-            <input type="text" id="edit-name" mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="tel" />
+            <input type="text" id="edit-name" mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="phone" />
         </div>
           <div class="col-12 mt-4 mb-2">
             <label class="" for="edit-content">Filtro</label>
@@ -32,7 +32,9 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'administrador'" [checked]="checked === 'administrador'" type="radio" id="filterADM" name="functions" class="form-check-input p-2">
+                              <input formControlName="filter" value="ADMINISTRATOR"
+                              [checked]="form.controls['filter'].value === 'ADMINISTRATOR'" type="radio"
+                              id="filterADM" class="form-check-input p-2">
                               <label class="form-check-label px-2" for="filterADM">
                                   Administrador
                               </label>
@@ -40,16 +42,17 @@
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input type="radio" [checked]="checked === 'produtos'" [value]="productsData.funcoes === 'produtos'" id="filterProducts" formControlName="functions" name="functions" class="form-check-input p-2" >
-                                        <label class="form-check-label px-2" for="filterProducts">
+                              <input type="radio" [checked]="form.controls['filter'].value === 'PRODUCTS'" id="filterProducts"
+                              formControlName="filter" value="PRODUCTS" class="form-check-input p-2" >
+                              <label class="form-check-label px-2" for="filterProducts">
                                   Produtos
                               </label>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions"[checked]="checked === 'kyc'"[value]="productsData.funcoes === 'kyc'"  class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterKYC">
+                              <input formControlName="filter" value="KYC"  [checked]="form.controls['filter'].value === 'KYC'"
+                              class="form-check-input p-2" type="radio" id="filterKYC">
                               <label class="form-check-label px-2" for="filterKYC">
                                   KYC
                               </label>
@@ -59,8 +62,9 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'cliente'"  [checked]="checked === 'cliente'" class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterClients">
+                              <input formControlName="filter" value="CUSTOMERS"
+                              [checked]="form.controls['filter'].value === 'CUSTOMERS'" class="form-check-input p-2"
+                              type="radio" id="filterClients">
                               <label class="form-check-label px-2" for="filterClients">
                                   Clientes
                               </label>
@@ -68,8 +72,10 @@
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'controledeacesso'"  [checked]="checked === 'controledeacesso'" class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterControl">
+                              <input formControlName="filter" value="ACCESCONTROL"
+                              [checked]="form.controls['filter'].value === 'ACCESCONTROL'"
+                              class="form-check-input p-2"
+                              type="radio" id="filterControl">
                               <label class="form-check-label text-nowrap px-2" for="filterControl">
                                   Controle de acesso
                               </label>
@@ -77,8 +83,9 @@
                       </div>
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'notificacoes'"  [checked]="checked === 'notificacoes'" class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterNotification">
+                              <input formControlName="filter" value="NOTIFICATIONS"
+                              [checked]="form.controls['filter'].value === 'NOTIFICATIONS'" class="form-check-input p-2"
+                              type="radio" id="filterNotification">
                               <label class="form-check-label px-2" for="filterNotification">
                                   Notificações
                               </label>
@@ -95,7 +102,7 @@
                           </button>
                       </div>
                       <div class="col-md-6 mt-3">
-                          <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                          <button (click)="confirm()" type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
                               <h4 class="mb-0">Salvar</h4>
                           </button>
                       </div>

@@ -12,11 +12,18 @@ import { UserService } from 'src/services/user.service';
 })
 export class CreateUserComponent implements OnInit {
   @ViewChild('createname') createname: ElementRef;
+  @ViewChild('createemail') createemail: ElementRef;
+  @ViewChild('createstatus') createstatus: ElementRef;
+  @ViewChild('createfilter') createfilter: ElementRef;
+
   form: FormGroup;
   request: UserRegisterRequestDto;
   productsData: any;
   editNotStatus: string;
   alertFieldsName = false;
+  alertFieldsEmail = false;
+  alertFieldsStatus = false;
+  alertFieldsFilter = false;
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -41,15 +48,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   verifiField() {
-    const fieldEmail = document.getElementById(
-      '#create-email'
-    ) as HTMLElement;
-    const fieldPhone = document.getElementById(
-      '#create-phone'
-    ) as HTMLElement;
-    const fieldStatus = document.getElementById(
-      '#create-status'
-    ) as HTMLElement;
     if (this.form.controls['name'].value === '') {
       this.createname.nativeElement.classList.add("border-danger","border", "text-danger");
       this.alertFieldsName = true;
@@ -58,11 +56,41 @@ export class CreateUserComponent implements OnInit {
         this.alertFieldsName = false;
       }, 5000);
     }
+    else if (this.form.controls['email'].value === '') {
+      this.createemail.nativeElement.classList.add("border-danger","border", "text-danger");
+      this.alertFieldsEmail = true;
+      setInterval(() => {
+        this.createemail.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.alertFieldsEmail = false;
+      }, 5000);
+    }
+    else if (this.form.controls['status'].value === '') {
+      this.createstatus.nativeElement.classList.add("border-danger","border", "text-danger");
+      this.alertFieldsStatus = true;
+      setInterval(() => {
+        this.createstatus.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.alertFieldsStatus = false;
+      }, 5000);
+    }
+    else if (this.form.controls['filter'].value === '') {
+      this.createfilter.nativeElement.classList.add("border-danger","border", "text-danger");
+      this.alertFieldsFilter = true;
+      setInterval(() => {
+        this.createfilter.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.alertFieldsFilter = false;
+      }, 5000);
+    }
   }
 
   confirm(): void {
     this.verifiField();
-    this.request = {
+    if(
+      this.form.controls['name'].value !== '' &&
+      this.form.controls['email'].value !== '' &&
+      this.form.controls['status'].value !== '' &&
+      this.form.controls['filter'].value !==  ''
+    ){
+         this.request = {
       phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
       email: this.form.controls['email'].value,
       name: this.form.controls['name'].value,
@@ -71,16 +99,18 @@ export class CreateUserComponent implements OnInit {
       password: 'string',
     }
     console.log(this.request)
-    this.userService.register(this.request).subscribe(
-      success => {
-        this.userService.modalRegisterForm = null;
-        this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-        this.modalService.dismissAll();
-      },
-      error => {
-        console.log(error)
-        this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
-      }
-    )
+    // this.userService.register(this.request).subscribe(
+    //   success => {
+    //     this.userService.modalRegisterForm = null;
+    //     this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+    //     this.modalService.dismissAll();
+    //   },
+    //   error => {
+    //     console.log(error)
+    //     this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+    //   }
+    // )
+    }
+
   }
 }

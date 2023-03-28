@@ -97,6 +97,7 @@ export class UserManagementComponent implements OnInit {
 
   }
   openModals(tabName: string, info: string[]) {
+    // enviando dados pro localhost
     LocalStorageUtil.set(LocalStorageKeys.productsData, info)
     if (tabName === 'Edit') {
       this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })

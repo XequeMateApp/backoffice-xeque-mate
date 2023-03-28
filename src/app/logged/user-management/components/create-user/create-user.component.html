@@ -12,24 +12,26 @@
           </div>
           <div class="col-md-4">
               <label for="create-status">Status</label>
-              <select formControlName="status" id="create-status" class="form-select py-3 br-16" aria-label="Default status" [required]="true">
+              <select formControlName="status" #createstatus id="create-status" class="form-select py-3 br-16" aria-label="Default status" [required]="true">
                   <option [disabled]="true" [selected]="true">Selecione</option>
                   <option value="active">🟢 Ativo</option>
                   <option value="inactive">🔴 Inativo</option>
               </select>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo <b>STATUS</b> está vazio</label>
           </div>
           <div class="col-md-6 mt-3">
             <label for="create-email">E-mail</label>
-            <input type="email" id="create-email"  class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="email" [required]="true" />
+            <input type="email" #createemail  id="create-email"  class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="email" [required]="true" />
+            <label class="text-danger mt-1" *ngIf="alertFieldsEmail" for="create-email">Campo <b>Email</b> está vazio</label>
         </div>
          <div class="col-md-6 mt-3">
             <label for="create-phone">Telefone</label>
             <input type="text" id="create-phone" #createphone  mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="phone" />
         </div>
           <div class="col-12 mt-4 mb-2">
-            <label class="" for="create-content">Filtro</label>
+            <label class="" for="create-content">Função</label>
             <div class="row">
-              <div class="col-md-12">
+              <div #createfilter  class="col-md-12 br-16">
                   <div class="row">
                       <div class="col-md-4">
                           <div role="button" class="form-check align-items-baseline d-flex">
@@ -87,6 +89,8 @@
                       </div>
                   </div>
               </div>
+            <label class="text-danger mt-1" *ngIf="alertFieldsFilter" for="create-filter">Campo <b>Função</b> está vazio</label>
+
           </div>
               <div class="col-12">
                   <div class="row px-0">
