@@ -20,8 +20,8 @@ export class EditUserComponent implements OnInit {
   truephone: any;
   constructor(
     private modalService: NgbModal,
-    private userService: UserService,
     private formBuilder: FormBuilder,
+    private userService: UserService,
     private toastrService: ToastrService,
   ) {
 
