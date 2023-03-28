@@ -13,8 +13,8 @@
               <label for="edit-status">Status</label>
               <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
                   <option [disabled]="true" [selected]="true">Selecione</option>
-                  <option [selected]="editNotStatus === 'Ativo'" value="Active" >🟢 Ativo</option>
-                  <option [selected]="editNotStatus === 'Inativo'" value="inactive">🔴 Inativo</option>
+                  <option [selected]="editNotStatus === 'Ativo'" value="Active" value="active">🟢 Ativo</option>
+                  <option [selected]="editNotStatus === 'Inativo'" value="Inactive" value="inactive">🔴 Inativo</option>
               </select>
           </div>
           <div class="col-12 mt-4 mb-2">

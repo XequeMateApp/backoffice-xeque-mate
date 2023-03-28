@@ -12,6 +12,7 @@ import { ProductsComponent } from "./products/products.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { CategorysComponent } from "./categorys/categorys.component";
 import { MarketingComponent } from "./marketing/marketing.component";
+import { EditCategoryComponent } from "./categorys/components/edit-category/edit-category.component";
 const routerConfig: Routes = [
   {
     path: 'logged',
@@ -25,6 +26,9 @@ const routerConfig: Routes = [
       },
       {
         path: 'marketing', component: MarketingComponent
+      },
+      {
+        path: 'a', component: EditCategoryComponent
       },
       {
         path: 'user-profile', component: UserProfileComponent

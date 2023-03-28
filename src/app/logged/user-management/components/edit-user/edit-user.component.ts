@@ -61,8 +61,8 @@ export class EditUserComponent implements OnInit {
 
 
   confirm() {
-    console.log(this.form.controls['phone'].value, ' tipo ofi')
-    if (this.form.controls['phone'].value === undefined) this.truephone = '';
+    console.log(this.form.controls['phone'].value,' tipo ofi')
+    if(this.form.controls['phone'].value === undefined) this.truephone = '';
     else this.truephone = `+55${this.form.controls['phone'].value}`;
     this.request = {
       phone: this.truephone,
@@ -75,7 +75,7 @@ export class EditUserComponent implements OnInit {
     this.userService.editUsers(this.productsData._id, this.request).subscribe(
       success => {
         // mostar card dizendo tudo bem
-        window.location.reload();
+          // window.location.reload();
         this.toastrService.success('DEU BOM!', '', { progressBar: true });
         // função somir todos os modais
         this.modalService.dismissAll();
