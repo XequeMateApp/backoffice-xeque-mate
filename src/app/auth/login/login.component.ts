@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['logged/dashboard']);
       },
       error: error => {
+        console.log(error);
         this.toastrService.error('erro ao realizar login / Email ou senha inválidos', '', { progressBar: true })
       }
     })

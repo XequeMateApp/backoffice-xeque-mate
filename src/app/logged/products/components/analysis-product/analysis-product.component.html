@@ -7,7 +7,7 @@
           src="../../../../../assets/icons/x.png"
           style="height: fit-content;">
       </div>
-      <form [formGroup]="form" class="col-12 mt-4">
+      <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
         <div class="row">
           <div class="col-md-12">
             <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
