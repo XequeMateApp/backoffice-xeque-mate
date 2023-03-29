@@ -10,6 +10,7 @@ import { UserRegisterRequestDto } from 'src/app/dto/logged/user.register-request
 import { UserRegisterResponseDto } from 'src/app/dto/logged/user-register-response.dto';
 import { UserGetResponseDto } from 'src/app/dto/logged/user-get-response.dto';
 import { UserPutRequestDto } from 'src/app/dto/logged/user-put-request.dto';
+import { UserDeleteRequestDto } from 'src/app/dto/logged/user-delete-request.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +60,19 @@ export class UserService extends BaseService {
       .put(`${this.url}/update/id/${userID}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+
+  deleteUsers(userID: string): Observable<UserDeleteRequestDto> {
+    return this.httpClient
+      .patch(`${this.url}/delete/id/${userID}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  // deleteUsers(): Observable<UserDeleteRequestDto> {
+  //   return this.httpClient.delete<UserDeleteRequestDto>(
+  //     `${this.url}/delete/id/`,
+  //     this.authorizedHeader
+  //   );
+  // }
 
   getUsers(): Observable<UserGetResponseDto[]> {
     return this.httpClient

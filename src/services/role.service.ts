@@ -19,11 +19,16 @@ export class RoleService extends BaseService {
   }
   register(dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
     return this.httpClient
-      .post(`${this.url}register`, dto, this.anonymousHeader)
+      .post(`${this.url}register`, dto, this.authorizedHeader)
       .pipe(
         map(this.extractData),
         catchError(this.serviceError)
       );
+  }
+  editRoles(userID: string, dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
+    return this.httpClient
+      .patch(`${this.url}/update/id/${userID}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
   }
   getRole(): Observable<RoleResponseDto[]> {
     return this.httpClient
