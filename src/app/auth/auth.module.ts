@@ -7,12 +7,14 @@ import { AuthRouteModule } from './auth-route';
 import { AppComponent } from '../app.component';
 import { AuthComponent } from './auth.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { FirstAccessComponent } from './first-access/first-access.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
     ForgotPasswordComponent,
+    FirstAccessComponent,
   ],
   imports: [
     CommonModule,

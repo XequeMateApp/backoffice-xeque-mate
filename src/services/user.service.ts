@@ -46,6 +46,11 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+  resendEmail(email: string): Observable<{ isValid: boolean }> {
+    return this.httpClient
+      .post<{ isValid: boolean }>(`${this.url}/resend-email/${email}`, this.anonymousHeader);
+  }
+
   register(dto: UserRegisterRequestDto): Observable<UserRegisterResponseDto> {
     return this.httpClient
       .post(`${this.url}/register`, dto, this.anonymousHeader)

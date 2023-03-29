@@ -5,11 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/services/user.service';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  selector: 'app-first-access',
+  templateUrl: './first-access.component.html',
+  styleUrls: ['./first-access.component.scss']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class FirstAccessComponent implements OnInit {
 
   stepOne: boolean = true;
   stepTwo: boolean = false;

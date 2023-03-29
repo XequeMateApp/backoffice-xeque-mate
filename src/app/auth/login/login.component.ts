@@ -32,6 +32,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['auth/forgot-password']);
   }
 
+  handleFirstAccess() {
+    this.router.navigate(['auth/first-access']);
+  }
+
   confirm() {
     this.authService.authenticate(this.form.value).subscribe({
       next: data => {
