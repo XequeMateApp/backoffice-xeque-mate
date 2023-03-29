@@ -31,18 +31,14 @@ export class DeleteFunctionComponent implements OnInit {
     this.form.controls['delete'].setValue(this.responseData._id)
   }
 
-  
+
   exit() {
     this.modalService.dismissAll()
   }
 
 
   delete() {
-    let request: RoleDeleteRequestDto = {
-      _id: this.responseData._id
-    }
-    console.log(request)
-    this.roleService.deleteRoles(this.responseData._id, request).subscribe({
+    this.roleService.deleteRoles(this.responseData._id).subscribe({
       next: data => {
         window.location.reload();
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
@@ -54,5 +50,6 @@ export class DeleteFunctionComponent implements OnInit {
       }
     }
     )
+
   }
 }

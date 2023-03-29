@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { UserDeleteRequestDto } from 'src/app/dto/logged/user-delete-request.dto';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -41,8 +40,7 @@ export class ConfirUserComponent implements OnInit {
         console.log(error)
         this.toastrService.error('Erro ao Excluir!', '', { progressBar: true });
       }
-    }
-    )
+    })
   }
 
 }
