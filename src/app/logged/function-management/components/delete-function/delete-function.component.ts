@@ -30,9 +30,13 @@ export class DeleteFunctionComponent implements OnInit {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.form.controls['delete'].setValue(this.responseData._id)
   }
+
+  
   exit() {
     this.modalService.dismissAll()
   }
+
+
   delete() {
     let request: RoleDeleteRequestDto = {
       _id: this.responseData._id
