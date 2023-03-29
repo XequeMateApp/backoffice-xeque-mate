@@ -31,11 +31,11 @@ export class CreateUserComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      status: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      filter: ['', [Validators.required]],
+      name: [''],
+      email: [''],
+      status: [''],
+      phone: [''],
+      filter: [''],
     })
   }
   ngOnInit(): void {
