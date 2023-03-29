@@ -19,9 +19,6 @@ export class RoleService extends BaseService {
     super();
   }
 
-
-
-
   register(dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
     return this.httpClient
       .post(`${this.url}register`, dto, this.authorizedHeader)
@@ -38,12 +35,12 @@ export class RoleService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  deleteRoles(roleId: string, dto: RoleDeleteRequestDto): Observable<RoleDeleteRequestDto> {
+
+  deleteRoles(userID: string): Observable<RoleDeleteRequestDto> {
     return this.httpClient
-      .put(`${this.url}delete/id/${roleId}`, dto, this.authorizedHeader)
+      .delete(`${this.url}delete/id/${userID}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
 
 
   getRole(): Observable<RoleResponseDto[]> {

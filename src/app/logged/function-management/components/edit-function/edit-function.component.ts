@@ -69,19 +69,19 @@ export class EditFunctionComponent implements OnInit {
       notifications: this.form.controls['notifications'].value,
     }
     console.log(this.request,  this.form.controls['notifications'].value )
-    // this.roleService.editRoles(this.request).subscribe(
-    //   success => {
-    //     // mostar card dizendo tudo bem
-    //     // window.location.reload();
-    //     this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
-    //     // função somir todos os modais
-    //     this.modalService.dismissAll();
-    //   },
-    //   error => {
-    //     console.log(error)
-    //     this.toastrService.error('Erro ao editar!', '', { progressBar: true });
-    //   }
-    // )
+    this.roleService.editRoles(this.request).subscribe(
+      success => {
+        // mostar card dizendo tudo bem
+        // window.location.reload();
+        this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
+        // função somir todos os modais
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao editar!', '', { progressBar: true });
+      }
+    )
   }
   exit() {
     this.modalService.dismissAll()
