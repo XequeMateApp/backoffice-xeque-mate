@@ -52,7 +52,6 @@ export class FunctionManagementComponent implements OnInit {
       success => {
         this.response = success;
         console.log(this.response)
-
       },
       error => { console.error(error, 'data not collected') }
     )

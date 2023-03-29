@@ -17,6 +17,10 @@ export class RoleService extends BaseService {
   constructor(private httpClient: HttpClient) {
     super();
   }
+
+
+
+  
   register(dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
     return this.httpClient
       .post(`${this.url}register`, dto, this.authorizedHeader)
@@ -25,11 +29,16 @@ export class RoleService extends BaseService {
         catchError(this.serviceError)
       );
   }
-  editRoles(userID: string, dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
+
+
+  editRoles(dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
     return this.httpClient
-      .patch(`${this.url}/update/id/${userID}`, dto, this.authorizedHeader)
+      .put(`${this.url}change-role`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+
+
+
   getRole(): Observable<RoleResponseDto[]> {
     return this.httpClient
       .get(`${this.url}list`, this.authorizedHeader)

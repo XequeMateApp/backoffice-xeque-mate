@@ -35,6 +35,7 @@ export class EditFunctionComponent implements OnInit {
   }
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
+
     this.editStatus = this.responseData.status;
     if (this.responseData.administrator === 'active')  this.form.controls['administrator'].setValue('active'); else  this.form.controls['administrator'].setValue(false);
     if (this.responseData.products === 'active') this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue(false);
@@ -43,7 +44,6 @@ export class EditFunctionComponent implements OnInit {
     if (this.responseData.accesscontrol === 'active')  this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue(false);
     if (this.responseData.notifications === 'active') this.form.controls['notifications'].setValue('active'); else  this.form.controls['notifications'].setValue(false);
     this.form.controls['name'].setValue(this.responseData.name)
-
   }
 
 
@@ -69,10 +69,10 @@ export class EditFunctionComponent implements OnInit {
       notifications: this.form.controls['notifications'].value,
     }
     console.log(this.request)
-    // this.roleService.editRoles(this.responseData._id, this.request).subscribe(
+    // this.roleService.editRoles(this.request).subscribe(
     //   success => {
     //     // mostar card dizendo tudo bem
-    //     window.location.reload();
+    //     // window.location.reload();
     //     this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
     //     // função somir todos os modais
     //     this.modalService.dismissAll();
