@@ -29,18 +29,15 @@ export class ConfirUserComponent implements OnInit {
     this.modalService.dismissAll()
   }
   delete() {
-    // let requestDTO = {
-    //   id: this.responseData._id
-    // }
-    // this.request = {
-    //   _id: this.responseData._id
-    // }
+    this.request = {
+      _id: this.responseData._id
+    }
     console.log(this.request)
     this.userService.deleteUsers(this.responseData._id).subscribe(
       success => {
         window.location.reload();
-        this.toastrService.success('Excluido com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
+        this.toastrService.success('Excluido com sucesso!', '', { progressBar: true });
       },
       error => {
         console.log(error)

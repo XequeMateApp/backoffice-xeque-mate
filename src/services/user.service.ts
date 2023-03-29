@@ -63,16 +63,9 @@ export class UserService extends BaseService {
 
   deleteUsers(userID: string): Observable<UserDeleteRequestDto> {
     return this.httpClient
-      .patch(`${this.url}/delete/id/${userID}`, this.authorizedHeader)
+      .delete(`${this.url}/delete/id/${userID}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
-  // deleteUsers(): Observable<UserDeleteRequestDto> {
-  //   return this.httpClient.delete<UserDeleteRequestDto>(
-  //     `${this.url}/delete/id/`,
-  //     this.authorizedHeader
-  //   );
-  // }
 
   getUsers(): Observable<UserGetResponseDto[]> {
     return this.httpClient
