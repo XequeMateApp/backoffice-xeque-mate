@@ -61,7 +61,7 @@ export class EditFunctionComponent implements OnInit {
     this.request = {
       name: this.form.controls['name'].value,
       status: this.form.controls['status'].value,
-      administrator: this.form.controls['administrator'].value,
+      administrator: this.form.controls['administrator'].value,  
       products: this.form.controls['products'].value,
       kyc: this.form.controls['kyc'].value,
       customers: this.form.controls['customers'].value,
