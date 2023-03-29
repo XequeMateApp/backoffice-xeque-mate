@@ -70,4 +70,10 @@ export class UserService extends BaseService {
       .get(`${this.url}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+
+  getUserInfo(): Observable<UserGetResponseDto[]> {
+    return this.httpClient
+      .get(`${this.url}/user-info`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
 }
