@@ -7,77 +7,77 @@
         <div class="row px-0">
             <div class="col-md-8">
                 <label for="edit-name">Nome</label>
-                <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" />
+                <input type="text" id="edit-name" #editename class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true" />
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="edit-name">Campo <b>NOME</b> está vazio</label>
+
             </div>
             <div class="col-md-4">
                 <label for="edit-status">Status</label>
-                <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
+                <select formControlName="status" #editstatus  id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
                     <option [disabled]="true" [selected]="true">Selecione</option>
                     <option value="active">🟢 Ativo</option>
                     <option value="inactive">🔴 Inativo</option>
                 </select>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="edit-status">Campo <b>STATUS</b> está vazio</label>
             </div>
-            <div class="col-12 mt-4 mb-2">
-              <label class="" for="edit-content">Filtro</label>
+            <div  class="col-12 mt-4 br-16 mb-2">
+              <label class="" for="edit-content">Funções</label>
               <div class="row">
-                <div class="col-md-12">
+                <div #editfunction class="col-md-12 br-16">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div role="button" class="form-check align-items-baseline d-flex">
-                                <input formControlName="functions" value="administrador"  type="radio" id="filterADM" name="filters" class="form-check-input p-2">
-                                <label class="form-check-label px-2" for="filterADM">
+                        <div class="col-md-4 my-2">
+                            <div role="button" class="d-flex">
+                              <input role="button" formControlName="administrator" #administrator value="administrador" class="outline-none check br-darkblue rounded bg-transparent position-relative" type="checkbox">
+                                <label class="form-check-label px-2" for="administrator">
                                     Administrador
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div role="button" class="form-check align-items-baseline d-flex">
-                                <input type="radio"  id="filterProducts" formControlName="functions" name="filters" class="form-check-input p-2" >
-                                          <label class="form-check-label px-2" for="filterProducts">
-                                    Produtos
-                                </label>
-                            </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="products" #products value="products" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="products">
+                                  Produtos
+                              </label>
+                          </div>
                         </div>
-                        <div class="col-md-4">
-                            <div role="button" class="form-check align-items-baseline d-flex">
-                                <input formControlName="functions" class="form-check-input p-2" name="filters" type="radio"
-                                    id="filterKYC">
-                                <label class="form-check-label px-2" for="filterKYC">
-                                    KYC
-                                </label>
-                            </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="kyc" #kyc value="kyc" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="kyc">
+                                  Kyc
+                              </label>
+                          </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div role="button" class="form-check align-items-baseline d-flex">
-                                <input formControlName="functions" class="form-check-input p-2" name="filters" type="radio"
-                                    id="filterClients">
-                                <label class="form-check-label px-2" for="filterClients">
-                                    Clientes
-                                </label>
-                            </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="customers" #customers value="customers" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="customers">
+                                  Clientes
+                              </label>
+                          </div>
                         </div>
-                        <div class="col-md-4">
-                            <div role="button" class="form-check align-items-baseline d-flex">
-                                <input formControlName="functions" class="form-check-input p-2" name="filters" type="radio"
-                                    id="filterControl">
-                                <label class="form-check-label text-nowrap px-2" for="filterControl">
-                                    Controle de acesso
-                                </label>
-                            </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="accesscontrol" #accesscontrol value="accesscontrol" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="accesscontrol">
+                                  Controle de acesso
+                              </label>
+                          </div>
                         </div>
-                        <div class="col-md-4">
-                            <div role="button" class="form-check align-items-baseline d-flex">
-                                <input formControlName="functions" class="form-check-input p-2" name="filters" type="radio"
-                                    id="filterNotification">
-                                <label class="form-check-label px-2" for="filterNotification">
-                                    Notificações
-                                </label>
-                            </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="notifications" #notifications value="notifications" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="notifications">
+                                  Notificações
+                              </label>
+                          </div>
                         </div>
                     </div>
                 </div>
+            <label class="text-danger mt-1" *ngIf="alertFieldsFunctions" for="create-filter">Os campos <b>PERMIÇÕES</b> estão vazios</label>
             </div>
                 <div class="col-12">
                     <div class="row px-0">

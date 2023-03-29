@@ -1,6 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
-
 :root {
   --darkblue: #0F214F;
   --graylight: rgba(255, 255, 255, 0.8);
@@ -94,6 +93,7 @@
   line-height: 21px;
 }
 
+
 .input-icon-right {
   background-image: url('../src/assets/images/envelope-fill.svg');
   background-position: right 10px center;
@@ -156,13 +156,12 @@
   height: 174px;
   top: -103px;
   width: 189px;
-  
+
 }
+
 .i-file-marketing {
- 
-   height: 279px;
+  height: 279px;
   top: -103px;
-  
 }
 
 .p-name {
