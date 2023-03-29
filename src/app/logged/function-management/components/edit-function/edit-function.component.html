@@ -13,68 +13,64 @@
               <label for="edit-status">Status</label>
               <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
                   <option [disabled]="true" [selected]="true">Selecione</option>
-                  <option [selected]="editNotStatus === 'Ativo'" value="Active" >🟢 Ativo</option>
-                  <option [selected]="editNotStatus === 'Inativo'" value="inactive">🔴 Inativo</option>
+                  <option [selected]="editStatus === 'active'" value="active" >🟢 Ativo</option>
+                  <option [selected]="editStatus === 'inactive'" value="inactive">🔴 Inativo</option>
               </select>
           </div>
           <div class="col-12 mt-4 mb-2">
-            <label class="" for="edit-content">Filtro</label>
+            <label class="" for="edit-content">Funções</label>
             <div class="row">
-              <div class="col-md-12">
+              <div #editfunction class="col-md-12 br-16">
                   <div class="row">
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'administrador'" [checked]="checked === 'administrador'" type="radio" id="filterADM" name="functions" class="form-check-input p-2">
-                              <label class="form-check-label px-2" for="filterADM">
+                      <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="administrator" #administrator value="administrador" class="outline-none check br-darkblue rounded bg-transparent position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="administrator">
                                   Administrador
                               </label>
                           </div>
                       </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input type="radio" [checked]="checked === 'produtos'" [value]="productsData.funcoes === 'produtos'" id="filterProducts" formControlName="functions" name="functions" class="form-check-input p-2" >
-                                        <label class="form-check-label px-2" for="filterProducts">
-                                  Produtos
-                              </label>
-                          </div>
+                      <div class="col-md-4 my-2">
+                        <div role="button" class="d-flex">
+                          <input role="button" formControlName="products" #products value="products" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                            <label class="form-check-label px-2" for="products">
+                                Produtos
+                            </label>
+                        </div>
                       </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions"[checked]="checked === 'kyc'"[value]="productsData.funcoes === 'kyc'"  class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterKYC">
-                              <label class="form-check-label px-2" for="filterKYC">
-                                  KYC
-                              </label>
-                          </div>
+                      <div class="col-md-4 my-2">
+                        <div role="button" class="d-flex">
+                          <input role="button" formControlName="kyc" #kyc value="kyc" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                            <label class="form-check-label px-2" for="kyc">
+                                Kyc
+                            </label>
+                        </div>
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'cliente'"  [checked]="checked === 'cliente'" class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterClients">
-                              <label class="form-check-label px-2" for="filterClients">
-                                  Clientes
-                              </label>
-                          </div>
+                      <div class="col-md-4 my-2">
+                        <div role="button" class="d-flex">
+                          <input role="button" formControlName="customers" #customers value="customers" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                            <label class="form-check-label px-2" for="customers">
+                                Clientes
+                            </label>
+                        </div>
                       </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'controledeacesso'"  [checked]="checked === 'controledeacesso'" class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterControl">
-                              <label class="form-check-label text-nowrap px-2" for="filterControl">
-                                  Controle de acesso
-                              </label>
-                          </div>
+                      <div class="col-md-4 my-2">
+                        <div role="button" class="d-flex">
+                          <input role="button" formControlName="accesscontrol" #accesscontrol value="accesscontrol" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                            <label class="form-check-label px-2" for="accesscontrol">
+                                Controle de acesso
+                            </label>
+                        </div>
                       </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="functions" [value]="productsData.funcoes === 'notificacoes'"  [checked]="checked === 'notificacoes'" class="form-check-input p-2" name="functions" type="radio"
-                                  id="filterNotification">
-                              <label class="form-check-label px-2" for="filterNotification">
-                                  Notificações
-                              </label>
-                          </div>
+                      <div class="col-md-4 my-2">
+                        <div role="button" class="d-flex">
+                          <input role="button" formControlName="notifications" #notifications value="notifications" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                            <label class="form-check-label px-2" for="notifications">
+                                Notificações
+                            </label>
+                        </div>
                       </div>
                   </div>
               </div>
