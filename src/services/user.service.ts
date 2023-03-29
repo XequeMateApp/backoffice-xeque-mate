@@ -66,16 +66,21 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  deleteUsers(userID: string, dto: UserDeleteRequestDto): Observable<UserDeleteRequestDto> {
+  deleteUsers(userID: string): Observable<UserDeleteRequestDto> {
     return this.httpClient
-      .patch(`${this.url}/delete/id/${userID}`, dto, this.authorizedHeader)
+      .delete(`${this.url}/delete/id/${userID}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
 
   getUsers(): Observable<UserGetResponseDto[]> {
     return this.httpClient
       .get(`${this.url}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getUserInfo(): Observable<UserGetResponseDto[]> {
+    return this.httpClient
+      .get(`${this.url}/user-info`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 }
