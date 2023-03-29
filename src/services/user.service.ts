@@ -68,18 +68,11 @@ export class UserService extends BaseService {
 
   deleteUsers(userID: string, dto: UserDeleteRequestDto): Observable<UserDeleteRequestDto> {
     return this.httpClient
-<<<<<<< Updated upstream
-      .delete(`${this.url}/delete/id/${userID}`, this.authorizedHeader)
-      .pipe(map(this.extractData), catchError(this.serviceError));
-  }
-
-=======
       .patch(`${this.url}/delete/id/${userID}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
 
->>>>>>> Stashed changes
   getUsers(): Observable<UserGetResponseDto[]> {
     return this.httpClient
       .get(`${this.url}`, this.authorizedHeader)
