@@ -19,6 +19,10 @@ export class FirstAccessComponent implements OnInit {
   formTwo: FormGroup;
   formThree: FormGroup;
 
+  timeLeft: number = 10;
+  interval: any;
+  resendButton: boolean = false;
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -60,6 +64,7 @@ export class FirstAccessComponent implements OnInit {
         console.log(data);
         this.stepOne = false;
         this.stepTwo = true;
+        this.startTimer();
       },
       error: error => {
         console.log(request);
@@ -110,5 +115,21 @@ export class FirstAccessComponent implements OnInit {
     } else {
       this.toastrService.error('Preencha os campos de senha!', '', { progressBar: true });
     }
+  }
+
+  startTimer() {
+    this.resendButton = false;
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+
+        if (this.timeLeft <= 0) {
+          clearInterval(this.interval);
+          this.resendButton = true;
+        }
+      } else {
+        this.timeLeft = 300;
+      }
+    }, 1000);
   }
 }
