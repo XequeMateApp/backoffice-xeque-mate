@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { RoleRegisterRequestDto } from 'src/app/dto/logged/role-register-request.dto';
+import { RoleService } from 'src/services/role.service';
 
 @Component({
   selector: 'app-create-function',
@@ -8,15 +11,38 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./create-function.component.scss']
 })
 export class CreateFunctionComponent implements OnInit {
+  @ViewChild('editename') editename: ElementRef;
+  @ViewChild('editstatus') editstatus: ElementRef;
+  @ViewChild('editfunction') editfunction: ElementRef;
+
+  @ViewChild('administrator') administrator: ElementRef;
+  @ViewChild('products') products: ElementRef;
+  @ViewChild('kyc') kyc: ElementRef;
+  @ViewChild('customers') customers: ElementRef;
+  @ViewChild('accesscontrol') accesscontrol: ElementRef;
+  @ViewChild('notifications') notifications: ElementRef;
+
   form: FormGroup;
+  request: RoleRegisterRequestDto;
+
+  alertFieldsName = false;
+  alertFieldsStatus = false;
+  alertFieldsFunctions = false;
   constructor(
     private modalService: NgbModal,
+    private toastrService: ToastrService,
+    private roleService: RoleService,
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
-      name: [''],
-      status: [''],
-      functions: [''],
+      name: ['', [Validators.required]],
+      administrator: [''],
+      products: [''],
+      kyc: [''],
+      customers: [''],
+      accesscontrol: [''],
+      notifications: [''],
+      status: ['', [Validators.required]],
     })
   }
   ngOnInit(): void {
@@ -28,7 +54,76 @@ export class CreateFunctionComponent implements OnInit {
   }
 
 
-  confirm(): void {
+  verifiField() {
+    if (this.form.controls['name'].value === '') {
+      this.editename.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.alertFieldsName = true;
+      setInterval(() => {
+        this.editename.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.alertFieldsName = false;
+      }, 5000);
+    }
+    else if (this.form.controls['status'].value === '') {
+      this.editstatus.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.alertFieldsStatus = true;
+      setInterval(() => {
+        this.editstatus.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.alertFieldsStatus = false;
+      }, 5000);
+    }
+    else if (
+      this.form.controls['administrator'].value === '' &&
+      this.form.controls['products'].value === '' &&
+      this.form.controls['kyc'].value === '' &&
+      this.form.controls['customers'].value === '' &&
+      this.form.controls['accesscontrol'].value === '' &&
+      this.form.controls['notifications'].value === ''
+    ) {
+      this.editfunction.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.alertFieldsFunctions = true;
+      setInterval(() => {
+        this.editfunction.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.alertFieldsFunctions = false;
+      }, 5000);
+    }
+    if (this.form.controls['administrator'].value === true) this.form.controls['administrator'].setValue('active'); else this.form.controls['administrator'].setValue('inactive')
+    if (this.form.controls['products'].value === true) this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue('inactive')
+    if (this.form.controls['kyc'].value === true) this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue('inactive')
+    if (this.form.controls['customers'].value === true) this.form.controls['customers'].setValue('active'); else this.form.controls['customers'].setValue('inactive')
+    if (this.form.controls['accesscontrol'].value === true) this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue('inactive')
+    if (this.form.controls['notifications'].value === true) this.form.controls['notifications'].setValue('active'); else this.form.controls['notifications'].setValue('inactive')
 
+  }
+
+  confirm(): void {
+    this.verifiField();
+    console.log(this.form.controls['administrator'].value)
+    if (
+      this.form.controls['name'].value !== '' &&
+      this.form.controls['status'].value !== ''
+    ) {
+      this.request = {
+        name: this.form.controls['name'].value,
+        status: this.form.controls['status'].value,
+        administrator: this.form.controls['administrator'].value,
+        products: this.form.controls['products'].value,
+        kyc: this.form.controls['kyc'].value,
+        customers: this.form.controls['customers'].value,
+        accesscontrol: this.form.controls['accesscontrol'].value,
+        notifications: this.form.controls['notifications'].value,
+      }
+      console.log(this.request)
+      this.roleService.register(this.request).subscribe(
+        success => {
+          window.location.reload();
+          this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+          this.modalService.dismissAll();
+        },
+        error => {
+          console.log(error)
+          this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+        }
+      )
+    }
   }
 }
