@@ -68,7 +68,7 @@ export class EditFunctionComponent implements OnInit {
       accesscontrol: this.form.controls['accesscontrol'].value,
       notifications: this.form.controls['notifications'].value,
     }
-    console.log(this.request)
+    console.log(this.request,  this.form.controls['notifications'].value )
     // this.roleService.editRoles(this.request).subscribe(
     //   success => {
     //     // mostar card dizendo tudo bem
