@@ -12,7 +12,7 @@ import { UserService } from 'src/services/user.service';
 })
 export class EditUserComponent implements OnInit {
   form: FormGroup;
-  productsData: any;
+  responseData: any;
   editNotStatus: string;
   filtername = 'filter'
   request: UserPutRequestDto;
@@ -37,20 +37,20 @@ export class EditUserComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    this.editNotStatus = this.productsData.status;
-    if (this.productsData.filter === 'Administrador') this.productsData.filter = 'ADMINISTRATOR';
-    else if (this.productsData.filter === 'Produto') this.productsData.filter = 'PRODUCTS';
-    else if (this.productsData.filter === 'Kyc') this.productsData.filter = 'KYC';
-    else if (this.productsData.filter === 'Cliente') this.productsData.filter = 'CUSTOMERS';
-    else if (this.productsData.filter === 'Controle de acesso') this.productsData.filter = 'ACCESCONTROL';
-    else if (this.productsData.filter === 'Notificações') this.productsData.filter = 'NOTIFICATIONS';
-    this.form.controls['name'].setValue(this.productsData.name)
-    this.form.controls['email'].setValue(this.productsData.email)
-    this.form.controls['status'].setValue(this.productsData.status)
-    this.form.controls['phone'].setValue(this.productsData.phone)
-    this.checked = this.productsData.filter;
-    this.form.patchValue({ filter: this.productsData.filter });
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
+    this.editNotStatus = this.responseData.status;
+    if (this.responseData.filter === 'Administrador') this.responseData.filter = 'ADMINISTRATOR';
+    else if (this.responseData.filter === 'Produto') this.responseData.filter = 'PRODUCTS';
+    else if (this.responseData.filter === 'Kyc') this.responseData.filter = 'KYC';
+    else if (this.responseData.filter === 'Cliente') this.responseData.filter = 'CUSTOMERS';
+    else if (this.responseData.filter === 'Controle de acesso') this.responseData.filter = 'ACCESCONTROL';
+    else if (this.responseData.filter === 'Notificações') this.responseData.filter = 'NOTIFICATIONS';
+    this.form.controls['name'].setValue(this.responseData.name)
+    this.form.controls['email'].setValue(this.responseData.email)
+    this.form.controls['status'].setValue(this.responseData.status)
+    this.form.controls['phone'].setValue(this.responseData.phone)
+    this.checked = this.responseData.filter;
+    this.form.patchValue({ filter: this.responseData.filter });
     console.log(this.checked)
   }
 
@@ -61,8 +61,8 @@ export class EditUserComponent implements OnInit {
 
 
   confirm() {
-    console.log(this.form.controls['phone'].value,' tipo ofi')
-    if(this.form.controls['phone'].value === undefined) this.truephone = '';
+    console.log(this.form.controls['phone'].value, ' tipo ofi')
+    if (this.form.controls['phone'].value === undefined) this.truephone = '';
     else this.truephone = `+55${this.form.controls['phone'].value}`;
     this.request = {
       phone: this.truephone,
@@ -72,17 +72,17 @@ export class EditUserComponent implements OnInit {
       filter: this.form.controls['filter'].value,
     }
     console.log(this.request)
-    this.userService.editUsers(this.productsData._id, this.request).subscribe(
+    this.userService.editUsers(this.responseData._id, this.request).subscribe(
       success => {
         // mostar card dizendo tudo bem
-          // window.location.reload();
-        this.toastrService.success('DEU BOM!', '', { progressBar: true });
+        window.location.reload();
+        this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
         // função somir todos os modais
         this.modalService.dismissAll();
       },
       error => {
         console.log(error)
-        this.toastrService.error('DEU RUIM!!!!!', '', { progressBar: true });
+        this.toastrService.error('Erro ao editar!', '', { progressBar: true });
       }
     )
   }

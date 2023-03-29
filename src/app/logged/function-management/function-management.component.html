@@ -53,10 +53,10 @@
         <div class="row mx-0 overflow-x-scroll">
             <div class="col-12 mt-5 px-0">
                 <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                    <div style="width: 322px;" class="col-3 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 308px;" class="col-3 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Nome</b>
                     </div>
-                    <div style="width: 407px;" class="col-2 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 422px;" class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Permições</b>
                     </div>
                     <div class="col h-100 br-16 align-items-center d-flex">
@@ -67,12 +67,21 @@
             <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
-                      <tr *ngFor="let item of supplier| paginate: config | filter: filterTerm;  let i= index; ">
+                      <tr *ngFor="let item of response | paginate: config | filter: filterTerm;  let i= index; ">
                         <td style="width: 325px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 325px;">{{item.name}}</h5></td>
-                        <td style="width: 410px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 410px;">{{item.permition}}</h5></td>
+                        <td style="width: 410px;">
+                          <h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 410px;">
+                          {{item.administrator}}
+                          {{item.products}}
+                          {{item.customers}}
+                          {{item.kyc}}
+                          {{item.accesscontrol}}
+                          {{item.notifications}}
+                        </h5>
+                      </td>
                         <td>
-                            <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success"> {{item.status}}</h4>
-                            <h4 *ngIf="item.status === 'Inativo'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
+                            <h4 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success"> {{item.status}}</h4>
+                            <h4 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
                         </td>
                         <td class="text-center">
                             <h4 class="mb-0  py-3">

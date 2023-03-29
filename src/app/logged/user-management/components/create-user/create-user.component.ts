@@ -49,34 +49,34 @@ export class CreateUserComponent implements OnInit {
 
   verifiField() {
     if (this.form.controls['name'].value === '') {
-      this.createname.nativeElement.classList.add("border-danger","border", "text-danger");
+      this.createname.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldsName = true;
       setInterval(() => {
-        this.createname.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.createname.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsName = false;
       }, 5000);
     }
     else if (this.form.controls['email'].value === '') {
-      this.createemail.nativeElement.classList.add("border-danger","border", "text-danger");
+      this.createemail.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldsEmail = true;
       setInterval(() => {
-        this.createemail.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.createemail.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsEmail = false;
       }, 5000);
     }
     else if (this.form.controls['status'].value === '') {
-      this.createstatus.nativeElement.classList.add("border-danger","border", "text-danger");
+      this.createstatus.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldsStatus = true;
       setInterval(() => {
-        this.createstatus.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.createstatus.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsStatus = false;
       }, 5000);
     }
     else if (this.form.controls['filter'].value === '') {
-      this.createfilter.nativeElement.classList.add("border-danger","border", "text-danger");
+      this.createfilter.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldsFilter = true;
       setInterval(() => {
-        this.createfilter.nativeElement.classList.remove("border-danger","border", "text-danger");
+        this.createfilter.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsFilter = false;
       }, 5000);
     }
@@ -84,33 +84,32 @@ export class CreateUserComponent implements OnInit {
 
   confirm(): void {
     this.verifiField();
-    if(
+    if (
       this.form.controls['name'].value !== '' &&
       this.form.controls['email'].value !== '' &&
       this.form.controls['status'].value !== '' &&
-      this.form.controls['filter'].value !==  ''
-    ){
-         this.request = {
-      phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
-      email: this.form.controls['email'].value,
-      name: this.form.controls['name'].value,
-      status: this.form.controls['status'].value,
-      filter: this.form.controls['filter'].value,
-      password: 'string',
+      this.form.controls['filter'].value !== ''
+    ) {
+      this.request = {
+        phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
+        email: this.form.controls['email'].value,
+        name: this.form.controls['name'].value,
+        status: this.form.controls['status'].value,
+        filter: this.form.controls['filter'].value,
+        password: 'string',
+      }
+      console.log(this.request)
+      this.userService.register(this.request).subscribe(
+        success => {
+          window.location.reload();
+          this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+          this.modalService.dismissAll();
+        },
+        error => {
+          console.log(error)
+          this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+        }
+      )
     }
-    console.log(this.request)
-    // this.userService.register(this.request).subscribe(
-    //   success => {
-    //     this.userService.modalRegisterForm = null;
-    //     this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-    //     this.modalService.dismissAll();
-    //   },
-    //   error => {
-    //     console.log(error)
-    //     this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
-    //   }
-    // )
-    }
-
   }
 }

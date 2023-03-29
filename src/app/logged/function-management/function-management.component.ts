@@ -8,6 +8,9 @@ import { PaginationInstance } from 'ngx-pagination';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { DatamockService } from 'src/services/datamock.service';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
+import { UserService } from 'src/services/user.service';
+import { RoleResponseDto } from 'src/app/dto/logged/role-response.dto';
+import { RoleService } from 'src/services/role.service';
 
 @Component({
   selector: 'app-function-management',
@@ -15,6 +18,7 @@ import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.u
   styleUrls: ['./function-management.component.scss']
 })
 export class FunctionManagementComponent implements OnInit {
+  response: RoleResponseDto[] = [];
   supplier: SupplierInterface[];
   ArrayInfoUser: any = [];
   @Input('data') meals: string[] = [];
@@ -26,15 +30,21 @@ export class FunctionManagementComponent implements OnInit {
   filterTerm!: string;
   user: any;
   officerAdm: string;
+  permitions: string[];
   uniquePermition: string[];
   typeFilter = 'tipo'
+  responsePermitions: RoleResponseDto[];
+
+
   constructor(
     private datamockService: DatamockService,
     private router: Router,
+    private roleService: RoleService,
     private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
+    this.getRoles();
     this.supplier = this.datamockService.supplier;
     this.user = JSON.parse(localStorage.getItem('user'));
     const domain = this.user.email.split("@")[1];
@@ -42,7 +52,30 @@ export class FunctionManagementComponent implements OnInit {
     this.removeDuplicates(this.supplier)
   }
 
+  getRoles() {
+    this.roleService.getRole().subscribe(
+      success => {
+        this.response = success;
+        this.responsePermitions = success.map(response => {
+          this.revertPermitions(response);
+          return response;
+        });
+        console.log(this.response)
 
+      },
+      error => { console.error(error, 'data not collected') }
+    )
+  }
+
+  revertPermitions(response: RoleResponseDto){
+    if (response.administrator === 'active') response.administrator = 'Administrador, '; else response.administrator = '';
+    if (response.products === 'active') response.products = 'Produto,'; else response.products = '';
+    if (response.kyc === 'active') response.kyc = 'Kyc,'; else response.kyc = '';
+    if (response.customers === 'active') response.customers = 'Cliente,'; else response.customers = '';
+    if (response.accesscontrol === 'active') response.accesscontrol = 'Controle de acesso,'; else response.accesscontrol = '';
+    if (response.notifications === 'active') response.notifications = 'Notificações,'; else response.notifications = '';
+  // }
+  }
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
