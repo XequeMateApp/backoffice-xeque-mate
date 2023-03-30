@@ -33,6 +33,7 @@ export class EditFunctionComponent implements OnInit {
       status: ['', [Validators.required]],
     })
   }
+
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
 
