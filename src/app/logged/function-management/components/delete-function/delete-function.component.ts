@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { RoleDeleteRequestDto } from 'src/app/dto/logged/role-delete-request.dto';
+import { RoleRegisterRequestDto } from 'src/app/dto/logged/role-register-request.dto';
+import { RoleService } from 'src/services/role.service';
 
 @Component({
   selector: 'app-delete-function',
@@ -10,22 +14,42 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class DeleteFunctionComponent implements OnInit {
   form: FormGroup;
   productsData: any;
+  responseData: any;
 
   constructor(
     private modalService: NgbModal,
+    private toastrService: ToastrService,
+    private roleService: RoleService,
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
-      delete: [''],
+      delete: ['', [Validators.required]],
     })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
+    this.form.controls['delete'].setValue(this.responseData._id)
   }
+
+
   exit() {
     this.modalService.dismissAll()
   }
-  delete(){
-    window.alert('Delete  ')
+
+
+  delete() {
+    this.roleService.deleteRoles(this.responseData._id).subscribe({
+      next: data => {
+        window.location.reload();
+        this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
+        this.exit();
+      },
+      error: error => {
+        console.log(error)
+        this.toastrService.error('Erro ao Excluir!', '', { progressBar: true });
+      }
+    }
+    )
+
   }
 }

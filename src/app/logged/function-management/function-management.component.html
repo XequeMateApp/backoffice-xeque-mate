@@ -31,9 +31,10 @@
                             <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
                               {{typeFilter}}
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
+                             <!-- FILTRO POR FUNÇÃO - NÃO FUNCIONAL -->
+                            <!-- <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
                               <li *ngFor="let item of uniquePermition" role="button"><a (click)="sortListByType(item)" class="dropdown-item">{{item}}</a></li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                     <div class="col-md-6 mt-3 p0-important">
@@ -71,17 +72,17 @@
                         <td style="width: 325px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 325px;">{{item.name}}</h5></td>
                         <td style="width: 410px;">
                           <h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 410px;">
-                          {{item.administrator}}
-                          {{item.products}}
-                          {{item.customers}}
-                          {{item.kyc}}
-                          {{item.accesscontrol}}
-                          {{item.notifications}}
+                          {{item.administrator === 'active' ? 'Administrador,': ''}}
+                          {{item.products === 'active' ? 'Produto,': ''}}
+                          {{item.customers === 'active' ? 'Cliente,': ''}}
+                          {{item.kyc === 'active' ? 'Kyc,': ''}}
+                          {{item.accesscontrol === 'active' ? 'Controle de acesso,': ''}}
+                          {{item.notifications === 'active' ? 'Notificações,': ''}}
                         </h5>
                       </td>
                         <td>
-                            <h4 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success"> {{item.status}}</h4>
-                            <h4 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
+                            <h4 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h4>
+                            <h4 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inativo</h4>
                         </td>
                         <td class="text-center">
                             <h4 class="mb-0  py-3">
@@ -95,7 +96,7 @@
             </div>
         </div>
 
-        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="supplier.length >= 0">
+        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length >= 0">
             <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
                 <div class="custom-pagination">
                     <div class="pagination-previous" [class.disabled]="p.isFirstPage()">

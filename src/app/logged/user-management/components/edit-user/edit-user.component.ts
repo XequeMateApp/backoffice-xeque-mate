@@ -13,7 +13,7 @@ import { UserService } from 'src/services/user.service';
 export class EditUserComponent implements OnInit {
   form: FormGroup;
   responseData: any;
-  editNotStatus: string;
+  editStatus: string;
   filtername = 'filter'
   request: UserPutRequestDto;
   checked: string;
@@ -38,7 +38,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
-    this.editNotStatus = this.responseData.status;
+    this.editStatus = this.responseData.status;
     if (this.responseData.filter === 'Administrador') this.responseData.filter = 'ADMINISTRATOR';
     else if (this.responseData.filter === 'Produto') this.responseData.filter = 'PRODUCTS';
     else if (this.responseData.filter === 'Kyc') this.responseData.filter = 'KYC';
