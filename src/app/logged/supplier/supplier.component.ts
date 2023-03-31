@@ -29,6 +29,7 @@ export class SupplierComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplier = this.datamockService.supplier;
+    // this.response
   }
 
   backHome() {

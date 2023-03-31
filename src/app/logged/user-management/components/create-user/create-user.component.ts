@@ -24,6 +24,7 @@ export class CreateUserComponent implements OnInit {
   alertFieldsEmail = false;
   alertFieldsStatus = false;
   alertFieldsFilter = false;
+  truephone: string;
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -90,8 +91,9 @@ export class CreateUserComponent implements OnInit {
       this.form.controls['status'].value !== '' &&
       this.form.controls['filter'].value !== ''
     ) {
+      if(this.form.controls['phone'].value !== '') this.truephone = `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`; else this.truephone = '';
       this.request = {
-        phone: `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`,
+        phone:  this.truephone,
         email: this.form.controls['email'].value,
         name: this.form.controls['name'].value,
         status: this.form.controls['status'].value,
@@ -101,7 +103,9 @@ export class CreateUserComponent implements OnInit {
       console.log(this.request)
       this.userService.register(this.request).subscribe(
         success => {
+          setTimeout(() => {
           window.location.reload();
+          }, 2000)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

@@ -86,13 +86,16 @@ export class CreateFunctionComponent implements OnInit {
         this.alertFieldsFunctions = false;
       }, 5000);
     }
-    if (this.form.controls['administrator'].value === true) this.form.controls['administrator'].setValue('active'); else this.form.controls['administrator'].setValue('inactive')
-    if (this.form.controls['products'].value === true) this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue('inactive')
-    if (this.form.controls['kyc'].value === true) this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue('inactive')
-    if (this.form.controls['customers'].value === true) this.form.controls['customers'].setValue('active'); else this.form.controls['customers'].setValue('inactive')
-    if (this.form.controls['accesscontrol'].value === true) this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue('inactive')
-    if (this.form.controls['notifications'].value === true) this.form.controls['notifications'].setValue('active'); else this.form.controls['notifications'].setValue('inactive')
-
+  }
+  verifiFieldFunctions(){
+    if(this.form.controls['name'].value !== '' && this.form.controls['status'].value !== ''){
+      if (this.form.controls['administrator'].value === true) this.form.controls['administrator'].setValue('active'); else this.form.controls['administrator'].setValue('inactive')
+      if (this.form.controls['products'].value === true) this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue('inactive')
+      if (this.form.controls['kyc'].value === true) this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue('inactive')
+      if (this.form.controls['customers'].value === true) this.form.controls['customers'].setValue('active'); else this.form.controls['customers'].setValue('inactive')
+      if (this.form.controls['accesscontrol'].value === true) this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue('inactive')
+      if (this.form.controls['notifications'].value === true) this.form.controls['notifications'].setValue('active'); else this.form.controls['notifications'].setValue('inactive')
+    }
   }
 
   confirm(): void {
@@ -102,6 +105,7 @@ export class CreateFunctionComponent implements OnInit {
       this.form.controls['name'].value !== '' &&
       this.form.controls['status'].value !== ''
     ) {
+      this.verifiFieldFunctions();
       this.request = {
         name: this.form.controls['name'].value,
         status: this.form.controls['status'].value,

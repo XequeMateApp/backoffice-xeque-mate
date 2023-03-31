@@ -6,7 +6,7 @@
                 <div class="col-md mt-4">
                     <div class="w-auto h-100 d-flex align-items-center ">
                         <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
-                        <h1 class="text-dark fw-bolder mb-0">Gestão de usuario</h1>
+                        <h3 class="text-dark fw-bolder mb-0">Gestão de usuario</h3>
                     </div>
 
                 </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div style="width: 215px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">E-mail</b>
-                    </div> 
+                    </div>
                     <div style="width: 339px;"  class="col-2 col-funcion h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Funções</b>
                     </div>
@@ -77,12 +77,12 @@
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                       <tr *ngFor="let item of response | filter: filterTerm  | paginate: config; let i= index">
-                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
-                        <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item.email}}</h5></td>
-                        <td style="width: 340px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 215px;">{{item.filter || '...'}}</h5></td>
+                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item?.name}}</h5></td>
+                        <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item?.email}}</h5></td>
+                        <td style="width: 340px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 215px;">{{item?.filter || '...'}}</h5></td>
                         <td>
-                            <h5 class="mb-0 py-3  text-start text-success" *ngIf="item.status === 'active'">Ativo</h5>
-                        <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item.status === 'inactive'">Inativo</h5>
+                            <h5 class="mb-0 py-3  text-start text-success" *ngIf="item?.status === 'active'">Ativo</h5>
+                        <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item?.status === 'inactive'">Inativo</h5>
                     </td>
                         <td><h5  class="mb-0 fw-bolder text-center text-dark-blue py-3">
                             <i (click)="openModals('Edit', item)" role="button" class="bi text-dark h3 px-1 mx-3 mb-0 bi-gear"></i>
