@@ -38,12 +38,14 @@ export class ProductsComponent implements OnInit {
     private modalService: NgbModal,
     private productService: ProductService
   ) { }
+
   ngOnInit(): void {
     this.getProducts();
     this.supplier = this.datamockService.supplier;
     console.log(this.supplier)
     this.removeDuplicates(this.supplier)
   }
+
   getProducts() {
     this.productService.getProducts().subscribe(
       success => {
@@ -53,12 +55,18 @@ export class ProductsComponent implements OnInit {
       error => { console.error(error, 'data not collected') }
     )
   }
+
+
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
+
+
   createOpenModals() {
     this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
+
+
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.productsData, info);
     if (tabName == 'analysisproduct') {

@@ -61,7 +61,7 @@ export class CreateFunctionComponent implements OnInit {
       setInterval(() => {
         this.editename.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsName = false;
-      }, 5000);
+      }, 3000);
     }
     else if (this.form.controls['status'].value === '') {
       this.editstatus.nativeElement.classList.add("border-danger", "border", "text-danger");
@@ -69,7 +69,7 @@ export class CreateFunctionComponent implements OnInit {
       setInterval(() => {
         this.editstatus.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsStatus = false;
-      }, 5000);
+      }, 3000);
     }
     else if (
       this.form.controls['administrator'].value === '' &&

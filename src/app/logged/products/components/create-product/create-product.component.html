@@ -7,39 +7,43 @@
           src="../../../../../assets/icons/x.png"
           style="height: fit-content;">
       </div>
+
       <form [formGroup]="form"  (ngSubmit)="confirm()" class="col-12 mt-4">
         <div class="row">
           <div class="col-md-6">
-            <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
-            <input type="text" id="edit-name" class="form-control fw-bolder
-              br-16 bordder py-3"
+            <label class="h6 mt-3 text-dark" for="create-name">Nome</label>
+            <input type="text" id="create-name" #createname class="form-control fw-bolder
+              br-16 bordder py-3" required
               placeholder="Digite o nome" formControlName="name" />
+            <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
           </div>
           <div class="col-md-6">
-            <label class="h6 mt-3 text-dark" for="edit-valor">Valor</label>
-            <input type="tel" id="edit-valor" [maxlength]="15"
-              mask="separator.2"
-              thousandSeparator="." prefix="R$ " required="true"
+            <label class="h6 mt-3 text-dark" for="create-valor">Valor</label>
+            <input type="text" id="create-valor" [maxlength]="15"
+              mask="separator.2" #createprice
+              thousandSeparator="." prefix="R$ " required
               class="form-control fw-bolder br-16 bordder py-3"
               placeholder="Digite o valor"
               formControlName="price" />
+              <label class="text-danger mt-1" *ngIf="alertFieldPrice" for="create-valor">Campo preço está vazio</label>
           </div>
 
           <div class="col-md-6">
-            <label class="h6 mt-3 text-dark" for="edit-cnpj">Fornecedor CNPJ</label>
-            <input type="text" id="edit-cnpj" mask="00.000.000/0000-00"  class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
+            <label class="h6 mt-3 text-dark" for="create-cnpj">Fornecedor CNPJ</label>
+            <input type="text" #createcnpj required id="create-cnpj" mask="00.000.000/0000-00"  class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
+            <label class="text-danger mt-1" *ngIf="alertFieldCnpj" for="create-cnpj">Campo cnpj está vazio</label>
           </div>
           <div class="col-md-6">
-            <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
-            <input type="tel" id="edit-code" [maxLength]="15" required="true"
-              class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
-              [value]=""
+            <label class="h6 mt-3 text-dark" for="create-code">Código</label>
+            <input type="tel" id="create-code" [maxLength]="15" required
+              class="form-control br-16 text-dark-blue fw-bolder bordder py-3" #createcode
               placeholder="Digite o código" formControlName="code" />
+            <label class="text-danger mt-1" *ngIf="alertFieldCode" for="create-code">Campo código está vazio</label>
           </div>
           <div class="col-12">
-            <label class="h6 mt-3 text-dark" for="edit-category">Categoria</label>
+            <label class="h6 mt-3 text-dark" for="create-category">Categoria</label>
             <select #selectOptions class="form-select fw-bolder text-dark-blue
-              br-16 border py-3"
+              br-16 border py-3" required
               aria-label="Default select category"
               formControlName="selectCategory"
               (change)="onOptionSelected(selectOptions.value)">
@@ -48,6 +52,7 @@
                 *ngFor="let option of supplier" [value]="option._id">{{option.category
                 }}</option>
             </select>
+            <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo código está vazio</label>
             <ul class="list-group mt-3 br-16 ">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
                 <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item.category }}</h6>
@@ -57,7 +62,7 @@
           </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-doc">Images</label>
-            <div class="w-100 d-flex overflow-y border p-2 br-16
+            <div #createimg class="w-100 d-flex overflow-y border p-2 br-16
               align-items-center">
               <div class="d-flex align-items-center overflow-x-scroll
                 overflow-y-hidden">
@@ -80,8 +85,8 @@
                   <div class="br-16 d-block justify-content-end illustration
                     border">
                     <input role="button" type="file" class="illustration
-                      position-relative z-10" style="opacity:0;"
-                      formControlName="selectPhotos"
+                      position-relative z-10" style="opacity:0;" required
+                      formControlName="selectPhotos" #createimg
                       (change)="onSelectFileProductImage($event)"
                       accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative"
@@ -90,19 +95,24 @@
                 </div>
               </div>
             </div>
+            <label class="text-danger mt-1" *ngIf="alertFieldImg" for="create-code">Campo image está vazio</label>
             <div class="col-12 mt-4 pb-3">
               <div class="row">
                 <div class="col-md-6">
                   <label for="exempleDescription">Descrição</label>
                   <textarea maxlength="200" formControlName="description" class="form-control
-                    overflow-scroll border w3-white br-16 p-3"
-                    id="exempleDescription" rows="3"></textarea>
+                    overflow-scroll border w3-white br-16 p-3" #createdescription
+                    id="exempleDescription" required rows="3"></textarea>
+            <label class="text-danger mt-1" *ngIf="alertFieldDescription" for="create-code">Campo descrição está vazio</label>
+
                 </div>
                 <div class="col-md-6">
                   <label for="exempleSpecification">Especificações</label>
                   <textarea maxlength="200" formControlName="specification" class="form-control
-                    overflow-scroll border w3-white br-16 p-3"
+                    overflow-scroll border w3-white br-16 p-3" required #createspecification
                     id="exempleSpecification" rows="3"></textarea>
+            <label class="text-danger mt-1" *ngIf="alertFieldSpecification" for="create-code">Campo especificações está vazio</label>
+
                 </div>
               </div>
             </div>
