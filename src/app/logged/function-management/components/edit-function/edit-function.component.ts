@@ -33,29 +33,33 @@ export class EditFunctionComponent implements OnInit {
       status: ['', [Validators.required]],
     })
   }
+
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
 
     this.editStatus = this.responseData.status;
-    if (this.responseData.administrator === 'active')  this.form.controls['administrator'].setValue('active'); else  this.form.controls['administrator'].setValue(false);
-    if (this.responseData.products === 'active') this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue(false);
-    if (this.responseData.kyc === 'active') this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue(false);
-    if (this.responseData.customers === 'active') this.form.controls['customers'].setValue('active'); else this.form.controls['customers'].setValue(false);
-    if (this.responseData.accesscontrol === 'active')  this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue(false);
-    if (this.responseData.notifications === 'active') this.form.controls['notifications'].setValue('active'); else  this.form.controls['notifications'].setValue(false);
+    if (this.responseData.administrator === 'active') this.form.controls['administrator'].setValue('administrator'); else this.form.controls['administrator'].setValue(false);
+    if (this.responseData.products === 'active') this.form.controls['products'].setValue('products'); else this.form.controls['products'].setValue(false);
+    if (this.responseData.kyc === 'active') this.form.controls['kyc'].setValue('kyc'); else this.form.controls['kyc'].setValue(false);
+    if (this.responseData.customers === 'active') this.form.controls['customers'].setValue('customers'); else this.form.controls['customers'].setValue(false);
+    if (this.responseData.accesscontrol === 'active') this.form.controls['accesscontrol'].setValue('accesscontrol'); else this.form.controls['accesscontrol'].setValue(false);
+    if (this.responseData.notifications === 'active') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue(false);
     this.form.controls['name'].setValue(this.responseData.name)
   }
 
 
 
-  transformFunctions(){
-    if ( this.form.controls['administrator'].value === 'active')  this.form.controls['administrator'].setValue('active'); else  this.form.controls['administrator'].setValue('inactive')
-    if ( this.form.controls['products'].value === 'active') this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue('inactive');
-    if ( this.form.controls['kyc'].value === 'active') this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue('inactive');
-    if ( this.form.controls['customers'].value === 'active') this.form.controls['customers'].setValue('active'); else this.form.controls['customers'].setValue('inactive');
-    if ( this.form.controls['accesscontrol'].value === 'active')  this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue('inactive');
-    if ( this.form.controls['notifications'].value === 'active') this.form.controls['notifications'].setValue('active'); else  this.form.controls['notifications'].setValue('inactive');
+  transformFunctions() {
+    if (this.form.controls['administrator'].value !== false) this.form.controls['administrator'].setValue('active'); else this.form.controls['administrator'].setValue('inactive')
+    if (this.form.controls['products'].value !== false) this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue('inactive');
+    if (this.form.controls['kyc'].value !== false) this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue('inactive');
+    if (this.form.controls['customers'].value !== false) this.form.controls['customers'].setValue('active'); else this.form.controls['customers'].setValue('inactive');
+    if (this.form.controls['accesscontrol'].value !== false) this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue('inactive');
+    if (this.form.controls['notifications'].value !== false) this.form.controls['notifications'].setValue('active'); else this.form.controls['notifications'].setValue('inactive');
   }
+
+
+
   confirm() {
     this.transformFunctions();
     this.request = {
@@ -68,11 +72,14 @@ export class EditFunctionComponent implements OnInit {
       accesscontrol: this.form.controls['accesscontrol'].value,
       notifications: this.form.controls['notifications'].value,
     }
-    console.log(this.request,  this.form.controls['notifications'].value )
-    this.roleService.editRoles(this.request).subscribe(
+    console.log(this.request, this.responseData._id, this.form.controls['notifications'].value)
+    this.roleService.editRoles(this.responseData._id, this.request).subscribe(
       success => {
         // mostar card dizendo tudo bem
         // window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+          }, 2000)
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
         // função somir todos os modais
         this.modalService.dismissAll();

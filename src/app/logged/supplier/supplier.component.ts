@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
-import { DatamockService } from 'src/services/datamock.service';
 import { ValidateSupplierComponent } from './components/validate-supplier/validate-supplier.component';
-import { SupplierInterface } from 'src/app/interface/supplier.interface';
+import { SupplierRegisterResponseDto } from 'src/app/dto/logged/supplier-register-response.dto';
+import { UserService } from 'src/services/user.service';
+import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 
 @Component({
   selector: 'app-supplier',
@@ -12,8 +13,6 @@ import { SupplierInterface } from 'src/app/interface/supplier.interface';
   styleUrls: ['./supplier.component.scss']
 })
 export class SupplierComponent implements OnInit {
-
-  supplier: SupplierInterface[];
   @Input('data') meals: string[] = [];
   public config: PaginationInstance = {
     id: 'custom',
@@ -21,31 +20,40 @@ export class SupplierComponent implements OnInit {
     currentPage: 1
   };
   filterTerm!: string;
+  response: SupplierRegisterResponseDto[] =[];
   constructor(
-    private datamockService: DatamockService,
     private router: Router,
+    private userService: UserService,
     private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
-    this.supplier = this.datamockService.supplier;
+    this.getUsers();
   }
-
+  getUsers() {
+    this.userService.getUserPlataform('inactive').subscribe(
+      success => {
+        this.response = success;
+        console.log(this.response);
+      },
+      error => { console.error(error, 'data not collected') }
+    )
+  }
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
-
-  openModals(tabName: string) {
-    if (tabName == 'verificar') {
+  openModals(tabName: string, info: string[]) {
+    LocalStorageUtil.set(LocalStorageKeys.responseData, info)
+    if (tabName === 'verificar') {
       this.modalService.open(ValidateSupplierComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
   }
   sortListByAlphabeticalOrder(): void {
-    this.supplier.sort((a, b) => {
+    this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);
     }
     );
-    console.log(this.supplier);
+    console.log(this.response);
   }
 
 }

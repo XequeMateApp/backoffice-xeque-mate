@@ -29,9 +29,9 @@ export class RoleService extends BaseService {
   }
 
 
-  editRoles(dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
+  editRoles(roleId: string, dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
     return this.httpClient
-      .put(`${this.url}change-role`, dto, this.authorizedHeader)
+      .put(`${this.url}update/id/${roleId}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
