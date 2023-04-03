@@ -9,6 +9,8 @@ import { AnalysisProductComponent } from './components/analysis-product/analysis
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
+import { ProductsRegisterResponseDto } from 'src/app/dto/logged/products-register-response.dto';
+import { ProductService } from 'src/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -24,6 +26,7 @@ export class ProductsComponent implements OnInit {
     itemsPerPage: 8,
     currentPage: 1
   };
+  response: ProductsRegisterResponseDto[] = [];
   filterTerm!: string;
   officerAdm: string;
   uniqueMaterials: string[];
@@ -33,18 +36,37 @@ export class ProductsComponent implements OnInit {
     private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
+    private productService: ProductService
   ) { }
+
   ngOnInit(): void {
+    this.getProducts();
     this.supplier = this.datamockService.supplier;
     console.log(this.supplier)
     this.removeDuplicates(this.supplier)
   }
+
+  getProducts() {
+    this.productService.getProducts().subscribe(
+      success => {
+        this.response = success;
+        console.log(this.response)
+      },
+      error => { console.error(error, 'data not collected') }
+    )
+  }
+
+
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
+
+
   createOpenModals() {
     this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
+
+
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.productsData, info);
     if (tabName == 'analysisproduct') {

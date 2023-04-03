@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { SupplierRegisterRequestDto } from 'src/app/dto/logged/supplier-register-request.dto';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-validate-supplier',
@@ -9,35 +12,61 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ValidateSupplierComponent implements OnInit {
   form: FormGroup;
-  notImage = true;
-  productsData: any;
+  request: SupplierRegisterRequestDto;
+  response: any;
+  notImage = false;
+  Image = true;
+  supplierData: any;
   selectFile: any = [];
   selectFileName: String;
   constructor(
+    private toastrService: ToastrService,
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
+    private userService: UserService
   ) {
     this.form = this.formBuilder.group({
       name: [''],
       cnpj: [''],
+      cpf: [''],
       contact: [''],
       email: [''],
       doc: [''],
-
+      id: ['']
     })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    this.form.controls['name'].setValue(this.productsData.name);
-    this.form.controls['cnpj'].setValue(this.productsData.cnpj);
-    this.form.controls['contact'].setValue(this.productsData.tel);
-    this.form.controls['email'].setValue(this.productsData.email);
+    this.response = JSON.parse(localStorage.getItem('responseData'));
+    this.form.controls['name'].setValue(this.response.name);
+    this.form.controls['cnpj'].setValue(this.response.cnpj);
+    this.form.controls['cpf'].setValue(this.response.cpf);
+    this.form.controls['email'].setValue(this.response.email);
+    this.form.controls['id'].setValue(this.response._id);
   }
   exit() {
     this.modalService.dismissAll()
   }
   confirm() {
-    window.alert('confirm ')
+
+    this.request = {
+      status: 'active',
+      _id:  this.form.controls['id'].value
+    }
+
+    console.log(this.request)
+    this.userService.updateUserPlataform(this.request._id, this.request.status).subscribe(
+      success => {
+        setTimeout(() => {
+        window.location.reload();
+        }, 2000)
+        this.toastrService.success('Validado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao Validar', '', { progressBar: true });
+      }
+    )
   }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
@@ -56,4 +85,14 @@ export class ValidateSupplierComponent implements OnInit {
   onSelectFileName(event) {
     this.selectFileName = event.target.files[0].name;
   }
+
+  downloadFile() {
+    const link = document.createElement('a');
+    link.href = this.response.Image;
+    link.download = this.response.Image;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
 }

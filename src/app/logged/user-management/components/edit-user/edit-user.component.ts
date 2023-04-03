@@ -75,7 +75,9 @@ export class EditUserComponent implements OnInit {
     this.userService.editUsers(this.responseData._id, this.request).subscribe(
       success => {
         // mostar card dizendo tudo bem
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+          }, 2000)
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
         // função somir todos os modais
         this.modalService.dismissAll();
