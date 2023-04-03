@@ -54,7 +54,7 @@ export class ValidateSupplierComponent implements OnInit {
     }
 
     console.log(this.request)
-    this.userService.updateUserPlataform(this.request._id, this.request.status).subscribe(
+    this.userService.updateUserPlataform(this.request._id, this.request.status, this.request).subscribe(
       success => {
         setTimeout(() => {
         window.location.reload();

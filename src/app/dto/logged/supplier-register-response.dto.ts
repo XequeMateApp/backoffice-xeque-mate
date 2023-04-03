@@ -2,7 +2,7 @@ export abstract class SupplierRegisterResponseDto {
   _id: string;
   email?: string;
   name?: string;
-  cpf?: string;
+  updatedAt: string;
   cnpj?: string;
   date?: Date;
   status?: string;

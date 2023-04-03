@@ -53,31 +53,31 @@
       <div class="row mx-0 overflow-y-scroll ">
           <div class="col-12 mt-5 px-0">
               <div style="min-width: 1127px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                  <div style="width: 257px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+                  <div class="h-100 col-name br-16 align-items-center d-flex">
                       <b class="mb-0 h5 fw-bolder">Nome</b>
                   </div>
-                  <div class="col-3 col-discription h-100 br-16 align-items-center d-flex">
+                  <div style="width: 633px;" class="h-100 col-description br-16 align-items-center d-flex">
                       <b class="mb-0 h5 fw-bolder">Descrição</b>
                   </div>
-                  <div class="col h-100 br-16 align-items-center d-flex">
+                  <div style="width: 133px;" class="h-100 br-16 align-items-center d-flex">
                       <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
                   </div>
+
               </div>
           </div>
           <div style="min-width: 1127px;"class="col-12 w3-white mt-3 px-0">
               <table class="table table-office mb-0 table-striped">
                   <tbody>
-                    <tr *ngFor="let item of supplier| paginate: config | filter: filterTerm;  let i= index; ">
-                      <td style="width: 264px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 264px;">{{item.namecategory}}</h5></td>
-                      <td style="width: 633px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 566px;">{{item.category}}</h5></td>
+                    <tr *ngFor="let item of response | paginate: config | filter: filterTerm;  let i= index; ">
+                      <td style="width: 277px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate w-100" style="max-width: 240px">{{item?.name}}</h5></td>
+                      <td style="width: 633px;"class="text-left" ><h5 class="mb-0 w-100 py-3 text-left d-inline-block text-truncate" style="max-width: 581px;">{{item?.description}}</h5></td>
                       <td>
-                          <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success">{{item.status}}</h4>
-                          <h4 *ngIf="item.status === 'Inativo'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
+                          <h4 *ngIf="item?.status === 'active'" class="mb-0  py-3 text-success">Ativo</h4>
+                          <h4 *ngIf="item?.status === 'inactive'" class="mb-0  py-3 text-danger">Inativo</h4>
                       </td>
                       <td>
-                          <!-- caso email seja padrão para o fornecedores -->
                           <h4 class="mb-0 d-flex text-nowrap justify-content-end py-3">
-                              <i role='button' (click)="openModals('analysis', item)" class="bi h3 mx-2 px-2 bi-sliders2"></i>
+                              <i class="bi h3 o mx-2 px-2 bi-sliders2" style="opacity: 0;"></i>
                               <i role='button' (click)="openModals('edit', item)" class="bi h3 mx-2 px-2 bi-gear"></i>
                               <i role='button' (click)="openModals('delete', item)" class="bi h3 mx-2 px-2 text-danger bi-trash3"></i>
                           </h4>
@@ -88,7 +88,7 @@
           </div>
       </div>
 
-      <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="supplier.length >= 0">
+      <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length >= 0">
           <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
               <div class="custom-pagination">
                   <div class="pagination-previous" [class.disabled]="p.isFirstPage()">

@@ -1,6 +1,6 @@
 export abstract class RoleResponseDto {
   _id: string;
-  name: string;
+  name?: string;
   administrator?: string;
   products?: string;
   kyc?: string;

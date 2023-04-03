@@ -1,4 +1,4 @@
 export abstract class SupplierPutRequestDto {
-  email: string;
+  _id: string;
   status: string;
 }

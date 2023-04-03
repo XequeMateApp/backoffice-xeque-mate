@@ -47,7 +47,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getProducts().subscribe(
+    this.productService.getProducts('PENDING').subscribe(
       success => {
         this.response = success;
         console.log(this.response)
@@ -68,7 +68,7 @@ export class ProductsComponent implements OnInit {
 
 
   openModals(tabName: string, info: string[]) {
-    LocalStorageUtil.set(LocalStorageKeys.productsData, info);
+    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'analysisproduct') {
       this.modalService.open(AnalysisProductComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'editproduct') {

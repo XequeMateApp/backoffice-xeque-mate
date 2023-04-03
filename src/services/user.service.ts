@@ -87,8 +87,6 @@ export class UserService extends BaseService {
   }
 
 
-
-
   getUserPlataform(status: string): Observable<SupplierRegisterResponseDto[]> {
     return this.httpClient
       .get(`${this.url}/user-plataform?status=${status}`, this.authorizedHeader)
@@ -96,11 +94,9 @@ export class UserService extends BaseService {
   }
 
 
-
-
-  updateUserPlataform(userID: string, status: string): Observable<SupplierRegisterResponseDto[]> {
+  updateUserPlataform(userID: string, status: string, dto: SupplierPutRequestDto): Observable<SupplierRegisterResponseDto> {
     return this.httpClient
-      .put(`${this.url}/user-plataform/review/id/${userID}/status/${status}`, this.authorizedHeader)
+      .put(`${this.url}/user-plataform/review/id/${userID}/status/${status}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 

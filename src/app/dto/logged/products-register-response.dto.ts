@@ -3,7 +3,8 @@ export abstract class ProductsRegisterResponseDto {
   name?: string;
   specifications?: string;
   description?: string;
-  image?: string;
-  customers?: string;
+  category?: string[];
+  code?: string;
+  image?: string[];
   status?: string;
 }
