@@ -1,3 +1,11 @@
 .dropdown-toggle::after{
     display: none !important;
 }
+
+#chart {
+    max-width: 450px;
+    width: 460ch;
+    height: 320px;
+    margin: 35px auto;
+  }
+  

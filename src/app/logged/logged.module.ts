@@ -47,6 +47,7 @@ import { MarketingComponent } from './marketing/marketing.component';
 import { CreateAdComponent } from './marketing/components/create-ad/create-ad.component';
 import { EditAdComponent } from './marketing/components/edit-ad/edit-ad.component';
 import { DeleteAdComponent } from './marketing/components/delete-ad/delete-ad.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 @NgModule({
@@ -96,12 +97,13 @@ import { DeleteAdComponent } from './marketing/components/delete-ad/delete-ad.co
     FormsModule,
     ReactiveFormsModule,
     NgxPageScrollModule,
-    NgxMaskModule.forRoot(),
+    NgxMaskModule,
     NgxPageScrollCoreModule,
     NgxPaginationModule,
     NgbModule,
     Ng2SearchPipeModule,
     NgxStarsModule,
+    NgApexchartsModule,
   ],
   providers: [],
   schemas: [

@@ -5,10 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
-import { NgxMaskModule } from 'ngx-mask';
 import { LoggedModule } from './logged/logged.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+
 
 @NgModule({
   declarations: [
@@ -23,8 +23,10 @@ import { AuthModule } from './auth/auth.module';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    NgxMaskModule.forRoot(),
+
     HttpClientModule,
+    
+    
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
