@@ -6,18 +6,18 @@
     <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
         <div class="row">
             <div class="col-md-6">
-                <div *ngIf="response.image" style="background-image: url({{response.image}}); background-position: center; background-repeat: no-repeat; background-size: cover; height:251px;" class="br-16 w-100 border"></div>
-                <div *ngIf="!response.image" style="height:251px;" class="br-16 w-100 d-flex align-content-center justify-content-center p-5 border">
+                <div *ngIf="response.document" style="background-image: url({{response.document}}); background-position: center; background-repeat: no-repeat; background-size: cover; height:251px;" class="br-16 w-100 border"></div>
+                <div *ngIf="!response.document" style="height:251px;" class="br-16 w-100 d-flex align-content-center justify-content-center p-5 border">
                    <div class="text-center p-3">
                    <img src="../../../../../assets/images/not-image.svg" class="w-auto h-100"/>
                    <h4 class="mb-0 mt-4">Nenhum arquivo</h4>
                    </div>
                 </div>
-                <div *ngIf="response.image" (click)="downloadFile()"   role="button" class="border cursor mt-3 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
-                    <span>Baixe o arquivo</span>
+                <div *ngIf="response.document" (click)="downloadFile()"   role="button" class="border cursor mt-3 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+                    <span class="d-inline-block text-truncate" style="max-width: 90%">documento-de-{{response.name}}</span>
                     <img  src="../../../../../assets/icons/upload.png" style="height: fit-content;"/>
                 </div>
-                <div  *ngIf="!response.image" role="button" class="border cursor mt-3 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+                <div  *ngIf="!response.document" role="button" class="border cursor mt-3 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
                   <span>Nenhum arquivo encontrado</span>
                   <img  src="../../../../../assets/icons/upload.png" style="height: fit-content;"/>
               </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from 'src/services/category.service';
 
 @Component({
   selector: 'app-delete-category',
@@ -8,23 +9,33 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./delete-category.component.scss']
 })
 export class DeleteCategoryComponent implements OnInit {
-  productsData: any;
-  form: FormGroup;
+  responseData: any;
   constructor(
     private modalService: NgbModal,
-    private formBuilder: FormBuilder,
+    private categoryServer: CategoryService,
+    private toastrService: ToastrService,
   ) {
-    this.form = this.formBuilder.group({
-      delete: [''],
-    })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
   }
   exit() {
-    this.modalService.dismissAll()
+    this.modalService.dismissAll();
+
   }
   delete() {
-    window.alert('Delete  ')
+    this.categoryServer.deleteCategory(this.responseData._id).subscribe(
+      success => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+        this.toastrService.success('Excluido com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao Excluir', '', { progressBar: true });
+      }
+    )
   }
 }

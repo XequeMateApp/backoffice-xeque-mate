@@ -25,8 +25,8 @@ import { AuthModule } from './auth/auth.module';
     ToastrModule.forRoot(),
 
     HttpClientModule,
-    
-    
+
+
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
