@@ -50,14 +50,14 @@ export class ValidateSupplierComponent implements OnInit {
 
     this.request = {
       status: 'active',
-      _id:  this.form.controls['id'].value
+      _id: this.form.controls['id'].value
     }
 
     console.log(this.request)
     this.userService.updateUserPlataform(this.request._id, this.request.status, this.request).subscribe(
       success => {
         setTimeout(() => {
-        window.location.reload();
+          window.location.reload();
         }, 2000)
         this.toastrService.success('Validado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
@@ -86,13 +86,12 @@ export class ValidateSupplierComponent implements OnInit {
     this.selectFileName = event.target.files[0].name;
   }
 
-  downloadFile() {
-    const link = document.createElement('a');
-    link.href = this.response.Image;
-    link.download = this.response.Image;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  }
-
+    downloadFile() {
+      const link = document.createElement('a');
+      link.href = this.response.document;
+      link.download = `documento-de-solicitação-${this.response.name}`; // set the file name here
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
 }

@@ -24,7 +24,6 @@ export class DeleteCategoryComponent implements OnInit {
 
   }
   delete() {
-    window.alert('Delete  ')
     this.categoryServer.deleteCategory(this.responseData._id).subscribe(
       success => {
         setTimeout(() => {

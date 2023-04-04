@@ -123,7 +123,9 @@ export class CreateCategoryComponent implements OnInit {
     ) {
       this.categoryServer.register(this.request).subscribe(
         success => {
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+            }, 2000)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

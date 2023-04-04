@@ -6,6 +6,6 @@ export abstract class SupplierRegisterResponseDto {
   cnpj?: string;
   date?: Date;
   status?: string;
-  image?: string;
+  document?: string;
   profile?: string
 }
