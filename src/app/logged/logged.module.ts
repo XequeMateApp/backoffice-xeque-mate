@@ -97,7 +97,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     FormsModule,
     ReactiveFormsModule,
     NgxPageScrollModule,
-    NgxMaskModule,
+    NgxMaskModule.forRoot(),
     NgxPageScrollCoreModule,
     NgxPaginationModule,
     NgbModule,
