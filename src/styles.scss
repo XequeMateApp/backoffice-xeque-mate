@@ -60,7 +60,7 @@
   // background: var(--darkblue) !important;
 }
 
-.nav-link {
+.name-link {
   width: 40px;
   height: 40px;
   border: 2px solid var(--darkblue);
@@ -140,7 +140,7 @@
 }
 
 .text-dark-blue {
-  color: var(--darkblue);
+  color: var(--darkblue)!important;
 }
 
 .br-16 {
