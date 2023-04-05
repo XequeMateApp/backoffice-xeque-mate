@@ -50,12 +50,12 @@ export class AnalysisProductComponent implements OnInit {
     this.supplier = this.datamockService.getsupplier();
     this.productsData = JSON.parse(localStorage.getItem('productsData'));
     console.log(this.productsData)
-    this.supplierImg = this.productsData.img;
+    // this.supplierImg = this.productsData.img;
 
     this.FilesDoc = this.productsData.doc;
 
     console.log(this.FilesDoc);
-    console.log(this.supplierImg);
+    // console.log(this.supplierImg);
     this.form.controls['name'].setValue(this.productsData.name)
     this.form.controls['price'].setValue(this.productsData.price)
     this.form.controls['code'].setValue(this.productsData.code)
@@ -95,21 +95,6 @@ export class AnalysisProductComponent implements OnInit {
 
   // functions-photos
 
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      this.notImage = false;
-      var filesAmount = event.target.files.length;
-      for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          // this.selectFile = [];
-          this.selectFile.push(event.target.result);
-          this.selectedImageUrl = null;
-        }
-        reader.readAsDataURL(event.target.files[i]);
-      }
-    }
-  }
 
   onSelectFileProductImage(event) {
     if (event.target.files && event.target.files[0]) {
@@ -125,9 +110,9 @@ export class AnalysisProductComponent implements OnInit {
     }
   }
 
-  addImages() {
-    this.supplier.push()
-  }
+  // addImages() {
+  //   this.supplier.push()
+  // }
 
   removeFile(index: number) {
     this.supplierImg.splice(index, 1);

@@ -5,6 +5,7 @@ import { catchError, map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
 import { ProductsRegisterResponseDto } from 'src/app/dto/logged/products-register-response.dto';
+import { ProductsRegisterRequestDto } from 'src/app/dto/logged/products-register-request.dto';
 
 
 @Injectable({
@@ -23,4 +24,14 @@ export class ProductService extends BaseService {
       .get(`${this.url}product/?status=${status}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+
+  register(dto: ProductsRegisterRequestDto): Observable<ProductsRegisterResponseDto> {
+    return this.httpClient
+      .post(`${this.url}product/register`, dto, this.authorizedHeader)
+      .pipe(
+        map(this.extractData),
+        catchError(this.serviceError)
+      );
+  }
+
 }

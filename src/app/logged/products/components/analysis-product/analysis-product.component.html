@@ -57,9 +57,7 @@
               formControlName="selectCategory"
               (change)="onOptionSelected(selectOptions.value)">
               <option [disabled]="true">Selecione uma categoria</option>
-              <option (click)="addItem()" [selected]="option.category != '' "
-                *ngFor="let option of supplier" [value]="option._id">{{option.category
-                }}</option>
+              <option (click)="addItem()" [selected]="option.category != '' "*ngFor="let option of supplier" [value]="option._id">{{option.category}}</option>
             </select>
             <ul class="list-group mt-3 br-16 ">
               <li class="list-group-item d-flex justify-content-between
@@ -87,7 +85,7 @@
                 </div>
                 <div class="br-16 ms-1 d-flex justify-content-end illustration border">
                   <div class="br-16  d-block justify-content-end illustration border">
-                    <input role="button" type="file" class="illustration position-relative z-10" style="opacity:0;" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"  accept="image/*">
+                    <input role="button" [multiple]="true" type="file" class="illustration position-relative z-10" style="opacity:0;" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"  accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative" style="bottom: 77%; font-size: 40px;left: 29%;"></i>
                   </div>
                 </div>

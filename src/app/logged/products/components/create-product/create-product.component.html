@@ -48,9 +48,7 @@
               formControlName="selectCategory"
               (change)="onOptionSelected(selectOptions.value)">
               <option [selected]="true" [disabled]="true" >Selecione uma categoria</option>
-              <option (click)="addItem()" [selected]="option.category != '' "
-                *ngFor="let option of supplier" [value]="option._id">{{option.category
-                }}</option>
+              <option [selected]="option.category != '' " *ngFor="let option of supplier" [value]="option._id">{{option.category}}</option>
             </select>
             <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo código está vazio</label>
             <ul class="list-group mt-3 br-16 ">

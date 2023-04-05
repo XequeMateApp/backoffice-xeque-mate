@@ -87,6 +87,9 @@ export class CreateFunctionComponent implements OnInit {
       }, 5000);
     }
   }
+
+
+
   verifiFieldFunctions(){
     if(this.form.controls['name'].value !== '' && this.form.controls['status'].value !== ''){
       if (this.form.controls['administrator'].value === true) this.form.controls['administrator'].setValue('active'); else this.form.controls['administrator'].setValue('inactive')
@@ -119,7 +122,9 @@ export class CreateFunctionComponent implements OnInit {
       console.log(this.request)
       this.roleService.register(this.request).subscribe(
         success => {
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },
