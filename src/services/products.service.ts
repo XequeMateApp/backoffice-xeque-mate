@@ -18,9 +18,9 @@ export class ProductService extends BaseService {
     super();
   }
 
-  getProducts(): Observable<ProductsRegisterResponseDto[]> {
+  getProducts(status: string): Observable<ProductsRegisterResponseDto[]> {
     return this.httpClient
-      .get(`${this.url}product`, this.authorizedHeader)
+      .get(`${this.url}product/?status=${status}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 }

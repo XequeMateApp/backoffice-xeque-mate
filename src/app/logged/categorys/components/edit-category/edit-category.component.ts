@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { CategoryRequestDto } from 'src/app/dto/logged/category-register-request.dto';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
+import { CategoryService } from 'src/services/category.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -10,85 +13,80 @@ import { SupplierInterface } from 'src/app/interface/supplier.interface';
 })
 export class EditCategoryComponent implements OnInit {
 
+
+  request: CategoryRequestDto;
+
   form: FormGroup;
   notImage = true;
   selectFile: any = [];
-  supplier: SupplierInterface[];
-  productsData: any;
+  responseData: any;
   editStatus: string;
   supplierImg: string[];
   selectedImageUrl: string;
-addImg: true;
+  addImg: true;
 
 
   constructor(
     private modalService: NgbModal,
+    private categoryServer: CategoryService,
+    private toastrService: ToastrService,
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
       name: [''],
       status: [''],
       description: [''],
-      img: [''],
+      image: [''],
     })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    this.form.controls['name'].setValue(this.productsData.name);
-    this.form.controls['description'].setValue(this.productsData.description);
-    this.editStatus = this.productsData.status;
-    this.supplierImg = this.productsData.imgcategory;
-    if (this.supplierImg.length === 0) {
-      this.supplierImg = null;
-    }
-    console.log(this.supplierImg);
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
+    this.form.controls['name'].setValue(this.responseData.name);
+    this.form.controls['description'].setValue(this.responseData.description);
+    this.editStatus = this.responseData.status;
+    this.supplierImg = this.responseData.image;
+  }
 
-  }
-  exit() {
-    this.modalService.dismissAll()
-  }
-  confirm() {
-    window.alert('confirm ')
-  }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-      this.notImage = false;
       var filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.supplierImg = [];
-          this.supplierImg.push(event.target.result);
+          this.responseData.image = this.supplierImg.push(event.target.result);
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
 
-  // onSelectFileProductImage(event) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     this.notImage = false;
-  //     var filesAmount = event.target.files.length;
-  //     for (let i = 0; i < filesAmount; i++) {
-  //       var reader = new FileReader();
-  //       reader.onload = (event: any) => {
-  //         this.supplierImg.push(event.target.result as string);
-  //       };
-  //       reader.readAsDataURL(event.target.files[i]);
-  //     }
-  //   }
-  // }
-
-  // addImages() {
-  //   this.supplier.push()
-  // }
-
-  // removeFile(index: number) {
-  //   this.supplierImg.splice(index, 1);
-  //   console.log('ué')
-  //   this.form.controls['selectPhotos'].setValue(null);
-  //   // this.selectFile = null;
-  //   this.notImage = true;
-  //   this.selectedImageUrl = '';
-  // }
+  confirm() {
+    if(this.form.controls['status'].value == ''){
+      this.form.controls['status'].setValue(this.responseData.status)
+    }
+    this.request = {
+      name: this.form.controls['name'].value,
+      status: this.form.controls['status'].value,
+      image: String(this.supplierImg),
+      description: this.form.controls['description'].value,
+    }
+    console.log(this.request)
+      this.categoryServer.editCategory(this.responseData._id, this.request).subscribe(
+        success => {
+          setTimeout(() => {
+            window.location.reload();
+            }, 2000)
+          this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
+          this.modalService.dismissAll();
+        },
+        error => {
+          console.log(error)
+          this.toastrService.error('Erro ao Editar', '', { progressBar: true });
+        }
+      )
+    }
+  exit() {
+    this.modalService.dismissAll()
+  }
 }

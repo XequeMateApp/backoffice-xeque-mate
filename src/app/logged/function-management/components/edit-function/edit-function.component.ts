@@ -62,6 +62,9 @@ export class EditFunctionComponent implements OnInit {
 
   confirm() {
     this.transformFunctions();
+    if(this.form.controls['status'].value == ''){
+      this.form.controls['status'].setValue(this.responseData.status)
+    }
     this.request = {
       name: this.form.controls['name'].value,
       status: this.form.controls['status'].value,

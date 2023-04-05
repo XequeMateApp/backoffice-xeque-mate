@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
 :root {
   --darkblue: #0F214F;
   --graylight: rgba(255, 255, 255, 0.8);
@@ -194,10 +195,18 @@
   overflow-y: hidden;
 }
 
+.col-name {
+  width: 257px;
+}
+
 @media (max-width: 768px) {
   .p0-important-mobile {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .col-name {
+    width: 247px !important;
   }
 }
 
@@ -219,6 +228,13 @@
     width: 244px !important;
   }
 
+  .col-name {
+    width: 241px;
+  }
+  .col-description{
+    width: 617px !important;
+  }
+
   .col-type {
     width: 137px !important;
   }
@@ -229,10 +245,6 @@
 
   .col-tel {
     max-width: 163px !important;
-  }
-
-  .col-discription {
-    width: 584px !important;
   }
 
   .col-funcion {
@@ -273,8 +285,4 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }

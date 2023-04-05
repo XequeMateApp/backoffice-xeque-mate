@@ -40,7 +40,7 @@
                         <b class="mb-0 h5 fw-bolder">E-mail</b>
                     </div>
                     <div style="width: 253px;"  class="col-2 colum-cnpj h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 fw-bolder">CNPJ/CPF</b>
+                        <b class="mb-0 h5 fw-bolder">CNPJ</b>
                     </div>
                     <div class="col h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Data da Solicitação</b>
@@ -53,12 +53,11 @@
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                       <tr *ngFor="let item of response | filter: filterTerm | paginate: config; let i= index">
-                        <td *ngIf="item.profile === 'provider'" style="width: 298px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 281px;">{{item?.name}}</h5></td>
-                        <td *ngIf="item.profile === 'provider'" style="width: 268px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 255px;">{{item?.email}}</h5></td>
-                        <td *ngIf="item.cnpj && item.profile === 'provider'" style="width: 255px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 239px;">{{item?.cnpj | mask: '00.000.000/0000-00'}}</h5></td>
-                        <td *ngIf="item.cpf && item.profile === 'provider'" style="width: 255px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 239px;">{{item?.cpf | mask: '000.000.000-00'}}</h5></td>
-                        <td *ngIf="item.profile === 'provider'"><h5 class="mb-0 py-3 text-start">{{item?.createdAt | date:'dd/MM/yyyy' }}</h5></td>
-                        <td *ngIf="item.profile === 'provider'"><h5 role="button" (click)="openModals('verificar', item)" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
+                        <td style="width: 298px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 281px;">{{item?.name}}</h5></td>
+                        <td style="width: 268px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 255px;">{{item?.email}}</h5></td>
+                        <td style="width: 255px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 239px;">{{item?.cnpj | mask: '00.000.000/0000-00' || '..'}}</h5></td>
+                        <td><h5 class="mb-0 py-3 text-start">{{item.updatedAt | date:'dd/MM/yyyy' }}</h5></td>
+                        <td><h5 role="button" (click)="openModals('verificar', item)" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
                       </tr>
                     </tbody>
                 </table>
