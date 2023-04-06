@@ -1,11 +1,11 @@
-export abstract class ProductsRegisterRequestDto {
+export interface ProductRegisterRequestDto {
   name: string;
   code: string;
-  specification: string;
+  specifications: string;
   description: string;
   image: string[];
-  cnpj: string;
   status: string;
-  value: number;
+  cnpj: string;
+  value: string;
   category: string[];
 }

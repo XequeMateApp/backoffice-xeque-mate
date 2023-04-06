@@ -8,7 +8,7 @@
           style="height: fit-content;">
       </div>
 
-      <form [formGroup]="form"  (ngSubmit)="confirm()" class="col-12 mt-4">
+      <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
         <div class="row">
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="create-name">Nome</label>
@@ -25,12 +25,13 @@
               class="form-control fw-bolder br-16 bordder py-3"
               placeholder="Digite o valor"
               formControlName="price" />
-              <label class="text-danger mt-1" *ngIf="alertFieldPrice" for="create-valor">Campo preço está vazio</label>
+            <label class="text-danger mt-1" *ngIf="alertFieldPrice" for="create-valor">Campo preço está vazio</label>
           </div>
 
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="create-cnpj">Fornecedor CNPJ</label>
-            <input type="text" #createcnpj required id="create-cnpj" mask="00.000.000/0000-00"  class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
+            <input type="text" #createcnpj required id="create-cnpj" mask="00.000.000/0000-00" class="form-control fw-bolder br-16 bordder py-3"
+              placeholder="Digite o CNPJ" formControlName="cnpj" />
             <label class="text-danger mt-1" *ngIf="alertFieldCnpj" for="create-cnpj">Campo cnpj está vazio</label>
           </div>
           <div class="col-md-6">
@@ -47,7 +48,7 @@
               aria-label="Default select category"
               formControlName="selectCategory"
               (change)="onOptionSelected(selectOptions.value)">
-              <option [selected]="true" [disabled]="true" >Selecione uma categoria</option>
+              <option [selected]="true" [disabled]="true">Selecione uma categoria</option>
               <option [selected]="option.category != '' " *ngFor="let option of supplier" [value]="option._id">{{option.category}}</option>
             </select> -->
             <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo código está vazio</label>
@@ -101,7 +102,7 @@
                   <textarea maxlength="200" formControlName="description" class="form-control
                     overflow-scroll border w3-white br-16 p-3" #createdescription
                     id="exempleDescription" required rows="3"></textarea>
-            <label class="text-danger mt-1" *ngIf="alertFieldDescription" for="create-code">Campo descrição está vazio</label>
+                  <label class="text-danger mt-1" *ngIf="alertFieldDescription" for="create-code">Campo descrição está vazio</label>
 
                 </div>
                 <div class="col-md-6">
@@ -109,7 +110,7 @@
                   <textarea maxlength="200" formControlName="specification" class="form-control
                     overflow-scroll border w3-white br-16 p-3" required #createspecification
                     id="exempleSpecification" rows="3"></textarea>
-            <label class="text-danger mt-1" *ngIf="alertFieldSpecification" for="create-code">Campo especificações está vazio</label>
+                  <label class="text-danger mt-1" *ngIf="alertFieldSpecification" for="create-code">Campo especificações está vazio</label>
 
                 </div>
               </div>
