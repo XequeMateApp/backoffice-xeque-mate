@@ -29,7 +29,7 @@ export class CreateProductComponent implements OnInit {
 
 
   selectFileName: String;
-  supplierImg: File[] = [];
+  supplierImg: string[] = [];
   selectedItems: SupplierInterface[] = [];
   FileNameDoc: String;
 
@@ -63,8 +63,8 @@ export class CreateProductComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       code: [''],
-      selectCategory: [''],
-      selectPhotos: [''],
+      selectCategory: ['diversos'],
+      selectPhotos: ['imagens'],
       description: [''],
       specification: [''],
       cnpj: [''],
@@ -110,14 +110,14 @@ export class CreateProductComponent implements OnInit {
         this.alertFieldCode = false;
       }, 5000);
     }
-    else if (this.form.controls['selectCategory'].value === '') {
-      this.selectOptions.nativeElement.classList.add("border-danger", "border", "text-danger");
-      this.alertFieldCategory = true;
-      setInterval(() => {
-        this.selectOptions.nativeElement.classList.remove("border-danger", "border", "text-danger");
-        this.alertFieldCategory = false;
-      }, 5000);
-    }
+    // else if (this.form.controls['selectCategory'].value === '') {
+    //   this.selectOptions.nativeElement.classList.add("border-danger", "border", "text-danger");
+    //   this.alertFieldCategory = true;
+    //   setInterval(() => {
+    //     this.selectOptions.nativeElement.classList.remove("border-danger", "border", "text-danger");
+    //     this.alertFieldCategory = false;
+    //   }, 5000);
+    // }
     else if (this.form.controls['selectPhotos'].value === '') {
       this.createimg.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldImg = true;
@@ -189,17 +189,17 @@ export class CreateProductComponent implements OnInit {
 
 
   confirm() {
-    this.verifiField();
+    // this.verifiField();
     this.request = {
-      name: this.form.controls['name'].value,
-      code: this.form.controls['code'].value,
-      description: this.form.controls['description'].value,
-      specification: this.form.controls['specification'].value,
-      image: this.supplierImg,
-      cnpj: this.form.controls['cnpj'].value,
-      value: String(this.form.controls['price'].value),
-      status: 'APPROVED',
-      category:  this.selectedCategories
+      name: "blablabla",
+      code: "dfnoiwefiwefwe",
+      specification: "dfnoiwefiwefwe",
+      description: "dfnoiwefiwefwe",
+      image: this.form.controls['selectPhotos'].value,
+      status: "APPROVED",
+      cnpj: "string",
+      value: this.form.controls['price'].value,
+      category: this.form.controls['selectCategory'].value,
     }
     console.log(this.request)
     this.productService.register(this.request).subscribe(

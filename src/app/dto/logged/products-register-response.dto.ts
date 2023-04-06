@@ -7,6 +7,6 @@ export abstract class ProductsRegisterResponseDto {
   image?: string[];
   cnpj?: string;
   status?: string;
-  value?: string;
+  value?: number;
   category?: string[];
 }

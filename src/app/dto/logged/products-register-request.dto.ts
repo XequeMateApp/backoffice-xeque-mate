@@ -3,9 +3,9 @@ export abstract class ProductsRegisterRequestDto {
   code: string;
   specification: string;
   description: string;
-  image: File[];
+  image: string[];
   cnpj: string;
   status: string;
-  value: string;
+  value: number;
   category: string[];
 }
