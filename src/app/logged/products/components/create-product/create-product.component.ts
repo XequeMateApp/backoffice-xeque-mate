@@ -64,7 +64,7 @@ export class CreateProductComponent implements OnInit {
       name: [''],
       code: [''],
       selectCategory: ['diversos'],
-      selectPhotos: ['imagens'],
+      selectPhotos: [''],
       description: [''],
       specification: [''],
       cnpj: [''],
@@ -110,14 +110,14 @@ export class CreateProductComponent implements OnInit {
         this.alertFieldCode = false;
       }, 5000);
     }
-    // else if (this.form.controls['selectCategory'].value === '') {
-    //   this.selectOptions.nativeElement.classList.add("border-danger", "border", "text-danger");
-    //   this.alertFieldCategory = true;
-    //   setInterval(() => {
-    //     this.selectOptions.nativeElement.classList.remove("border-danger", "border", "text-danger");
-    //     this.alertFieldCategory = false;
-    //   }, 5000);
-    // }
+    else if (this.form.controls['selectCategory'].value === '') {
+      this.selectOptions.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.alertFieldCategory = true;
+      setInterval(() => {
+        this.selectOptions.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.alertFieldCategory = false;
+      }, 5000);
+    }
     else if (this.form.controls['selectPhotos'].value === '') {
       this.createimg.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldImg = true;
@@ -159,7 +159,7 @@ export class CreateProductComponent implements OnInit {
     const index = this.selectedItems.indexOf(item);
     if (index >= 0) {
       this.selectedItems.splice(index, 1);
-    }
+    } 
   }
 
   // FUNCTION-IMAGE
@@ -191,22 +191,22 @@ export class CreateProductComponent implements OnInit {
   confirm() {
     // this.verifiField();
     this.request = {
-      name: "blablabla",
-      code: "dfnoiwefiwefwe",
-      specification: "dfnoiwefiwefwe",
-      description: "dfnoiwefiwefwe",
-      image: this.form.controls['selectPhotos'].value,
+      name: this.form.controls['name'].value,
+      code: this.form.controls['code'].value,
+      specification: this.form.controls['specification'].value,
+      description:this.form.controls['description'].value,
+      image: this.supplierImg,
       status: "APPROVED",
-      cnpj: "string",
+      cnpj: this.form.controls['cnpj'].value,
       value: this.form.controls['price'].value,
       category: this.form.controls['selectCategory'].value,
     }
     console.log(this.request)
     this.productService.register(this.request).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000)
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 2000)
         this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },
