@@ -42,16 +42,14 @@
           </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="create-category">Categoria</label>
-            <select #selectOptions class="form-select fw-bolder text-dark-blue
+            <!-- <select #selectOptions class="form-select fw-bolder text-dark-blue
               br-16 border py-3" required
               aria-label="Default select category"
               formControlName="selectCategory"
               (change)="onOptionSelected(selectOptions.value)">
               <option [selected]="true" [disabled]="true" >Selecione uma categoria</option>
-              <option (click)="addItem()" [selected]="option.category != '' "
-                *ngFor="let option of supplier" [value]="option._id">{{option.category
-                }}</option>
-            </select>
+              <option [selected]="option.category != '' " *ngFor="let option of supplier" [value]="option._id">{{option.category}}</option>
+            </select> -->
             <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo código está vazio</label>
             <ul class="list-group mt-3 br-16 ">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
@@ -86,7 +84,7 @@
                     border">
                     <input role="button" type="file" class="illustration
                       position-relative z-10" style="opacity:0;" required
-                      formControlName="selectPhotos" #createimg
+                      formControlName="image" #createimg
                       (change)="onSelectFileProductImage($event)"
                       accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative"
@@ -95,6 +93,7 @@
                 </div>
               </div>
             </div>
+           
             <label class="text-danger mt-1" *ngIf="alertFieldImg" for="create-code">Campo image está vazio</label>
             <div class="col-12 mt-4 pb-3">
               <div class="row">
