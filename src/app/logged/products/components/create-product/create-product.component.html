@@ -84,7 +84,7 @@
                     border">
                     <input role="button" type="file" class="illustration
                       position-relative z-10" style="opacity:0;" required
-                      formControlName="selectPhotos" #createimg
+                      formControlName="image" #createimg
                       (change)="onSelectFileProductImage($event)"
                       accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative"
@@ -93,6 +93,7 @@
                 </div>
               </div>
             </div>
+           
             <label class="text-danger mt-1" *ngIf="alertFieldImg" for="create-code">Campo image está vazio</label>
             <div class="col-12 mt-4 pb-3">
               <div class="row">

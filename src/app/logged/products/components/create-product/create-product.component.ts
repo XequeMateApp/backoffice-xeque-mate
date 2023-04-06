@@ -64,7 +64,7 @@ export class CreateProductComponent implements OnInit {
       name: [''],
       code: [''],
       selectCategory: ['diversos'],
-      selectPhotos: [''],
+      image: [''],
       description: [''],
       specification: [''],
       cnpj: [''],
@@ -159,18 +159,19 @@ export class CreateProductComponent implements OnInit {
     const index = this.selectedItems.indexOf(item);
     if (index >= 0) {
       this.selectedItems.splice(index, 1);
-    } 
+    }
   }
+
 
   // FUNCTION-IMAGE
   onSelectFileProductImage(event: any): void {
-    if (event.target.files && event.target.files.length > 0) {
+    if (event.target.files && event.target.files[0]) {
       this.notImage = false;
-      const filesAmount = event.target.files.length;
+      var filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         const reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.supplierImg.push(e.target.result);
+        reader.onload = (event: any) => {
+          this.supplierImg.push(event.target.result as string);
         };
         reader.readAsDataURL(event.target.files[i]);
       }
@@ -194,7 +195,7 @@ export class CreateProductComponent implements OnInit {
       name: this.form.controls['name'].value,
       code: this.form.controls['code'].value,
       specification: this.form.controls['specification'].value,
-      description:this.form.controls['description'].value,
+      description: this.form.controls['description'].value,
       image: this.supplierImg,
       status: "APPROVED",
       cnpj: this.form.controls['cnpj'].value,
