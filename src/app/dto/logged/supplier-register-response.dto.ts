@@ -8,4 +8,5 @@ export abstract class SupplierRegisterResponseDto {
   status?: string;
   document?: string;
   profile?: string
+  cpf?: string;
 }

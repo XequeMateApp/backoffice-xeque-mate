@@ -13,6 +13,7 @@ import { UserPutRequestDto } from 'src/app/dto/logged/user-put-request.dto';
 import { UserDeleteRequestDto } from 'src/app/dto/logged/user-delete-request.dto';
 import { SupplierRegisterResponseDto } from 'src/app/dto/logged/supplier-register-response.dto';
 import { SupplierRegisterRequestDto } from 'src/app/dto/logged/supplier-register-request.dto';
+import { SupplierCustomersRequestDto } from 'src/app/dto/logged/supplier-costumers-request.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -86,7 +87,7 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
+// supplier
   getUserPlataform(status: string): Observable<SupplierRegisterResponseDto[]> {
     return this.httpClient
       .get(`${this.url}/user-plataform?status=${status}`, this.authorizedHeader)
@@ -100,5 +101,19 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+
+  // supplier-customers
+  getUserPlataformSupplier(status: string): Observable<SupplierCustomersRequestDto[]> {
+    return this.httpClient
+      .get(`${this.url}/user-plataform?status=${status}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+
+  updateSupplierCustomers(userID: string, status: string, dto: SupplierRegisterRequestDto): Observable<SupplierRegisterResponseDto> {
+    return this.httpClient
+      .put(`${this.url}/user-plataform/review/id/${userID}/status/${status}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
 
 }

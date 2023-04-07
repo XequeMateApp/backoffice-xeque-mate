@@ -9,6 +9,8 @@ import { CloseSupplierCustomersClientComponent } from './components/close-suppli
 import { EditSupplierCustomersComponent } from './components/edit-supplier-customers/edit-supplier-customers.component';
 import { CloseSupplierCustomersComponent } from './components/close-supplier-customers/close-supplier-customers.component';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
+import { UserService } from 'src/services/user.service';
+import { SupplierCustomersResponsetDto } from 'src/app/dto/logged/supplier-costumers-response.dto';
 @Component({
   selector: 'app-suppliers-customers',
   templateUrl: './suppliers-customers.component.html',
@@ -24,6 +26,7 @@ export class SuppliersCustomersComponent implements OnInit {
     itemsPerPage: 8,
     currentPage: 1
   };
+  response: SupplierCustomersResponsetDto[];
   filterTerm!: string;
   user: any;
   officerAdm: string;
@@ -31,6 +34,7 @@ export class SuppliersCustomersComponent implements OnInit {
     private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -38,8 +42,18 @@ export class SuppliersCustomersComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     const domain = this.user.email.split("@")[1];
     this.officerAdm = domain;
+    this.getListUsert();
   }
 
+  getListUsert(): void{
+    this.userService.getUserPlataformSupplier('active').subscribe(
+      success => {
+        this.response = success;
+        console.log(this.response)
+      },
+      error => { console.error(error, 'data not collected') }
+    )
+  }
 
   backHome() {
     this.router.navigate(['/logged/dashboard']);

@@ -68,7 +68,7 @@
             <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
-                      <tr *ngFor="let item of supplier| paginate: config | filter: filterTerm;  let i= index; ">
+                      <tr *ngFor="let item of response| paginate: config | filter: filterTerm;  let i= index; ">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
                         <td style="width: 265px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
                         <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 100px;">{{item.type}}</h5></td>
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="supplier.length >= 0">
+        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length >= 0">
             <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
                 <div class="custom-pagination">
                     <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
