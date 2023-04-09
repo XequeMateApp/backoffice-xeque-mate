@@ -4,6 +4,7 @@ export abstract class SupplierCustomersResponsetDto {
   name?: string;
   cnpj?: string;
   status?: string;
+  phone?: string;
   profile?: string;
   documents?: string;
   cpf?: string;

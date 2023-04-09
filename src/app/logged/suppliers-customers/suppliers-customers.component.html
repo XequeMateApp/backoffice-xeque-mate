@@ -54,7 +54,7 @@
                     <div style="width: 292px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">E-mail</b>
                     </div>
-                    <div style="width: 181px;"  class="col-2 col-type h-100 br-16 align-items-center d-flex">
+                    <div style="width: 124px;" class="col-2 col-type h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Tipo</b>
                     </div>
                     <div style="max-width: 221px;" class="col col-tel h-100 br-16 align-items-center d-flex">
@@ -68,24 +68,27 @@
             <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
-                      <tr *ngFor="let item of response| paginate: config | filter: filterTerm;  let i= index; ">
+                      <tr *ngFor="let item of response | paginate: config | filter: filterTerm;  let i= index; ">
                         <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item.name}}</h5></td>
-                        <td style="width: 265px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
-                        <td><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 100px;">{{item.type}}</h5></td>
-                        <td><h5 class="mb-0 py-3 text-start">{{item.tel | mask: '(00) 0000-0000'}}</h5></td>
+                        <td style="width: 295px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item.email}}</h5></td>
+                        <td style="width: 120px;">
+                          <h5  *ngIf="item.profile === 'provider'" class="mb-0 py-3 d-inline-block text-truncate">Fornecedor</h5>
+                          <h5  *ngIf="item.profile === 'client'" class="mb-0 py-3 d-inline-block text-truncate">Cliente</h5>
+                        </td>
+                        <td class="td-phone" style="width: 222px;"><h5 class="mb-0 py-3 text-start">{{item.phone | mask: '(00) 0000-0000' || '..'}}</h5></td>
                         <td>
-                            <h4 *ngIf="item.status === 'Ativo'" class="mb-0  py-3 text-success"> {{item.status}}</h4>
-                            <h4 *ngIf="item.status === 'Inativo'" class="mb-0  py-3 text-danger">{{item.status}}</h4>
+                            <h4 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h4>
+                            <h4 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inactive</h4>
                         </td>
                         <td>
                             <!-- caso email seja padrão para o fornecedores -->
-                            <h4 *ngIf="officerAdm !== 'luis.com'" class="mb-0  py-3">
-                                <i role='button' (click)="openModals('editclient', item)" class="bi h3 px-2 py-3 bi-gear"></i>
-                                <i role='button' (click)="openModals('deleteclient', item)" class="bi h3 ms-3 px-2 py-3 text-danger bi-trash3"></i>
+                            <h4  *ngIf="item.profile === 'client'" class="mb-0 d-flex justify-content-center py-3">
+                                <i role='button' (click)="openModals('editclient', item)" class="bi h3  bi-gear"></i>
+                                <i role='button' (click)="openModals('deleteclient', item)" class="bi h3 ms-3  text-danger bi-trash3"></i>
                             </h4>
-                            <h4 *ngIf="officerAdm == 'luis.com'" class="mb-0  py-3">
-                                <i role='button' (click)="openModals('editsupplier' , item)" class="bi h3 px-2 py-3 bi-gear"></i>
-                                <i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 ms-3 px-2 py-3 text-danger bi-trash3"></i>
+                            <h4  *ngIf="item.profile === 'provider'"  class="mb-0  d-flex justify-content-center py-3">
+                                <i role='button' (click)="openModals('editsupplier' , item)" class="bi h3  bi-gear"></i>
+                                <i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 ms-3  text-danger bi-trash3"></i>
                             </h4>
                         </td>
                       </tr>

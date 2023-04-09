@@ -29,8 +29,7 @@ export class EditSupplierCustomersComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-
+    this.productsData = JSON.parse(localStorage.getItem('responseData'));
     this.FilesDoc = this.productsData.doc;
     console.log(this.FilesDoc);
     this.form.controls['name'].setValue(this.productsData.name);

@@ -18,7 +18,6 @@ import { SupplierCustomersResponsetDto } from 'src/app/dto/logged/supplier-costu
 })
 
 export class SuppliersCustomersComponent implements OnInit {
-  supplier: SupplierInterface[];
   ArrayInfoUser: any = [];
   @Input('data') meals: string[] = [];
   public config: PaginationInstance = {
@@ -31,22 +30,17 @@ export class SuppliersCustomersComponent implements OnInit {
   user: any;
   officerAdm: string;
   constructor(
-    private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.supplier = this.datamockService.supplier;
-    this.user = JSON.parse(localStorage.getItem('user'));
-    const domain = this.user.email.split("@")[1];
-    this.officerAdm = domain;
     this.getListUsert();
   }
 
   getListUsert(): void{
-    this.userService.getUserPlataformSupplier('active').subscribe(
+    this.userService.getUserPlataformSupplier().subscribe(
       success => {
         this.response = success;
         console.log(this.response)
@@ -69,21 +63,19 @@ export class SuppliersCustomersComponent implements OnInit {
     } else if (tabName == 'deletesupplier') {
       this.modalService.open(CloseSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
     }
-    LocalStorageUtil.set(LocalStorageKeys.productsData, info);
-
+    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
   }
 
 
   sortListByAlphabeticalOrder(): void {
-    this.supplier.sort((a, b) => {
+    this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);
     }
     );
   }
 
-
   sortListByType(value: string) {
-    if (value === 'cliente') this.supplier.sort((a, b) => { return a.type.localeCompare(b.type); });
-    else if (value === 'fornecedor') this.supplier.sort((a, b) => { return b.type.localeCompare(a.type); });
+    if (value === 'cliente') this.response.sort((a, b) => { return a.profile.localeCompare(b.profile); });
+    else if (value === 'fornecedor') this.response.sort((a, b) => { return b.profile.localeCompare(a.profile); });
   }
 }
