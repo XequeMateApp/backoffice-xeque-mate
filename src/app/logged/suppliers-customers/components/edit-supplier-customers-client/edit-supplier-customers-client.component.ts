@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { SupplierCustomersPutResponsetDto } from 'src/app/dto/logged/supplier-customers-put-request.dto';
+import { SupplierCustomersPutRequestDto } from 'src/app/dto/logged/supplier-customers-put-request.dto';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { UserService } from 'src/services/user.service';
 })
 export class EditSupplierCustomersClientComponent implements OnInit {
   form: FormGroup;
-  request: SupplierCustomersPutResponsetDto;
+  request: SupplierCustomersPutRequestDto;
   selectFile: any = [];
   selectFileName: string;
   responseData: any;
@@ -30,9 +30,10 @@ export class EditSupplierCustomersClientComponent implements OnInit {
       phone: [''],
       email: [''],
       supplier: [''],
+      image: ['']
     })
   }
-  
+
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.FilesDoc = this.responseData.doc;
