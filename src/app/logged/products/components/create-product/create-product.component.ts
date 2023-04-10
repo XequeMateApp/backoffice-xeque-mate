@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { ProductsRegisterRequestDto } from 'src/app/dto/logged/products-register-request.dto';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { DatamockService } from 'src/services/datamock.service';
 import { ProductService } from 'src/services/products.service';
@@ -24,9 +23,6 @@ export class CreateProductComponent implements OnInit {
   @ViewChild('createspecification') createspecification: ElementRef;
 
   form: FormGroup;
-  request: ProductsRegisterRequestDto;
-
-
 
   selectFileName: String;
   supplierImg: string[] = [];
@@ -51,7 +47,7 @@ export class CreateProductComponent implements OnInit {
   alertFieldSpecification = false;
   imageSrc: string;
   selectedCategories: string[];
-
+  totalFiles: File[] = [];
 
   constructor(
     private modalService: NgbModal,
@@ -63,8 +59,8 @@ export class CreateProductComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       code: [''],
-      selectCategory: ['diversos'],
-      image: [''],
+      selectCategory: [''],
+      selectPhotos: [''],
       description: [''],
       specification: [''],
       cnpj: [''],
@@ -144,7 +140,6 @@ export class CreateProductComponent implements OnInit {
     }
   }
 
-
   //FUNCTION-SELECTION
   onOptionSelected(optionId: string) {
     const selectedOption = this.supplier.find(option => option._id === +optionId);
@@ -162,24 +157,42 @@ export class CreateProductComponent implements OnInit {
     }
   }
 
-
   // FUNCTION-IMAGE
-  onSelectFileProductImage(event: any): void {
+  onSelectFileProductImage(event: any) {
+    for (let i = 0; i < event.target.files.length; i++) {
+      this.totalFiles.push(event.target.files[i]);
+    }
+
+    console.log(this.totalFiles);
+
+    const totalSize = this.totalFiles
+      .reduce((acc, file) => acc + file.size, 0);
+
+    console.log(totalSize);
+
+
     if (event.target.files && event.target.files[0]) {
+      if (event.target.files[0].size > 50000) {
+        this.toastrService.error('Tamanho de imagem não suportada!', '', { progressBar: true })
+        this.totalFiles.pop();
+        return;
+      }
+      if (totalSize > 50000) {
+        this.toastrService.error('Tamanho total das imagens não suportada!', '', { progressBar: true })
+        this.totalFiles.pop();
+        return;
+      }
       this.notImage = false;
       var filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
-        const reader = new FileReader();
+        var reader = new FileReader();
         reader.onload = (event: any) => {
           this.supplierImg.push(event.target.result as string);
         };
         reader.readAsDataURL(event.target.files[i]);
       }
-      console.log('Selected images:', this.supplierImg);
     }
   }
-
-
   removeFile(index: number) {
     this.supplierImg.splice(index, 1);
     this.form.controls['selectPhotos'].setValue(null);
@@ -191,19 +204,19 @@ export class CreateProductComponent implements OnInit {
 
   confirm() {
     // this.verifiField();
-    this.request = {
+    const dto = {
       name: this.form.controls['name'].value,
       code: this.form.controls['code'].value,
-      specification: this.form.controls['specification'].value,
+      specifications: this.form.controls['specification'].value,
       description: this.form.controls['description'].value,
       image: this.supplierImg,
       status: "APPROVED",
       cnpj: this.form.controls['cnpj'].value,
-      value: this.form.controls['price'].value,
+      value: this.form.controls['price'].value.toString(),
       category: this.form.controls['selectCategory'].value,
     }
-    console.log(this.request)
-    this.productService.register(this.request).subscribe(
+    console.log(dto);
+    this.productService.productRegister(dto).subscribe(
       success => {
         // setTimeout(() => {
         //   window.location.reload();
