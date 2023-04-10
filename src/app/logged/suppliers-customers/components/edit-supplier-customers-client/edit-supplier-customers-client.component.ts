@@ -32,14 +32,17 @@ export class EditSupplierCustomersClientComponent implements OnInit {
       supplier: [''],
     })
   }
+  
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.FilesDoc = this.responseData.doc;
-    console.log(this.FilesDoc);
     this.form.controls['name'].setValue(this.responseData.name);
     this.form.controls['cpf'].setValue(this.responseData.cpf);
     this.form.controls['phone'].setValue(this.responseData.phone);
     this.form.controls['email'].setValue(this.responseData.email);
+    console.log(this.FilesDoc,  this.form.controls['phone'].value);
+    if (this.form.controls['phone'].value)   console.log('tem')
+    else console.log('não')
   }
 
   downloadFile() {
@@ -50,11 +53,14 @@ export class EditSupplierCustomersClientComponent implements OnInit {
     link.click();
     link.remove();
   }
+
   exit() {
     this.modalService.dismissAll()
   }
+
   confirm() {
     if (this.form.controls['phone'].value === undefined) this.truephone = '';
+    else if(this.form.controls['phone'].value) this.truephone = this.form.controls['phone'].value;
     else this.truephone = `+55${this.form.controls['phone'].value}`;
     this.request = {
       phone: this.truephone,
@@ -64,7 +70,7 @@ export class EditSupplierCustomersClientComponent implements OnInit {
       status: 'active',
     }
     console.log(this.request)
-    this.userService.updateSupplierCustomers(this.responseData._id, this.request.status, this.request).subscribe(
+    this.userService.updateSupplierCustomers(this.responseData._id, this.request).subscribe(
       success => {
         setTimeout(() => {
           window.location.reload();

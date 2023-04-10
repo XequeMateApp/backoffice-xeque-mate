@@ -112,9 +112,9 @@ export class UserService extends BaseService {
   }
 
 
-  updateSupplierCustomers(userID: string, status: string, dto: SupplierCustomersPutResponsetDto): Observable<SupplierRegisterResponseDto> {
+  updateSupplierCustomers(userID: string, dto: SupplierCustomersPutResponsetDto): Observable<SupplierRegisterResponseDto> {
     return this.httpClient
-      .put(`${this.url}/user-plataform/review/id/${userID}/status/${status}`, dto, this.authorizedHeader)
+      .put(`${this.url}/user-plataform/update/id/${userID}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
