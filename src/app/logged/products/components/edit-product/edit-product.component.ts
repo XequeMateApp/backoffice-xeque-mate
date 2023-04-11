@@ -149,10 +149,12 @@ export class EditProductComponent implements OnInit {
 
 
   // general-functions
-  exit() {
-    this.modalService.dismissAll()
-  }
   confirm() {
     window.alert('confirm ')
   }
+
+  exit() {
+    this.modalService.dismissAll()
+  }
+
 }

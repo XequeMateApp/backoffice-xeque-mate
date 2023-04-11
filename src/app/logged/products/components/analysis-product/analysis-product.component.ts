@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { DatamockService } from 'src/services/datamock.service';
+import { ProductService } from 'src/services/products.service';
 
 @Component({
   selector: 'app-analysis-product',
@@ -31,7 +33,9 @@ export class AnalysisProductComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
+    private toastrService: ToastrService,
     private formBuilder: FormBuilder,
+    private productService: ProductService,
     private datamockService: DatamockService,
   ) {
     this.form = this.formBuilder.group({
@@ -128,11 +132,25 @@ export class AnalysisProductComponent implements OnInit {
   // }
 
 
-  // general-functions
+
+  confirm() {
+    this.productService.putAnalisysProduct(this.responseData._id, 'APPROVED').subscribe(
+      success => {
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 2000)
+        this.toastrService.success('Analisado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao analisar', '', { progressBar: true });
+      }
+    )
+  }
+
+
   exit() {
     this.modalService.dismissAll()
-  }
-  confirm() {
-    window.alert('confirm ')
   }
 }

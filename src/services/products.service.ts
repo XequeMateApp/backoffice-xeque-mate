@@ -4,8 +4,9 @@ import { Observable, Subject } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
-import { ProductRegisterRequestDto } from 'src/app/interface/product-register-request.dto';
-import { ProductsRegisterResponseDto } from 'src/app/dto/logged/products-register-response.dto';
+import { ProductRegisterRequestDto } from 'src/app/dto/logged/product-register-request.dto';
+import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
+import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
 
 
 @Injectable({
@@ -25,9 +26,24 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+
   productRegister(dto: ProductRegisterRequestDto): Observable<any> {
     return this.httpClient
       .post(`${this.url}product/backoffice-register`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+
+  putProduct(id: string, dto: ProductPutRequestDto): Observable<any> {
+    return this.httpClient
+      .put(`${this.url}product/update/id/${id}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+
+  putAnalisysProduct(id: string, status: string): Observable<any> {
+    return this.httpClient
+      .put(`${this.url}product/review/id/${id}/status/${status}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 

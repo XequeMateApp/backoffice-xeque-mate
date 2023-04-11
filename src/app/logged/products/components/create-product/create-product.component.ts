@@ -157,6 +157,7 @@ export class CreateProductComponent implements OnInit {
       this.selectedCategories.splice(index, 1);
     }
   }
+  
   // FUNCTION-IMAGE
   onSelectFileProductImage(event: any) {
     for (let i = 0; i < event.target.files.length; i++) {
@@ -188,6 +189,7 @@ export class CreateProductComponent implements OnInit {
       }
     }
   }
+
   removeFile(index: number) {
     this.supplierImg.splice(index, 1);
     this.form.controls['selectPhotos'].setValue(null);
@@ -234,8 +236,6 @@ export class CreateProductComponent implements OnInit {
         }
       )
     }
-
-
   }
 
 

@@ -9,7 +9,7 @@ import { AnalysisProductComponent } from './components/analysis-product/analysis
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
-import { ProductsRegisterResponseDto } from 'src/app/dto/logged/products-register-response.dto';
+import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
 import { ProductService } from 'src/services/products.service';
 
 @Component({

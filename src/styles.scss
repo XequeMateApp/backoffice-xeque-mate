@@ -202,10 +202,9 @@
     padding-left: 0px;
     padding-right: 0px;
   }
-
-  .col-name {
-    width: 247px !important;
-  }
+  .col-description {
+    min-width: 609px !important;
+}
 }
 
 @media (max-width: 991px) {
@@ -236,11 +235,11 @@
   }
 
   .col-name {
-    width: 241px;
+    width: 257px;
   }
 
   .col-description {
-    width: 617px !important;
+    width: 598px !important;
   }
 
   .col-type {

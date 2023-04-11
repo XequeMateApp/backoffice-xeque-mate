@@ -26,19 +26,20 @@ export class CategoryService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+
   register(dto: CategoryRequestDto): Observable<CategoryResponseDto> {
     return this.httpClient
       .post(`${this.url}register`, dto, this.authorizedHeader)
-      .pipe(
-        map(this.extractData),
-        catchError(this.serviceError)
-      );
+      .pipe(map(this.extractData), catchError(this.serviceError));
   }
+
+
   deleteCategory(Id: string): Observable<CategoryDeleteRequestDto> {
     return this.httpClient
       .delete(`${this.url}delete/id/${Id}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+  
 
   editCategory(Id: string, dto: CategoryRequestDto): Observable<CategoryResponseDto> {
     return this.httpClient
