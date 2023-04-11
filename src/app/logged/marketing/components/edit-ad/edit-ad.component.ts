@@ -23,14 +23,10 @@ export class EditAdComponent implements OnInit {
       img: [''],
     })
   }
+
   ngOnInit(): void {
   }
-  exit() {
-    this.modalService.dismissAll()
-  }
-  confirm() {
-    window.alert('confirm ')
-  }
+  
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       this.notImage = false;
@@ -45,4 +41,15 @@ export class EditAdComponent implements OnInit {
       }
     }
   }
+
+  confirm() {
+    this.modalService.dismissAll()
+  }
+
+  exit() {
+    this.modalService.dismissAll()
+  }
+
 }
+
+

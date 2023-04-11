@@ -150,7 +150,7 @@ export class EditProductComponent implements OnInit {
 
   // general-functions
   confirm() {
-    window.alert('confirm ')
+    this.modalService.dismissAll()
   }
 
   exit() {

@@ -25,6 +25,7 @@ export class DeleteNotificationComponent implements OnInit {
     this.modalService.dismissAll()
   }
   delete(){
-    window.alert('Delete  ')
+    this.modalService.dismissAll()
+
   }
 }

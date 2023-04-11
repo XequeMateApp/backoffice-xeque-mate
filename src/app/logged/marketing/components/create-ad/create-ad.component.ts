@@ -29,7 +29,7 @@ export class CreateAdComponent implements OnInit {
     this.modalService.dismissAll()
   }
   confirm() {
-    window.alert('confirm ')
+    this.modalService.dismissAll()
   }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {

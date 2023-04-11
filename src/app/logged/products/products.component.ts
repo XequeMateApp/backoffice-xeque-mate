@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit {
     currentPage: 1
   };
   response: ProductsRegisterResponseDto[] = [];
+
   filterTerm!: string;
   officerAdm: string;
   uniqueMaterials: string[];
@@ -36,7 +37,7 @@ export class ProductsComponent implements OnInit {
     private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
-    private productService: ProductService
+    private productService: ProductService,
   ) { }
 
   ngOnInit(): void {
