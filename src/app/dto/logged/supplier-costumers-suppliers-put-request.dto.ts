@@ -5,5 +5,4 @@ export abstract class SupplierCustomersSuppliersPutRequesttDto {
   phone: string;
   cnpj: string;
   hightlight: string;
-  image: string;
 }

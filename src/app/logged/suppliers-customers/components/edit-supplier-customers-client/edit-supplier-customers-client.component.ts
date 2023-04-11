@@ -60,7 +60,7 @@ export class EditSupplierCustomersClientComponent implements OnInit {
   }
 
   confirm() {
-    if (this.form.controls['phone'].value === undefined) this.truephone = '';
+    if (this.form.controls['phone'].value === undefined || this.form.controls['phone'].value === '') this.truephone = '';
     else if(this.form.controls['phone'].value) this.truephone = this.form.controls['phone'].value;
     else this.truephone = `+55${this.form.controls['phone'].value}`;
     this.request = {

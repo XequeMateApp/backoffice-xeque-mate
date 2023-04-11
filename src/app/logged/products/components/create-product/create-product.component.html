@@ -51,7 +51,7 @@
               <option [selected]="true" [disabled]="true">Selecione uma categoria</option>
               <option [selected]="option.category != '' " *ngFor="let option of supplier" [value]="option._id">{{option.category}}</option>
             </select>
-            <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo código está vazio</label>
+            <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo categorias está vazio</label>
             <ul class="list-group mt-3 br-16 ">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
                 <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item.category }}</h6>
@@ -94,7 +94,7 @@
                 </div>
               </div>
             </div>
-           
+
             <label class="text-danger mt-1" *ngIf="alertFieldImg" for="create-code">Campo image está vazio</label>
             <div class="col-12 mt-4 pb-3">
               <div class="row">

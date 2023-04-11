@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { DatamockService } from 'src/services/datamock.service';
@@ -17,7 +17,8 @@ export class AnalysisProductComponent implements OnInit {
   selectedItems: SupplierInterface[] = [];
   FileNameDoc: String;
 
-  productsData: any;
+  alertFieldCategory = false;
+  responseData: any;
 
   supplier: SupplierInterface[];
   selectedImageUrl: string;
@@ -25,7 +26,8 @@ export class AnalysisProductComponent implements OnInit {
   notImage = true;
   pdfFileName: string;
   FilesDoc: any;
-
+  items: string[];
+  selectedCategories: string[];
 
   constructor(
     private modalService: NgbModal,
@@ -46,56 +48,54 @@ export class AnalysisProductComponent implements OnInit {
     })
   }
 
+
   ngOnInit(): void {
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.supplier = this.datamockService.getsupplier();
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    console.log(this.productsData)
-    // this.supplierImg = this.productsData.img;
-
-    this.FilesDoc = this.productsData.doc;
-
+    this.FilesDoc = this.responseData.doc;
     console.log(this.FilesDoc);
+    console.log(this.responseData)
     // console.log(this.supplierImg);
-    this.form.controls['name'].setValue(this.productsData.name)
-    this.form.controls['price'].setValue(this.productsData.price)
-    this.form.controls['code'].setValue(this.productsData.code)
-    this.form.controls['material'].setValue(this.productsData.material)
-    this.form.controls['selectCategory'].setValue(this.productsData.category)
-    this.form.controls['description'].setValue(this.productsData.description)
-    this.form.controls['specification'].setValue(this.productsData.specification)
-    this.form.controls['status'].setValue(this.productsData.status)
+    this.form.controls['name'].setValue(this.responseData.name)
+    this.form.controls['price'].setValue(this.responseData.value)
+    this.form.controls['code'].setValue(Number(this.responseData.code))
+    this.form.controls['material'].setValue(this.responseData.material)
+    this.form.controls['selectCategory'].setValue(this.responseData.category)
+    this.form.controls['description'].setValue(this.responseData.description)
+    this.form.controls['specification'].setValue(this.responseData.specifications)
+    this.getImagesFromLocalStorage();
   }
 
 
-  // functions-select
-
+  //FUNCTION-SELECTION
+  // esse aqui tá dificil
   onOptionSelected(optionId: string) {
     const selectedOption = this.supplier.find(option => option._id === +optionId);
     if (selectedOption && !this.selectedItems.includes(selectedOption)) {
-      this.selectedItems.push(selectedOption);
+      this.selectedItems.push(selectedOption)
     }
-  }
-
-  addItem() {
-    const selectElement = document.querySelector('select');
-    const selectedOptionId = selectElement.value;
-    const selectedOption = this.supplier.find(option => option._id === +selectedOptionId);
-    if (selectedOption && !this.selectedItems.includes(selectedOption)) {
-      this.selectedItems.push(selectedOption);
-    }
+    this.selectedCategories = this.selectedItems.map(item => item.category);
+    console.log(this.selectedCategories);
   }
 
   removeItem(item: SupplierInterface) {
     const index = this.selectedItems.indexOf(item);
     if (index >= 0) {
       this.selectedItems.splice(index, 1);
+      this.selectedCategories.splice(index, 1);
     }
+  }
+
+  getImagesFromLocalStorage() {
+    const imagesData = JSON.parse(localStorage.getItem('responseData'));
+    if (imagesData.image && Array.isArray(imagesData.image)) {
+      this.supplierImg = imagesData.image;
+    }
+    console.log(this.supplierImg, 'qwedrfghjk');
   }
 
 
   // functions-photos
-
-
   onSelectFileProductImage(event) {
     if (event.target.files && event.target.files[0]) {
       this.notImage = false;
@@ -109,14 +109,8 @@ export class AnalysisProductComponent implements OnInit {
       }
     }
   }
-
-  // addImages() {
-  //   this.supplier.push()
-  // }
-
   removeFile(index: number) {
     this.supplierImg.splice(index, 1);
-    console.log('ué')
     this.form.controls['selectPhotos'].setValue(null);
     // this.selectFile = null;
     this.notImage = true;
@@ -124,14 +118,14 @@ export class AnalysisProductComponent implements OnInit {
   }
 
   // docs
-  downloadFile() {
-    const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,' + btoa(this.FilesDoc);
-    link.download = this.FilesDoc;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  }
+  // downloadFile() {
+  //   const link = document.createElement('a');
+  //   link.href = 'data:application/pdf;base64,' + btoa(this.FilesDoc);
+  //   link.download = this.FilesDoc;
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   link.remove();
+  // }
 
 
   // general-functions

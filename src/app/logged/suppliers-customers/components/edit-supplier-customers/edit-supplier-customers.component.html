@@ -20,8 +20,8 @@
 
                         <label class="h6 mt-3 text-dark" for="edit-contact">Contato</label>
                         <input type="tel" id="edit-contact" mask="(00) 00000-0000" required="true"
-                            class="form-control br-16 bordder py-3" placeholder="Digite o contato"
-                            formControlName="contact" />
+                            class="form-control br-16 bordder py-3" placeholder="Digite o telefone"
+                            formControlName="phone" />
 
                         <label class="h6 mt-3 text-dark" for="edit-email">E-mail</label>
                         <input type="email" id="edit-email" class="form-control br-16 bordder py-3"
@@ -33,8 +33,8 @@
                           <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
                       </div>
                         <div class="form-check mt-4 form-switch">
-                            <input class="form-check-input sz-md" formControlName="supplier" [checked]="emphasis" type="checkbox" id="switchEdit">
-                            <label class="form-check-label h6 text-dark" for="switchEdit">Colocar fornecedor em destaque</label>
+                            <input style="scale: 1.4;" class="form-check-input sz-md" formControlName="emphasis" type="checkbox" id="switchEdit">
+                            <label class="form-check-label h6 px-2 text-dark" for="switchEdit">Colocar fornecedor em destaque</label>
                         </div>
                     </div>
                     <div class="col-12 mb-3">

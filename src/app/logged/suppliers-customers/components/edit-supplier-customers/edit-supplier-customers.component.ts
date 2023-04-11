@@ -18,7 +18,6 @@ export class EditSupplierCustomersComponent implements OnInit {
   responseData: any;
   FilesDoc: any;
   truephone: string;
-  trueimg: string;
   emphasis: string;
   constructor(
     private modalService: NgbModal,
@@ -29,11 +28,10 @@ export class EditSupplierCustomersComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       cnpj: [''],
-      contact: [''],
+      phone: [''],
       email: [''],
-      supplier: [''],
+      emphasis: [''],
       doc: [''],
-
     })
   }
   ngOnInit(): void {
@@ -43,7 +41,7 @@ export class EditSupplierCustomersComponent implements OnInit {
     this.form.controls['cnpj'].setValue(this.responseData.cnpj);
     this.form.controls['phone'].setValue(this.responseData.phone);
     this.form.controls['email'].setValue(this.responseData.email);
-    console.log(this.FilesDoc, this.form.controls['phone'].value);
+    console.log(this.FilesDoc, this.form.controls['emphasis'].value, this.emphasis);
     if (this.form.controls['phone'].value) console.log('tem')
     else console.log('não')
   }
@@ -61,20 +59,15 @@ export class EditSupplierCustomersComponent implements OnInit {
   }
 
   confirm() {
-
-    // tratament photo
-    if (this.form.controls['phone'].value === undefined) this.truephone = '';
+    if (this.form.controls['emphasis'].value === true) this.emphasis = 'active';
+    else this.emphasis = 'inactive';
+    if (this.form.controls['phone'].value === undefined || this.form.controls['phone'].value === '') this.truephone = '';
     else if (this.form.controls['phone'].value) this.truephone = this.form.controls['phone'].value;
     else this.truephone = `+55${this.form.controls['phone'].value}`;
-
-    // tratament image
-    if (this.form.controls['image'].value === undefined) this.trueimg = '';
-    else if (this.form.controls['image'].value) this.trueimg = this.form.controls['phone'].value;
 
     this.request = {
       phone: this.truephone,
       email: this.form.controls['email'].value,
-      image: this.trueimg,
       name: this.form.controls['name'].value,
       cnpj: this.form.controls['cnpj'].value,
       status: 'active',
