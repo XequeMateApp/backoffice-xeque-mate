@@ -1,4 +1,4 @@
-export abstract class SupplierCustomersPutResponsetDto {
+export abstract class SupplierCustomersPutRequestDto {
   email: string;
   name: string;
   status: string;

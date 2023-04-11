@@ -1,4 +1,4 @@
-export interface ProductRegisterRequestDto {
+export interface ProductPutRequestDto {
   name: string;
   code: string;
   specifications: string;
@@ -7,5 +7,4 @@ export interface ProductRegisterRequestDto {
   status: string;
   cnpj: string;
   value: string;
-  category: string[];
 }

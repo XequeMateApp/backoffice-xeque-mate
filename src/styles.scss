@@ -1,14 +1,17 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
 :root {
   --darkblue: #0F214F;
   --graylight: rgba(255, 255, 255, 0.8);
 }
+
 * {
   margin: 0;
   padding: 0;
   font-family: 'Josefin Sans' !important;
 }
+
 // GLOBAL classse´s
 .apexcharts-menu-icon {
   display: none !important;
@@ -199,10 +202,9 @@
     padding-left: 0px;
     padding-right: 0px;
   }
-
-  .col-name {
-    width: 247px !important;
-  }
+  .col-description {
+    min-width: 609px !important;
+}
 }
 
 @media (max-width: 991px) {
@@ -210,6 +212,11 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
+  .col-price {
+    min-width: 239px !important;
+  }
+
 }
 
 @media (min-width: 576px) {
@@ -228,11 +235,11 @@
   }
 
   .col-name {
-    width: 241px;
+    width: 257px;
   }
 
   .col-description {
-    width: 617px !important;
+    width: 598px !important;
   }
 
   .col-type {
@@ -240,7 +247,7 @@
   }
 
   .col-price {
-    width: 230px !important;
+    width: 275px !important;
   }
 
   .col-tel {
@@ -266,7 +273,7 @@
   }
 
   .col-price {
-    width: 198px !important;
+    width: 222px !important;
   }
 
   .col-tel {
@@ -282,7 +289,6 @@
   }
 }
 
-// analysis
 .illustration {
   height: 101px;
   width: 101px !important;

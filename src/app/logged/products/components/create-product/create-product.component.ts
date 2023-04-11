@@ -154,22 +154,18 @@ export class CreateProductComponent implements OnInit {
     const index = this.selectedItems.indexOf(item);
     if (index >= 0) {
       this.selectedItems.splice(index, 1);
+      this.selectedCategories.splice(index, 1);
     }
   }
-
+  
   // FUNCTION-IMAGE
   onSelectFileProductImage(event: any) {
     for (let i = 0; i < event.target.files.length; i++) {
       this.totalFiles.push(event.target.files[i]);
     }
-
     console.log(this.totalFiles);
-
-    const totalSize = this.totalFiles
-      .reduce((acc, file) => acc + file.size, 0);
-
+    const totalSize = this.totalFiles.reduce((acc, file) => acc + file.size, 0);
     console.log(totalSize);
-
 
     if (event.target.files && event.target.files[0]) {
       if (event.target.files[0].size > 50000) {
@@ -193,6 +189,7 @@ export class CreateProductComponent implements OnInit {
       }
     }
   }
+
   removeFile(index: number) {
     this.supplierImg.splice(index, 1);
     this.form.controls['selectPhotos'].setValue(null);
@@ -203,32 +200,42 @@ export class CreateProductComponent implements OnInit {
 
 
   confirm() {
-    // this.verifiField();
+    this.verifiField();
     const dto = {
       name: this.form.controls['name'].value,
       code: this.form.controls['code'].value,
       specifications: this.form.controls['specification'].value,
       description: this.form.controls['description'].value,
       image: this.supplierImg,
-      status: "APPROVED",
+      status: "PENDING",
       cnpj: this.form.controls['cnpj'].value,
       value: this.form.controls['price'].value.toString(),
-      category: this.form.controls['selectCategory'].value,
+      category: this.selectedCategories
     }
     console.log(dto);
-    this.productService.productRegister(dto).subscribe(
-      success => {
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 2000)
-        this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-        this.modalService.dismissAll();
-      },
-      error => {
-        console.log(error)
-        this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
-      }
-    )
+    if (
+      this.form.controls['name'].value !== '' &&
+      this.form.controls['code'].value !== '' &&
+      this.form.controls['specification'].value !== '' &&
+      this.form.controls['description'].value !== '' &&
+      this.form.controls['cnpj'].value !== '' &&
+      this.form.controls['price'].value !== '' &&
+      this.form.controls['selectCategory'].value !== ''
+    ) {
+      this.productService.productRegister(dto).subscribe(
+        success => {
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000)
+          this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+          this.modalService.dismissAll();
+        },
+        error => {
+          console.log(error)
+          this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+        }
+      )
+    }
   }
 
 

@@ -56,19 +56,16 @@
         <div class="row mx-0 overflow-y-scroll ">
             <div class="col-12 mt-5 px-0">
                 <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                    <div style="width: 195px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 277px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Fornecedor</b>
                     </div>
-                    <div style="width: 295px !important;" class="col-2 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 296px !important;" class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Categoria</b>
                     </div>
-                    <div style="width: 148px;" class="col-2 h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 fw-bolder">Material</b>
-                    </div>
-                    <div style="width: 276px;" class="col-2 col-price h-100 br-16 align-items-center d-flex">
+                    <div style="width: 286px;" class="col-2 col-price h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Preço Suguerido</b>
                     </div>
-                    <div class="col h-100 br-16 align-items-center d-flex">
+                    <div style="width: 242px;"class="col h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
                     </div>
                 </div>
@@ -77,17 +74,15 @@
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                         <tr *ngFor="let item of response| paginate: config | filter: filterTerm; let i= index; ">
-                            <td style="width: 200px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 200px;">{{item?.name}}</h5></td>
-                            <td style="width: 265px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 280px;">{{item?.category}}</h5></td>
-                            <td style="width: 130px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 134px;">{{item?.material}}</h5></td>
-                            <td style="width: 281px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 181px;">R$ {{item?.value}}</h5></td>
+                            <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 270px;">{{item?.name}}</h5></td>
+                            <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 270px;">{{item?.category}}</h5></td>
+                            <td style="width: 281px;"><h5 *ngIf="item.value" class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 181px;">R$ {{item?.value}}</h5></td>
                             <td>
                                 <h4 *ngIf="item?.status === 'PENDING'" class="mb-0 py-3 text-secondary">Pendente</h4>
                                 <h4 *ngIf="item?.status === 'APROVED'" class="mb-0 py-3 text-success">Ativo</h4>
                                 <h4 *ngIf="item?.status === 'DENINED'" class="mb-0 py-3 text-danger">Inativo</h4>
                             </td>
                             <td>
-                                <!-- caso email seja padrão para o fornecedores -->
                                 <h4 class="mb-0 d-flex justify-content-center py-3">
                                     <i role='button' (click)="openModals('analysisproduct', item)" class="bi h3 px-2 bi-sliders2"></i>
                                     <i role='button' (click)="openModals('editproduct', item)" class="bi h3 px-2 bi-gear"></i>
@@ -99,7 +94,6 @@
                 </table>
             </div>
         </div>
-
         <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length>= 0">
             <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage= $event">
                 <div class="custom-pagination">

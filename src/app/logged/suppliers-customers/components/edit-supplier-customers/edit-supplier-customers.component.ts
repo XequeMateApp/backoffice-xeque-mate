@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { SupplierCustomersSuppliersPutRequesttDto } from 'src/app/dto/logged/supplier-costumers-suppliers-put-request.dto';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-edit-supplier-customers',
@@ -9,39 +12,44 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EditSupplierCustomersComponent implements OnInit {
   form: FormGroup;
+  request: SupplierCustomersSuppliersPutRequesttDto;
   selectFile: any = [];
   selectFileName: string;
-  productsData: any;
+  responseData: any;
   FilesDoc: any;
-  emphasis: boolean;
+  truephone: string;
+  emphasis: string;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
+    private userService: UserService,
+    private toastrService: ToastrService,
   ) {
     this.form = this.formBuilder.group({
       name: [''],
-      cnpjcpf: [''],
-      contact: [''],
+      cnpj: [''],
+      phone: [''],
       email: [''],
-      supplier: [''],
+      emphasis: [''],
       doc: [''],
-
     })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('responseData'));
-    this.FilesDoc = this.productsData.doc;
-    console.log(this.FilesDoc);
-    this.form.controls['name'].setValue(this.productsData.name);
-    this.form.controls['cnpjcpf'].setValue(this.productsData.cnpj);
-    this.form.controls['contact'].setValue(this.productsData.tel);
-    this.form.controls['email'].setValue(this.productsData.email);
-    this.emphasis =  this.productsData.emphasis
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
+    this.FilesDoc = this.responseData.doc;
+    this.form.controls['name'].setValue(this.responseData.name);
+    this.form.controls['cnpj'].setValue(this.responseData.cnpj);
+    this.form.controls['phone'].setValue(this.responseData.phone);
+    this.form.controls['email'].setValue(this.responseData.email);
+    console.log(this.FilesDoc, this.form.controls['emphasis'].value, this.emphasis);
+    if (this.form.controls['phone'].value) console.log('tem')
+    else console.log('não')
   }
+
   downloadFile() {
     const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,' + btoa(this.FilesDoc);
-    link.download = this.FilesDoc;
+    link.href = 'data:application/png;base64,' + btoa(this.FilesDoc);
+    link.download = `document-${this.responseData.name}`;
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -49,7 +57,36 @@ export class EditSupplierCustomersComponent implements OnInit {
   exit() {
     this.modalService.dismissAll()
   }
+
   confirm() {
-    window.alert('confirm ')
+    if (this.form.controls['emphasis'].value === true) this.emphasis = 'active';
+    else this.emphasis = 'inactive';
+    if (this.form.controls['phone'].value === undefined || this.form.controls['phone'].value === '') this.truephone = '';
+    else if (this.form.controls['phone'].value) this.truephone = this.form.controls['phone'].value;
+    else this.truephone = `+55${this.form.controls['phone'].value}`;
+
+    this.request = {
+      phone: this.truephone,
+      email: this.form.controls['email'].value,
+      name: this.form.controls['name'].value,
+      cnpj: this.form.controls['cnpj'].value,
+      status: 'active',
+      hightlight: this.emphasis
+    }
+    console.log(this.request)
+    this.userService.updateSupplierCustomersSupplier(this.responseData._id, this.request).subscribe(
+      success => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+        this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao editar!', '', { progressBar: true });
+      }
+    )
+
   }
 }
