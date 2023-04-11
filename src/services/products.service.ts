@@ -26,13 +26,11 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
   productRegister(dto: ProductRegisterRequestDto): Observable<any> {
     return this.httpClient
       .post(`${this.url}product/backoffice-register`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
 
   putProduct(id: string, dto: ProductPutRequestDto): Observable<any> {
     return this.httpClient
@@ -40,10 +38,21 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
   putAnalisysProduct(id: string, status: string): Observable<any> {
     return this.httpClient
       .put(`${this.url}product/review/id/${id}/status/${status}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllProducts(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/all`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllFilteredProductsByDate(days: number): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/${days}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 

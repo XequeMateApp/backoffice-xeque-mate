@@ -89,13 +89,11 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-// supplier
   getUserPlataform(status: string): Observable<SupplierRegisterResponseDto[]> {
     return this.httpClient
       .get(`${this.url}/user-plataform?status=${status}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
 
   updateUserPlataform(userID: string, status: string, dto: SupplierRegisterRequestDto): Observable<SupplierRegisterResponseDto> {
     return this.httpClient
@@ -103,14 +101,11 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
-  // supplier-customers
   getUserPlataformSupplier(): Observable<SupplierCustomersResponsetDto[]> {
     return this.httpClient
       .get(`${this.url}/listar-clientes`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
 
   updateSupplierCustomers(userID: string, dto: SupplierCustomersPutRequestDto): Observable<any> {
     return this.httpClient
@@ -121,6 +116,12 @@ export class UserService extends BaseService {
   updateSupplierCustomersSupplier(userID: string, dto: SupplierCustomersSuppliersPutRequesttDto): Observable<any> {
     return this.httpClient
       .put(`${this.url}/user-plataform/update/id/${userID}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllClients(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}/list`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
