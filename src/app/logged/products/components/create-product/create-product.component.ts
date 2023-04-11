@@ -2,7 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
+import { CategoryService } from 'src/services/category.service';
 import { DatamockService } from 'src/services/datamock.service';
 import { ProductService } from 'src/services/products.service';
 
@@ -26,10 +28,11 @@ export class CreateProductComponent implements OnInit {
 
   selectFileName: String;
   supplierImg: string[] = [];
-  selectedItems: SupplierInterface[] = [];
+  selectedItems: CategoryResponseDto[] = [];
   FileNameDoc: String;
 
   productsData: any;
+  responseCategory: CategoryResponseDto[] = [];
 
   supplier: SupplierInterface[];
   selectedImageUrl: string;
@@ -53,6 +56,7 @@ export class CreateProductComponent implements OnInit {
     private modalService: NgbModal,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
+    private categoryService: CategoryService,
     private productService: ProductService,
     private datamockService: DatamockService,
   ) {
@@ -70,6 +74,17 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplier = this.datamockService.getsupplier();
+    this.getCategorys();
+  }
+
+  getCategorys(){
+    this.categoryService.getCategory().subscribe(
+      success => {
+        this.responseCategory = success;
+        console.log(this.responseCategory)
+      },
+      error => { console.error(error, 'category not collected') }
+    )
   }
 
   verifiField() {
@@ -140,24 +155,25 @@ export class CreateProductComponent implements OnInit {
     }
   }
 
+
   //FUNCTION-SELECTION
   onOptionSelected(optionId: string) {
-    const selectedOption = this.supplier.find(option => option._id === +optionId);
+    const selectedOption = this.responseCategory.find(option => Number(option._id) === +Number(optionId));
     if (selectedOption && !this.selectedItems.includes(selectedOption)) {
-      this.selectedItems.push(selectedOption)
+      this.selectedItems.push(selectedOption);
     }
-    this.selectedCategories = this.selectedItems.map(item => item.category);
+    this.selectedCategories = this.selectedItems.map(item => item.name);
     console.log(this.selectedCategories);
   }
 
   removeItem(item: SupplierInterface) {
-    const index = this.selectedItems.indexOf(item);
-    if (index >= 0) {
-      this.selectedItems.splice(index, 1);
-      this.selectedCategories.splice(index, 1);
-    }
+    // const index = this.selectedItems.indexOf(item);
+    // if (index >= 0) {
+    //   this.selectedItems.splice(index, 1);
+    //   this.selectedCategories.splice(index, 1);
+    // }
   }
-  
+
   // FUNCTION-IMAGE
   onSelectFileProductImage(event: any) {
     for (let i = 0; i < event.target.files.length; i++) {
