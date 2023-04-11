@@ -101,10 +101,16 @@ export class DashboardComponent implements OnInit {
   changeDatas(value: string) {
     if (value === '7days') {
       this.dropDatas = '7 dias'
+      this.daysFilter = 7;
+      this.getAllProductsFiltered(this.daysFilter);
     } else if (value === '15days') {
       this.dropDatas = '15 dias'
+      this.daysFilter = 15;
+      this.getAllProductsFiltered(this.daysFilter);
     } else if (value === '1month') {
       this.dropDatas = '1 mês'
+      this.daysFilter = 30;
+      this.getAllProductsFiltered(this.daysFilter);
     }
   }
 
@@ -131,7 +137,7 @@ export class DashboardComponent implements OnInit {
   getAllProductsFiltered(days: number) {
     this.productService.getAllFilteredProductsByDate(days).subscribe(
       success => {
-        // this.totalProducts = success.count.toString();
+        this.totalProductsFiltered = success.count.toString();
         console.log('produtos filtrados', success);
       },
       error => { console.error(error, 'Erro ao recuperar dados') }
