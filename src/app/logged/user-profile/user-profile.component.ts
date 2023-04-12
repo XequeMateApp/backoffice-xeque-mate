@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileInterface } from 'src/app/interface/profile.interface';
-import { DatamockService } from 'src/services/datamock.service';
 import { UserPasswordComponent } from './components/user-password/user-password.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/services/user.service';
@@ -14,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 export class UserProfileComponent implements OnInit {
   response: any;
   constructor(
-    private datamockService: DatamockService,
     private modalService: NgbModal,
     private userService: UserService,
     private toastrService: ToastrService,

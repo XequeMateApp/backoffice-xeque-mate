@@ -47,6 +47,8 @@ export class CreateProductComponent implements OnInit {
   alertFieldDescription = false;
   alertFieldImg = false;
   alertFieldSpecification = false;
+
+  
   imageSrc: string;
   selectedCategories: string[];
   totalFiles: File[] = [];
