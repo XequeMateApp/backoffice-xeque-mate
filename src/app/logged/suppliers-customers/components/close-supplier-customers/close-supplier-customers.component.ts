@@ -27,6 +27,5 @@ export class CloseSupplierCustomersComponent implements OnInit {
     this.modalService.dismissAll()
   }
   delete() {
-    window.alert('Delete  ')
   }
 }
