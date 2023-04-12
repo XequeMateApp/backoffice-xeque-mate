@@ -7,5 +7,7 @@ export abstract class SupplierRegisterResponseDto {
   date?: Date;
   status?: string;
   document?: string;
-  profile?: string
+  profile?: string;
+  phone?: string;
+  cpf?: string;
 }
