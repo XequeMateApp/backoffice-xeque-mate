@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
                     <button type="button" (click)="createOpenModals()" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
-                        <h4 class="mb-0 py-2">Novo Produto</h4>
+                        <h6 class="mb-0 py-2">Novo Produto</h6>
                     </button>
                 </div>
             </div>
@@ -78,16 +78,16 @@
                             <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 270px;">{{item?.category}}</h5></td>
                             <td style="width: 281px;"><h5 *ngIf="item.value" class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 181px;">R$ {{item?.value}}</h5></td>
                             <td>
-                                <h4 *ngIf="item?.status === 'PENDING'" class="mb-0 py-3 text-secondary">Pendente</h4>
-                                <h4 *ngIf="item?.status === 'APROVED'" class="mb-0 py-3 text-success">Ativo</h4>
-                                <h4 *ngIf="item?.status === 'DENINED'" class="mb-0 py-3 text-danger">Inativo</h4>
+                                <h6 *ngIf="item?.status === 'PENDING'" class="mb-0 py-3 text-secondary">Pendente</h6>
+                                <h6 *ngIf="item?.status === 'APROVED'" class="mb-0 py-3 text-success">Ativo</h6>
+                                <h6 *ngIf="item?.status === 'DENINED'" class="mb-0 py-3 text-danger">Inativo</h6>
                             </td>
                             <td>
-                                <h4 class="mb-0 d-flex justify-content-center py-3">
+                                <h6 class="mb-0 d-flex justify-content-center py-3">
                                     <i role='button' (click)="openModals('analysisproduct', item)" class="bi h3 px-2 bi-sliders2"></i>
                                     <i role='button' (click)="openModals('editproduct', item)" class="bi h3 px-2 bi-gear"></i>
                                     <i role='button' (click)="openModals('deleteproduct', item)" class="bi h3 px-2 text-danger bi-trash3"></i>
-                                </h4>
+                                </h6>
                             </td>
                         </tr>
                     </tbody>

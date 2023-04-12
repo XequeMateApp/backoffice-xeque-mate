@@ -13,7 +13,7 @@
         <div class="col-md-4 mt-4 d-flex justify-content-end">
           <button type="button" (click)="createOpenModal()" class="btn w-100
             px-5 bg-dark-blue br-16 text-light">
-            <h4 class="mb-0 py-3">Nova Notificação</h4>
+            <h6 class="mb-0 py-3">Nova Notificação</h6>
           </button>
         </div>
       </div>
@@ -47,19 +47,19 @@
       <div style="min-width: 960px;" class="col-12 mt-5 px-0">
         <div class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <b class="mb-0 h4 fw-bolder" style="max-width: 230px;">Nome</b>
+            <b class="mb-0 h6 fw-bolder" style="max-width: 230px;">Nome</b>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <b class="mb-0 h4 fw-bolder">Conteúdo</b>
+            <b class="mb-0 h6 fw-bolder">Conteúdo</b>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <b class="mb-0 h4 fw-bolder">Horário</b>
+            <b class="mb-0 h6 fw-bolder">Horário</b>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <b class="mb-0 h4 fw-bolder">Filtro</b>
+            <b class="mb-0 h6 fw-bolder">Filtro</b>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <b class="mb-0 h4 fw-bolder">Status</b>
+            <b class="mb-0 h6 fw-bolder">Status</b>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
           </div>
@@ -70,26 +70,26 @@
           config; let i= index" class="row mx-0 align-items-center bg-blur
           border mb-2 br-16 p-3">
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 class="mb-0 d-inline-block text-truncate" style="max-width:
+            <h6 class="mb-0 d-inline-block text-truncate" style="max-width:
               133px;">
-              {{item.name}}</h4>
+              {{item.name}}</h6>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 class="mb-0 text-secondary d-inline-block"
+            <h6 class="mb-0 text-secondary d-inline-block"
               style="max-width: 90%;">
-              {{item.content}}</h4>
+              {{item.content}}</h6>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 class="mb-0">{{item.time}}</h4>
+            <h6 class="mb-0">{{item.time}}</h6>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 class="mb-0 d-inline-block text-truncate">{{item.filter}}</h4>
+            <h6 class="mb-0 d-inline-block text-truncate">{{item.filter}}</h6>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 *ngIf="item.status === 'Ativo'" class="mb-0 text-success">
-              {{item.status}}</h4>
-            <h4 *ngIf="item.status === 'Inativo'" class="mb-0 text-danger">
-              {{item.status}}</h4>
+            <h6 *ngIf="item.status === 'Ativo'" class="mb-0 text-success">
+              {{item.status}}</h6>
+            <h6 *ngIf="item.status === 'Inativo'" class="mb-0 text-danger">
+              {{item.status}}</h6>
           </div>
           <div class="col h-100 br-16-circle justify-content-end
             align-items-center d-flex">

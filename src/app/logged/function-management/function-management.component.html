@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
                     <button type="button" (click)="createOpenmodal()" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
-                        <h4 class="mb-0 py-2">Cadastrar</h4>
+                        <h6 class="mb-0 py-2">Cadastrar</h6>
                     </button>
                 </div>
             </div>
@@ -81,14 +81,14 @@
                         </h5>
                       </td>
                         <td>
-                            <h4 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h4>
-                            <h4 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inativo</h4>
+                            <h6 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h6>
+                            <h6 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inativo</h6>
                         </td>
                         <td class="text-center">
-                            <h4 class="mb-0  py-3">
+                            <h6 class="mb-0  py-3">
                                 <i role='button' (click)="openModals('edit', item)" class="bi h3 px-3 py-3 bi-gear"></i>
                                 <i role='button' (click)="openModals('delete', item)" class="bi h3 px-3 py-3 text-danger bi-trash3"></i>
-                            </h4>
+                            </h6>
                         </td>
                       </tr>
                     </tbody>
