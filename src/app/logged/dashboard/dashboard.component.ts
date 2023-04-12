@@ -32,7 +32,8 @@ export type ChartOptions = {
 
 export class DashboardComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
+  public productRequest: Partial<ChartOptions>;
+  public newClientsRequest: Partial<ChartOptions>;
 
   dropDatas = '7 dias';
 
@@ -46,11 +47,11 @@ export class DashboardComponent implements OnInit {
     private productService: ProductService,
     private userService: UserService
   ) {
-    this.chartOptions = {
+    this.productRequest = {
       series: [
         {
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+          name: "Produtos",
+          data: [10, 41, 35, 51, 49, 62, 69]
         }
       ],
       chart: {
@@ -78,15 +79,56 @@ export class DashboardComponent implements OnInit {
       },
       xaxis: {
         categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep"
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex",
+          "Sab",
+          "Dom",
+        ]
+      }
+    };
+
+    this.newClientsRequest = {
+      series: [
+        {
+          name: "Clientes",
+          data: [10, 41, 35, 51, 49, 62, 69]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "line",
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "straight"
+      },
+      title: {
+
+        align: "left"
+      },
+      grid: {
+        row: {
+          colors: ["#f3f3f3", "transparent"],
+          opacity: 0.5
+        }
+      },
+      xaxis: {
+        categories: [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex",
+          "Sab",
+          "Dom",
         ]
       }
     };
