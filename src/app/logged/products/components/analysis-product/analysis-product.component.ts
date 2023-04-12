@@ -14,29 +14,27 @@ import { ProductService } from 'src/services/products.service';
 export class AnalysisProductComponent implements OnInit {
   form: FormGroup;
 
-  selectFileName: String;
   supplierImg: string[];
   selectedItems: SupplierInterface[] = [];
-  FileNameDoc: String;
-
-  alertFieldCategory = false;
-  responseData: any;
-
-  supplier: SupplierInterface[];
-  selectedImageUrl: string;
   selectFile: any = [];
-  notImage = true;
-  pdfFileName: string;
-  FilesDoc: any;
   items: string[];
   selectedCategories: string[];
+
+
+  FilesDoc: any;
+  responseData: any;
+
+  selectedImageUrl: string;
+  pdfFileName: string;
+
+  notImage = true;
+
 
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private datamockService: DatamockService,
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -55,11 +53,9 @@ export class AnalysisProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
-    this.supplier = this.datamockService.getsupplier();
     this.FilesDoc = this.responseData.doc;
     console.log(this.FilesDoc);
-    console.log(this.responseData)
-    // console.log(this.supplierImg);
+    console.log(this.responseData.category)
     this.form.controls['name'].setValue(this.responseData.name)
     this.form.controls['price'].setValue(this.responseData.value)
     this.form.controls['code'].setValue(Number(this.responseData.code))
@@ -72,23 +68,22 @@ export class AnalysisProductComponent implements OnInit {
 
 
   //FUNCTION-SELECTION
-  // esse aqui tá dificil
-  onOptionSelected(optionId: string) {
-    const selectedOption = this.supplier.find(option => option._id === +optionId);
-    if (selectedOption && !this.selectedItems.includes(selectedOption)) {
-      this.selectedItems.push(selectedOption)
-    }
-    this.selectedCategories = this.selectedItems.map(item => item.category);
-    console.log(this.selectedCategories);
-  }
+  // onOptionSelected(optionId: string) {
+  //   const selectedOption = this.supplier.find(option => option._id === +optionId);
+  //   if (selectedOption && !this.selectedItems.includes(selectedOption)) {
+  //     this.selectedItems.push(selectedOption)
+  //   }
+  //   this.selectedCategories = this.selectedItems.map(item => item.category);
+  //   console.log(this.selectedCategories);
+  // }
 
-  removeItem(item: SupplierInterface) {
-    const index = this.selectedItems.indexOf(item);
-    if (index >= 0) {
-      this.selectedItems.splice(index, 1);
-      this.selectedCategories.splice(index, 1);
-    }
-  }
+  // removeItem(item: SupplierInterface) {
+  //   const index = this.selectedItems.indexOf(item);
+  //   if (index >= 0) {
+  //     this.selectedItems.splice(index, 1);
+  //     this.selectedCategories.splice(index, 1);
+  //   }
+  // }
 
   getImagesFromLocalStorage() {
     const imagesData = JSON.parse(localStorage.getItem('responseData'));
@@ -113,6 +108,8 @@ export class AnalysisProductComponent implements OnInit {
       }
     }
   }
+
+
   removeFile(index: number) {
     this.supplierImg.splice(index, 1);
     this.form.controls['selectPhotos'].setValue(null);
@@ -134,21 +131,46 @@ export class AnalysisProductComponent implements OnInit {
 
 
   confirm() {
-    this.productService.putAnalisysProduct(this.responseData._id, 'APPROVED').subscribe(
+    const dto = {
+      _id: this.responseData._id,
+      status: 'APPROVED'
+    }
+
+    this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
       success => {
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 2000)
-        this.toastrService.success('Analisado com sucesso!', '', { progressBar: true });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+        this.toastrService.success('Aprovado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },
       error => {
         console.log(error)
-        this.toastrService.error('Erro ao analisar', '', { progressBar: true });
+        this.toastrService.error('Erro ao aprovar', '', { progressBar: true });
       }
     )
   }
 
+  refused() {
+    this.modalService.dismissAll();
+    const dto = {
+      _id: this.responseData._id,
+      status: 'DENIED'
+    }
+    this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
+      success => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+        this.toastrService.success('Recusado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao recusar', '', { progressBar: true });
+      }
+    )
+  }
 
   exit() {
     this.modalService.dismissAll()

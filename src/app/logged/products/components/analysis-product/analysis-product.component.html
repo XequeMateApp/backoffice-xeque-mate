@@ -11,12 +11,12 @@
         <div class="row">
           <div class="col-md-12">
             <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
-            <input type="text" id="edit-name" class="form-control fw-bolder br-16 bordder py-3"
+            <input type="text" id="edit-name" readonly class="form-control fw-bolder br-16 bordder py-3"
                placeholder="Digite o nome" formControlName="name" />
           </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
-            <input type="tel" id="edit-code" [maxLength]="15"
+            <input type="tel" id="edit-code" [maxLength]="15" readonly
               class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
                placeholder="Digite o código" formControlName="code" />
           </div>
@@ -24,7 +24,7 @@
             <div class="row">
               <div class="col-md-6">
                 <label class="h6 mt-3 text-dark" for="edit-valor">Valor</label>
-                <input type="tel" id="edit-valor" [maxlength]="15"
+                <input type="tel" id="edit-valor" [maxlength]="15" readonly
                   mask="separator.2" thousandSeparator="." prefix="R$ "
                   class="form-control fw-bolder br-16 bordder py-3"
                   placeholder="Digite o valor" formControlName="price" />
@@ -34,9 +34,9 @@
                 <select formControlName="status" id="edit-status"
                   class="form-select py-3 br-16"
                   aria-label="Default status">
-                  <option [selected]="responseData.status === 'APPROVED'" value="APPROVED">🟢 Aprovado</option>
-                  <option [selected]="responseData.status === 'DENIED'" value="DENIED">🔴 Negado</option>
-                  <option [selected]="responseData.status === 'PENDING'" value="PENDING">⚪ Pendente</option>
+                  <!-- <option [selected]="responseData.status === 'APPROVED'" value="APPROVED">🟢 Aprovado</option>
+                  <option [selected]="responseData.status === 'DENIED'" value="DENIED">🔴 Negado</option> -->
+                  <option *ngIf="responseData.status === 'PENDING'" [selected]="true" value="PENDING">⚪ Pendente</option>
                 </select>
               </div>
             </div>
@@ -46,21 +46,18 @@
             <!-- esse aqui tá dificil -->
             <select #selectOptions class="form-select fw-bolder text-dark-blue
             br-16 border py-3" required
-            aria-label="Default select category"
-            formControlName="selectCategory"
-            (change)="onOptionSelected(selectOptions.value)">
-            <option [selected]="true" [disabled]="true">Selecione uma categoria</option>
-            <option [selected]="option.category != '' " *ngFor="let option of supplier" [value]="option._id">{{option.category}}</option>
+            aria-label="Default select category">
+            <option [selected]="true" [disabled]="true">Items selecionados</option>
           </select>
-          <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo categorias está vazio</label>
           <ul class="list-group mt-3 br-16 ">
-            <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
-              <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item.category }}</h6>
-              <i (click)="removeItem(item)" role="button" class="bi mb-0 bi-x h3 text-danger"></i>
+            <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of responseData.category">
+              <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item }}</h6>
+              <i role="button" class="bi mb-0 bi-x h3 text-danger"></i>
             </li>
           </ul>
           </div>
           <div class="col-12">
+
             <label class="h6 mt-3 text-dark" for="edit-doc">Images</label>
             <div class="w-100 d-flex overflow-y border p-2 br-16 align-items-center">
               <div class="d-flex align-items-center overflow-x-scroll overflow-y-hidden">
@@ -71,23 +68,23 @@
                   <div *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});"class="br-16 d-flex justify-content-end illustration border">
                   </div>
                 </div>
-                <div class="br-16 ms-1 d-flex justify-content-end illustration border">
+                <!-- <div class="br-16 ms-1 d-flex justify-content-end illustration border">
                   <div class="br-16  d-block justify-content-end illustration border">
-                    <input role="button" [multiple]="true" type="file" class="illustration position-relative z-10" style="opacity:0;" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"  accept="image/*">
+                    <input role="button" readonly [multiple]="true" type="file" class="illustration position-relative z-10" style="opacity:0;" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"  accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative" style="bottom: 77%; font-size: 40px;left: 29%;"></i>
                   </div>
-                </div>
+                </div> -->
               </div>
           </div>
           <div class="col-12 mt-4 pb-3">
             <div class="row">
               <div class="col-md-6">
                 <label for="exempleDescription">Descrição</label>
-                <textarea formControlName="description" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
+                <textarea readonly formControlName="description" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
               </div>
               <div class="col-md-6">
                 <label for="exempleSpecification">Especificações</label>
-                <textarea formControlName="specification" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
+                <textarea readonly formControlName="specification" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
               </div>
             </div>
           </div>
@@ -105,7 +102,7 @@
             <div class="row">
               <div class="col-md-6 mt-4">
                 <button class="btn btn-danger br-16 text-light w-100"
-                  (click)="exit()" type="button">
+                  (click)="refused()" type="button">
                   <h6 class="fw-bolder text-light mb-0 py-2">Recusar</h6>
                 </button>
               </div>

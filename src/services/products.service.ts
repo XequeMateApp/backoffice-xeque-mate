@@ -7,6 +7,7 @@ import { BaseService } from './base.service';
 import { ProductRegisterRequestDto } from 'src/app/dto/logged/product-register-request.dto';
 import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
 import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
+import { ProductPutAnalisysRequestDto } from 'src/app/dto/logged/product-put-analisys-reuqest.dto';
 
 
 @Injectable({
@@ -41,10 +42,23 @@ export class ProductService extends BaseService {
   }
 
 
-  putAnalisysProduct(id: string, status: string): Observable<any> {
+  putAnalisysProduct(id: string, status: string, dto: ProductPutAnalisysRequestDto): Observable<any> {
     return this.httpClient
-      .put(`${this.url}product/review/id/${id}/status/${status}`, this.authorizedHeader)
+      .put(`${this.url}product/review/id/${id}/status/${status}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+  // updateUserPlataform(userID: string, status: string, dto: SupplierRegisterRequestDto): Observable<SupplierRegisterResponseDto> {
+  //   return this.httpClient
+  //     .put(`${this.url}/user-plataform/review/id/${userID}/status/${status}`, dto, this.authorizedHeader)
+  //     .pipe(map(this.extractData), catchError(this.serviceError));
+  // }
+
+
+  deleteProduct(Id: string): Observable<any> {
+    return this.httpClient
+      .delete(`${this.url}product/delete/id/${Id}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
 
 }
