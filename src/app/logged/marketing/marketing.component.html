@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-md-4 mt-4 d-flex justify-content-end">
                     <button (click)="createOpenModal()" type="button" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
-                        <h4 class="mb-0 py-2">Novo anúncio</h4>
+                        <h6 class="mb-0 py-2">Novo anúncio</h6>
                     </button>
                 </div>
             </div>
@@ -63,25 +63,25 @@
                     <h6 class="text-secondary">
                         Título
                     </h6>
-                    <h4 class="mb-0 d-inline-block text-truncate" style="max-width:
+                    <h6 class="mb-0 d-inline-block text-truncate" style="max-width:
               133px;">
-                        {{item.name}}</h4>
+                        {{item.name}}</h6>
                 </div>
                 <div class="col-4 h-100 br-16-circle  d-grid">
                     <h6 class="text-secondary">
                         Descrição
                     </h6>
-                    <h4 class="mb-0 text-secondary d-inline-block" style="max-width: 90%;">
-                        {{item.content}}</h4>
+                    <h6 class="mb-0 text-secondary d-inline-block" style="max-width: 90%;">
+                        {{item.content}}</h6>
                 </div>
                 <div class="col h-100 br-16-circle d-grid">
                     <h6 class="text-secondary">
                         Status
                     </h6>
-                    <h4 *ngIf="item.status === 'Ativo'" class="mb-0 text-success">
-                        {{item.status}}</h4>
-                    <h4 *ngIf="item.status === 'Inativo'" class="mb-0 text-danger">
-                        {{item.status}}</h4>
+                    <h6 *ngIf="item.status === 'Ativo'" class="mb-0 text-success">
+                        {{item.status}}</h6>
+                    <h6 *ngIf="item.status === 'Inativo'" class="mb-0 text-danger">
+                        {{item.status}}</h6>
                 </div>
                 <div class="col h-100 br-16-circle justify-content-end
             align-items-center d-flex">

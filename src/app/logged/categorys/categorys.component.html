@@ -12,7 +12,7 @@
               </div>
               <div class="col-md-4 mt-4 d-flex justify-content-end">
                   <button type="button" (click)="createOpenModals()" class="btn w-100 px-5 bg-dark-blue br-16 text-light">
-                      <h4 class="mb-0 py-2">Novo Categoria</h4>
+                      <h6 class="mb-0 py-2">Novo Categoria</h6>
                   </button>
               </div>
           </div>
@@ -72,15 +72,15 @@
                       <td style="min-width: 277px;width: 277px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate w-100" style="max-width: 240px">{{item?.name}}</h5></td>
                       <td style="width: 633px;"class="text-left" ><h5 class="mb-0 w-100 py-3 text-left d-inline-block text-truncate" style="max-width: 581px;">{{item?.description}}</h5></td>
                       <td>
-                          <h4 *ngIf="item?.status === 'active'" class="mb-0  py-3 text-success">Ativo</h4>
-                          <h4 *ngIf="item?.status === 'inactive'" class="mb-0  py-3 text-danger">Inativo</h4>
+                          <h6 *ngIf="item?.status === 'active'" class="mb-0  py-3 text-success">Ativo</h6>
+                          <h6 *ngIf="item?.status === 'inactive'" class="mb-0  py-3 text-danger">Inativo</h6>
                       </td>
                       <td>
-                          <h4 class="mb-0 d-flex text-nowrap justify-content-end py-3">
+                          <h6 class="mb-0 d-flex text-nowrap justify-content-end py-3">
                               <i class="bi h3 o mx-2 px-2 bi-sliders2" style="opacity: 0;"></i>
                               <i role='button' (click)="openModals('edit', item)" class="bi h3 mx-2 px-2 bi-gear"></i>
                               <i role='button' (click)="openModals('delete', item)" class="bi h3 mx-2 px-2 text-danger bi-trash3"></i>
-                          </h4>
+                          </h6>
                       </td>
                     </tr>
                   </tbody>
