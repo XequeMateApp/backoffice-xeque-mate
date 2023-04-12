@@ -10,26 +10,30 @@
               <div class="row">
                   <div class="col-md-12">
                       <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
-                      <input type="text" id="edit-name" class="form-control br-16 bordder py-3" [value]=""
+                      <input type="text" id="edit-name" class="form-control br-16 bordder py-3"
                           placeholder="Digite o nome" formControlName="name" />
 
-                      <label class="h6 mt-3 text-dark" for="edit-cnpj">CNPJ/CPF</label>
-                      <input type="tel" id="edit-cnpj" mask="00.000.000/0000-00" required="true"
-                          class="form-control br-16 bordder py-3" [value]="" placeholder="Digite o cnpj/cpf"
-                          formControlName="cnpjcpf" />
+                      <label class="h6 mt-3 text-dark" for="edit-cnpj">CPF</label>
+                      <input type="tel" id="edit-cpf" mask="000.000.000-00" required="true"
+                          class="form-control br-16 bordder py-3"  placeholder="Digite o cpf"
+                          formControlName="cpf" />
 
                       <label class="h6 mt-3 text-dark" for="edit-contact">Contato</label>
-                      <input type="tel" id="edit-contact" mask="(00) 00000-0000" required="true"
-                          class="form-control br-16 bordder py-3" [value]="" placeholder="Digite o contato"
-                          formControlName="contact" />
+                      <input type="phone" id="edit-contact" mask="(00) 00000-0000" required="true"
+                          class="form-control br-16 bordder py-3"  placeholder="Digite o telefone"
+                          formControlName="phone" />
 
                       <label class="h6 mt-3 text-dark" for="edit-email">E-mail</label>
-                      <input type="email" id="edit-email" class="form-control br-16 bordder py-3" [value]=""
+                      <input type="email" id="edit-email" class="form-control br-16 bordder py-3"
                           placeholder="Digite o e-mail" formControlName="email" />
 
                       <label class="h6 mt-3 text-dark" for="edit-doc">Documento</label>
-                      <div *ngFor="let doc of FilesDoc" role="button" (click)="downloadFile()" id="edit-doc" class="border my-2 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
-                          <span>{{doc}}</span>
+                      <div *ngIf="responseData.document == undefined" role="button" id="edit-doc" class="border my-2 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+                        <b class="text-secondary">Nenhum documento identificado</b>
+                        <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
+                    </div>
+                      <div *ngIf="responseData.document" role="button" (click)="downloadFile()" id="edit-doc" class="border my-2 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
+                          <span>Baixe-o-documento-{{responseData.name}}</span>
                           <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
                       </div>
                   </div>

@@ -36,7 +36,6 @@ export class CategorysComponent implements OnInit {
     private modalService: NgbModal,
   ) { }
   ngOnInit(): void {
-    // this.removeDuplicates(this.response)
     this.getCategory();
   }
   getCategory() {
@@ -53,7 +52,7 @@ export class CategorysComponent implements OnInit {
     this.router.navigate(['/logged/dashboard']);
   }
 
-  
+
   createOpenModals() {
     this.modalService.open(CreateCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
   }

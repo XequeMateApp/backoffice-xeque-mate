@@ -4,8 +4,10 @@ import { Observable, Subject } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
-import { ProductsRegisterResponseDto } from 'src/app/dto/logged/products-register-response.dto';
-import { ProductsRegisterRequestDto } from 'src/app/dto/logged/products-register-request.dto';
+import { ProductRegisterRequestDto } from 'src/app/dto/logged/product-register-request.dto';
+import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
+import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
+import { ProductPutAnalisysRequestDto } from 'src/app/dto/logged/product-put-analisys-reuqest.dto';
 
 
 @Injectable({
@@ -25,13 +27,40 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  register(dto: ProductsRegisterRequestDto): Observable<any> {
+  productRegister(dto: ProductRegisterRequestDto): Observable<any> {
     return this.httpClient
       .post(`${this.url}product/backoffice-register`, dto, this.authorizedHeader)
-      .pipe(
-        map(this.extractData),
-        catchError(this.serviceError)
-      );
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  putProduct(id: string, dto: ProductPutRequestDto): Observable<any> {
+    return this.httpClient
+      .put(`${this.url}product/update/id/${id}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  putAnalisysProduct(id: string, status: string, dto: ProductPutAnalisysRequestDto): Observable<any> {
+    return this.httpClient
+      .put(`${this.url}product/review/id/${id}/status/${status}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  deleteProduct(Id: string): Observable<any> {
+    return this.httpClient
+      .delete(`${this.url}product/delete/id/${Id}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllProducts(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/all`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllFilteredProductsByDate(days: number): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/${days}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
 }

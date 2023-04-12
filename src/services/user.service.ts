@@ -13,7 +13,9 @@ import { UserPutRequestDto } from 'src/app/dto/logged/user-put-request.dto';
 import { UserDeleteRequestDto } from 'src/app/dto/logged/user-delete-request.dto';
 import { SupplierRegisterResponseDto } from 'src/app/dto/logged/supplier-register-response.dto';
 import { SupplierRegisterRequestDto } from 'src/app/dto/logged/supplier-register-request.dto';
-import { SupplierPutRequestDto } from 'src/app/dto/logged/supplier-put-request.dto';
+import { SupplierCustomersResponsetDto } from 'src/app/dto/logged/supplier-costumers-response.dto';
+import { SupplierCustomersPutRequestDto } from 'src/app/dto/logged/supplier-customers-put-request.dto';
+import { SupplierCustomersSuppliersPutRequesttDto } from 'src/app/dto/logged/supplier-costumers-suppliers-put-request.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -87,13 +89,11 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
   getUserPlataform(status: string): Observable<SupplierRegisterResponseDto[]> {
     return this.httpClient
       .get(`${this.url}/user-plataform?status=${status}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
 
   updateUserPlataform(userID: string, status: string, dto: SupplierRegisterRequestDto): Observable<SupplierRegisterResponseDto> {
     return this.httpClient
@@ -101,9 +101,27 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  updateSupplierCustomers(userID: string, status: string, dto: SupplierPutRequestDto): Observable<SupplierRegisterResponseDto> {
+  getUserPlataformSupplier(): Observable<SupplierCustomersResponsetDto[]> {
     return this.httpClient
-      .put(`${this.url}/user-plataform/review/id/${userID}/status/${status}`, dto, this.authorizedHeader)
+      .get(`${this.url}/listar-clientes`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  updateSupplierCustomers(userID: string, dto: SupplierCustomersPutRequestDto): Observable<any> {
+    return this.httpClient
+      .put(`${this.url}/user-plataform/update/id/${userID}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  updateSupplierCustomersSupplier(userID: string, dto: SupplierCustomersSuppliersPutRequesttDto): Observable<any> {
+    return this.httpClient
+      .put(`${this.url}/user-plataform/update/id/${userID}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllClients(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}/list`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 

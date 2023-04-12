@@ -9,7 +9,7 @@ import { AnalysisProductComponent } from './components/analysis-product/analysis
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
-import { ProductsRegisterResponseDto } from 'src/app/dto/logged/products-register-response.dto';
+import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
 import { ProductService } from 'src/services/products.service';
 
 @Component({
@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit {
     currentPage: 1
   };
   response: ProductsRegisterResponseDto[] = [];
+
   filterTerm!: string;
   officerAdm: string;
   uniqueMaterials: string[];
@@ -36,7 +37,7 @@ export class ProductsComponent implements OnInit {
     private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
-    private productService: ProductService
+    private productService: ProductService,
   ) { }
 
   ngOnInit(): void {

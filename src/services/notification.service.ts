@@ -7,29 +7,31 @@ import { BaseService } from './base.service';
 import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
 import { CategoryRequestDto } from 'src/app/dto/logged/category-register-request.dto';
 import { CategoryDeleteRequestDto } from 'src/app/dto/logged/category-delete-request.dto';
+import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
+import { NotificationRegisterRequestDto } from 'src/app/dto/logged/notification-register-request.dto';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService extends BaseService {
-  url = `${environment.api.xequeMateApi}category/`;
+export class NotificationService extends BaseService {
+  url = `${environment.api.xequeMateApi}backoffice/`;
   profilePicture: Subject<string> = new Subject();
 
   constructor(private httpClient: HttpClient) {
     super();
   }
 
-  getCategory(): Observable<CategoryResponseDto[]> {
+  getNotification(): Observable<NotificationResponsetDto[]> {
     return this.httpClient
-      .get(`${this.url}`, this.authorizedHeader)
+      .get(`${this.url}notification/find-all-notification`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
 
-  register(dto: CategoryRequestDto): Observable<CategoryResponseDto> {
+  register(dto: NotificationRegisterRequestDto): Observable<NotificationResponsetDto> {
     return this.httpClient
-      .post(`${this.url}register`, dto, this.authorizedHeader)
+      .post(`${this.url}notification/new-notification`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
@@ -39,7 +41,7 @@ export class CategoryService extends BaseService {
       .delete(`${this.url}delete/id/${Id}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-  
+
 
   editCategory(Id: string, dto: CategoryRequestDto): Observable<CategoryResponseDto> {
     return this.httpClient

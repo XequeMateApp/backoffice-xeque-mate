@@ -8,7 +8,7 @@
           style="height: fit-content;">
       </div>
 
-      <form [formGroup]="form"  (ngSubmit)="confirm()" class="col-12 mt-4">
+      <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
         <div class="row">
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="create-name">Nome</label>
@@ -25,12 +25,13 @@
               class="form-control fw-bolder br-16 bordder py-3"
               placeholder="Digite o valor"
               formControlName="price" />
-              <label class="text-danger mt-1" *ngIf="alertFieldPrice" for="create-valor">Campo preço está vazio</label>
+            <label class="text-danger mt-1" *ngIf="alertFieldPrice" for="create-valor">Campo preço está vazio</label>
           </div>
 
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="create-cnpj">Fornecedor CNPJ</label>
-            <input type="text" #createcnpj required id="create-cnpj" mask="00.000.000/0000-00"  class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
+            <input type="text" #createcnpj required id="create-cnpj" mask="00.000.000/0000-00" class="form-control fw-bolder br-16 bordder py-3"
+              placeholder="Digite o CNPJ" formControlName="cnpj" />
             <label class="text-danger mt-1" *ngIf="alertFieldCnpj" for="create-cnpj">Campo cnpj está vazio</label>
           </div>
           <div class="col-md-6">
@@ -41,23 +42,42 @@
             <label class="text-danger mt-1" *ngIf="alertFieldCode" for="create-code">Campo código está vazio</label>
           </div>
           <div class="col-12">
+
+
+
+
+
+
             <label class="h6 mt-3 text-dark" for="create-category">Categoria</label>
-            <!-- <select #selectOptions class="form-select fw-bolder text-dark-blue
+            <select #selectOptions class="form-select fw-bolder text-dark-blue
               br-16 border py-3" required
               aria-label="Default select category"
               formControlName="selectCategory"
               (change)="onOptionSelected(selectOptions.value)">
-              <option [selected]="true" [disabled]="true" >Selecione uma categoria</option>
-              <option [selected]="option.category != '' " *ngFor="let option of supplier" [value]="option._id">{{option.category}}</option>
-            </select> -->
-            <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo código está vazio</label>
+              <option [selected]="true" [disabled]="true">Selecione uma categoria</option>
+              <option [selected]="option.name != ''" *ngFor="let option of responseCategory" [value]="option._id">{{option.name}}</option>
+            </select>
+            <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo categorias está vazio</label>
             <ul class="list-group mt-3 br-16 ">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
-                <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item.category }}</h6>
+                <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item.name }}</h6>
                 <i (click)="removeItem(item)" role="button" class="bi mb-0 bi-x h3 text-danger"></i>
               </li>
             </ul>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-doc">Images</label>
             <div #createimg class="w-100 d-flex overflow-y border p-2 br-16
@@ -84,7 +104,7 @@
                     border">
                     <input role="button" type="file" class="illustration
                       position-relative z-10" style="opacity:0;" required
-                      formControlName="image" #createimg
+                      formControlName="selectPhotos" #createimg
                       (change)="onSelectFileProductImage($event)"
                       accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative"
@@ -93,7 +113,7 @@
                 </div>
               </div>
             </div>
-           
+
             <label class="text-danger mt-1" *ngIf="alertFieldImg" for="create-code">Campo image está vazio</label>
             <div class="col-12 mt-4 pb-3">
               <div class="row">
@@ -102,7 +122,7 @@
                   <textarea maxlength="200" formControlName="description" class="form-control
                     overflow-scroll border w3-white br-16 p-3" #createdescription
                     id="exempleDescription" required rows="3"></textarea>
-            <label class="text-danger mt-1" *ngIf="alertFieldDescription" for="create-code">Campo descrição está vazio</label>
+                  <label class="text-danger mt-1" *ngIf="alertFieldDescription" for="create-code">Campo descrição está vazio</label>
 
                 </div>
                 <div class="col-md-6">
@@ -110,7 +130,7 @@
                   <textarea maxlength="200" formControlName="specification" class="form-control
                     overflow-scroll border w3-white br-16 p-3" required #createspecification
                     id="exempleSpecification" rows="3"></textarea>
-            <label class="text-danger mt-1" *ngIf="alertFieldSpecification" for="create-code">Campo especificações está vazio</label>
+                  <label class="text-danger mt-1" *ngIf="alertFieldSpecification" for="create-code">Campo especificações está vazio</label>
 
                 </div>
               </div>
@@ -128,7 +148,7 @@
                 <button class="btn br-16 bg-dark-blue text-light w-100"
                   (click)="confirm()"
                   type="button">
-                  <h6 class="fw-bolder mb-0 py-2">Cadastrar</h6>
+                  <h6 class="fw-bolder mb-0 py-2">Salvar</h6>
                 </button>
               </div>
             </div>

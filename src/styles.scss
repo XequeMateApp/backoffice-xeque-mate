@@ -12,9 +12,9 @@
   font-family: 'Josefin Sans' !important;
 }
 
-.apexcharts-menu-icon{
- 
-  display: none  !important;
+// GLOBAL classse´s
+.apexcharts-menu-icon {
+  display: none !important;
 }
 
 .custom-pagination {
@@ -39,7 +39,6 @@
   border-bottom: 2px solid rgb(0, 128, 255);
   padding: 0 1rem;
   cursor: pointer;
-
 }
 
 .bg-body {
@@ -140,7 +139,7 @@
 }
 
 .text-dark-blue {
-  color: var(--darkblue)!important;
+  color: var(--darkblue) !important;
 }
 
 .br-16 {
@@ -161,7 +160,6 @@
   height: 174px;
   top: -103px;
   width: 189px;
-
 }
 
 .i-file-marketing {
@@ -204,10 +202,9 @@
     padding-left: 0px;
     padding-right: 0px;
   }
-
-  .col-name {
-    width: 247px !important;
-  }
+  .col-description {
+    min-width: 609px !important;
+}
 }
 
 @media (max-width: 991px) {
@@ -215,6 +212,11 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
+  .col-price {
+    min-width: 239px !important;
+  }
+
 }
 
 @media (min-width: 576px) {
@@ -228,11 +230,16 @@
     width: 244px !important;
   }
 
-  .col-name {
-    width: 241px;
+  .td-phone {
+    width: 177px !important;
   }
-  .col-description{
-    width: 617px !important;
+
+  .col-name {
+    width: 257px;
+  }
+
+  .col-description {
+    width: 598px !important;
   }
 
   .col-type {
@@ -240,7 +247,7 @@
   }
 
   .col-price {
-    width: 230px !important;
+    width: 275px !important;
   }
 
   .col-tel {
@@ -257,12 +264,16 @@
     width: 216px !important;
   }
 
+  .td-phone {
+    width: 149px !important;
+  }
+
   .col-type {
     width: 122px !important;
   }
 
   .col-price {
-    width: 198px !important;
+    width: 222px !important;
   }
 
   .col-tel {
@@ -278,7 +289,6 @@
   }
 }
 
-// analysis
 .illustration {
   height: 101px;
   width: 101px !important;

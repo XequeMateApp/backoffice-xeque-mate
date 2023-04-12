@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { DatamockService } from 'src/services/datamock.service';
+import { ProductService } from 'src/services/products.service';
 
 @Component({
   selector: 'app-analysis-product',
@@ -12,25 +14,27 @@ import { DatamockService } from 'src/services/datamock.service';
 export class AnalysisProductComponent implements OnInit {
   form: FormGroup;
 
-  selectFileName: String;
   supplierImg: string[];
   selectedItems: SupplierInterface[] = [];
-  FileNameDoc: String;
-
-  productsData: any;
-
-  supplier: SupplierInterface[];
-  selectedImageUrl: string;
   selectFile: any = [];
-  notImage = true;
-  pdfFileName: string;
+  items: string[];
+  selectedCategories: string[];
+
+
   FilesDoc: any;
+  responseData: any;
+
+  selectedImageUrl: string;
+  pdfFileName: string;
+
+  notImage = true;
 
 
   constructor(
     private modalService: NgbModal,
+    private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private datamockService: DatamockService,
+    private productService: ProductService,
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -46,56 +50,51 @@ export class AnalysisProductComponent implements OnInit {
     })
   }
 
+
   ngOnInit(): void {
-    this.supplier = this.datamockService.getsupplier();
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
-    console.log(this.productsData)
-    // this.supplierImg = this.productsData.img;
-
-    this.FilesDoc = this.productsData.doc;
-
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
+    this.FilesDoc = this.responseData.doc;
     console.log(this.FilesDoc);
-    // console.log(this.supplierImg);
-    this.form.controls['name'].setValue(this.productsData.name)
-    this.form.controls['price'].setValue(this.productsData.price)
-    this.form.controls['code'].setValue(this.productsData.code)
-    this.form.controls['material'].setValue(this.productsData.material)
-    this.form.controls['selectCategory'].setValue(this.productsData.category)
-    this.form.controls['description'].setValue(this.productsData.description)
-    this.form.controls['specification'].setValue(this.productsData.specification)
-    this.form.controls['status'].setValue(this.productsData.status)
+    console.log(this.responseData.category)
+    this.form.controls['name'].setValue(this.responseData.name)
+    this.form.controls['price'].setValue(this.responseData.value)
+    this.form.controls['code'].setValue(Number(this.responseData.code))
+    this.form.controls['material'].setValue(this.responseData.material)
+    this.form.controls['selectCategory'].setValue(this.responseData.category)
+    this.form.controls['description'].setValue(this.responseData.description)
+    this.form.controls['specification'].setValue(this.responseData.specifications)
+    this.getImagesFromLocalStorage();
   }
 
 
-  // functions-select
+  //FUNCTION-SELECTION
+  // onOptionSelected(optionId: string) {
+  //   const selectedOption = this.supplier.find(option => option._id === +optionId);
+  //   if (selectedOption && !this.selectedItems.includes(selectedOption)) {
+  //     this.selectedItems.push(selectedOption)
+  //   }
+  //   this.selectedCategories = this.selectedItems.map(item => item.category);
+  //   console.log(this.selectedCategories);
+  // }
 
-  onOptionSelected(optionId: string) {
-    const selectedOption = this.supplier.find(option => option._id === +optionId);
-    if (selectedOption && !this.selectedItems.includes(selectedOption)) {
-      this.selectedItems.push(selectedOption);
-    }
-  }
+  // removeItem(item: SupplierInterface) {
+  //   const index = this.selectedItems.indexOf(item);
+  //   if (index >= 0) {
+  //     this.selectedItems.splice(index, 1);
+  //     this.selectedCategories.splice(index, 1);
+  //   }
+  // }
 
-  addItem() {
-    const selectElement = document.querySelector('select');
-    const selectedOptionId = selectElement.value;
-    const selectedOption = this.supplier.find(option => option._id === +selectedOptionId);
-    if (selectedOption && !this.selectedItems.includes(selectedOption)) {
-      this.selectedItems.push(selectedOption);
+  getImagesFromLocalStorage() {
+    const imagesData = JSON.parse(localStorage.getItem('responseData'));
+    if (imagesData.image && Array.isArray(imagesData.image)) {
+      this.supplierImg = imagesData.image;
     }
-  }
-
-  removeItem(item: SupplierInterface) {
-    const index = this.selectedItems.indexOf(item);
-    if (index >= 0) {
-      this.selectedItems.splice(index, 1);
-    }
+    console.log(this.supplierImg, 'qwedrfghjk');
   }
 
 
   // functions-photos
-
-
   onSelectFileProductImage(event) {
     if (event.target.files && event.target.files[0]) {
       this.notImage = false;
@@ -110,13 +109,9 @@ export class AnalysisProductComponent implements OnInit {
     }
   }
 
-  // addImages() {
-  //   this.supplier.push()
-  // }
 
   removeFile(index: number) {
     this.supplierImg.splice(index, 1);
-    console.log('ué')
     this.form.controls['selectPhotos'].setValue(null);
     // this.selectFile = null;
     this.notImage = true;
@@ -124,21 +119,60 @@ export class AnalysisProductComponent implements OnInit {
   }
 
   // docs
-  downloadFile() {
-    const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,' + btoa(this.FilesDoc);
-    link.download = this.FilesDoc;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
+  // downloadFile() {
+  //   const link = document.createElement('a');
+  //   link.href = 'data:application/pdf;base64,' + btoa(this.FilesDoc);
+  //   link.download = this.FilesDoc;
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   link.remove();
+  // }
+
+
+
+  confirm() {
+    const dto = {
+      _id: this.responseData._id,
+      status: 'APPROVED'
+    }
+
+    this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
+      success => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+        this.toastrService.success('Aprovado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao aprovar', '', { progressBar: true });
+      }
+    )
   }
 
+  refused() {
+    this.modalService.dismissAll();
+    const dto = {
+      _id: this.responseData._id,
+      status: 'DENIED'
+    }
+    this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
+      success => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+        this.toastrService.success('Recusado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao recusar', '', { progressBar: true });
+      }
+    )
+  }
 
-  // general-functions
   exit() {
     this.modalService.dismissAll()
-  }
-  confirm() {
-    window.alert('confirm ')
   }
 }
