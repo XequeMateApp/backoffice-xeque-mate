@@ -34,7 +34,6 @@ export class SupplierComponent implements OnInit {
     this.userService.getUserPlataform('inactive').subscribe(
       success => {
         this.response = success;
-        console.log('aqui', this.response);
       },
       error => { console.error(error, 'data not collected') }
     )
