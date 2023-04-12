@@ -74,10 +74,9 @@ export class NotificationComponent implements OnInit {
     }
   }
   sortListByAlphabeticalOrder(): void {
-    this.notifications.sort((a, b) => {
+    this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);
-    }
-    );
+    });
     this.orderby = 'Nome A-Z'
     console.log(this.notifications);
   }
