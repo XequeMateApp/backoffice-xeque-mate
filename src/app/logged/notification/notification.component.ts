@@ -30,7 +30,6 @@ export class NotificationComponent implements OnInit {
   filterTerm!: string;
   orderby = 'Ordenar por';
   constructor(
-    private toastrService: ToastrService,
     private router: Router,
     private notificationService: NotificationService,
     private modalService: NgbModal,
@@ -72,6 +71,5 @@ export class NotificationComponent implements OnInit {
       return a.name.localeCompare(b.name);
     });
     this.orderby = 'Nome A-Z'
-    console.log(this.response);
   }
 }
