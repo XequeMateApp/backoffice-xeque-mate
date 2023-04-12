@@ -1,10 +1,10 @@
 export interface ProductPutRequestDto {
-  name: string;
-  code: string;
-  specifications: string;
-  description: string;
-  image: string[];
-  status: string;
-  cnpj: string;
-  value: string;
+  code: string,
+  category: string[],
+  description: string,
+  specifications: string,
+  value: string,
+  name: string,
+  cnpj: string,
+  image: string[],
 }

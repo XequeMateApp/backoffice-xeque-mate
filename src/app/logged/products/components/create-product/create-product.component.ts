@@ -34,7 +34,6 @@ export class CreateProductComponent implements OnInit {
   productsData: any;
   responseCategory: CategoryResponseDto[] = [];
 
-  supplier: SupplierInterface[];
   selectedImageUrl: string;
   selectFile: any = [];
   notImage = true;
@@ -48,6 +47,8 @@ export class CreateProductComponent implements OnInit {
   alertFieldDescription = false;
   alertFieldImg = false;
   alertFieldSpecification = false;
+
+  
   imageSrc: string;
   selectedCategories: string[];
   totalFiles: File[] = [];
@@ -58,7 +59,6 @@ export class CreateProductComponent implements OnInit {
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
     private productService: ProductService,
-    private datamockService: DatamockService,
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -73,7 +73,6 @@ export class CreateProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.supplier = this.datamockService.getsupplier();
     this.getCategorys();
   }
 
@@ -158,7 +157,7 @@ export class CreateProductComponent implements OnInit {
 
   //FUNCTION-SELECTION
   onOptionSelected(optionId: string) {
-    const selectedOption = this.responseCategory.find(option => Number(option._id) === +Number(optionId));
+    const selectedOption = this.responseCategory.find(option => option._id === optionId);
     if (selectedOption && !this.selectedItems.includes(selectedOption)) {
       this.selectedItems.push(selectedOption);
     }
@@ -166,12 +165,12 @@ export class CreateProductComponent implements OnInit {
     console.log(this.selectedCategories);
   }
 
-  removeItem(item: SupplierInterface) {
-    // const index = this.selectedItems.indexOf(item);
-    // if (index >= 0) {
-    //   this.selectedItems.splice(index, 1);
-    //   this.selectedCategories.splice(index, 1);
-    // }
+  removeItem(item: CategoryResponseDto) {
+    const index = this.selectedItems.indexOf(item);
+    if (index >= 0) {
+      this.selectedItems.splice(index, 1);
+      this.selectedCategories.splice(index, 1);
+    }
   }
 
   // FUNCTION-IMAGE
@@ -229,6 +228,7 @@ export class CreateProductComponent implements OnInit {
       category: this.selectedCategories
     }
     console.log(dto);
+    console.log()
     if (
       this.form.controls['name'].value !== '' &&
       this.form.controls['code'].value !== '' &&
