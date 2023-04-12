@@ -27,13 +27,11 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
   productRegister(dto: ProductRegisterRequestDto): Observable<any> {
     return this.httpClient
       .post(`${this.url}product/backoffice-register`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-
 
   putProduct(id: string, dto: ProductPutRequestDto): Observable<any> {
     return this.httpClient
@@ -41,18 +39,11 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
   putAnalisysProduct(id: string, status: string, dto: ProductPutAnalisysRequestDto): Observable<any> {
     return this.httpClient
       .put(`${this.url}product/review/id/${id}/status/${status}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
-  // updateUserPlataform(userID: string, status: string, dto: SupplierRegisterRequestDto): Observable<SupplierRegisterResponseDto> {
-  //   return this.httpClient
-  //     .put(`${this.url}/user-plataform/review/id/${userID}/status/${status}`, dto, this.authorizedHeader)
-  //     .pipe(map(this.extractData), catchError(this.serviceError));
-  // }
-
 
   deleteProduct(Id: string): Observable<any> {
     return this.httpClient
@@ -60,5 +51,16 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+  getAllProducts(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/all`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllFilteredProductsByDate(days: number): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/${days}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
 
 }
