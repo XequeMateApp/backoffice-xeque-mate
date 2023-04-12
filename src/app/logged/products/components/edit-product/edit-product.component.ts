@@ -4,9 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
 import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
-import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { CategoryService } from 'src/services/category.service';
-import { DatamockService } from 'src/services/datamock.service';
 import { ProductService } from 'src/services/products.service';
 
 @Component({
