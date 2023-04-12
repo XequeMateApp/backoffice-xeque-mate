@@ -16,8 +16,8 @@
                 <select formControlName="status" id="edit-status" class="form-select py-3 br-16"
                     aria-label="Default status">
                     <option [disabled]="true" [selected]="true">Selecione</option>
-                    <option [selected]="editNotStatus === 'Ativo'" value="Active" value="active">🟢 Ativo</option>
-                    <option [selected]="editNotStatus === 'Inativo'" value="Inactive" value="inactive">🔴 Inativo</option>
+                    <option [selected]="editNotStatus === 'active'"  value="active">🟢 Ativo</option>
+                    <option [selected]="editNotStatus === 'inactive'" value="inactive">🔴 Inativo</option>
                 </select>
             </div>
             <div class="col-12 mt-3">
@@ -33,9 +33,9 @@
                         <select formControlName="repetition" id="edit-reapet" class="form-select py-3 br-16"
                             aria-label="Default repeat">
                             <option [disabled]="true" [selected]="true">Selecione</option>
-                            <option [selected]="editNotRepetition === 'diary'" value="diary">Diariamente</option>
-                            <option [selected]="editNotRepetition === 'week'" value="week">Semanalmente</option>
-                            <option [selected]="editNotRepetition === 'mouth'" value="month">Mensalmente</option>
+                            <option [selected]="responseData.repetition === 'Diariamente'" value="Diariamente">Diariamente</option>
+                            <option [selected]="responseData.repetition === 'Semanalmente'" value="Semanalmente">Semanalmente</option>
+                            <option [selected]="responseData.repetition === 'Mensalmente'" value="Mensalmente">Mensalmente</option>
                         </select>
                     </div>
                     <div class="col-md-8 mt-3 d-flex align-items-center">
@@ -63,16 +63,14 @@
             <div class="col-12 mt-4">
                 <label class="" for="edit-content">Filtro</label>
                 <div class="w-auto d-flex align-items-center">
-                    <div role="button" class="form-check align-items-baseline d-flex">
-                        <input formControlName="function" [checked]="editNotFunction === 'supplier'" name="filter" class="form-check-input p-2" type="radio"
-                            id="filterForner">
+                    <div  class="form-check align-items-baseline d-flex">
+                        <input (change)="filterForm(filterSupplier.value)" #filterSupplier value="supplier" name="filter"  class="form-check-input p-2" type="radio" id="filterForner"  [checked]="form.controls['filter'].value === 'supplier'" />
                         <label class="form-check-label px-2" for="filterForner">
                             Fornecedores
                         </label>
                     </div>
-                    <div role="button" class="form-check align-items-baseline d-flex mx-3">
-                        <input formControlName="function" [checked]="editNotFunction === 'client'" name="filter" class="form-check-input p-2" type="radio"
-                            id="filterClients">
+                    <div class="form-check align-items-baseline d-flex mx-3">
+                        <input  (change)="filterForm(filterClient.value)" #filterClient value="client" name="filter"  class="form-check-input p-2" type="radio" id="filterClients"  [checked]="form.controls['filter'].value === 'clients'" >
                         <label class="form-check-label px-2" for="filterClients">
                             Clientes
                         </label>

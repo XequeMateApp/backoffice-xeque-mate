@@ -36,8 +36,7 @@
               {{orderby}}
             </button>
             <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-              <li role="button"><a (click)="sortListByAlphabeticalOrder()"
-                  class="dropdown-item">Nome A-Z</a></li>
+              <li role="button"><a (click)="sortListByAlphabeticalOrder()" class="dropdown-item">Nome A-Z</a></li>
             </ul>
           </div>
         </div>
@@ -72,7 +71,7 @@
           <div class="col h-100 br-16-circle align-items-center d-flex">
             <h4 class="mb-0 d-inline-block text-truncate" style="max-width:
               133px;">
-              {{item.name}}</h4>
+              {{item.name}}gaehaethartjryryjryjartjyksrtyjsrjrjs</h4>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
             <h4 class="mb-0 text-secondary d-inline-block"
@@ -80,16 +79,15 @@
               {{item.content}}</h4>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 class="mb-0">{{item.time}}</h4>
+            <h4 class="mb-0">{{item.hour}}</h4>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 class="mb-0 d-inline-block text-truncate">{{item.filter}}</h4>
+            <h4 *ngIf="item.filter === 'clients'" class="mb-0 d-inline-block text-truncate">Cliente</h4>
+            <h4 *ngIf="item.filter === 'supplier'" class="mb-0 d-inline-block text-truncate">Fornecedor</h4>
           </div>
           <div class="col h-100 br-16-circle align-items-center d-flex">
-            <h4 *ngIf="item.status === 'Ativo'" class="mb-0 text-success">
-              {{item.status}}</h4>
-            <h4 *ngIf="item.status === 'Inativo'" class="mb-0 text-danger">
-              {{item.status}}</h4>
+            <h4 *ngIf="item.status === 'active'" class="mb-0 text-success">Ativo</h4>
+            <h4 *ngIf="item.status === 'inactive'" class="mb-0 text-danger">Inativo</h4>
           </div>
           <div class="col h-100 br-16-circle justify-content-end
             align-items-center d-flex">

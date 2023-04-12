@@ -15,37 +15,35 @@ import { NotificationRegisterRequestDto } from 'src/app/dto/logged/notification-
   providedIn: 'root',
 })
 export class NotificationService extends BaseService {
-  url = `${environment.api.xequeMateApi}backoffice/`;
+
+  url = `${environment.api.xequeMateApi}notification/`;
   profilePicture: Subject<string> = new Subject();
 
   constructor(private httpClient: HttpClient) {
     super();
   }
-
-  getNotification(): Observable<NotificationResponsetDto[]> {
+  getNotification(): Observable<any> {
     return this.httpClient
-      .get(`${this.url}notification/find-all-notification`, this.authorizedHeader)
-      .pipe(map(this.extractData), catchError(this.serviceError));
+      .get(`${this.url}find-all-notification`, this.authorizedHeader)
+      .pipe(map(response => response),catchError(error => {console.log(error);return error;})
+      );
   }
-
 
   register(dto: NotificationRegisterRequestDto): Observable<NotificationResponsetDto> {
     return this.httpClient
-      .post(`${this.url}notification/new-notification`, dto, this.authorizedHeader)
+      .post(`${this.url}new-notification`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
-  deleteCategory(Id: string): Observable<CategoryDeleteRequestDto> {
+  deleteNotification(Id: string): Observable<NotificationResponsetDto> {
     return this.httpClient
-      .delete(`${this.url}delete/id/${Id}`, this.authorizedHeader)
+      .delete(`${this.url}delete/${Id}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
-  editCategory(Id: string, dto: CategoryRequestDto): Observable<CategoryResponseDto> {
+  editNotification(Id: string, dto: NotificationRegisterRequestDto): Observable<NotificationResponsetDto> {
     return this.httpClient
-      .put(`${this.url}update/id/${Id}`, dto, this.authorizedHeader)
+      .put(`${this.url}edit/${Id}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 }
