@@ -2,15 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
-import { NotificationInterface } from 'src/app/interface/notification.interface';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
-import { DatamockService } from 'src/services/datamock.service';
-import { CreateNotificationComponent } from '../notification/components/create-notification/create-notification.component';
-import { DeleteNotificationComponent } from '../notification/components/delete-notification/delete-notification.component';
-import { EditNotificationComponent } from '../notification/components/edit-notification/edit-notification.component';
 import { CreateAdComponent } from './components/create-ad/create-ad.component';
 import { EditAdComponent } from './components/edit-ad/edit-ad.component';
 import { DeleteAdComponent } from './components/delete-ad/delete-ad.component';
+import { MarketingService } from 'src/services/marketing.service';
+import { MarketingResponseDto } from 'src/app/dto/logged/marketing-response.dto';
 
 @Component({
   selector: 'app-marketing',
@@ -19,7 +16,7 @@ import { DeleteAdComponent } from './components/delete-ad/delete-ad.component';
 })
 export class MarketingComponent implements OnInit {
 
-  notifications:NotificationInterface[];
+  response: MarketingResponseDto[] = [];
 
   @Input('data') meals: string[] = [];
 
@@ -30,14 +27,25 @@ export class MarketingComponent implements OnInit {
   };
   filterTerm!: string;
   constructor(
-    private datamockService: DatamockService,
     private router: Router,
+    private marketingService: MarketingService,
     private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
-    this.notifications = this.datamockService.notificationList;
+    this.getMarketing();
   }
+
+  getMarketing() {
+    this.marketingService.getMarketing().subscribe(
+      success => {
+        this.response = success;
+        console.log(this.response)
+      },
+      error => { console.error(error, 'data not collected') }
+    );
+  }
+
 
   backHome(){
     this.router.navigate(['/logged/dashboard']);
@@ -48,7 +56,7 @@ export class MarketingComponent implements OnInit {
   }
 
   openModals(tabName: string, info: string[]) {
-    LocalStorageUtil.set(LocalStorageKeys.userData, info);
+    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName === 'edit') {
       this.modalService.open(EditAdComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName === 'delete') {
@@ -56,17 +64,14 @@ export class MarketingComponent implements OnInit {
     }
   }
   sortListByAlphabeticalOrder(): void {
-    this.notifications.sort((a, b) => {
-      return a.name.localeCompare(b.name);
+    this.response.sort((a, b) => {
+      return a.title.localeCompare(b.title);
     }
     );
-    console.log(this.notifications);
   }
   sortListByType(value: string) {
-   
-   
-    if (value === 'Ativo') this.notifications.sort((a, b) => { return a.status.localeCompare(b.status); });
-    else if (value === 'Inativo') this.notifications.sort((a, b) => { return b.status.localeCompare(a.status); });
+    if (value === 'active') this.response.sort((a, b) => { return a.status.localeCompare(b.status); });
+    else if (value === 'inactive') this.response.sort((a, b) => { return b.status.localeCompare(a.status); });
   }
 }
 

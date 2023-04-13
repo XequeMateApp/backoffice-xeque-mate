@@ -78,6 +78,14 @@ export class CreateNotificationComponent implements OnInit {
         this.alertFieldRepetition = false;
       }, 3000);
     }
+    else if (this.form.controls['textarea'].value === '') {
+      this.createcontent.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.alertFieldContent = true;
+      setInterval(() => {
+        this.createcontent.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.alertFieldContent = false;
+      }, 3000);
+    }
     else if (this.form.controls['dateStart'].value === '') {
       this.createdate.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldDate = true;

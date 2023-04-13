@@ -26,13 +26,18 @@ export class ProductsComponent implements OnInit {
     itemsPerPage: 8,
     currentPage: 1
   };
+  maskParams = {
+    thousandSeparator: ',',
+  };
   response: ProductsRegisterResponseDto[] = [];
 
   filterTerm!: string;
   officerAdm: string;
   uniqueMaterials: string[];
   typeFilter = 'Tipo';
-  OrderBy = 'Ordenar por'
+  OrderBy = 'Ordenar por';
+
+
   constructor(
     private datamockService: DatamockService,
     private router: Router,

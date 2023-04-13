@@ -48,7 +48,7 @@ export class CreateProductComponent implements OnInit {
   alertFieldImg = false;
   alertFieldSpecification = false;
 
-  
+
   imageSrc: string;
   selectedCategories: string[];
   totalFiles: File[] = [];
@@ -240,9 +240,9 @@ export class CreateProductComponent implements OnInit {
     ) {
       this.productService.productRegister(dto).subscribe(
         success => {
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000)
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 2000)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

@@ -6,35 +6,38 @@ import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
 import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
 import { NotificationRegisterRequestDto } from 'src/app/dto/logged/notification-register-request.dto';
+import { MarketingResponseDto } from 'src/app/dto/logged/marketing-response.dto';
+import { MarketingRegisterRequestDto } from 'src/app/dto/logged/marketing-register-request.dto';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class NotificationService extends BaseService {
+export class MarketingService extends BaseService {
 
-  url = `${environment.api.xequeMateApi}notification/`;
+  url = `${environment.api.xequeMateApi}Marketing/`;
   profilePicture: Subject<string> = new Subject();
 
   constructor(private httpClient: HttpClient) {
     super();
   }
-  getNotification(): Observable<any> {
-    return this.httpClient
-      .get(`${this.url}find-all-notification`, this.authorizedHeader)
-      .pipe(map(response => response), catchError(error => { console.log(error); return error; })
-      );
-  }
 
-  register(dto: NotificationRegisterRequestDto): Observable<NotificationResponsetDto> {
+  getMarketing(): Observable<MarketingResponseDto[]> {
     return this.httpClient
-      .post(`${this.url}new-notification`, dto, this.authorizedHeader)
+      .get(`${this.url}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  deleteNotification(Id: string): Observable<NotificationResponsetDto> {
+
+  register(dto: MarketingRegisterRequestDto): Observable<MarketingResponseDto> {
     return this.httpClient
-      .delete(`${this.url}delete/${Id}`, this.authorizedHeader)
+      .post(`${this.url}register`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  deleteMarketing(Id: string): Observable<MarketingResponseDto> {
+    return this.httpClient
+      .delete(`${this.url}delete/id/${Id}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 

@@ -5,11 +5,9 @@ import { CreateNotificationComponent } from './components/create-notification/cr
 import { EditNotificationComponent } from './components/edit-notification/edit-notification.component';
 import { DeleteNotificationComponent } from './components/delete-notification/delete-notification.component';
 import { PaginationInstance } from 'ngx-pagination';
-import { NotificationInterface } from 'src/app/interface/notification.interface';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { NotificationService } from 'src/services/notification.service';
 import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-notification',
@@ -19,11 +17,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NotificationComponent implements OnInit {
 
-  notifications: NotificationInterface[];
-  response: NotificationResponsetDto[] = [];
+  response: NotificationResponsetDto[];
 
   @Input('data') meals: string[] = [];
-
   public config: PaginationInstance = {
     id: 'custom',
     itemsPerPage: 4,
@@ -32,7 +28,6 @@ export class NotificationComponent implements OnInit {
   filterTerm!: string;
   orderby = 'Ordenar por';
   constructor(
-    private toastrService: ToastrService,
     private router: Router,
     private notificationService: NotificationService,
     private modalService: NgbModal,
@@ -43,16 +38,12 @@ export class NotificationComponent implements OnInit {
   }
 
   getNotifications() {
-    this.notificationService.getNotification().subscribe({
-      next: data => {
-        this.response = data;
-        console.log(this.response);
+    this.notificationService.getNotification().subscribe(
+      success => {
+        this.response = success;
+        console.log(this.response)
       },
-      error: error => {
-        console.log(error);
-        this.toastrService.error('Seus dados não foram recuperados!', '', { progressBar: true });
-      }
-    }
+      error => { console.error(error, 'data not collected') }
     );
   }
 
@@ -66,7 +57,7 @@ export class NotificationComponent implements OnInit {
   }
 
   openModals(tabName: string, info: string[]) {
-    LocalStorageUtil.set(LocalStorageKeys.userData, info);
+    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'edit') {
       this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
     } else if (tabName == 'delete') {
@@ -78,6 +69,5 @@ export class NotificationComponent implements OnInit {
       return a.name.localeCompare(b.name);
     });
     this.orderby = 'Nome A-Z'
-    console.log(this.notifications);
   }
 }
