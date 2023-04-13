@@ -20,7 +20,7 @@ export class SupplierComponent implements OnInit {
     currentPage: 1
   };
   filterTerm!: string;
-  response: SupplierRegisterResponseDto[] =[];
+  response: SupplierRegisterResponseDto[] = [];
   constructor(
     private router: Router,
     private userService: UserService,
@@ -34,7 +34,6 @@ export class SupplierComponent implements OnInit {
     this.userService.getUserPlataform('inactive').subscribe(
       success => {
         this.response = success;
-        console.log(this.response);
       },
       error => { console.error(error, 'data not collected') }
     )

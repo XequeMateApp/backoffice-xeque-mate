@@ -77,19 +77,19 @@
                         </td>
                         <td class="td-phone" style="width: 222px;"><h5 class="mb-0 py-3 text-start">{{item.phone | mask: '(00) 0000-0000' || '..'}}</h5></td>
                         <td>
-                            <h4 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h4>
-                            <h4 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inactive</h4>
+                            <h6 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h6>
+                            <h6 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inactive</h6>
                         </td>
                         <td>
                             <!-- caso email seja padrão para o fornecedores -->
-                            <h4  *ngIf="item.profile === 'client'" class="mb-0 d-flex justify-content-center py-3">
+                            <h6  *ngIf="item.profile === 'client'" class="mb-0 d-flex justify-content-center py-3">
                                 <i role='button' (click)="openModals('editclient', item)" class="bi h3  bi-gear"></i>
                                 <i role='button' (click)="openModals('deleteclient', item)" class="bi h3 ms-3  text-danger bi-trash3"></i>
-                            </h4>
-                            <h4  *ngIf="item.profile === 'provider'"  class="mb-0  d-flex justify-content-center py-3">
+                            </h6>
+                            <h6  *ngIf="item.profile === 'provider'"  class="mb-0  d-flex justify-content-center py-3">
                                 <i role='button' (click)="openModals('editsupplier' , item)" class="bi h3  bi-gear"></i>
                                 <i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 ms-3  text-danger bi-trash3"></i>
-                            </h4>
+                            </h6>
                         </td>
                       </tr>
                     </tbody>
