@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -13,6 +13,8 @@ import { ProductService } from 'src/services/products.service';
   styleUrls: ['./edit-product.component.scss']
 })
 export class EditProductComponent implements OnInit {
+  @ViewChild('createstatus') createstatus: ElementRef;
+
   form: FormGroup;
 
   request: ProductPutRequestDto;
@@ -32,6 +34,7 @@ export class EditProductComponent implements OnInit {
   FilesDoc: any;
   items: string[];
   selectedCategories: string[];
+  categories: string[];
 
   constructor(
     private modalService: NgbModal,
@@ -44,6 +47,7 @@ export class EditProductComponent implements OnInit {
       name: [''],
       code: [''],
       selectCategory: [''],
+      category: [''],
       selectPhotos: [''],
       description: [''],
       specification: [''],
@@ -64,20 +68,22 @@ export class EditProductComponent implements OnInit {
     this.form.controls['price'].setValue(this.responseData.value)
     this.form.controls['cnpj'].setValue(this.responseData.cnpj)
     this.form.controls['code'].setValue(Number(this.responseData.code))
-    // this.form.controls['selectCategory'].setValue(this.responseData.category)
+    this.form.controls['category'].setValue(this.responseData.category)
     this.form.controls['description'].setValue(this.responseData.description)
     this.form.controls['specification'].setValue(this.responseData.specifications)
     this.getImagesFromLocalStorage();
     this.getCategorys();
+
+
   }
 
 
   //FUNCTION-SELECTION
-  getCategorys(){
+  getCategorys() {
     this.categoryService.getCategory().subscribe(
       success => {
         this.responseCategory = success;
-        console.log(this.responseCategory)
+        // console.log(this.responseCategory)
       },
       error => { console.error(error, 'category not collected') }
     )
@@ -99,9 +105,12 @@ export class EditProductComponent implements OnInit {
     }
   }
 
-
-
-
+  removeItemResponse(item: string): void {
+    const index = this.responseData.category.indexOf(item);
+    if (index !== -1) {
+      this.responseData.category.splice(index, 1);
+    }
+  }
 
   // functions-photos
   onSelectFileProductImage(event) {
@@ -145,18 +154,18 @@ export class EditProductComponent implements OnInit {
   // }
 
 
-
   confirm() {
-
+    this.categories = this.selectedCategories.concat(this.form.controls['category'].value);
+    console.log(this.selectedCategories, this.form.controls['category'].value);
     this.request = {
-        name: this.form.controls['name'].value,
-        cnpj: this.form.controls['cnpj'].value,
-        code: this.form.controls['code'].value,
-        category: this.selectedCategories,
-        image: this.supplierImg,
-        description: this.form.controls['description'].value,
-        specifications: this.form.controls['specification'].value,
-        value: this.form.controls['price'].value,
+      name: this.form.controls['name'].value,
+      cnpj: this.form.controls['cnpj'].value,
+      code: this.form.controls['code'].value,
+      category: this.categories,
+      image: this.supplierImg,
+      description: this.form.controls['description'].value,
+      specifications: this.form.controls['specification'].value,
+      value: this.form.controls['price'].value,
     }
     console.log(this.request)
     this.productService.putProduct(this.responseData._id, this.request).subscribe(

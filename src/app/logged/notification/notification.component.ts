@@ -5,11 +5,9 @@ import { CreateNotificationComponent } from './components/create-notification/cr
 import { EditNotificationComponent } from './components/edit-notification/edit-notification.component';
 import { DeleteNotificationComponent } from './components/delete-notification/delete-notification.component';
 import { PaginationInstance } from 'ngx-pagination';
-import { NotificationInterface } from 'src/app/interface/notification.interface';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { NotificationService } from 'src/services/notification.service';
 import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-notification',

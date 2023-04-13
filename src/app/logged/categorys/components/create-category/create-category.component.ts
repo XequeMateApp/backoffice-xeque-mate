@@ -53,8 +53,6 @@ export class CreateCategoryComponent implements OnInit {
     fileReader.onload = () => {
       this.form.controls['image'].setValue(fileReader.result.toString());
     };
-
-
     if (event.target.files && event.target.files[0]) {
       this.notImage = false;
       var filesAmount = event.target.files.length;

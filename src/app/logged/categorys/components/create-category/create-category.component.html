@@ -15,7 +15,7 @@
             <input role="button" type="file" class="position-relative i-file cursor start-0" style="opacity: 0;" (change)="onSelectFile($event)" accept="image/*, .doc , .pdf, .docx" formControlName="image"/>
           </div>
         </div>
-        <label class="text-danger mt-1" *ngIf="alertFieldsImg" for="create-status">Campo <b>images</b> está vazio</label>
+        <label class="text-danger mt-1" *ngIf="alertFieldsImg" for="create-status">Campo images está vazio</label>
         <br/>
         </div>
         <div class="col-md-7">
@@ -25,7 +25,7 @@
               <input type="text" id="create-name" class="form-control line-21
                 br-16 bordder py-3" required #createname
                placeholder="Digite o nome" formControlName="name" />
-              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo <b>nome</b> está vazio</label>
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
             </div>
               <div class="col-md-4 ">
                 <label class="h6 mt-3 text-dark" for="create-status">Status</label>
@@ -36,14 +36,14 @@
                   <option value="active">🟢 Ativo</option>
                   <option value="inactive">🔴 Inativo</option>
                 </select>
-              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo <b>status</b> está vazio</label>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo status está vazio</label>
               </div>
             <div class="col-md-12">
               <label class="h6 mt-3 text-dark" for="create-description">Descrição</label>
               <textarea type="description" id="create-description" maxlength="200" required
                 class="form-control br-16 bordder p-3 overflow-scroll text-dark" #createdescription
                placeholder="Digite a descrição" formControlName="description"></textarea>
-              <label class="text-danger mt-1" *ngIf="alertFieldsDescription" for="create-description">Campo <b>descrição</b> está vazio</label>
+              <label class="text-danger mt-1" *ngIf="alertFieldsDescription" for="create-description">Campo descrição está vazio</label>
 
             </div>
           </div>

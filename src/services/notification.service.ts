@@ -4,9 +4,6 @@ import { Observable, Subject } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
-import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
-import { CategoryRequestDto } from 'src/app/dto/logged/category-register-request.dto';
-import { CategoryDeleteRequestDto } from 'src/app/dto/logged/category-delete-request.dto';
 import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
 import { NotificationRegisterRequestDto } from 'src/app/dto/logged/notification-register-request.dto';
 
@@ -25,7 +22,7 @@ export class NotificationService extends BaseService {
   getNotification(): Observable<any> {
     return this.httpClient
       .get(`${this.url}find-all-notification`, this.authorizedHeader)
-      .pipe(map(response => response),catchError(error => {console.log(error);return error;})
+      .pipe(map(response => response), catchError(error => { console.log(error); return error; })
       );
   }
 
