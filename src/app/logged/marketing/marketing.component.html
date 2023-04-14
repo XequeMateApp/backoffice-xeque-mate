@@ -49,6 +49,7 @@
                 </div>
             </div>
         </div>
+      <div class="row mx-0 overflow-y-scroll ">
         <div style="min-width: 960px;" class="col-12 mt-3 br-16 py-2 mx-0 px-0">
             <div *ngFor="let item of response | filter: filterTerm | paginate: config; let i= index" class="row mx-0 bg-blur border mb-2 br-16 p-3">
                 <div class="col h-100 br-16-circle align-items-center d-grid">
@@ -75,7 +76,7 @@
                         Status
                     </h6>
                     <h6 *ngIf="item.status === 'active'" class="mb-0 text-success">Ativo</h6>
-                    <h6 *ngIf="item.status === 'inactive'" class="mb-0 text-danger">Inativo</h6>
+                    <h6 *ngIf="item.status === 'inactive'" class="mb-0 text-danger">Desabilitado</h6>
                 </div>
                 <div class="col h-100 br-16-circle justify-content-end align-items-center d-flex">
                     <div class="w-50 d-flex justify-content-between align-items-center">
@@ -87,6 +88,7 @@
                 </div>
             </div>
         </div>
+      </div>
         <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length>= 3">
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage= $event">
           <div class="custom-pagination">

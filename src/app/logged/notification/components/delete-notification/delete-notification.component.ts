@@ -33,7 +33,7 @@ export class DeleteNotificationComponent implements OnInit {
       success => {
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 200)
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

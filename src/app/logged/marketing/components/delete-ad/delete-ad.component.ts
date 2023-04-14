@@ -33,7 +33,7 @@ export class DeleteAdComponent implements OnInit {
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 200)
       },
       error: error => {
         console.log(error)

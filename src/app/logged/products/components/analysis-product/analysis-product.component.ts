@@ -156,7 +156,7 @@ export class AnalysisProductComponent implements OnInit {
       success => {
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 200)
         this.toastrService.success('Aprovado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },
@@ -177,7 +177,7 @@ export class AnalysisProductComponent implements OnInit {
       success => {
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 200)
         this.toastrService.success('Recusado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

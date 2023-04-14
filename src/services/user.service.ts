@@ -28,7 +28,7 @@ export class UserService extends BaseService {
   constructor(private httpClient: HttpClient) {
     super();
   }
-
+  // USER-BACKOFFICE
   resetPasswordVerification(dto: UserResetPasswordRequestDto): Observable<UserResetPasswordRequestDto> {
     return this.httpClient
       .post(`${this.url}/reset-password-verification`, dto, this.anonymousHeader)
@@ -56,6 +56,18 @@ export class UserService extends BaseService {
       .post<{ isValid: boolean }>(`${this.url}/resend-email/${email}`, this.anonymousHeader);
   }
 
+  getUsers(): Observable<UserGetResponseDto[]> {
+    return this.httpClient
+      .get(`${this.url}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getUserInfo(): Observable<UserGetResponseDto[]> {
+    return this.httpClient
+      .get(`${this.url}/user-info`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
   register(dto: UserRegisterRequestDto): Observable<UserRegisterResponseDto> {
     return this.httpClient
       .post(`${this.url}/register`, dto, this.anonymousHeader)
@@ -77,18 +89,15 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  getUsers(): Observable<UserGetResponseDto[]> {
+
+// USER-PLATAFORM
+  getAllClients(): Observable<any> {
     return this.httpClient
-      .get(`${this.url}`, this.authorizedHeader)
+      .get(`${this.url}/list`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  getUserInfo(): Observable<UserGetResponseDto[]> {
-    return this.httpClient
-      .get(`${this.url}/user-info`, this.authorizedHeader)
-      .pipe(map(this.extractData), catchError(this.serviceError));
-  }
-
+// USER-PLATAFORM-SUPPLIER
   getUserPlataform(status: string): Observable<SupplierRegisterResponseDto[]> {
     return this.httpClient
       .get(`${this.url}/user-plataform?status=${status}`, this.authorizedHeader)
@@ -101,12 +110,8 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  getUserPlataformSupplier(): Observable<SupplierCustomersResponsetDto[]> {
-    return this.httpClient
-      .get(`${this.url}/listar-clientes`, this.authorizedHeader)
-      .pipe(map(this.extractData), catchError(this.serviceError));
-  }
 
+// USER-PLATAFORM-SUPPLIER-CUSTOMERS
   updateSupplierCustomers(userID: string, dto: SupplierCustomersPutRequestDto): Observable<any> {
     return this.httpClient
       .put(`${this.url}/user-plataform/update/id/${userID}`, dto, this.authorizedHeader)
@@ -119,10 +124,11 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  getAllClients(): Observable<any> {
+  deleteSupplierCustomers(Id: string): Observable<any> {
     return this.httpClient
-      .get(`${this.url}/list`, this.authorizedHeader)
+      .delete(`${this.url}/user-plataform/delete/id/${Id}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+
 
 }

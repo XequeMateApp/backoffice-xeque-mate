@@ -80,12 +80,12 @@ export class FunctionManagementComponent implements OnInit {
   }
 
   // FILTRO POR FUNÇÃO - NÃO FUNCIONAL
-  // removeDuplicates(list: RoleResponseDto[]) {
-  //   this.uniquePermition = [...new Set(list.map(obj => obj.administrator))];
-  // }
-  // sortListByType(value: string) {
-  //   this.typeFilter = value;
-  //   if (value === 'Administrador') this.supplier.sort((a, b) => { return a.permition.localeCompare(b.permition); });
-  //   else if (value === 'Funcionário') this.supplier.sort((a, b) => { return b.permition.localeCompare(a.permition); });
-  // }
+  removeDuplicates(list: RoleResponseDto[]) {
+    this.uniquePermition = [...new Set(list.map(obj => obj.administrator))];
+  }
+  sortListByType(value: string) {
+    // this.typeFilter = value;
+    // if (value === 'Administrador') this.supplier.sort((a, b) => { return a.permition.localeCompare(b.permition); });
+    // else if (value === 'Funcionário') this.supplier.sort((a, b) => { return b.permition.localeCompare(a.permition); });
+  }
 }

@@ -172,7 +172,7 @@ export class EditProductComponent implements OnInit {
       success => {
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 200)
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },
