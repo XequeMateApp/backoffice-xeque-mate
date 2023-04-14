@@ -105,7 +105,7 @@ export class CreateUserComponent implements OnInit {
         success => {
           setTimeout(() => {
           window.location.reload();
-          }, 2000)
+          }, 200)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },
