@@ -123,7 +123,7 @@ export class CreateAdComponent implements OnInit {
         success => {
           setTimeout(() => {
             window.location.reload();
-          }, 2000)
+          }, 200)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },
@@ -134,6 +134,8 @@ export class CreateAdComponent implements OnInit {
       )
     }
   }
+
+
   exit() {
     this.modalService.dismissAll()
   }
