@@ -63,6 +63,7 @@ export class FunctionManagementComponent implements OnInit {
   createOpenmodal() {
     this.modalService.open(CreateFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
+  
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'delete') {
