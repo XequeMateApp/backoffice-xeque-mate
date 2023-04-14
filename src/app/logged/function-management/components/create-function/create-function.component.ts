@@ -11,9 +11,9 @@ import { RoleService } from 'src/services/role.service';
   styleUrls: ['./create-function.component.scss']
 })
 export class CreateFunctionComponent implements OnInit {
-  @ViewChild('editename') editename: ElementRef;
-  @ViewChild('editstatus') editstatus: ElementRef;
-  @ViewChild('editfunction') editfunction: ElementRef;
+  @ViewChild('createname') createname: ElementRef;
+  @ViewChild('createstatus') createstatus: ElementRef;
+  @ViewChild('createfunction') createfunction: ElementRef;
 
   @ViewChild('administrator') administrator: ElementRef;
   @ViewChild('products') products: ElementRef;
@@ -56,18 +56,18 @@ export class CreateFunctionComponent implements OnInit {
 
   verifiField() {
     if (this.form.controls['name'].value === '') {
-      this.editename.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.createname.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldsName = true;
       setInterval(() => {
-        this.editename.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.createname.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsName = false;
       }, 3000);
     }
     else if (this.form.controls['status'].value === '') {
-      this.editstatus.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.createstatus.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldsStatus = true;
       setInterval(() => {
-        this.editstatus.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.createstatus.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsStatus = false;
       }, 3000);
     }
@@ -79,10 +79,10 @@ export class CreateFunctionComponent implements OnInit {
       this.form.controls['accesscontrol'].value === '' &&
       this.form.controls['notifications'].value === ''
     ) {
-      this.editfunction.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.createfunction.nativeElement.classList.add("border-danger", "border", "text-danger");
       this.alertFieldsFunctions = true;
       setInterval(() => {
-        this.editfunction.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.createfunction.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsFunctions = false;
       }, 5000);
     }
@@ -90,8 +90,8 @@ export class CreateFunctionComponent implements OnInit {
 
 
 
-  verifiFieldFunctions(){
-    if(this.form.controls['name'].value !== '' && this.form.controls['status'].value !== ''){
+  verifiFieldFunctions() {
+    if (this.form.controls['name'].value !== '' && this.form.controls['status'].value !== '') {
       if (this.form.controls['administrator'].value === true) this.form.controls['administrator'].setValue('active'); else this.form.controls['administrator'].setValue('inactive')
       if (this.form.controls['products'].value === true) this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue('inactive')
       if (this.form.controls['kyc'].value === true) this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue('inactive')
@@ -120,19 +120,19 @@ export class CreateFunctionComponent implements OnInit {
         notifications: this.form.controls['notifications'].value,
       }
       console.log(this.request)
-      this.roleService.register(this.request).subscribe(
-        success => {
+      this.roleService.register(this.request).subscribe({
+        next: success => {
           setTimeout(() => {
             window.location.reload();
-          }, 2000)
+          }, 200)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },
-        error => {
+        error: error => {
           console.log(error)
           this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
         }
-      )
+      })
     }
   }
 }
