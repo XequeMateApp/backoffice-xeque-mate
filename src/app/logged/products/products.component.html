@@ -34,7 +34,7 @@
                                     {{typeFilter}}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                                    <li *ngFor="let item of uniqueMaterials" role="button"><a (click)="sortListByType(item)" class="dropdown-item">{{item}}</a></li>
+                                    <li *ngFor="let item of responseCategory" role="button"><a (click)="sortListByType(item.name)" class="dropdown-item">{{item.name}}</a></li>
                                 </ul>
                             </div>
                         </div>
