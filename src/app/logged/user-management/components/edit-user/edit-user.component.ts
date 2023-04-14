@@ -18,6 +18,7 @@ export class EditUserComponent implements OnInit {
   request: UserPutRequestDto;
   checked: string;
   truephone: any;
+  editphone: string;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -48,21 +49,17 @@ export class EditUserComponent implements OnInit {
     this.form.controls['name'].setValue(this.responseData.name)
     this.form.controls['email'].setValue(this.responseData.email)
     this.form.controls['status'].setValue(this.responseData.status)
-    this.form.controls['phone'].setValue(this.responseData.phone)
+    this.editphone = this.responseData.phone
+    if (this.editphone.length > 3) this.editphone = this.editphone.slice(3);
+    this.form.controls['phone'].setValue(this.editphone)
     this.checked = this.responseData.filter;
     this.form.patchValue({ filter: this.responseData.filter });
     console.log(this.checked)
   }
 
-
-  exit() {
-    this.modalService.dismissAll()
-  }
-
-
   confirm() {
     console.log(this.form.controls['phone'].value, ' tipo ofi')
-    if (this.form.controls['phone'].value === undefined) this.truephone = '';
+    if (this.form.controls['phone'].value === undefined || this.form.controls['phone'].value === '') this.truephone = '';
     else this.truephone = `+55${this.form.controls['phone'].value}`;
     this.request = {
       phone: this.truephone,
@@ -74,12 +71,10 @@ export class EditUserComponent implements OnInit {
     console.log(this.request)
     this.userService.editUsers(this.responseData._id, this.request).subscribe(
       success => {
-        // mostar card dizendo tudo bem
         setTimeout(() => {
           window.location.reload();
-          }, 2000)
+          }, 200)
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
-        // função somir todos os modais
         this.modalService.dismissAll();
       },
       error => {
@@ -88,4 +83,12 @@ export class EditUserComponent implements OnInit {
       }
     )
   }
+
+
+  exit() {
+    this.modalService.dismissAll()
+  }
+
 }
+
+
