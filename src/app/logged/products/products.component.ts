@@ -11,6 +11,8 @@ import { DeleteProductComponent } from './components/delete-product/delete-produ
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
 import { ProductService } from 'src/services/products.service';
+import { CategoryService } from 'src/services/category.service';
+import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
 
 @Component({
   selector: 'app-products',
@@ -18,7 +20,6 @@ import { ProductService } from 'src/services/products.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  supplier: SupplierInterface[];
   ArrayInfoUser: any = [];
   @Input('data') meals: string[] = [];
   public config: PaginationInstance = {
@@ -30,10 +31,11 @@ export class ProductsComponent implements OnInit {
     thousandSeparator: ',',
   };
   response: ProductsRegisterResponseDto[] = [];
+  responseCategory: CategoryResponseDto[] = [];
 
   filterTerm!: string;
   officerAdm: string;
-  uniqueMaterials: string[];
+  uniqueMaterials: any;
   typeFilter = 'Tipo';
   OrderBy = 'Ordenar por';
 
@@ -42,14 +44,14 @@ export class ProductsComponent implements OnInit {
     private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
+    private categoryService: CategoryService,
     private productService: ProductService,
   ) { }
 
   ngOnInit(): void {
     this.getProducts();
-    this.supplier = this.datamockService.supplier;
-    console.log(this.supplier)
-    this.removeDuplicates(this.supplier)
+    this.getCategorys();
+    // this.removeDuplicates(this.response)
   }
 
   getProducts() {
@@ -62,6 +64,15 @@ export class ProductsComponent implements OnInit {
     )
   }
 
+  getCategorys(){
+    this.categoryService.getCategory().subscribe(
+      success => {
+        this.responseCategory = success;
+        console.log(this.responseCategory)
+      },
+      error => { console.error(error, 'category not collected') }
+    )
+  }
 
   backHome() {
     this.router.navigate(['/logged/dashboard']);
@@ -85,21 +96,27 @@ export class ProductsComponent implements OnInit {
   }
 
   sortListByAlphabeticalOrder(): void {
-    this.supplier.sort((a, b) => {
+    this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);
     }
     );
     this.OrderBy = 'Nome A-Z'
   }
 
-  removeDuplicates(list: SupplierInterface[]) {
-    this.uniqueMaterials = [...new Set(list.map(obj => obj.material))];
-  }
+  // removeDuplicates(list: ProductsRegisterResponseDto[]) {
+  //   this.uniqueMaterials = [...new Set(list.map(obj => obj.name))];
+  //   console.log( this.uniqueMaterials )
+  // }
 
   sortListByType(value: string) {
-    console.log(value)
+    console.log(value);
     this.typeFilter = value;
-    if (value === 'madeira') this.supplier.sort((a, b) => { return a.material.localeCompare(b.material); });
-    else if (value === 'plastico') this.supplier.sort((a, b) => { return b.material.localeCompare(a.material); });
+    if (value === 'wood') {
+      this.response.sort((a, b) => a.category[0].localeCompare(b.category[0]));
+    } else if (value === 'plastic') {
+      this.response.sort((a, b) => b.category[0].localeCompare(a.category[0]));
+    }
   }
+
+
 }
