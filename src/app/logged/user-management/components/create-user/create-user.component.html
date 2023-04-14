@@ -8,7 +8,7 @@
           <div class="col-md-8">
               <label for="create-name">Nome</label>
               <input type="text" id="create-name" #createname class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true"/>
-              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo <b>NOME</b> está vazio</label>
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
           </div>
           <div class="col-md-4">
               <label for="create-status">Status</label>
@@ -17,12 +17,12 @@
                   <option value="active">🟢 Ativo</option>
                   <option value="inactive">🔴 Inativo</option>
               </select>
-              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo <b>STATUS</b> está vazio</label>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo status está vazio</label>
           </div>
           <div class="col-md-6 mt-3">
             <label for="create-email">E-mail</label>
             <input type="email" #createemail  id="create-email"  class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="email" [required]="true" />
-            <label class="text-danger mt-1" *ngIf="alertFieldsEmail" for="create-email">Campo <b>Email</b> está vazio</label>
+            <label class="text-danger mt-1" *ngIf="alertFieldsEmail" for="create-email">Campo email está vazio</label>
         </div>
          <div class="col-md-6 mt-3">
             <label for="create-phone">Telefone</label>
@@ -89,7 +89,7 @@
                       </div>
                   </div>
               </div>
-            <label class="text-danger mt-1" *ngIf="alertFieldsFilter" for="create-filter">Os campos <b>PERMIÇÕES</b> estão vazios</label>
+            <label class="text-danger mt-1" *ngIf="alertFieldsFilter" for="create-filter">Os campos permições estão vazios</label>
 
           </div>
               <div class="col-12">
