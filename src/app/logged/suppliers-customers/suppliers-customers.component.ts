@@ -40,7 +40,7 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
   getListUsert(): void{
-    this.userService.getUserPlataformSupplier().subscribe(
+    this.userService.getAllClients().subscribe(
       success => {
         this.response = success;
         console.log(this.response)
