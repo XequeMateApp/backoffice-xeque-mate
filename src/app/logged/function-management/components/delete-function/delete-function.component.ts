@@ -42,7 +42,7 @@ export class DeleteFunctionComponent implements OnInit {
       next: data => {
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 200)
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
         this.exit();
       },
