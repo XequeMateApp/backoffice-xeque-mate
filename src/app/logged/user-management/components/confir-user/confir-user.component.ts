@@ -23,7 +23,7 @@ export class ConfirUserComponent implements OnInit {
     })
   }
 
-  
+
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.form.controls['delete'].setValue(this.responseData._id)
@@ -40,7 +40,7 @@ export class ConfirUserComponent implements OnInit {
       next: data => {
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 200)
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
         this.exit();
       },
