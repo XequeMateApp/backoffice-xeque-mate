@@ -1,0 +1,59 @@
+<nav class="navbar shadow navbar-light  navbar-expand-lg  fixed-top bg-light">
+    <div class="d-flex container justify-content-between align-items-center">
+        <div class="d-flex justify-content-center align-items-center">
+            <img [routerLink]="['/logged/dashboard']" role="button" class="img-fluid logo mb-2"
+                src="../../../assets/images/logo.png" alt="Logo">
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+         
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
+                    <li class="nav-item px-2">
+                        <a class="nav-link active text-dark-blue" aria-current="page"
+                            [routerLink]="['/logged/suppliers-customers']">Fornecedores e clientes</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link active text-dark-blue" aria-current="page"
+                            [routerLink]="['/logged/marketing']">Marketing</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link active text-dark-blue" aria-current="page"
+                            [routerLink]="['/logged/notification']">Notificações</a>
+                    </li>
+
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle text-dark-blue" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Gestão de Produtos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-dark-blue" [routerLink]="['/logged/products']">Gerenciamento de
+                                    Produtos</a></li>
+                            <li><a class="dropdown-item text-dark-blue" [routerLink]="['/logged/supplier']">KYC Fornecedores</a></li>
+                            <li><a class="dropdown-item text-dark-blue" [routerLink]="['/logged/categorys']">Categorias</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle text-dark-blue" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Controle de Acesso
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-dark-blue" [routerLink]="['/logged/function-management']">Funções</a></li>
+                            <li><a class="dropdown-item text-dark-blue" [routerLink]="['/logged/user-manegement']">Usuários</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <a  [routerLink]="['/logged/user-profile']"class="nav-link name-link text-dark-blue rounded-pill p-0 h4 fw-bolder mx-3"
+            role="button">{{userName | slice:0:1}}</a>
+            <i class="bi text-danger h2 mb-0 bi-box-arrow-in-right" role="button" (click)="logout()"></i>
+        </div> 
+    </div>
+</nav>

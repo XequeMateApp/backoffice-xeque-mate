@@ -1,25 +1,20 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
-import { SendEmailComponent } from './send-email/send-email.component';
-import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
-import { ConfirmCodeComponent } from './2fa/confirm-code/confirm-code.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthRouteModule } from './auth-route';
 import { AppComponent } from '../app.component';
 import { AuthComponent } from './auth.component';
-
-
-
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { FirstAccessComponent } from './first-access/first-access.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
-    SendEmailComponent,
-    ConfirmPasswordComponent,
-    ConfirmCodeComponent
+    ForgotPasswordComponent,
+    FirstAccessComponent,
   ],
   imports: [
     CommonModule,
@@ -27,10 +22,10 @@ import { AuthComponent } from './auth.component';
     AuthRouteModule,
     FormsModule,
     ReactiveFormsModule,
-  ], 
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  bootstrap:[AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AuthModule { }

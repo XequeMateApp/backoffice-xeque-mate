@@ -1,0 +1,117 @@
+
+<main class="w-100 d-flex justify-content-center mt-5 mb-5">
+    <div class="row px-0 mt-5 container">
+        <div class="col-12 ">
+            <div class="row justify-content-between px-0 mt-4">
+                <div class="col-md mt-4">
+                    <div class="w-auto h-100 d-flex align-items-center ">
+                        <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
+                        <h3 class="text-dark fw-bolder mb-0">Gestão de usuario</h3>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mt-4 d-flex justify-content-end">
+                        <button (click)="createOpenModal()" type="button" class="btn px-5 bg-dark-blue br-16 text-light my-1 w-100">
+                            <h5 class="mb-0 py-2">Cadastrar</h5>
+                        </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-2">
+            <div class="row align-items-center">
+                <div class="col-md-8 mt-3">
+                    <div class="input-group mt-3">
+                        <input type="search" name="search" [(ngModel)]="filterTerm" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="row mx-0 px-0">
+                     <div class="col-md-6 mt-3 p0-important">
+                         <div class="dropdown">
+                             <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbyresponse" data-bs-toggle="dropdown" aria-expanded="false">
+                               Tipo
+                             </button>
+                             <ul class="dropdown-menu" aria-labelledby="orderbyresponse">
+                               <li *ngFor="let item of uniqueFilter" role="button">
+                                <a *ngIf="item != 'undefined'" (click)="sortListByType(item)" class="dropdown-item">
+                                 {{item}}
+                                </a>
+                              </li>
+                             </ul>
+                         </div>
+                     </div>
+                     <div class="col-md-6 mt-3 p0-important">
+                         <div class="dropdown">
+                             <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbyresponse" data-bs-toggle="dropdown" aria-expanded="false">
+                               Ordenar por
+                             </button>
+                             <ul class="dropdown-menu" aria-labelledby="orderbyresponse">
+                               <li role="button"><a (click)="sortListByAlphabeticalOrder()" class="dropdown-item">Nome A-Z</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                    </div>
+                 </div>
+
+            </div>
+
+        </div>
+        <div class="row mx-0 overflow-x-scroll">
+            <div class="col-12 mt-5 px-0">
+                <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
+                    <div style="width: 279px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">Nome</b>
+                    </div>
+                    <div style="width: 215px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">E-mail</b>
+                    </div>
+                    <div style="width: 339px;"  class="col-2 col-funcion h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">Funções</b>
+                    </div>
+                    <div class="col h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
+                    </div>
+                </div>
+            </div>
+            <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
+                <table class="table table-office mb-0 table-striped">
+                    <tbody>
+                      <tr *ngFor="let item of response | filter: filterTerm  | paginate: config; let i= index">
+                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item?.name}}</h5></td>
+                        <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item?.email}}</h5></td>
+                        <td style="width: 340px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 215px;">{{item?.filter || '...'}}</h5></td>
+                        <td>
+                            <h5 class="mb-0 py-3  text-start text-success" *ngIf="item?.status === 'active'">Ativo</h5>
+                        <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item?.status === 'inactive'">Inativo</h5>
+                    </td>
+                        <td><h5  class="mb-0 fw-bolder text-center text-dark-blue py-3">
+                            <i (click)="openModals('Edit', item)" role="button" class="bi text-dark h3 px-1 mx-3 mb-0 bi-gear"></i>
+                            <i (click)="openModals('Delete', item)" role="button" class="bi bi-trash h3 px-1 mb-0 text-danger"></i></h5></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length >= 0">
+            <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
+                <div class="custom-pagination">
+                    <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+                        <a *ngIf="!p.isFirstPage()" (click)="p.previous()"><</a>
+                    </div>
+                    <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                        <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                            <span>{{ page.label }}</span>
+                        </a>
+                        <div *ngIf="p.getCurrent() === page.value">
+                            <span>{{ page.label }}</span>
+                        </div>
+                    </div>
+                    <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                        <a *ngIf="!p.isLastPage()" (click)="p.next()"> > </a>
+                    </div>
+                </div>
+            </pagination-template>
+        </div>
+    </div>
+</main>

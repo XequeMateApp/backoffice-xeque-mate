@@ -1,0 +1,99 @@
+<form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+        <h2 class="text-dark mb-0 fw-bolder">Cadastrar Função</h2>
+        <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class="" />
+    </div>
+    <div class="col-12 mt-3">
+        <div class="row px-0">
+            <div class="col-md-8">
+                <label for="create-name">Nome</label>
+                <input type="text" id="create-name" #createname class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true" />
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
+
+            </div>
+            <div class="col-md-4">
+                <label for="create-status">Status</label>
+                <select formControlName="status" #createstatus  id="create-status" class="form-select py-3 br-16" aria-label="Default status">
+                    <option [disabled]="true" [selected]="true">Selecione</option>
+                    <option value="active">🟢 Ativo</option>
+                    <option value="inactive">🔴 Inativo</option>
+                </select>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo status está vazio</label>
+            </div>
+            <div  class="col-12 mt-4 br-16 mb-2">
+              <label class="" for="create-content">Funções</label>
+              <div class="row">
+                <div #createfunction class="col-md-12 br-16">
+                    <div class="row">
+                        <div class="col-md-4 my-2">
+                            <div role="button" class="d-flex">
+                              <input role="button" formControlName="administrator" #administrator value="administrador" class="outline-none check br-darkblue rounded bg-transparent position-relative" type="checkbox">
+                                <label class="form-check-label px-2" for="administrator">
+                                    Administrador
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="products" #products value="products" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="products">
+                                  Produtos
+                              </label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="kyc" #kyc value="kyc" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="kyc">
+                                  Kyc
+                              </label>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="customers" #customers value="customers" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="customers">
+                                  Clientes
+                              </label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="accesscontrol" #accesscontrol value="accesscontrol" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="accesscontrol">
+                                  Controle de acesso
+                              </label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                          <div role="button" class="d-flex">
+                            <input role="button" formControlName="notifications" #notifications value="notifications" class="outline-none check br-darkblue rounded bg-light position-relative" type="checkbox">
+                              <label class="form-check-label px-2" for="notifications">
+                                  Notificações
+                              </label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            <label class="text-danger mt-1" *ngIf="alertFieldsFunctions" for="create-filter">Os campos permições estão vazios</label>
+            </div>
+                <div class="col-12">
+                    <div class="row px-0">
+                        <div class="col-md-6 mt-3">
+                            <button type="button" (click)="exit()" class="btn w3-white h3 text-dark-blue w-100 py-3">
+                                <h6 class="mb-0">Cancelar</h6>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                                <h6 class="mb-0">Cadastrar</h6>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

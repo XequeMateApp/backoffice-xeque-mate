@@ -1,0 +1,96 @@
+<form [formGroup]="form" (ngSubmit)="confirm()" class="row w3-white mx-2 p-4 br-16">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+        <h2 class="text-dark fw-bolder">Editar Notificação</h2>
+        <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
+
+    </div>
+    <div class="col-12 mt-3">
+        <div class="row px-0">
+            <div class="col-md-8">
+                <label for="edit-name">Nome</label>
+                <input type="text" id="edit-name" class="form-control br-16 bordder py-3"
+                 [value]=""   placeholder="Digite o nome" formControlName="name" />
+            </div>
+            <div class="col-md-4">
+                <label for="edit-status">Status</label>
+                <select formControlName="status" id="edit-status" class="form-select py-3 br-16"
+                    aria-label="Default status">
+                    <option [disabled]="true" [selected]="true">Selecione</option>
+                    <option [selected]="editNotStatus === 'active'"  value="active">🟢 Ativo</option>
+                    <option [selected]="editNotStatus === 'inactive'" value="inactive">🔴 Inativo</option>
+                </select>
+            </div>
+            <div class="col-12 mt-3">
+                <label for="edit-content">Conteúdo</label>
+                <textarea ype="text" id="edit-content" [maxlength]="200" rows="10" [value]=""
+                    class="form-control br-16 p-3 border" placeholder="Digite o conteúdo"
+                    formControlName="textarea"></textarea>
+            </div>
+            <div class="col-12">
+                <div class="row px-0">
+                    <div class="col-md-4 mt-3">
+                        <label for="edit-reapet">Repetição</label>
+                        <select formControlName="repetition" id="edit-reapet" class="form-select py-3 br-16"
+                            aria-label="Default repeat">
+                            <option [disabled]="true" [selected]="true">Selecione</option>
+                            <option [selected]="responseData.repetition === 'Diariamente'" value="Diariamente">Diariamente</option>
+                            <option [selected]="responseData.repetition === 'Semanalmente'" value="Semanalmente">Semanalmente</option>
+                            <option [selected]="responseData.repetition === 'Mensalmente'" value="Mensalmente">Mensalmente</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8 mt-3 d-flex align-items-center">
+                        <div class="row w-100 mx-0">
+                            <div class="col-md-6 px-1">
+                                <div class="w-100">
+                                    <label for="edit-date">Inicia em</label>
+                                    <input type="date" id="edit-date"
+                                        class="form-control w-100 br-16 p-3 bordder  text-dark-blue"
+                                        formControlName="dateStart">
+                                </div>
+                            </div>
+                            <div class="col-md-6 px-1">
+                                <div class="w-100">
+                                    <label for="edit-time">Horário</label>
+                                    <input type="time" id="edit-time"
+                                        class="form-control h-56 br-16 p-3 bordder  text-dark-blue"
+                                        formControlName="time">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-4">
+                <label class="" for="edit-content">Filtro</label>
+                <div class="w-auto d-flex align-items-center">
+                    <div  class="form-check align-items-baseline d-flex">
+                        <input (change)="filterForm(filterSupplier.value)" #filterSupplier value="supplier" name="filter"  class="form-check-input p-2" type="radio" id="filterForner"  [checked]="form.controls['filter'].value === 'supplier'" />
+                        <label class="form-check-label px-2" for="filterForner">
+                            Fornecedores
+                        </label>
+                    </div>
+                    <div class="form-check align-items-baseline d-flex mx-3">
+                        <input  (change)="filterForm(filterClient.value)" #filterClient value="clients" name="filter"  class="form-check-input p-2" type="radio" id="filterClients"  [checked]="form.controls['filter'].value === 'clients'" >
+                        <label class="form-check-label px-2" for="filterClients">
+                            Clientes
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row px-0">
+                    <div class="col-md-6 mt-3">
+                        <button type="button" (click)="exit()"  class="btn w3-white h3 text-dark-blue w-100 py-3">
+                            <h6 class="mb-0">Cancelar</h6>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                            <h6 class="mb-0">Salvar</h6>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

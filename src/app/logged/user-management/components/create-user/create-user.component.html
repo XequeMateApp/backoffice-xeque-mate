@@ -1,0 +1,112 @@
+<form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
+  <div class="col-12 d-flex align-items-center justify-content-between">
+      <h2 class="text-dark mb-0 fw-bolder">Cadastrar Usuário</h2>
+      <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class="" />
+  </div>
+  <div class="col-12 mt-3">
+      <div class="row px-0">
+          <div class="col-md-8">
+              <label for="create-name">Nome</label>
+              <input type="text" id="create-name" #createname class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true"/>
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
+          </div>
+          <div class="col-md-4">
+              <label for="create-status">Status</label>
+              <select formControlName="status" #createstatus id="create-status" class="form-select py-3 br-16" aria-label="Default status" [required]="true">
+                  <option [disabled]="true" [selected]="true">Selecione</option>
+                  <option value="active">🟢 Ativo</option>
+                  <option value="inactive">🔴 Inativo</option>
+              </select>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo status está vazio</label>
+          </div>
+          <div class="col-md-6 mt-3">
+            <label for="create-email">E-mail</label>
+            <input type="email" #createemail  id="create-email"  class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="email" [required]="true" />
+            <label class="text-danger mt-1" *ngIf="alertFieldsEmail" for="create-email">Campo email está vazio</label>
+        </div>
+         <div class="col-md-6 mt-3">
+            <label for="create-phone">Telefone</label>
+            <input type="text" id="create-phone" #createphone  mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite" formControlName="phone" />
+        </div>
+          <div class="col-12 mt-4 mb-2">
+            <label class="" for="create-content">Permições</label>
+            <div class="row">
+              <div #createfilter  class="col-md-12 br-16">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="filter" value="ADMINISTRATOR" type="radio" id="filterADM" name="filter" class="form-check-input p-2">
+                              <label class="form-check-label px-2" for="filterADM">
+                                  Administrador
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input type="radio" value="PRODUCTS" id="filterProducts" formControlName="filter" name="filter" class="form-check-input p-2" >
+                                        <label class="form-check-label px-2" for="filterProducts">
+                                  Produtos
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="filter" value="KYC"  class="form-check-input p-2" name="filter" type="radio"
+                                  id="filterKYC">
+                              <label class="form-check-label px-2" for="filterKYC">
+                                  KYC
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="filter" value="CUSTOMERS"  class="form-check-input p-2" name="filter" type="radio"
+                                  id="filterClients">
+                              <label class="form-check-label px-2" for="filterClients">
+                                  Clientes
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="filter" value="ACCESCONTROL" class="form-check-input p-2" name="filter" type="radio"
+                                  id="filterControl">
+                              <label class="form-check-label text-nowrap px-2" for="filterControl">
+                                  Controle de acesso
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div role="button" class="form-check align-items-baseline d-flex">
+                              <input formControlName="filter" value="NOTIFICATIONS"    class="form-check-input p-2" name="filter" type="radio"
+                                  id="filterNotification">
+                              <label class="form-check-label px-2" for="filterNotification">
+                                  Notificações
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <label class="text-danger mt-1" *ngIf="alertFieldsFilter" for="create-filter">Os campos permições estão vazios</label>
+
+          </div>
+              <div class="col-12">
+                  <div class="row px-0">
+                      <div class="col-md-6 mt-3">
+                          <button type="button" (click)="exit()" class="btn w3-white h3 text-dark-blue w-100 py-3">
+                              <h6 class="mb-0">Cancelar</h6>
+                          </button>
+                      </div>
+                      <div class="col-md-6 mt-3">
+                          <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                              <h6 class="mb-0">Salvar</h6>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>

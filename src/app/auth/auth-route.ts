@@ -1,32 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConfirmCodeComponent } from './2fa/confirm-code/confirm-code.component';
 import { AuthComponent } from './auth.component';
-import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
-import { SendEmailComponent } from './send-email/send-email.component';
+import { FirstAccessComponent } from './first-access/first-access.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 const routesAuth: Routes = [
   {
     path: '',
     component: AuthComponent,
     children: [
-     
       {
-        path: 'send-email',
-        component: SendEmailComponent,
+        path: 'forgot-password',
+        component: ForgotPasswordComponent,
       },
       {
-        path: 'confirm-password',
-        component: ConfirmPasswordComponent,
-      },
-      {
-        path: 'confirm-code',
-        component: ConfirmCodeComponent,
+        path: 'first-access',
+        component: FirstAccessComponent,
       },
     ],
   },
 ];
 @NgModule({
-    imports: [RouterModule.forChild(routesAuth)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routesAuth)],
+  exports: [RouterModule],
 })
-export class AuthRouteModule {}
+export class AuthRouteModule { }

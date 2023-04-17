@@ -1,0 +1,98 @@
+<form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+        <h2 class="text-dark mb-0 fw-bolder">Nova Notificação</h2>
+        <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
+    </div>
+    <div class="col-12 mt-3">
+        <div class="row px-0">
+            <div class="col-md-8">
+                <label for="create-name">Nome</label>
+                <input type="text" #createname id="create-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" />
+                <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
+            </div>
+            <div  class="col-md-4">
+                <label for="create-status">Status</label>
+                <select #createstatus formControlName="status" id="create-status" class="form-select py-3 br-16"
+                    aria-label="Default status">
+                    <option [disabled]="true" [selected]="true">Selecione</option>
+                    <option value="active">🟢 Ativo</option>
+                    <option value="inactive">🔴 Inativo</option>
+                </select>
+                <label class="text-danger mt-1" *ngIf="alertFieldStatus" for="create-status">Campo status está vazio</label>
+            </div>
+            <div class="col-12 mt-3">
+                <label for="create-content">Conteúdo</label>
+                <textarea type="text" #createcontent id="create-content" [maxlength]="200" rows="10" class="form-control br-16 p-3"
+                    placeholder="Digite o conteúdo" formControlName="textarea"></textarea>
+                <label class="text-danger mt-1" *ngIf="alertFieldContent" for="create-content">Campo conteúdo está vazio</label>
+            </div>
+            <div class="col-12">
+                <div class="row px-0">
+                    <div class="col-md-4 mt-3">
+                        <label for="create-reapet">Repetição</label>
+                        <select  #createrepetition formControlName="repetition" id="create-reapet" class="form-select py-3 br-16"
+                            aria-label="Default repeat">
+                            <option [disabled]="true" [selected]="true">Selecione</option>
+                            <option value="Diariamente">Diariamente</option>
+                            <option value="Semanalmente">Semanalmente</option>
+                            <option value="Mensalmente">Mensalmente</option>
+                        </select>
+                        <label class="text-danger mt-1" *ngIf="alertFieldRepetition" for="create-reapet">Campo repetição está vazio</label>
+                    </div>
+                    <div class="col-md-8 mt-3 d-flex align-items-center">
+                        <div class="row w-100 mx-0">
+                            <div class="col-md-6 px-1">
+                                <div class="w-100">
+                                    <label for="create-date">Inicia em</label>
+                                    <input type="date" #createdate id="create-date" class="form-control w-100 br-16 p-3 text-dark-blue" formControlName="dateStart">
+                                    <label class="text-danger mt-1" *ngIf="alertFieldDate" for="create-status">Campo data está vazio</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 px-1">
+                                <div class="w-100">
+                                    <label for="create-time">Horário</label>
+                                    <input type="time" #createtime id="create-time" class="form-control br-16 p-3  text-dark-blue" formControlName="time">
+                                    <label class="text-danger mt-1" *ngIf="alertFieldTime" for="create-status">Campo horário está vazio</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-4 mb-2">
+                <label class="" for="create-content">Filtro</label>
+                <div class="w-auto d-flex align-items-center">
+                    <div #createfilter role="button" class="form-check align-items-baseline d-flex">
+                        <input formControlName="filter" class="form-check-input p-2" type="radio" value="supplier"
+                            id="filterForner">
+                        <label class="form-check-label px-2" for="filterForner">
+                            Fornecedores
+                        </label>
+                    </div>
+                    <div #createfilter role="button" class="form-check align-items-baseline d-flex mx-3">
+                        <input formControlName="filter" class="form-check-input p-2" type="radio" value="clients"
+                            id="filterClients">
+                        <label class="form-check-label px-2" for="filterClients">
+                            Clientes
+                        </label>
+                    </div>
+                </div>
+                <label class="text-danger mt-1" *ngIf="alertFieldFilter" for="create-filter">Campo filtro está vazio</label>
+            </div>
+            <div class="col-12">
+                <div class="row px-0">
+                    <div class="col-md-6 mt-3">
+                        <button type="button" (click)="exit()"  class="btn w3-white h3 text-dark-blue w-100 py-3">
+                            <h6 class="mb-0">Cancelar</h6>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                            <h6 class="mb-0">Concluir</h6>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

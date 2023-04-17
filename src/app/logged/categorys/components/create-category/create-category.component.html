@@ -1,0 +1,69 @@
+<main class="row w3-white br-16 mx-2 p-4">
+  <div class="col-12 d-flex align-content-center justify-content-between">
+    <h2 class="mb-0 fw-bolder text-center">Cadastrar Categoria</h2>
+    <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png"
+      style="height: fit-content;">
+  </div>
+  <form [formGroup]="form" class="col-12 mt-4">
+    <div class="row">
+      <div class="col-md-5">
+        <label class="h6 mt-3 text-dark">Adicionar imagem</label>
+        <div *ngFor="let file of selectFile" style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; width: 189px; height: 174px;" class="br-16 border"></div>
+        <div *ngIf="notImage" style="width: 189px; height: 174px;" #createimg class="br-16 d-flex align-content-center justify-content-center p-5 border">
+          <div class="text-center p-3">
+            <img role="button" src="../../../../../assets/icons/+.svg" class=""/>
+            <input role="button" type="file" class="position-relative i-file cursor start-0" style="opacity: 0;" (change)="onSelectFile($event)" accept="image/*, .doc , .pdf, .docx" formControlName="image"/>
+          </div>
+        </div>
+        <label class="text-danger mt-1" *ngIf="alertFieldsImg" for="create-status">Campo images está vazio</label>
+        <br/>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-8">
+              <label class="h6 mt-3 text-dark" for="create-name">Nome</label>
+              <input type="text" id="create-name" class="form-control line-21
+                br-16 bordder py-3" required #createname
+               placeholder="Digite o nome" formControlName="name" />
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
+            </div>
+              <div class="col-md-4 ">
+                <label class="h6 mt-3 text-dark" for="create-status">Status</label>
+                <select formControlName="status" id="create-status" #createstatus
+                  class="form-select py-3 line-21 br-16" required
+                  aria-label="Default status">
+                  <option [disabled]="true" [selected]="true">Selecione</option>
+                  <option value="active">🟢 Ativo</option>
+                  <option value="inactive">🔴 Desabilitado</option>
+                </select>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo status está vazio</label>
+              </div>
+            <div class="col-md-12">
+              <label class="h6 mt-3 text-dark" for="create-description">Descrição</label>
+              <textarea type="description" id="create-description" maxlength="200" required
+                class="form-control br-16 bordder p-3 overflow-scroll text-dark" #createdescription
+               placeholder="Digite a descrição" formControlName="description"></textarea>
+              <label class="text-danger mt-1" *ngIf="alertFieldsDescription" for="create-description">Campo descrição está vazio</label>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-12 px-0">
+          <div class="row">
+            <div class="col-md-6 mt-3">
+              <button class="btn br-16 w3-white  w-100"
+                (click)="exit()" type="button">
+                <h5 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h5>
+              </button>
+            </div>
+            <div class="col-md-6 mt-3">
+              <button class="btn br-16 bg-dark-blue  w-100"
+                (click)="confirm()" type="submit">
+                <h5 class="fw-bolder text-light mb-0 py-2">Cadastrar</h5>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
