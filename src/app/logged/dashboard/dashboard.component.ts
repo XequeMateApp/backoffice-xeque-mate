@@ -32,6 +32,8 @@ export type ChartOptions = {
 
 export class DashboardComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
+
+
   public productRequest: Partial<ChartOptions> = {
     series: [
       {
@@ -74,8 +76,9 @@ export class DashboardComponent implements OnInit {
       ]
     }
   };
-  dataWeek: any[];
-;
+
+
+
   public newClientsRequest: Partial<ChartOptions>;
 
   dropDatas = '7 dias';
@@ -86,7 +89,8 @@ export class DashboardComponent implements OnInit {
 
   daysFilter: number = 7
   todos: any;
-  getWeekDaysName: any;
+  showGraphic = false;
+
 
   constructor(
     private productService: ProductService,
@@ -163,12 +167,11 @@ export class DashboardComponent implements OnInit {
     this.productService.getAllProducts().subscribe(
       success => {
         console.log(success, 'fwfoewif')
-        this.getWeekDaysName = success.products.map(item => item.updatedAt);
-
+        const getWeekDaysName = success.products.map(item => item.updatedAt);
         const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        this.dataWeek = [];
+        let dataWeek = [];
         weekdays.forEach(day => {
-          this.dataWeek.push(this.getWeekDaysName.filter(item => {
+          dataWeek.push(getWeekDaysName.filter(item => {
             const datenew = new Date(item);
             switch (day) {
               case 'Monday':
@@ -189,9 +192,12 @@ export class DashboardComponent implements OnInit {
             }
           }).length)
         })
-        this.productRequest.series[0].data === this.dataWeek;
+        console.log(dataWeek)
+        this.productRequest.series[0].data = dataWeek;
         this.totalProducts = success.count.toString();
         console.log('Produtos Cadastrados', success.count);
+        console.log()
+        this.showGraphic = true;
       },
       error => { console.error(error, 'Erro ao recuperar dados') }
     )
