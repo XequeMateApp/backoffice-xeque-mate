@@ -154,9 +154,7 @@ export class AnalysisProductComponent implements OnInit {
 
     this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
+
         this.toastrService.success('Aprovado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },
@@ -175,9 +173,7 @@ export class AnalysisProductComponent implements OnInit {
     }
     this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
+
         this.toastrService.success('Recusado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

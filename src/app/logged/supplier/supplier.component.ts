@@ -30,6 +30,8 @@ export class SupplierComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
   }
+
+
   getUsers() {
     this.userService.getUserPlataform('inactive').subscribe(
       success => {
@@ -38,13 +40,21 @@ export class SupplierComponent implements OnInit {
       error => { console.error(error, 'data not collected') }
     )
   }
+
+
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
+
+
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info)
     if (tabName === 'verificar') {
-      this.modalService.open(ValidateSupplierComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(ValidateSupplierComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getUsers();
+      })
     }
   }
   sortListByAlphabeticalOrder(): void {

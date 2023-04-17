@@ -60,16 +60,32 @@ export class FunctionManagementComponent implements OnInit {
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
+
+
   createOpenmodal() {
+    const modal = this.modalService.open(CreateFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
+    modal.result.then((result) => {
+    }, err => {
+      this.getRoles();
+    })
     this.modalService.open(CreateFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
   }
-  
+
+
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'delete') {
-      this.modalService.open(DeleteFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
+        const modal = this.modalService.open(DeleteFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getRoles();
+      })
     } else if (tabName == 'edit') {
-      this.modalService.open(EditFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getRoles();
+      })
     }
   }
 

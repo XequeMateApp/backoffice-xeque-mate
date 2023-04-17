@@ -23,6 +23,7 @@ export enum LocalStorageKeys {
   // official
   user = 'user',
   responseData = 'responseData',
+  modal = 'modal',
   // teste
   productsData = 'productsData',
   userData = 'userData'

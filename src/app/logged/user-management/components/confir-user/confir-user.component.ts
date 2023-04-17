@@ -38,9 +38,7 @@ export class ConfirUserComponent implements OnInit {
   delete() {
     this.userService.deleteUsers(this.responseData._id).subscribe({
       next: data => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
+
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
         this.exit();
       },

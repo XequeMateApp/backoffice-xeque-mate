@@ -103,9 +103,7 @@ export class CreateUserComponent implements OnInit {
       console.log(this.request)
       this.userService.register(this.request).subscribe(
         success => {
-          setTimeout(() => {
-          window.location.reload();
-          }, 200)
+
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

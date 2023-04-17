@@ -20,9 +20,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUserInfo();
   }
-  criateUserPasswordModal() {
-    this.modalService.open(UserPasswordComponent, { centered: true, backdrop: 'static', keyboard: false })
-  }
 
   getUserInfo() {
     this.userService.getUserInfo().subscribe(
@@ -35,4 +32,14 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
+
+  criateUserPasswordModal() {
+    const modal = this.modalService.open(UserPasswordComponent, { centered: true, backdrop: 'static', keyboard: false })
+    modal.result.then((result) => {
+    }, err => {
+      this.getUserInfo();
+    })
+  }
+
+
 }

@@ -136,9 +136,6 @@ export class CreateNotificationComponent implements OnInit {
     ) {
       this.notificationService.register(this.request).subscribe(
         success => {
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000)
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

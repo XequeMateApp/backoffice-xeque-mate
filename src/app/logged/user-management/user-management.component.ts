@@ -43,8 +43,8 @@ export class UserManagementComponent implements OnInit {
 
 
   getUsers() {
-    this.userService.getUsers().subscribe(
-      response => {
+    this.userService.getUsers().subscribe({
+      next: response => {
         this.response = response;
         this.responseFilter = response.map(response => {
           this.translateFilter(response);
@@ -61,8 +61,8 @@ export class UserManagementComponent implements OnInit {
         console.log(this.uniqueFilter);
         console.log(this.response);
       },
-      error => { console.error(error, 'data not collected') }
-    )
+      error: error => { console.error(error, 'data not collected') }
+    })
   }
   translateFilter(response: UserGetResponseDto) {
     if (response.filter === 'ADMINISTRATOR') response.filter = 'Administrador';
@@ -93,6 +93,11 @@ export class UserManagementComponent implements OnInit {
   }
 
   createOpenModal() {
+    const modal = this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
+    modal.result.then((result) => {
+    }, err => {
+      this.getUsers();
+    })
     this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
 
   }
@@ -100,11 +105,18 @@ export class UserManagementComponent implements OnInit {
     // enviando dados pro localhost
     LocalStorageUtil.set(LocalStorageKeys.responseData, info)
     if (tabName === 'Edit') {
-      this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getUsers();
+      })
     }
     else if (tabName === 'Delete') {
-      this.modalService.open(ConfirUserComponent, { centered: true, backdrop: 'static', keyboard: false })
-
+      const modal = this.modalService.open(ConfirUserComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getUsers();
+      })
     }
   }
 }

@@ -122,9 +122,7 @@ export class CreateFunctionComponent implements OnInit {
       console.log(this.request)
       this.roleService.register(this.request).subscribe({
         next: success => {
-          setTimeout(() => {
-            window.location.reload();
-          }, 200)
+
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },
