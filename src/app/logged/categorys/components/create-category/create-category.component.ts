@@ -53,8 +53,6 @@ export class CreateCategoryComponent implements OnInit {
     fileReader.onload = () => {
       this.form.controls['image'].setValue(fileReader.result.toString());
     };
-
-
     if (event.target.files && event.target.files[0]) {
       this.notImage = false;
       var filesAmount = event.target.files.length;
@@ -123,9 +121,7 @@ export class CreateCategoryComponent implements OnInit {
     ) {
       this.categoryServer.register(this.request).subscribe(
         success => {
-          setTimeout(() => {
-            window.location.reload();
-            }, 2000)
+
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

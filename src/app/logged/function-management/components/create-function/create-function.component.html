@@ -6,24 +6,24 @@
     <div class="col-12 mt-3">
         <div class="row px-0">
             <div class="col-md-8">
-                <label for="edit-name">Nome</label>
-                <input type="text" id="edit-name" #editename class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true" />
-              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="edit-name">Campo <b>NOME</b> está vazio</label>
+                <label for="create-name">Nome</label>
+                <input type="text" id="create-name" #createname class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" [required]="true" />
+              <label class="text-danger mt-1" *ngIf="alertFieldsName" for="create-name">Campo nome está vazio</label>
 
             </div>
             <div class="col-md-4">
-                <label for="edit-status">Status</label>
-                <select formControlName="status" #editstatus  id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
+                <label for="create-status">Status</label>
+                <select formControlName="status" #createstatus  id="create-status" class="form-select py-3 br-16" aria-label="Default status">
                     <option [disabled]="true" [selected]="true">Selecione</option>
                     <option value="active">🟢 Ativo</option>
                     <option value="inactive">🔴 Inativo</option>
                 </select>
-              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="edit-status">Campo <b>STATUS</b> está vazio</label>
+              <label class="text-danger mt-1" *ngIf="alertFieldsStatus" for="create-status">Campo status está vazio</label>
             </div>
             <div  class="col-12 mt-4 br-16 mb-2">
-              <label class="" for="edit-content">Funções</label>
+              <label class="" for="create-content">Funções</label>
               <div class="row">
-                <div #editfunction class="col-md-12 br-16">
+                <div #createfunction class="col-md-12 br-16">
                     <div class="row">
                         <div class="col-md-4 my-2">
                             <div role="button" class="d-flex">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-            <label class="text-danger mt-1" *ngIf="alertFieldsFunctions" for="create-filter">Os campos <b>PERMIÇÕES</b> estão vazios</label>
+            <label class="text-danger mt-1" *ngIf="alertFieldsFunctions" for="create-filter">Os campos permições estão vazios</label>
             </div>
                 <div class="col-12">
                     <div class="row px-0">

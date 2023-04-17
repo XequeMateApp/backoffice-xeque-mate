@@ -78,13 +78,8 @@ export class EditFunctionComponent implements OnInit {
     console.log(this.request, this.responseData._id, this.form.controls['notifications'].value)
     this.roleService.editRoles(this.responseData._id, this.request).subscribe(
       success => {
-        // mostar card dizendo tudo bem
-        // window.location.reload();
-        setTimeout(() => {
-          window.location.reload();
-          }, 2000)
+
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
-        // função somir todos os modais
         this.modalService.dismissAll();
       },
       error => {

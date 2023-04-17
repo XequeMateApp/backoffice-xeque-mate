@@ -34,7 +34,7 @@
                                     {{typeFilter}}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                                    <li *ngFor="let item of uniqueMaterials" role="button"><a (click)="sortListByType(item)" class="dropdown-item">{{item}}</a></li>
+                                    <li *ngFor="let item of responseCategory" role="button"><a (click)="sortListByType(item.name)" class="dropdown-item">{{item.name}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <b class="mb-0 h5 fw-bolder">Categoria</b>
                     </div>
                     <div style="width: 286px;" class="col-2 col-price h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 text-nowrap fw-bolder">Preço Suguerido</b>
+                        <b class="mb-0 h5 text-nowrap fw-bolder">Valor</b>
                     </div>
                     <div style="width: 242px;"class="col h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
@@ -73,10 +73,10 @@
             <div style="min-width: 1064px;" class="col-12 w3-white mt-3 px-0">
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
-                        <tr *ngFor="let item of response| paginate: config | filter: filterTerm; let i= index; ">
+                        <tr *ngFor="let item of response | paginate: config | filter: filterTerm; let i= index; ">
                             <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 270px;">{{item?.name}}</h5></td>
                             <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 270px;">{{item?.category}}</h5></td>
-                            <td style="width: 281px;"><h5 *ngIf="item.value" class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 181px;">R$ {{item?.value}}</h5></td>
+                            <td style="width: 281px;"><h5 *ngIf="item.value"  class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 181px;">R$ {{item?.value }}</h5></td>
                             <td>
                                 <h6 *ngIf="item?.status === 'PENDING'" class="mb-0 py-3 text-secondary">Pendente</h6>
                                 <h6 *ngIf="item?.status === 'APROVED'" class="mb-0 py-3 text-success">Ativo</h6>

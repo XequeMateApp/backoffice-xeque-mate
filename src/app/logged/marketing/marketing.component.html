@@ -30,7 +30,8 @@
                               Tipo
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                              <li *ngFor="let item of notifications" role="button"><a (click)="sortListByType(item.status)" class="dropdown-item">{{item.status}}</a></li>
+                              <li role="button"><a (click)="sortListByType('active')" class="dropdown-item">Ativo</a></li>
+                              <li role="button"><a (click)="sortListByType('inactive')" class="dropdown-item">Inativo</a></li>
                             </ul>
                         </div>
                     </div>
@@ -48,66 +49,54 @@
                 </div>
             </div>
         </div>
+      <div class="row mx-0 overflow-y-scroll ">
         <div style="min-width: 960px;" class="col-12 mt-3 br-16 py-2 mx-0 px-0">
-
-            <div *ngFor="let item of notifications | filter: filterTerm | paginate:
-          config; let i= index" class="row mx-0 bg-blur
-          border mb-2 br-16 p-3">
+            <div *ngFor="let item of response | filter: filterTerm | paginate: config; let i= index" class="row mx-0 bg-blur border mb-2 br-16 p-3">
                 <div class="col h-100 br-16-circle align-items-center d-grid">
-                    <div class="img-marketing br-16" style="background-image: url({{item.imgmarketing}})">
-
-                    </div>
+                    <div class="img-marketing br-16" style="background-image: url({{item.image}})"></div>
                 </div>
-
                 <div class="col h-100 br-16-circle  d-grid">
                     <h6 class="text-secondary">
                         Título
                     </h6>
-                    <h6 class="mb-0 d-inline-block text-truncate" style="max-width:
-              133px;">
-                        {{item.name}}</h6>
+                    <h6 class="mb-0 d-inline-block text-truncate" style="max-width: 133px;">
+                        {{item.title}}
+                    </h6>
                 </div>
                 <div class="col-4 h-100 br-16-circle  d-grid">
                     <h6 class="text-secondary">
                         Descrição
                     </h6>
                     <h6 class="mb-0 text-secondary d-inline-block" style="max-width: 90%;">
-                        {{item.content}}</h6>
+                        {{item.description}}
+                    </h6>
                 </div>
                 <div class="col h-100 br-16-circle d-grid">
                     <h6 class="text-secondary">
                         Status
                     </h6>
-                    <h6 *ngIf="item.status === 'Ativo'" class="mb-0 text-success">
-                        {{item.status}}</h6>
-                    <h6 *ngIf="item.status === 'Inativo'" class="mb-0 text-danger">
-                        {{item.status}}</h6>
+                    <h6 *ngIf="item.status === 'active'" class="mb-0 text-success">Ativo</h6>
+                    <h6 *ngIf="item.status === 'inactive'" class="mb-0 text-danger">Desabilitado</h6>
                 </div>
-                <div class="col h-100 br-16-circle justify-content-end
-            align-items-center d-flex">
+                <div class="col h-100 br-16-circle justify-content-end align-items-center d-flex">
                     <div class="w-50 d-flex justify-content-between align-items-center">
                         <!-- <i role='button' (click)="openModals('analysis', item)" class="bi h3
                 bi-sliders2"></i> -->
-                        <i role='button' (click)="openModals('edit', item)" class="bi h3
-                bi-gear"></i>
-                        <i role='button' (click)="openModals('delete', item)" class="bi h3
-                text-danger bi-trash3"></i>
+                        <i role='button' (click)="openModals('edit', item)" class="bi h3 bi-gear"></i>
+                        <i role='button' (click)="openModals('delete', item)" class="bi h3 text-danger bi-trash3"></i>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 mt-3 d-flex justify-content-end"
-        *ngIf="notifications.length>= 3">
-        <pagination-template #p="paginationApi" [id]="config.id"
-          (pageChange)="config.currentPage= $event">
+      </div>
+        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length>= 3">
+        <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage= $event">
           <div class="custom-pagination">
             <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
               <a *ngIf="!p.isFirstPage()" (click)="p.previous()"><</a>
               </div>
-              <div *ngFor="let page of p.pages" [class.current]="p.getCurrent()
-                === page.value">
-                <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !==
-                  page.value">
+              <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
                   <span>{{ page.label }}</span>
                 </a>
                 <div *ngIf="p.getCurrent() === page.value">
@@ -120,6 +109,5 @@
             </div>
           </pagination-template>
         </div>
-
     </div>
 </main>

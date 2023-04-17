@@ -30,9 +30,8 @@ export class DeleteProductComponent implements OnInit {
     this.productService.deleteProduct(this.responseData._id).subscribe({
       next: data => {
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000)
+        this.modalService.dismissAll()
+
       },
       error: error => {
         console.log(error)

@@ -38,6 +38,8 @@ export class CategorysComponent implements OnInit {
   ngOnInit(): void {
     this.getCategory();
   }
+
+
   getCategory() {
     this.categoryService.getCategory().subscribe(
       success => {
@@ -54,16 +56,28 @@ export class CategorysComponent implements OnInit {
 
 
   createOpenModals() {
-    this.modalService.open(CreateCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
+    const modal = this.modalService.open(CreateCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
+    modal.result.then((result) => {
+    }, err => {
+      this.getCategory();
+    })
   }
 
 
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
      if (tabName === 'edit') {
-      this.modalService.open(EditCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getCategory();
+      })
     } else if (tabName === 'delete') {
-      this.modalService.open(DeleteCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(DeleteCategoryComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getCategory();
+      })
     }
   }
 

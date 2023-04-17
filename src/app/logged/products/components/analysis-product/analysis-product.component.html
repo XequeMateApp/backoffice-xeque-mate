@@ -49,7 +49,7 @@
               aria-label="Default select category">
               <option [selected]="true" [disabled]="true">Items selecionados</option>
             </select>
-            <ul class="list-group mt-3 br-16 ">
+            <ul class="list-group mt-3 br-16">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of responseData.category">
                 <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item }}</h6>
                 <i role="button" class="bi mb-0 bi-x h3 text-danger"></i>

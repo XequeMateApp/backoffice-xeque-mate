@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
 import { SupplierInterface } from 'src/app/interface/supplier.interface';
+import { CategoryService } from 'src/services/category.service';
 import { DatamockService } from 'src/services/datamock.service';
 import { ProductService } from 'src/services/products.service';
 
@@ -16,6 +18,8 @@ export class AnalysisProductComponent implements OnInit {
 
   supplierImg: string[];
   selectedItems: SupplierInterface[] = [];
+  responseCategory: CategoryResponseDto[] = [];
+
   selectFile: any = [];
   items: string[];
   selectedCategories: string[];
@@ -32,6 +36,7 @@ export class AnalysisProductComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
+    private categoryService: CategoryService,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private productService: ProductService,
@@ -64,6 +69,17 @@ export class AnalysisProductComponent implements OnInit {
     this.form.controls['description'].setValue(this.responseData.description)
     this.form.controls['specification'].setValue(this.responseData.specifications)
     this.getImagesFromLocalStorage();
+    this.getCategorys();
+  }
+
+  getCategorys(){
+    this.categoryService.getCategory().subscribe(
+      success => {
+        this.responseCategory = success;
+        // console.log(this.responseCategory)
+      },
+      error => { console.error(error, 'category not collected') }
+    )
   }
 
 
@@ -138,9 +154,7 @@ export class AnalysisProductComponent implements OnInit {
 
     this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000)
+
         this.toastrService.success('Aprovado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },
@@ -159,9 +173,7 @@ export class AnalysisProductComponent implements OnInit {
     }
     this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000)
+
         this.toastrService.success('Recusado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

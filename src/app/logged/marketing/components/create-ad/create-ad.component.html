@@ -10,40 +10,45 @@
       <div class="col-md-7">
         <div class="row">
           <div class="col-md-12">
-            <label class="h6 mt-3 text-dark" for="edit-name">Título</label>
-            <input type="text" id="edit-name" class="form-control line-21
-                  br-16 bordder py-3" [value]="" placeholder="Digite o título" formControlName="name" />
+            <label class="h6 mt-3 text-dark" for="create-title">Título</label>
+            <input type="text" id="create-title" #createtitle class="form-control line-21 br-16 bordder py-3" placeholder="Digite o título" formControlName="title" />
+            <label class="text-danger mt-1" *ngIf="alertFieldTitle" for="create-status">Campo título está vazio</label>
           </div>
           <div class="col-md-12">
-            <label class="h6 mt-3 text-dark" for="edit-description">Descrição</label>
-            <textarea type="description" id="edit-description" maxlength="200"
-              class="form-control br-16 bordder p-3 overflow-scroll text-dark" [value]=""
+            <label class="h6 mt-3 text-dark" for="create-description">Descrição</label>
+            <textarea type="description" id="create-description" maxlength="200" #createdescription
+              class="form-control br-16 bordder p-3 overflow-scroll text-dark"
               placeholder="Digite a descrição" formControlName="description"></textarea>
+            <label class="text-danger mt-1" *ngIf="alertFieldDescription" for="create-description">Campo descrição está vazio</label>
+
           </div>
           <div class="col-md-12 ">
-            <label class="h6 mt-3 text-dark" for="edit-status">Status</label>
-            <select formControlName="status" id="edit-status" class="form-select py-3 line-21 br-16"
+            <label class="h6 mt-3 text-dark" for="create-status">Status</label>
+            <select formControlName="status" id="create-status" #createstatus class="form-select py-3 line-21 br-16"
               aria-label="Default status">
               <option [disabled]="true" [selected]="true">Selecione</option>
               <option value="active">🟢 Ativo</option>
               <option value="inactive">🔴 Inativo</option>
             </select>
+            <label class="text-danger mt-1" *ngIf="alertFieldStatus" for="create-status">Campo status está vazio</label>
+
           </div>
         </div>
       </div>
       <div class="col-md-5">
-        <label class="h6 mt-3 text-dark" for="edit-status">Adicionar imagem</label>
+        <label class="h6 mt-3 text-dark" for="create-img">Adicionar imagem</label>
         <div *ngFor="let file of selectFile"
           style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; height: 279px;"
           class="br-16 border w-100"></div>
-        <div *ngIf="notImage"
+        <div *ngIf="notImage" #createimg
           class="br-16 d-flex align-content-center justify-content-center py-5 border " style="height: 279px;">
           <div class="text-center w-100 p-3 ">
             <img class="position-relative" role="button" src="../../../../../assets/icons/+.svg"  style="top: 37%;"  />
             <input role="button" type="file" class="position-relative i-file-marketing cursor end-0 w-100" style="opacity: 0;"
-              (change)="onSelectFile($event)" accept="image/*," formControlName="img" /> 
+              (change)="onSelectFile($event)" accept="image/*," formControlName="img" />
           </div>
         </div>
+        <label class="text-danger mt-1" *ngIf="alertFieldImg" for="create-img">Campo images está vazio</label>
         <br />
       </div>
       <div class="col-12 px-0">

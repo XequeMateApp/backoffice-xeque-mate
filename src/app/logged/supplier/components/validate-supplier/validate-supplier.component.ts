@@ -56,9 +56,7 @@ export class ValidateSupplierComponent implements OnInit {
     console.log(this.request)
     this.userService.updateUserPlataform(this.request._id, this.request.status, this.request).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000)
+
         this.toastrService.success('Validado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

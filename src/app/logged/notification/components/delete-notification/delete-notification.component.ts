@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
+import { NotificationService } from 'src/services/notification.service';
 
 @Component({
   selector: 'app-delete-notification',
@@ -9,9 +12,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DeleteNotificationComponent implements OnInit {
   form: FormGroup;
-  userData: any;
+  request: NotificationResponsetDto;
+  responseData: any;
   constructor(
     private modalService: NgbModal,
+    private toastrService: ToastrService,
+    private notificationService: NotificationService,
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
@@ -19,13 +25,24 @@ export class DeleteNotificationComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.userData = JSON.parse(localStorage.getItem('userData'));
+    this.responseData = JSON.parse(localStorage.getItem('responseData'));
   }
+
+  delete(){
+    this.notificationService.deleteNotification(this.responseData._id).subscribe(
+      success => {
+        this.toastrService.success('Excluido com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao excluir', '', { progressBar: true });
+      }
+    )
+  }
+
   exit() {
     this.modalService.dismissAll()
   }
-  delete(){
-    this.modalService.dismissAll()
 
-  }
 }

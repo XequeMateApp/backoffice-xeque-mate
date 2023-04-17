@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-6">
                 <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
-                <input type="tel" id="edit-code" [maxLength]="15" class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
+                <input type="text" id="edit-code" [maxLength]="15" class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
                 placeholder="Digite o código" formControlName="code" />
               </div>
             </div>
@@ -48,12 +48,13 @@
             <label class="text-danger mt-1" *ngIf="alertFieldCategory" for="create-code">Campo categorias está vazio</label>
             <ul class="list-group mt-3 br-16 ">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
-                <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item.name }}</h6>
+                <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{item.name}}</h6>
+                <input type="text" readonly formControlName="category" class="text-dark mb-0 align-self-center d-none"/>
                 <i (click)="removeItem(item)" role="button" class="bi mb-0 bi-x h3 text-danger"></i>
               </li>
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of responseData.category">
                 <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item }}</h6>
-                <i role="button" class="bi mb-0 bi-x h3 text-danger"></i>
+                <i (click)="removeItemResponse(item)" role="button" class="bi mb-0 bi-x h3 text-danger"></i>
               </li>
             </ul>
           </div>

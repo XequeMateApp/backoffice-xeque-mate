@@ -40,7 +40,7 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
   getListUsert(): void{
-    this.userService.getUserPlataformSupplier().subscribe(
+    this.userService.getAllClients().subscribe(
       success => {
         this.response = success;
         console.log(this.response)
@@ -55,13 +55,29 @@ export class SuppliersCustomersComponent implements OnInit {
 
   openModals(tabName: string, info: any) {
     if (tabName == 'editclient') {
-      this.modalService.open(EditSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getListUsert();
+      })
     } else if (tabName == 'deleteclient') {
-      this.modalService.open(CloseSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(CloseSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getListUsert();
+      })
     } else if (tabName == 'editsupplier') {
-      this.modalService.open(EditSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getListUsert();
+      })
     } else if (tabName == 'deletesupplier') {
-      this.modalService.open(CloseSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(CloseSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getListUsert();
+      })
     }
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
   }

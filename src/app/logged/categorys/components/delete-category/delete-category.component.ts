@@ -26,9 +26,7 @@ export class DeleteCategoryComponent implements OnInit {
   delete() {
     this.categoryServer.deleteCategory(this.responseData._id).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000)
+
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },
