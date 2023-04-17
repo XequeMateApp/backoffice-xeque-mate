@@ -5,7 +5,7 @@ export const environment = {
   maxDocumentSize: 10485760,
 
   api: {
-    xequeMateApi: 'https://xequemate.tgtdigital.io'
+    xequeMateApi: 'https://xequemate.tgtdigital.io/'
   },
 
 };
