@@ -61,7 +61,8 @@
                   </div>
                   <div class="d-flex justify-content-end">
                      <div class="w-100 h-100 mb-3">
-                        <apx-chart
+                      <h1 *ngIf="!showGraphic">Espere um pouco</h1>
+                        <apx-chart *ngIf="showGraphic"
                            [series]="productRequest.series"
                            [chart]="productRequest.chart"
                            [xaxis]="productRequest.xaxis"
