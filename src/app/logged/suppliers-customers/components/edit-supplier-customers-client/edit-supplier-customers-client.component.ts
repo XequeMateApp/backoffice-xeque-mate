@@ -73,9 +73,6 @@ export class EditSupplierCustomersClientComponent implements OnInit {
     console.log(this.request)
     this.userService.updateSupplierCustomers(this.responseData._id, this.request).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

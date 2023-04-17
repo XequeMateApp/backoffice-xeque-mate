@@ -38,13 +38,13 @@ export class NotificationComponent implements OnInit {
   }
 
   getNotifications() {
-    this.notificationService.getNotification().subscribe(
-      success => {
+    this.notificationService.getNotifications().subscribe({
+      next: success => {
         this.response = success;
         console.log(this.response)
       },
-      error => { console.error(error, 'data not collected') }
-    );
+      error: error => { console.error(error, 'data not collected') }
+    });
   }
 
 
@@ -53,15 +53,28 @@ export class NotificationComponent implements OnInit {
   }
 
   createOpenModal() {
-    this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+    const modal = this.modalService.open(CreateNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+    modal.result.then((result) => {
+    }, err => {
+      this.getNotifications();
+    })
   }
 
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'edit') {
-      this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getNotifications();
+      })
+
     } else if (tabName == 'delete') {
-      this.modalService.open(DeleteNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(DeleteNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getNotifications();
+      })
     }
   }
   sortListByAlphabeticalOrder(): void {

@@ -155,8 +155,8 @@ export class EditProductComponent implements OnInit {
 
 
   confirm() {
+    if (this.selectedCategories === undefined) this.selectedCategories = [];
     this.categories = this.selectedCategories.concat(this.form.controls['category'].value);
-    console.log(this.selectedCategories, this.form.controls['category'].value);
     this.request = {
       name: this.form.controls['name'].value,
       cnpj: this.form.controls['cnpj'].value,
@@ -170,9 +170,6 @@ export class EditProductComponent implements OnInit {
     console.log(this.request)
     this.productService.putProduct(this.responseData._id, this.request).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

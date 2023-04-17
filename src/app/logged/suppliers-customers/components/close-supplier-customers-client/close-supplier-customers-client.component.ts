@@ -32,9 +32,6 @@ export class CloseSupplierCustomersClientComponent implements OnInit {
       next: data => {
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
         this.modalService.dismissAll()
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
       },
       error: error => {
         console.log(error)

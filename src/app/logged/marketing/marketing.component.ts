@@ -52,15 +52,27 @@ export class MarketingComponent implements OnInit {
   }
 
   createOpenModal(){
-    this.modalService.open(CreateAdComponent, { centered: true, backdrop: 'static', keyboard: false })
+    const modal = this.modalService.open(CreateAdComponent, { centered: true, backdrop: 'static', keyboard: false })
+    modal.result.then((result) => {
+    }, err => {
+      this.getMarketing();
+    })
   }
 
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName === 'edit') {
-      this.modalService.open(EditAdComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditAdComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getMarketing();
+      })
     } else if (tabName === 'delete') {
-      this.modalService.open(DeleteAdComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(DeleteAdComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getMarketing();
+      })
     }
   }
   sortListByAlphabeticalOrder(): void {

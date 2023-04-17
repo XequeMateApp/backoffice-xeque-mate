@@ -40,9 +40,7 @@ export class DeleteFunctionComponent implements OnInit {
   delete() {
     this.roleService.deleteRoles(this.responseData._id).subscribe({
       next: data => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
+
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
         this.exit();
       },

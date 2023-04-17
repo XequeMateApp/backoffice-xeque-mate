@@ -65,22 +65,17 @@ export class EditNotificationComponent implements OnInit {
       filter: this.filterValue
     }
     console.log(this.request)
-
       this.notificationService.editNotification(this.responseData._id, this.request).subscribe(
         success => {
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000)
-          this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+          this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },
         error => {
           console.log(error)
-          this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+          this.toastrService.error('Erro ao editar', '', { progressBar: true });
         }
       )
   }
-
 
   exit() {
     this.modalService.dismissAll()

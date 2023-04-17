@@ -31,9 +31,6 @@ export class DeleteNotificationComponent implements OnInit {
   delete(){
     this.notificationService.deleteNotification(this.responseData._id).subscribe(
       success => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

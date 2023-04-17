@@ -31,9 +31,8 @@ export class DeleteAdComponent implements OnInit {
     this.marketingService.deleteMarketing(this.responseData._id).subscribe({
       next: data => {
         this.toastrService.success('Excluido com sucesso!', '', { progressBar: true })
-        setTimeout(() => {
-          window.location.reload();
-        }, 200)
+        this.modalService.dismissAll()
+
       },
       error: error => {
         console.log(error)

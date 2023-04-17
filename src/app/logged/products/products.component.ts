@@ -2,8 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
-import { SupplierInterface } from 'src/app/interface/supplier.interface';
-import { DatamockService } from 'src/services/datamock.service';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { AnalysisProductComponent } from './components/analysis-product/analysis-product.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
@@ -41,18 +39,21 @@ export class ProductsComponent implements OnInit {
 
 
   constructor(
-    private datamockService: DatamockService,
     private router: Router,
     private modalService: NgbModal,
     private categoryService: CategoryService,
     private productService: ProductService,
-  ) { }
+  ) {
+  }
+
+
 
   ngOnInit(): void {
     this.getProducts();
     this.getCategorys();
     // this.removeDuplicates(this.response)
   }
+
 
   getProducts() {
     this.productService.getProducts('PENDING').subscribe(
@@ -64,7 +65,7 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-  getCategorys(){
+  getCategorys() {
     this.categoryService.getCategory().subscribe(
       success => {
         this.responseCategory = success;
@@ -80,18 +81,34 @@ export class ProductsComponent implements OnInit {
 
 
   createOpenModals() {
-    this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+    const modal = this.modalService.open(CreateProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+    modal.result.then((result) => {
+    }, err => {
+      this.getProducts();
+    })
   }
 
 
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'analysisproduct') {
-      this.modalService.open(AnalysisProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(AnalysisProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getProducts();
+      })
     } else if (tabName == 'editproduct') {
-      this.modalService.open(EditProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(EditProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getProducts();
+      })
     } else if (tabName == 'deleteproduct') {
-      this.modalService.open(DeleteProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(DeleteProductComponent, { centered: true, backdrop: 'static', keyboard: false })
+      modal.result.then((result) => {
+      }, err => {
+        this.getProducts();
+      })
     }
   }
 
