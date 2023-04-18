@@ -98,7 +98,7 @@ export class FunctionManagementComponent implements OnInit {
 
   // FILTRO POR FUNÇÃO - NÃO FUNCIONAL
   removeDuplicates(list: RoleResponseDto[]) {
-    this.uniquePermition = [...new Set(list.map(obj => obj.administrator))];
+    // this.uniquePermition = [...new Set(list.map(obj => obj.administrator))];
   }
   sortListByType(value: string) {
     // this.typeFilter = value;

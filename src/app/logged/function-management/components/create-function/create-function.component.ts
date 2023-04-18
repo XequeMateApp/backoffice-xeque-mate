@@ -112,25 +112,20 @@ export class CreateFunctionComponent implements OnInit {
       this.request = {
         name: this.form.controls['name'].value,
         status: this.form.controls['status'].value,
-        administrator: this.form.controls['administrator'].value,
-        products: this.form.controls['products'].value,
-        kyc: this.form.controls['kyc'].value,
-        customers: this.form.controls['customers'].value,
-        accesscontrol: this.form.controls['accesscontrol'].value,
-        notifications: this.form.controls['notifications'].value,
+        roles: this.form.controls['roles'].value,
       }
       console.log(this.request)
-      this.roleService.register(this.request).subscribe({
-        next: success => {
+      // this.roleService.register(this.request).subscribe({
+      //   next: success => {
 
-          this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-          this.modalService.dismissAll();
-        },
-        error: error => {
-          console.log(error)
-          this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
-        }
-      })
+      //     this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
+      //     this.modalService.dismissAll();
+      //   },
+      //   error: error => {
+      //     console.log(error)
+      //     this.toastrService.error('Erro ao cadastrar', '', { progressBar: true });
+      //   }
+      // })
     }
   }
 }
