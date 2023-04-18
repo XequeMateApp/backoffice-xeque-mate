@@ -135,13 +135,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private userService: UserService
-  ) {
-
-
-
-  }
+  ) { }
   ngOnInit(): void {
-    this.getProducts();
+    this.getProducts7days();
     this.getClients();
     this.getAllProductsFiltered(this.daysFilter);
   }
@@ -150,22 +146,34 @@ export class DashboardComponent implements OnInit {
     if (value === '7days') {
       this.dropDatas = '7 dias'
       this.daysFilter = 7;
+      this.getProducts7days();
       this.getAllProductsFiltered(this.daysFilter);
     } else if (value === '15days') {
       this.dropDatas = '15 dias'
       this.daysFilter = 15;
+      this.getProducts15days();
       this.getAllProductsFiltered(this.daysFilter);
     } else if (value === '1month') {
       this.dropDatas = '1 mês'
       this.daysFilter = 30;
+      this.getProducts30days();
       this.getAllProductsFiltered(this.daysFilter);
     }
   }
 
-  getProducts() {
-    this.productService.getAllProducts().subscribe({
+  getAllProductsFiltered(days: number) {
+    this.productService.getAllFilteredProductsByDate(days).subscribe(
+      success => {
+        this.totalProductsFiltered = success.count.toString();
+        console.log('produtos filtrados', success);
+      },
+      error => { console.error(error, 'Erro ao recuperar dados') }
+    )
+  }
+
+  getProducts7days() {
+    this.productService.getAllProductsDays7().subscribe({
       next: success => {
-        console.log(success, 'fwfoewif')
         const getWeekDaysName = success.products.map(item => item.createdAt);
         const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         let dataWeek = [];
@@ -191,11 +199,86 @@ export class DashboardComponent implements OnInit {
             }
           }).length)
         })
-        console.log(dataWeek)
+        // console.log(dataWeek)
         this.productRequest.series[0].data = dataWeek;
         this.totalProducts = success.count.toString();
-        console.log('Produtos Cadastrados', success.count);
-        console.log()
+        // console.log('Produtos Cadastrados', success.count);
+        this.showGraphic = true;
+      },
+      error: error => { console.error(error, 'Erro ao recuperar dados') }
+    })
+  }
+
+  getProducts15days() {
+    this.productService.getAllProductsDays15().subscribe({
+      next: success => {
+        const getWeekDaysName = success.products.map(item => item.createdAt);
+        const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        let dataWeek = [];
+        weekdays.forEach(day => {
+          dataWeek.push(getWeekDaysName.filter(item => {
+            const datenew = new Date(item);
+            switch (day) {
+              case 'Monday':
+                return datenew.getDay() === 1;
+              case 'Tuesday':
+                return datenew.getDay() === 2;
+              case 'Wednesday':
+                return datenew.getDay() === 3;
+              case 'Thursday':
+                return datenew.getDay() === 4;
+              case 'Friday':
+                return datenew.getDay() === 5;
+              case 'Saturday':
+                return datenew.getDay() === 6;
+              case 'Sunday':
+                return datenew.getDay() === 0;
+              default: return false;
+            }
+          }).length)
+        })
+        // console.log(dataWeek)
+        this.productRequest.series[0].data = dataWeek;
+        this.totalProducts = success.count.toString();
+        // console.log('Produtos Cadastrados', success.count);
+        this.showGraphic = true;
+      },
+      error: error => { console.error(error, 'Erro ao recuperar dados') }
+    })
+  }
+
+  getProducts30days() {
+    this.productService.getAllProductsDays30().subscribe({
+      next: success => {
+        const getWeekDaysName = success.products.map(item => item.createdAt);
+        const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        let dataWeek = [];
+        weekdays.forEach(day => {
+          dataWeek.push(getWeekDaysName.filter(item => {
+            const datenew = new Date(item);
+            switch (day) {
+              case 'Monday':
+                return datenew.getDay() === 1;
+              case 'Tuesday':
+                return datenew.getDay() === 2;
+              case 'Wednesday':
+                return datenew.getDay() === 3;
+              case 'Thursday':
+                return datenew.getDay() === 4;
+              case 'Friday':
+                return datenew.getDay() === 5;
+              case 'Saturday':
+                return datenew.getDay() === 6;
+              case 'Sunday':
+                return datenew.getDay() === 0;
+              default: return false;
+            }
+          }).length)
+        })
+        // console.log(dataWeek)
+        this.productRequest.series[0].data = dataWeek;
+        this.totalProducts = success.count.toString();
+        // console.log('Produtos Cadastrados', success.count);
         this.showGraphic = true;
       },
       error: error => { console.error(error, 'Erro ao recuperar dados') }
@@ -205,7 +288,6 @@ export class DashboardComponent implements OnInit {
   getClients() {
     this.userService.getAllClients().subscribe(
       success => {
-        console.log(success, 'fwfoewif')
         const getWeekDaysName = success.map(item => item.createdAt);
         const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         let dataWeek = [];
@@ -231,24 +313,15 @@ export class DashboardComponent implements OnInit {
             }
           }).length)
         })
-        console.log(dataWeek)
+        // console.log(dataWeek)
         this.newClientsRequest.series[0].data = dataWeek;
         this.showGraphic2 = true;
 
         this.totalClients = success.length.toString();
-        console.log('Total de clientes', success.count, success.length);
+        // console.log('Total de clientes', success.count, success.length);
       },
       error => { console.error(error, 'Erro ao recuperar dados') }
     )
   }
 
-  getAllProductsFiltered(days: number) {
-    this.productService.getAllFilteredProductsByDate(days).subscribe(
-      success => {
-        this.totalProductsFiltered = success.count.toString();
-        console.log('produtos filtrados', success);
-      },
-      error => { console.error(error, 'Erro ao recuperar dados') }
-    )
-  }
 }
