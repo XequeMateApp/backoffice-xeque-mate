@@ -51,16 +51,27 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  // getAllProducts(): Observable<any> {
-  //   return this.httpClient
-  //     .get(`${this.url}product/all`, this.authorizedHeader)
-  //     .pipe(map(response => response), catchError(error => { console.log(error); return error; })
-  //     );
-  // }
-
   getAllProducts(): Observable<any> {
     return this.httpClient
       .get(`${this.url}product/all`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+  // get products by days
+  getAllProductsDays7(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/7`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllProductsDays15(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/15`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllProductsDays30(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/30`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
