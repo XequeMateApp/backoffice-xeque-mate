@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -77,9 +76,48 @@ export class DashboardComponent implements OnInit {
     }
   };
 
+  public newClientsRequest: Partial<ChartOptions> = {
+    series: [
+      {
+        name: "Clientes",
+        data: []
+      }
+    ],
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: "straight"
+    },
+    title: {
 
-
-  public newClientsRequest: Partial<ChartOptions>;
+      align: "left"
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5
+      }
+    },
+    xaxis: {
+      categories: [
+        "Seg",
+        "Ter",
+        "Qua",
+        "Qui",
+        "Sex",
+        "Sab",
+        "Dom",
+      ]
+    }
+  };
 
   dropDatas = '7 dias';
 
@@ -89,7 +127,9 @@ export class DashboardComponent implements OnInit {
 
   daysFilter: number = 7
   todos: any;
+
   showGraphic = false;
+  showGraphic2 = false;
 
 
   constructor(
@@ -97,48 +137,7 @@ export class DashboardComponent implements OnInit {
     private userService: UserService
   ) {
 
-    this.newClientsRequest = {
-      series: [
-        {
-          name: "Clientes",
-          data: [10, 41, 35, 51, 49, 62, 69]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "straight"
-      },
-      title: {
 
-        align: "left"
-      },
-      grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"],
-          opacity: 0.5
-        }
-      },
-      xaxis: {
-        categories: [
-          "Seg",
-          "Ter",
-          "Qua",
-          "Qui",
-          "Sex",
-          "Sab",
-          "Dom",
-        ]
-      }
-    };
 
   }
   ngOnInit(): void {
@@ -164,10 +163,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getAllProducts().subscribe(
-      success => {
+    this.productService.getAllProducts().subscribe({
+      next: success => {
         console.log(success, 'fwfoewif')
-        const getWeekDaysName = success.products.map(item => item.updatedAt);
+        const getWeekDaysName = success.products.map(item => item.createdAt);
         const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         let dataWeek = [];
         weekdays.forEach(day => {
@@ -199,15 +198,45 @@ export class DashboardComponent implements OnInit {
         console.log()
         this.showGraphic = true;
       },
-      error => { console.error(error, 'Erro ao recuperar dados') }
-    )
+      error: error => { console.error(error, 'Erro ao recuperar dados') }
+    })
   }
 
   getClients() {
     this.userService.getAllClients().subscribe(
       success => {
+        console.log(success, 'fwfoewif')
+        const getWeekDaysName = success.map(item => item.createdAt);
+        const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        let dataWeek = [];
+        weekdays.forEach(day => {
+          dataWeek.push(getWeekDaysName.filter(item => {
+            const datenew = new Date(item);
+            switch (day) {
+              case 'Monday':
+                return datenew.getDay() === 1;
+              case 'Tuesday':
+                return datenew.getDay() === 2;
+              case 'Wednesday':
+                return datenew.getDay() === 3;
+              case 'Thursday':
+                return datenew.getDay() === 4;
+              case 'Friday':
+                return datenew.getDay() === 5;
+              case 'Saturday':
+                return datenew.getDay() === 6;
+              case 'Sunday':
+                return datenew.getDay() === 0;
+              default: return false;
+            }
+          }).length)
+        })
+        console.log(dataWeek)
+        this.newClientsRequest.series[0].data = dataWeek;
+        this.showGraphic2 = true;
+
         this.totalClients = success.length.toString();
-        console.log('Total de clientes', success.length);
+        console.log('Total de clientes', success.count, success.length);
       },
       error => { console.error(error, 'Erro ao recuperar dados') }
     )

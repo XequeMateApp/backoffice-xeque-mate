@@ -51,6 +51,13 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+  // getAllProducts(): Observable<any> {
+  //   return this.httpClient
+  //     .get(`${this.url}product/all`, this.authorizedHeader)
+  //     .pipe(map(response => response), catchError(error => { console.log(error); return error; })
+  //     );
+  // }
+
   getAllProducts(): Observable<any> {
     return this.httpClient
       .get(`${this.url}product/all`, this.authorizedHeader)
