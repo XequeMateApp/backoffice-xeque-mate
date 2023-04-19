@@ -31,9 +31,9 @@ export class RoleService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  getRoleId(roleId: string): Observable<RoleResponseDto[]> {
+  getRoleId(roleId: string): Observable<RoleResponseDto> {
     return this.httpClient
-      .put(`${this.url}id/${roleId}`, this.authorizedHeader)
+      .get(`${this.url}id/${roleId}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
