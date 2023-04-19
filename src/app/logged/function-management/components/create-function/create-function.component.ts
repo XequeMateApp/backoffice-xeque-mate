@@ -28,6 +28,7 @@ export class CreateFunctionComponent implements OnInit {
   alertFieldsName = false;
   alertFieldsStatus = false;
   alertFieldsFunctions = false;
+  formValues: string[] = [];
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -37,10 +38,13 @@ export class CreateFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       administrator: [''],
+      usuario: ['usuario'],
       products: [''],
       kyc: [''],
       customers: [''],
       accesscontrol: [''],
+      marketing: [''],
+      category: [''],
       notifications: [''],
       status: ['', [Validators.required]],
     })
@@ -61,7 +65,7 @@ export class CreateFunctionComponent implements OnInit {
       setInterval(() => {
         this.createname.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsName = false;
-      }, 3000);
+      }, 2000);
     }
     else if (this.form.controls['status'].value === '') {
       this.createstatus.nativeElement.classList.add("border-danger", "border", "text-danger");
@@ -69,7 +73,7 @@ export class CreateFunctionComponent implements OnInit {
       setInterval(() => {
         this.createstatus.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsStatus = false;
-      }, 3000);
+      }, 2000);
     }
     else if (
       this.form.controls['administrator'].value === '' &&
@@ -77,6 +81,8 @@ export class CreateFunctionComponent implements OnInit {
       this.form.controls['kyc'].value === '' &&
       this.form.controls['customers'].value === '' &&
       this.form.controls['accesscontrol'].value === '' &&
+      this.form.controls['marketing'].value === '' &&
+      this.form.controls['category'].value === '' &&
       this.form.controls['notifications'].value === ''
     ) {
       this.createfunction.nativeElement.classList.add("border-danger", "border", "text-danger");
@@ -84,7 +90,7 @@ export class CreateFunctionComponent implements OnInit {
       setInterval(() => {
         this.createfunction.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsFunctions = false;
-      }, 5000);
+      }, 2000);
     }
   }
 
@@ -92,18 +98,30 @@ export class CreateFunctionComponent implements OnInit {
 
   verifiFieldFunctions() {
     if (this.form.controls['name'].value !== '' && this.form.controls['status'].value !== '') {
-      if (this.form.controls['administrator'].value === true) this.form.controls['administrator'].setValue('active'); else this.form.controls['administrator'].setValue('inactive')
-      if (this.form.controls['products'].value === true) this.form.controls['products'].setValue('active'); else this.form.controls['products'].setValue('inactive')
-      if (this.form.controls['kyc'].value === true) this.form.controls['kyc'].setValue('active'); else this.form.controls['kyc'].setValue('inactive')
-      if (this.form.controls['customers'].value === true) this.form.controls['customers'].setValue('active'); else this.form.controls['customers'].setValue('inactive')
-      if (this.form.controls['accesscontrol'].value === true) this.form.controls['accesscontrol'].setValue('active'); else this.form.controls['accesscontrol'].setValue('inactive')
-      if (this.form.controls['notifications'].value === true) this.form.controls['notifications'].setValue('active'); else this.form.controls['notifications'].setValue('inactive')
+      if (this.form.controls['administrator'].value !== '') this.form.controls['administrator'].setValue('administrator'); else this.form.controls['administrator'].setValue('')
+      if (this.form.controls['products'].value !== '') this.form.controls['products'].setValue('products'); else this.form.controls['products'].setValue('')
+      if (this.form.controls['kyc'].value !== '') this.form.controls['kyc'].setValue('kyc'); else this.form.controls['kyc'].setValue('')
+      if (this.form.controls['customers'].value !== '') this.form.controls['customers'].setValue('customers'); else this.form.controls['customers'].setValue('')
+      if (this.form.controls['accesscontrol'].value !== '') this.form.controls['accesscontrol'].setValue('accesscontrol'); else this.form.controls['accesscontrol'].setValue('')
+      if (this.form.controls['notifications'].value !== '') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue('')
+      if (this.form.controls['marketing'].value !== '') this.form.controls['marketing'].setValue('marketing'); else this.form.controls['marketing'].setValue('')
+      if (this.form.controls['category'].value !== '') this.form.controls['category'].setValue('category'); else this.form.controls['category'].setValue('')
     }
+      for (const controlName of Object.keys(this.form.controls)) {
+        if (controlName !== 'name' && controlName !== 'status') {
+          const control = this.form.controls[controlName];
+          if (control.value !== '' &&  control.value !== null) {
+            this.formValues.push(control.value);
+          }
+        }
+      }
+      console.log(this.formValues);
+
+
   }
 
   confirm(): void {
     this.verifiField();
-    console.log(this.form.controls['administrator'].value)
     if (
       this.form.controls['name'].value !== '' &&
       this.form.controls['status'].value !== ''
@@ -112,12 +130,7 @@ export class CreateFunctionComponent implements OnInit {
       this.request = {
         name: this.form.controls['name'].value,
         status: this.form.controls['status'].value,
-        administrator: this.form.controls['administrator'].value,
-        products: this.form.controls['products'].value,
-        kyc: this.form.controls['kyc'].value,
-        customers: this.form.controls['customers'].value,
-        accesscontrol: this.form.controls['accesscontrol'].value,
-        notifications: this.form.controls['notifications'].value,
+        roles: this.formValues,
       }
       console.log(this.request)
       this.roleService.register(this.request).subscribe({
