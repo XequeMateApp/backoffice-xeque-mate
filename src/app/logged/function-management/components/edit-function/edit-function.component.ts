@@ -68,12 +68,7 @@ export class EditFunctionComponent implements OnInit {
     this.request = {
       name: this.form.controls['name'].value,
       status: this.form.controls['status'].value,
-      administrator: this.form.controls['administrator'].value,
-      products: this.form.controls['products'].value,
-      kyc: this.form.controls['kyc'].value,
-      customers: this.form.controls['customers'].value,
-      accesscontrol: this.form.controls['accesscontrol'].value,
-      notifications: this.form.controls['notifications'].value,
+      roles: this.form.controls['administrator'].value,
     }
     console.log(this.request, this.responseData._id, this.form.controls['notifications'].value)
     this.roleService.editRoles(this.responseData._id, this.request).subscribe(
