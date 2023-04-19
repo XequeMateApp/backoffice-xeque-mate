@@ -25,10 +25,13 @@ export class EditFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       administrator: [''],
+      usuario: [''],
       products: [''],
       kyc: [''],
       customers: [''],
       accesscontrol: [''],
+      marketing: [''],
+      category: [''],
       notifications: [''],
       status: ['', [Validators.required]],
     })
@@ -43,6 +46,9 @@ export class EditFunctionComponent implements OnInit {
     if (this.responseData.kyc === 'active') this.form.controls['kyc'].setValue('kyc'); else this.form.controls['kyc'].setValue(false);
     if (this.responseData.customers === 'active') this.form.controls['customers'].setValue('customers'); else this.form.controls['customers'].setValue(false);
     if (this.responseData.accesscontrol === 'active') this.form.controls['accesscontrol'].setValue('accesscontrol'); else this.form.controls['accesscontrol'].setValue(false);
+    if (this.responseData.notifications === 'active') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue(false);
+    if (this.responseData.notifications === 'active') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue(false);
+    if (this.responseData.notifications === 'active') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue(false);
     if (this.responseData.notifications === 'active') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue(false);
     this.form.controls['name'].setValue(this.responseData.name)
   }

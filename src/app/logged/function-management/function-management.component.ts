@@ -65,8 +65,6 @@ export class FunctionManagementComponent implements OnInit {
     this.roleService.getRole().subscribe(
       success => {
         this.response = success;
-        console.log(this.response.map(r => r.roles));
-
         console.log(this.response)
       },
       error => { console.error(error, 'data not collected') }
