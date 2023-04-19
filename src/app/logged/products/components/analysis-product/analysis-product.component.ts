@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
-import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { CategoryService } from 'src/services/category.service';
 import { DatamockService } from 'src/services/datamock.service';
 import { ProductService } from 'src/services/products.service';
@@ -17,7 +16,6 @@ export class AnalysisProductComponent implements OnInit {
   form: FormGroup;
 
   supplierImg: string[];
-  selectedItems: SupplierInterface[] = [];
   responseCategory: CategoryResponseDto[] = [];
 
   selectFile: any = [];
@@ -81,25 +79,6 @@ export class AnalysisProductComponent implements OnInit {
       error => { console.error(error, 'category not collected') }
     )
   }
-
-
-  //FUNCTION-SELECTION
-  // onOptionSelected(optionId: string) {
-  //   const selectedOption = this.supplier.find(option => option._id === +optionId);
-  //   if (selectedOption && !this.selectedItems.includes(selectedOption)) {
-  //     this.selectedItems.push(selectedOption)
-  //   }
-  //   this.selectedCategories = this.selectedItems.map(item => item.category);
-  //   console.log(this.selectedCategories);
-  // }
-
-  // removeItem(item: SupplierInterface) {
-  //   const index = this.selectedItems.indexOf(item);
-  //   if (index >= 0) {
-  //     this.selectedItems.splice(index, 1);
-  //     this.selectedCategories.splice(index, 1);
-  //   }
-  // }
 
   getImagesFromLocalStorage() {
     const imagesData = JSON.parse(localStorage.getItem('responseData'));

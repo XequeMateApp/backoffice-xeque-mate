@@ -56,13 +56,13 @@ export class ProductsComponent implements OnInit {
 
 
   getProducts() {
-    this.productService.getProducts('PENDING').subscribe(
-      success => {
-        this.response = success;
+    this.productService.getAllProducts().subscribe({
+      next: success => {
+        this.response = success.products;
         console.log(this.response)
       },
-      error => { console.error(error, 'data not collected') }
-    )
+      error: error => { console.error(error, 'data not collected') }
+    })
   }
 
   getCategorys() {

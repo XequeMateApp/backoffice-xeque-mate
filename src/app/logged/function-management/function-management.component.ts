@@ -30,7 +30,17 @@ export class FunctionManagementComponent implements OnInit {
   uniquePermition: string[];
   typeFilter = 'tipo'
   responsePermitions: RoleResponseDto[];
-
+  rolesResolveMap = {
+    'usuario': 'Usuário',
+    'administrator': 'Administrador',
+    'products': 'Produtos',
+    'kyc': 'Kyc fornecedores',
+    'customers': 'Fornecedores e clientes',
+    'accesscontrol': 'Controle de acesso',
+    'notifications': 'Notificações',
+    'marketing': 'Marketing',
+    'category': 'Categorias',
+  };
 
   constructor(
     private router: Router,
@@ -43,9 +53,13 @@ export class FunctionManagementComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     const domain = this.user.email.split("@")[1];
     this.officerAdm = domain;
-    // FILTRO POR FUNÇÃO - NÃO FUNCIONAL
-    // this.removeDuplicates(this.response)
   }
+
+
+  getColorsForFruit(values: string[]): string[] {
+    return values.map(role => this.rolesResolveMap[role] || 'desconhecida');
+  }
+
 
   getRoles() {
     this.roleService.getRole().subscribe(
@@ -56,6 +70,7 @@ export class FunctionManagementComponent implements OnInit {
       error => { console.error(error, 'data not collected') }
     )
   }
+
 
   backHome() {
     this.router.navigate(['/logged/dashboard']);
@@ -75,7 +90,7 @@ export class FunctionManagementComponent implements OnInit {
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'delete') {
-        const modal = this.modalService.open(DeleteFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
+      const modal = this.modalService.open(DeleteFunctionComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
       }, err => {
         this.getRoles();
@@ -98,7 +113,7 @@ export class FunctionManagementComponent implements OnInit {
 
   // FILTRO POR FUNÇÃO - NÃO FUNCIONAL
   removeDuplicates(list: RoleResponseDto[]) {
-    this.uniquePermition = [...new Set(list.map(obj => obj.administrator))];
+    // this.uniquePermition = [...new Set(list.map(obj => obj.administrator))];
   }
   sortListByType(value: string) {
     // this.typeFilter = value;

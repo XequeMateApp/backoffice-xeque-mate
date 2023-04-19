@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryRequestDto } from 'src/app/dto/logged/category-register-request.dto';
-import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { CategoryService } from 'src/services/category.service';
 
 @Component({

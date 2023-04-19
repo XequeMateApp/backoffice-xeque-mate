@@ -56,6 +56,24 @@ export class ProductService extends BaseService {
       .get(`${this.url}product/all`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
+  // get products by days
+  getAllProductsDays7(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/7`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllProductsDays15(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/15`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getAllProductsDays30(): Observable<any> {
+    return this.httpClient
+      .get(`${this.url}product/30`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
 
   getAllFilteredProductsByDate(days: number): Observable<any> {
     return this.httpClient
