@@ -31,6 +31,13 @@ export class RoleService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+  getRoleId(roleId: string): Observable<RoleResponseDto[]> {
+    return this.httpClient
+      .put(`${this.url}id/${roleId}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+
   editRoles(roleId: string, dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
     return this.httpClient
       .put(`${this.url}update/id/${roleId}`, dto, this.authorizedHeader)
