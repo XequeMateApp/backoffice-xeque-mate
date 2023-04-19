@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import { DatamockService } from 'src/services/datamock.service';
-import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { EditSupplierCustomersClientComponent } from './components/edit-supplier-customers-client/edit-supplier-customers-client.component';
 import { CloseSupplierCustomersClientComponent } from './components/close-supplier-customers-client/close-supplier-customers-client.component';
 import { EditSupplierCustomersComponent } from './components/edit-supplier-customers/edit-supplier-customers.component';
