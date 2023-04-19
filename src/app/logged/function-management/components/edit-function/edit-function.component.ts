@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { RoleRegisterRequestDto } from 'src/app/dto/logged/role-register-request.dto';
+import { RoleResponseDto } from 'src/app/dto/logged/role-response.dto';
 import { RoleService } from 'src/services/role.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class EditFunctionComponent implements OnInit {
   editStatus: string;
   checked: string;
   request: RoleRegisterRequestDto;
+  response: RoleResponseDto[] = [];
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -39,8 +41,9 @@ export class EditFunctionComponent implements OnInit {
 
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
-
+    this.getRoleId();
     this.editStatus = this.responseData.status;
+
     if (this.responseData.administrator === 'active') this.form.controls['administrator'].setValue('administrator'); else this.form.controls['administrator'].setValue(false);
     if (this.responseData.products === 'active') this.form.controls['products'].setValue('products'); else this.form.controls['products'].setValue(false);
     if (this.responseData.kyc === 'active') this.form.controls['kyc'].setValue('kyc'); else this.form.controls['kyc'].setValue(false);
@@ -53,6 +56,15 @@ export class EditFunctionComponent implements OnInit {
     this.form.controls['name'].setValue(this.responseData.name)
   }
 
+  getRoleId(){
+    this.roleService.getRoleId(this.responseData._id).subscribe(
+      success => {
+        this.response = success;
+        console.log(this.response)
+      },
+      error => { console.error(error, 'data not collected') }
+    )
+  }
 
 
   transformFunctions() {
