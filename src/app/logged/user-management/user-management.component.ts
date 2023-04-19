@@ -32,15 +32,15 @@ export class UserManagementComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private modalService: NgbModal,
-  ) {
-  }
+  ) { }
+
+
   ngAfterViewInit(): void {
     this.getUsers();
   }
 
   ngOnInit(): void {
   }
-
 
   getUsers() {
     this.userService.getUsers().subscribe({
@@ -64,6 +64,8 @@ export class UserManagementComponent implements OnInit {
       error: error => { console.error(error, 'data not collected') }
     })
   }
+
+
   translateFilter(response: UserGetResponseDto) {
     if (response.filter === 'ADMINISTRATOR') response.filter = 'Administrador';
     else if (response.filter === 'PRODUCTS') response.filter = 'Produto';
@@ -72,6 +74,8 @@ export class UserManagementComponent implements OnInit {
     else if (response.filter === 'ACCESCONTROL') response.filter = 'Controle de acesso';
     else if (response.filter === 'NOTIFICATIONS') response.filter = 'Notificações';
   }
+
+
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
@@ -102,7 +106,6 @@ export class UserManagementComponent implements OnInit {
 
   }
   openModals(tabName: string, info: string[]) {
-    // enviando dados pro localhost
     LocalStorageUtil.set(LocalStorageKeys.responseData, info)
     if (tabName === 'Edit') {
       const modal = this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })
