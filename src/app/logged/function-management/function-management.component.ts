@@ -56,7 +56,7 @@ export class FunctionManagementComponent implements OnInit {
   }
 
 
-  getColorsForFruit(values: string[]): string[] {
+  getrolesResolve(values: string[]): string[] {
     return values.map(role => this.rolesResolveMap[role] || 'desconhecida');
   }
 

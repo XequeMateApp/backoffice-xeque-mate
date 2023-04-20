@@ -66,7 +66,7 @@ export class EditUserComponent implements OnInit {
       email: this.form.controls['email'].value,
       name: this.form.controls['name'].value,
       status: this.form.controls['status'].value,
-      filter: this.form.controls['filter'].value,
+      roles: this.form.controls['filter'].value,
     }
     console.log(this.request)
     this.userService.editUsers(this.responseData._id, this.request).subscribe(

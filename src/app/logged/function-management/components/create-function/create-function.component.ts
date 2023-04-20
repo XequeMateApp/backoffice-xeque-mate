@@ -29,6 +29,7 @@ export class CreateFunctionComponent implements OnInit {
   alertFieldsStatus = false;
   alertFieldsFunctions = false;
   formValues: string[] = [];
+  
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,

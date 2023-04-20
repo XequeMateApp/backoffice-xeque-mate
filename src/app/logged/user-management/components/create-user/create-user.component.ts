@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { RoleResponseDto } from 'src/app/dto/logged/role-response.dto';
 import { UserRegisterRequestDto } from 'src/app/dto/logged/user.register-request.dto';
+import { RoleService } from 'src/services/role.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -14,19 +16,27 @@ export class CreateUserComponent implements OnInit {
   @ViewChild('createname') createname: ElementRef;
   @ViewChild('createemail') createemail: ElementRef;
   @ViewChild('createstatus') createstatus: ElementRef;
-  @ViewChild('createfilter') createfilter: ElementRef;
+  @ViewChild('createroleFake') createroleFake: ElementRef;
+
 
   form: FormGroup;
+  response: RoleResponseDto[] = [];
+  formValues: string[] = [];
   request: UserRegisterRequestDto;
   productsData: any;
   editNotStatus: string;
   alertFieldsName = false;
   alertFieldsEmail = false;
   alertFieldsStatus = false;
-  alertFieldsFilter = false;
+  alertFieldsroleFake = false;
   truephone: string;
+  rolesId: string[] = [];
+  checked = false;
+  arrayRole: string[];
+
   constructor(
     private modalService: NgbModal,
+    private roleService: RoleService,
     private toastrService: ToastrService,
     private userService: UserService,
     private formBuilder: FormBuilder,
@@ -36,12 +46,34 @@ export class CreateUserComponent implements OnInit {
       email: [''],
       status: [''],
       phone: [''],
-      filter: [''],
+      roleFake: ['']
     })
   }
   ngOnInit(): void {
-    this.productsData = JSON.parse(localStorage.getItem('productsData'));
+    this.getRoles();
   }
+
+  rolePermition(value: string): void {
+    if (value && this.rolesId.indexOf(value) === -1) {
+      this.rolesId.push(value);
+    }
+    this.arrayRole = ([] as string[]).concat(...this.rolesId);
+    console.log(this.arrayRole);
+    this.form.controls['roleFake'].setValue('fake')
+  }
+
+
+  getRoles() {
+    this.roleService.getRole().subscribe({
+      next: success => {
+        this.response = success;
+      },
+      error: error => { console.error(error, 'data not collected'); }
+    });
+  }
+
+
+
 
   exit() {
     this.userService.modalRegisterForm = null;
@@ -55,7 +87,7 @@ export class CreateUserComponent implements OnInit {
       setInterval(() => {
         this.createname.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsName = false;
-      }, 5000);
+      }, 2000);
     }
     else if (this.form.controls['email'].value === '') {
       this.createemail.nativeElement.classList.add("border-danger", "border", "text-danger");
@@ -63,7 +95,7 @@ export class CreateUserComponent implements OnInit {
       setInterval(() => {
         this.createemail.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsEmail = false;
-      }, 5000);
+      }, 2000);
     }
     else if (this.form.controls['status'].value === '') {
       this.createstatus.nativeElement.classList.add("border-danger", "border", "text-danger");
@@ -71,15 +103,15 @@ export class CreateUserComponent implements OnInit {
       setInterval(() => {
         this.createstatus.nativeElement.classList.remove("border-danger", "border", "text-danger");
         this.alertFieldsStatus = false;
-      }, 5000);
+      }, 2000);
     }
-    else if (this.form.controls['filter'].value === '') {
-      this.createfilter.nativeElement.classList.add("border-danger", "border", "text-danger");
-      this.alertFieldsFilter = true;
+    else if (this.form.controls['roleFake'].value === '') {
+      this.createroleFake.nativeElement.classList.add("border-danger", "border", "text-danger");
+      this.alertFieldsroleFake = true;
       setInterval(() => {
-        this.createfilter.nativeElement.classList.remove("border-danger", "border", "text-danger");
-        this.alertFieldsFilter = false;
-      }, 5000);
+        this.createroleFake.nativeElement.classList.remove("border-danger", "border", "text-danger");
+        this.alertFieldsroleFake = false;
+      }, 2000);
     }
   }
 
@@ -89,15 +121,15 @@ export class CreateUserComponent implements OnInit {
       this.form.controls['name'].value !== '' &&
       this.form.controls['email'].value !== '' &&
       this.form.controls['status'].value !== '' &&
-      this.form.controls['filter'].value !== ''
+      this.form.controls['roleFake'].value !== ''
     ) {
-      if(this.form.controls['phone'].value !== '') this.truephone = `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`; else this.truephone = '';
+      if (this.form.controls['phone'].value !== '') this.truephone = `+55${this.form.controls['phone'].value.replace(/\D/g, '')}`; else this.truephone = '';
       this.request = {
-        phone:  this.truephone,
+        phone: this.truephone,
         email: this.form.controls['email'].value,
         name: this.form.controls['name'].value,
         status: this.form.controls['status'].value,
-        filter: this.form.controls['filter'].value,
+        roles: this.rolesId,
         password: 'string',
       }
       console.log(this.request)

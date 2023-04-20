@@ -3,5 +3,5 @@ export abstract class UserPutRequestDto {
   name: string;
   phone: string;
   status: string;
-  filter: string;
+  roles: string[];
 }

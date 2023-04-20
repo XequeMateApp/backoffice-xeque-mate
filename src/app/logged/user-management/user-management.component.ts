@@ -46,35 +46,24 @@ export class UserManagementComponent implements OnInit {
     this.userService.getUsers().subscribe({
       next: response => {
         this.response = response;
-        this.responseFilter = response.map(response => {
-          this.translateFilter(response);
-          return response;
-        });
-        const uniqueFilterDict = response.reduce<{ [filter: string]: boolean }>(
-          (uniqueFilter, { filter }) => {
-            uniqueFilter[filter] = true;
-            return uniqueFilter;
-          },
-          {}
-        );
-        this.uniqueFilter = Object.keys(uniqueFilterDict);
-        console.log(this.uniqueFilter);
-        console.log(this.response);
+        // this.responseFilter = response.map(response => {
+        //   this.translateFilter(response);
+        //   return response;
+        // });
+        // const uniqueFilterDict = response.reduce<{ [filter: string]: boolean }>(
+        //   (uniqueFilter, { filter }) => {
+        //     uniqueFilter[filter] = true;
+        //     return uniqueFilter;
+        //   },
+        //   {}
+        // );
+        // this.uniqueFilter = Object.keys(uniqueFilterDict);
+        // console.log(this.uniqueFilter);
+        // console.log(this.response);
       },
       error: error => { console.error(error, 'data not collected') }
     })
   }
-
-
-  translateFilter(response: UserGetResponseDto) {
-    if (response.filter === 'ADMINISTRATOR') response.filter = 'Administrador';
-    else if (response.filter === 'PRODUCTS') response.filter = 'Produto';
-    else if (response.filter === 'KYC') response.filter = 'Kyc';
-    else if (response.filter === 'CUSTOMERS') response.filter = 'Cliente';
-    else if (response.filter === 'ACCESCONTROL') response.filter = 'Controle de acesso';
-    else if (response.filter === 'NOTIFICATIONS') response.filter = 'Notificações';
-  }
-
 
   backHome() {
     this.router.navigate(['/logged/dashboard']);

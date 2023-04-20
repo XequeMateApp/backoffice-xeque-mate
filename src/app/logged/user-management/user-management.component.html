@@ -77,9 +77,9 @@
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                       <tr *ngFor="let item of response | filter: filterTerm  | paginate: config; let i= index">
-                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item?.name}}</h5></td>
-                        <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item?.email}}</h5></td>
-                        <td style="width: 340px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 215px;">{{item?.filter || '...'}}</h5></td>
+                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 300px;">{{item?.name || '...'}}</h5></td>
+                        <td style="width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 200px;">{{item?.email || '...'}}</h5></td>
+                        <td style="width: 340px;"><h5 class="mb-0 py-3  d-inline-block text-truncate" style="max-width: 215px;">{{item?.roles || '...'}}</h5></td>
                         <td>
                             <h5 class="mb-0 py-3  text-start text-success" *ngIf="item?.status === 'active'">Ativo</h5>
                         <h5 class="mb-0 py-3 text-start text-danger" *ngIf="item?.status === 'inactive'">Inativo</h5>
