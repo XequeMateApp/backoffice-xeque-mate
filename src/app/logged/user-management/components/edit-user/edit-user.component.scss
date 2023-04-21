@@ -1,0 +1,33 @@
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--darkblue) !important;
+  border-radius: 10px;
+}
+
+
+input[type=checkbox] {
+  cursor: pointer;
+  width: 21px;
+  height: 21px;
+  border: 1px solid var(--darkblue);
+  appearance: none;
+}
+
+input[type=checkbox]:checked::before {
+  content: "\2714";
+  display: block;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  font-weight: 900;
+  transform: translate(-50%, -50%);
+  color: #0F214F;
+  font-size: 15px;
+}

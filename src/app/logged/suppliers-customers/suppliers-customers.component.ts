@@ -10,6 +10,7 @@ import { CloseSupplierCustomersComponent } from './components/close-supplier-cus
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { UserService } from 'src/services/user.service';
 import { SupplierCustomersResponsetDto } from 'src/app/dto/logged/supplier-costumers-response.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 @Component({
   selector: 'app-suppliers-customers',
   templateUrl: './suppliers-customers.component.html',
@@ -44,7 +45,10 @@ export class SuppliersCustomersComponent implements OnInit {
         this.response = success;
         console.log(this.response)
       },
-      error => { console.error(error, 'data not collected') }
+      error => {
+         this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected')
+      }
     )
   }
 

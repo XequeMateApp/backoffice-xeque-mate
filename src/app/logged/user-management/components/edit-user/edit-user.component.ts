@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { RoleResponseDto } from 'src/app/dto/logged/role-response.dto';
 import { UserPutRequestDto } from 'src/app/dto/logged/user-put-request.dto';
+import { RoleService } from 'src/services/role.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -16,12 +18,16 @@ export class EditUserComponent implements OnInit {
   editStatus: string;
   filtername = 'filter'
   request: UserPutRequestDto;
+  response: RoleResponseDto[] = [];
   checked: string;
   truephone: any;
   editphone: string;
+  rolesId: any;
+  arrayRole: string[];
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
+    private roleService: RoleService,
     private userService: UserService,
     private toastrService: ToastrService,
   ) {
@@ -31,7 +37,7 @@ export class EditUserComponent implements OnInit {
       email: ['', [Validators.required]],
       status: ['', [Validators.required]],
       phone: [''],
-      filter: ['', [Validators.required]],
+      roles: [''],
     });
 
   }
@@ -40,22 +46,38 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.editStatus = this.responseData.status;
-    if (this.responseData.filter === 'Administrador') this.responseData.filter = 'ADMINISTRATOR';
-    else if (this.responseData.filter === 'Produto') this.responseData.filter = 'PRODUCTS';
-    else if (this.responseData.filter === 'Kyc') this.responseData.filter = 'KYC';
-    else if (this.responseData.filter === 'Cliente') this.responseData.filter = 'CUSTOMERS';
-    else if (this.responseData.filter === 'Controle de acesso') this.responseData.filter = 'ACCESCONTROL';
-    else if (this.responseData.filter === 'Notificações') this.responseData.filter = 'NOTIFICATIONS';
-    this.form.controls['name'].setValue(this.responseData.name)
     this.form.controls['email'].setValue(this.responseData.email)
     this.form.controls['status'].setValue(this.responseData.status)
-    this.editphone = this.responseData.phone
+      this.editphone = this.responseData.phone;
     if (this.editphone.length > 3) this.editphone = this.editphone.slice(3);
     this.form.controls['phone'].setValue(this.editphone)
-    this.checked = this.responseData.filter;
-    this.form.patchValue({ filter: this.responseData.filter });
-    console.log(this.checked)
+    this.getRoles();
+    // this.form.controls['roles'][0].setValue(true)
   }
+
+
+  getRoles() {
+    this.roleService.getRole().subscribe({
+      next: success => {
+        this.response = success;
+        console.log(this.response);
+      },
+      error: error => { console.error(error, 'data not collected'); }
+    });
+  }
+
+
+
+
+  rolePermition(value: string): void {
+    if (value && this.rolesId.indexOf(value) === -1) {
+      this.rolesId.push(value);
+    }
+    this.arrayRole = ([] as string[]).concat(...this.rolesId);
+    console.log(this.arrayRole);
+    this.form.controls['roleFake'].setValue('fake')
+  }
+
 
   confirm() {
     console.log(this.form.controls['phone'].value, ' tipo ofi')

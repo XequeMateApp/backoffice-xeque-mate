@@ -8,6 +8,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { UserGetResponseDto } from 'src/app/dto/logged/user-get-response.dto';
 import { UserService } from 'src/services/user.service';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 
 @Component({
@@ -61,7 +62,9 @@ export class UserManagementComponent implements OnInit {
         // console.log(this.uniqueFilter);
         // console.log(this.response);
       },
-      error: error => { console.error(error, 'data not collected') }
+      error: error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     })
   }
 

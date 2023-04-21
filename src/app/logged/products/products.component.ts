@@ -11,6 +11,7 @@ import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register
 import { ProductService } from 'src/services/products.service';
 import { CategoryService } from 'src/services/category.service';
 import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 @Component({
   selector: 'app-products',
@@ -61,7 +62,9 @@ export class ProductsComponent implements OnInit {
         this.response = success.products;
         console.log(this.response)
       },
-      error: error => { console.error(error, 'data not collected') }
+      error: error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     })
   }
 

@@ -6,6 +6,7 @@ import { ValidateSupplierComponent } from './components/validate-supplier/valida
 import { SupplierRegisterResponseDto } from 'src/app/dto/logged/supplier-register-response.dto';
 import { UserService } from 'src/services/user.service';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 @Component({
   selector: 'app-supplier',
@@ -37,7 +38,9 @@ export class SupplierComponent implements OnInit {
       success => {
         this.response = success;
       },
-      error => { console.error(error, 'data not collected') }
+      error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     )
   }
 
