@@ -60,14 +60,23 @@ export class EditUserComponent implements OnInit {
         this.response = success;
       },
       error: error => { console.error(error, 'data not collected'); }
-
     });
   }
+
+
   updateCheckboxValues(itemId: string): void {
-    if (this.checkboxValues.includes(itemId)) this.checkboxValues = this.checkboxValues.filter(id => id !== itemId);
-    else this.checkboxValues.push(itemId);
-    console.log(this.checkboxValues);
-  }
+    const index = this.checkboxValues.indexOf(itemId);
+    const checado = index !== -1;
+    if (checado) {
+        this.checkboxValues.splice(index, 1);
+    } else {
+        this.checkboxValues.push(itemId);
+    }
+    if (this.responseData?.roles.includes(itemId) && !checado) {
+        this.responseData.roles = this.responseData.roles.filter(id => id !== itemId);
+    }
+    console.log(this.responseData.roles, this.checkboxValues);
+}
 
 
   confirm() {

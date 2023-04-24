@@ -31,7 +31,7 @@
               <div class="row overflow-y-scroll" style="max-height: 300px;">
                 <div *ngFor="let item of response; let i = index" class="col-md-4 my-2">
                     <div role="button" class="d-flex">
-                      <input role="button"  (change)="updateCheckboxValues(item._id)" [checked]="responseData?.roles.includes(item._id)" #permitionRole type="checkbox"
+                      <input role="button" (change)="updateCheckboxValues(item._id)" [checked]="responseData?.roles.includes(item._id)" #permitionRole type="checkbox"
                       class="outline-none check br-darkblue rounded bg-transparent position-relative">
                         <label class="form-check-label px-2">
                             {{item?.name}}
