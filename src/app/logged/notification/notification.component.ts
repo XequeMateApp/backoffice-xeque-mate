@@ -19,7 +19,7 @@ import { Page404Component } from 'src/app/shared/page404/page404.component';
 export class NotificationComponent implements OnInit {
 
   response: NotificationResponsetDto[];
-
+  responseData: any;
   @Input('data') meals: string[] = [];
   public config: PaginationInstance = {
     id: 'custom',
@@ -64,11 +64,11 @@ export class NotificationComponent implements OnInit {
   }
 
   openModals(tabName: string, info: string[]) {
-    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'edit') {
       const modal = this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
       }, err => {
+        console.log('fechou')
         this.getNotifications();
       })
 
@@ -79,8 +79,9 @@ export class NotificationComponent implements OnInit {
         this.getNotifications();
       })
     }
+    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
   }
-  
+
   sortListByAlphabeticalOrder(): void {
     this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);
