@@ -82,17 +82,17 @@ export class EditUserComponent implements OnInit {
       roles: this.responseData.roles.concat(this.checkboxValues),
     }
     console.log(this.request)
-    // this.userService.editUsers(this.responseData._id, this.request).subscribe(
-    //   success => {
+    this.userService.editUsers(this.responseData._id, this.request).subscribe(
+      success => {
 
-    //     this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
-    //     this.modalService.dismissAll();
-    //   },
-    //   error => {
-    //     console.log(error)
-    //     this.toastrService.error('Erro ao editar!', '', { progressBar: true });
-    //   }
-    // )
+        this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
+        this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao editar!', '', { progressBar: true });
+      }
+    )
   }
 
 

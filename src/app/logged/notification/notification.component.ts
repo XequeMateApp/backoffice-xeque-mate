@@ -80,6 +80,7 @@ export class NotificationComponent implements OnInit {
       })
     }
   }
+  
   sortListByAlphabeticalOrder(): void {
     this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);
