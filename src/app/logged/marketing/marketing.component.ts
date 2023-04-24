@@ -45,7 +45,7 @@ export class MarketingComponent implements OnInit {
       },
       error => {
         this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
-        
+
         console.error(error, 'data not collected') }
     );
   }
