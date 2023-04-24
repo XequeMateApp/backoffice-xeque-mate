@@ -47,20 +47,8 @@ export class UserManagementComponent implements OnInit {
     this.userService.getUsers().subscribe({
       next: response => {
         this.response = response;
-        // this.responseFilter = response.map(response => {
-        //   this.translateFilter(response);
-        //   return response;
-        // });
-        // const uniqueFilterDict = response.reduce<{ [filter: string]: boolean }>(
-        //   (uniqueFilter, { filter }) => {
-        //     uniqueFilter[filter] = true;
-        //     return uniqueFilter;
-        //   },
-        //   {}
-        // );
-        // this.uniqueFilter = Object.keys(uniqueFilterDict);
-        // console.log(this.uniqueFilter);
-        // console.log(this.response);
+        console.log(this.response)
+
       },
       error: error => {
         this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
@@ -94,8 +82,6 @@ export class UserManagementComponent implements OnInit {
     }, err => {
       this.getUsers();
     })
-    this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
-
   }
   openModals(tabName: string, info: string[]) {
     LocalStorageUtil.set(LocalStorageKeys.responseData, info)

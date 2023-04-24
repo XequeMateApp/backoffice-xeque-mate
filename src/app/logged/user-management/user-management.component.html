@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length >= 0">
+        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response? response.length >= 0 : false">
             <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
                 <div class="custom-pagination">
                     <div class="pagination-previous" [class.disabled]="p.isFirstPage()">

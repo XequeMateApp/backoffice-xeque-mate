@@ -14,16 +14,16 @@ import { UserService } from 'src/services/user.service';
 })
 export class EditUserComponent implements OnInit {
   form: FormGroup;
-  responseData: any;
-  editStatus: string;
-  filtername = 'filter'
   request: UserPutRequestDto;
   response: RoleResponseDto[] = [];
-  checked: string;
-  truephone: any;
+  checkboxValues: string[] = [];
   editphone: string;
-  rolesId: any;
-  arrayRole: string[];
+  editStatus: string;
+  filtername = 'filter'
+
+
+  responseData: any;
+  truephone: any;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -37,7 +37,6 @@ export class EditUserComponent implements OnInit {
       email: ['', [Validators.required]],
       status: ['', [Validators.required]],
       phone: [''],
-      roles: [''],
     });
 
   }
@@ -47,35 +46,27 @@ export class EditUserComponent implements OnInit {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.editStatus = this.responseData.status;
     this.form.controls['email'].setValue(this.responseData.email)
+    this.form.controls['name'].setValue(this.responseData.name)
     this.form.controls['status'].setValue(this.responseData.status)
-      this.editphone = this.responseData.phone;
+    this.editphone = this.responseData.phone;
     if (this.editphone.length > 3) this.editphone = this.editphone.slice(3);
     this.form.controls['phone'].setValue(this.editphone)
     this.getRoles();
-    // this.form.controls['roles'][0].setValue(true)
   }
-
 
   getRoles() {
     this.roleService.getRole().subscribe({
       next: success => {
         this.response = success;
-        console.log(this.response);
       },
       error: error => { console.error(error, 'data not collected'); }
+
     });
   }
-
-
-
-
-  rolePermition(value: string): void {
-    if (value && this.rolesId.indexOf(value) === -1) {
-      this.rolesId.push(value);
-    }
-    this.arrayRole = ([] as string[]).concat(...this.rolesId);
-    console.log(this.arrayRole);
-    this.form.controls['roleFake'].setValue('fake')
+  updateCheckboxValues(itemId: string): void {
+    if (this.checkboxValues.includes(itemId)) this.checkboxValues = this.checkboxValues.filter(id => id !== itemId);
+    else this.checkboxValues.push(itemId);
+    console.log(this.checkboxValues);
   }
 
 
@@ -88,7 +79,7 @@ export class EditUserComponent implements OnInit {
       email: this.form.controls['email'].value,
       name: this.form.controls['name'].value,
       status: this.form.controls['status'].value,
-      roles: this.form.controls['filter'].value,
+      roles: this.responseData.roles.concat(this.checkboxValues),
     }
     console.log(this.request)
     this.userService.editUsers(this.responseData._id, this.request).subscribe(

@@ -99,9 +99,8 @@
         </div>
       </div>
     </div>
-
     <div class="col-12 mt-3 d-flex justify-content-end"
-      *ngIf="response.length>= 3">
+      *ngIf="response.length < 3">
       <pagination-template #p="paginationApi" [id]="config.id"
         (pageChange)="config.currentPage= $event">
         <div class="custom-pagination">

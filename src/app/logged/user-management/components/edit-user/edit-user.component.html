@@ -9,12 +9,12 @@
               <label for="edit-name">Nome</label>
               <input type="text" id="edit-name" class="form-control br-16  bordder py-3" placeholder="Digite o nome" formControlName="name" />
           </div>
-          <div class="col-md-4"> 
+          <div class="col-md-4">
               <label for="edit-status">Status</label>
               <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
                   <option [disabled]="true" [selected]="true">Selecione</option>
-                  <option [selected]="editStatus === 'active'" value="Active" value="active">🟢 Ativo</option>
-                  <option [selected]="editStatus === 'inactive'" value="Inactive" value="inactive">🔴 Inativo</option>
+                  <option [selected]="editStatus === 'active'"  value="active">🟢 Ativo</option>
+                  <option [selected]="editStatus === 'inactive'"  value="inactive">🔴 Inativo</option>
               </select>
           </div>
           <div class="col-md-6 mt-3">
@@ -26,15 +26,15 @@
             <input type="tel" id="edit-tel" mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite o telefone" formControlName="phone" />
         </div>
           <div class="col-12 mt-4 mb-2">
-            <label class="" for="edit-content">Filtro</label>
+            <label class="" for="edit-content">Permições</label>
             <div #createroleFake  class="col-md-12 br-16">
               <div class="row overflow-y-scroll" style="max-height: 300px;">
-                <div *ngFor="let item of response" class="col-md-4 my-2">
+                <div *ngFor="let item of response; let i = index" class="col-md-4 my-2">
                     <div role="button" class="d-flex">
-                      <input role="button" formControlName="roles" #permitionRole type="checkbox"
+                      <input role="button"  (change)="updateCheckboxValues(item._id)" [checked]="responseData?.roles.includes(item._id)" #permitionRole type="checkbox"
                       class="outline-none check br-darkblue rounded bg-transparent position-relative">
                         <label class="form-check-label px-2">
-                            {{item.name}}
+                            {{item?.name}}
                         </label>
                     </div>
                 </div>
