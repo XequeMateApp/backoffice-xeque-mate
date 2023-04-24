@@ -39,7 +39,7 @@ export class CreateFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       administrator: [''],
-      user: [''],
+      user: ['usuario'],
       products: [''],
       kyc: [''],
       customers: [''],
@@ -84,7 +84,6 @@ export class CreateFunctionComponent implements OnInit {
       this.form.controls['accesscontrol'].value === '' &&
       this.form.controls['marketing'].value === '' &&
       this.form.controls['category'].value === '' &&
-      this.form.controls['user'].value === '' &&
       this.form.controls['notifications'].value === ''
     ) {
       this.createfunction.nativeElement.classList.add("border-danger", "border", "text-danger");
@@ -108,7 +107,6 @@ export class CreateFunctionComponent implements OnInit {
       if (this.form.controls['notifications'].value !== '') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue('')
       if (this.form.controls['marketing'].value !== '') this.form.controls['marketing'].setValue('marketing'); else this.form.controls['marketing'].setValue('')
       if (this.form.controls['category'].value !== '') this.form.controls['category'].setValue('category'); else this.form.controls['category'].setValue('')
-      if (this.form.controls['user'].value !== '') this.form.controls['user'].setValue('user'); else this.form.controls['user'].setValue('')
     }
       for (const controlName of Object.keys(this.form.controls)) {
         if (controlName !== 'name' && controlName !== 'status') {

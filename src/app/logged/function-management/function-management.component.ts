@@ -58,8 +58,12 @@ export class FunctionManagementComponent implements OnInit {
 
 
   getrolesResolve(values: string[]): string[] {
-    return values.map(role => this.rolesResolveMap[role] || 'desconhecida');
+    const removeUsuario = values.includes('usuario');
+    const filterUsuario = removeUsuario ? values.filter(value => value !== 'usuario') : values;
+    const valorRoles = filterUsuario.map(role => this.rolesResolveMap[role] || 'desconhecida');
+    return valorRoles;
   }
+
 
 
   getRoles() {
