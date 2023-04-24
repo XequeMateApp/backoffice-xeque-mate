@@ -8,6 +8,7 @@ import { PaginationInstance } from 'ngx-pagination';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { NotificationService } from 'src/services/notification.service';
 import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 @Component({
   selector: 'app-notification',
@@ -43,7 +44,9 @@ export class NotificationComponent implements OnInit {
         this.response = success;
         console.log(this.response)
       },
-      error: error => { console.error(error, 'data not collected') }
+      error: error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     });
   }
 

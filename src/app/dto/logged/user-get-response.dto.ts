@@ -5,5 +5,5 @@ export class UserGetResponseDto {
   phone?: string;
   password: string;
   status: string;
-  filter?: string;
+  roles?: string[];
 }

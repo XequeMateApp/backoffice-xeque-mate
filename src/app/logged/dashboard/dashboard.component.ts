@@ -76,11 +76,100 @@ export class DashboardComponent implements OnInit {
     }
   };
 
+  // null graphics productRequest
+  public productNull: Partial<ChartOptions> = {
+    series: [
+      {
+        name: "Produtos",
+        data: [ 0,0,0,0,0,0]
+      }
+    ],
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: "straight"
+    },
+    title: {
+
+      align: "left"
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5
+      }
+    },
+    xaxis: {
+      categories: [
+        "Seg",
+        "Ter",
+        "Qua",
+        "Qui",
+        "Sex",
+        "Sab",
+        "Dom",
+      ]
+    }
+  };
+
+
   public newClientsRequest: Partial<ChartOptions> = {
     series: [
       {
         name: "Clientes",
         data: []
+      }
+    ],
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: "straight"
+    },
+    title: {
+
+      align: "left"
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5
+      }
+    },
+    xaxis: {
+      categories: [
+        "Seg",
+        "Ter",
+        "Qua",
+        "Qui",
+        "Sex",
+        "Sab",
+        "Dom",
+      ]
+    }
+  };
+
+  // null graphics newClientsRequest
+  public newClientsNull: Partial<ChartOptions> = {
+    series: [
+      {
+        name: "Clientes",
+        data: [ 0, 0, 0, 0, 0, 0]
       }
     ],
     chart: {

@@ -30,7 +30,7 @@ export class EditFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       administrator: [''],
-      usuario: [''],
+      user: [''],
       products: [''],
       kyc: [''],
       customers: [''],
@@ -63,6 +63,7 @@ export class EditFunctionComponent implements OnInit {
           if (role === 'notifications') this.form.controls['notifications'].setValue('notifications');
           if (role === 'marketing') this.form.controls['marketing'].setValue('marketing');
           if (role === 'category') this.form.controls['category'].setValue('category');
+          if (role === 'user') this.form.controls['user'].setValue('user');
         });
       },
       error: error => { console.error(error, 'data not collected') }
@@ -79,6 +80,7 @@ export class EditFunctionComponent implements OnInit {
     if (this.form.controls['notifications'].value === true || this.form.controls['notifications'].value === 'notifications' ) this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue('');
     if (this.form.controls['marketing'].value === true || this.form.controls['marketing'].value === 'marketing' ) this.form.controls['marketing'].setValue('marketing'); else this.form.controls['marketing'].setValue('');
     if (this.form.controls['category'].value === true || this.form.controls['category'].value === 'category') this.form.controls['category'].setValue('category'); else this.form.controls['category'].setValue('');
+    if (this.form.controls['user'].value === true || this.form.controls['user'].value === 'user') this.form.controls['user'].setValue('user'); else this.form.controls['user'].setValue('');
 
     console.log(this.form.controls['notifications'].value, this.form.controls['administrator'].value )
     const { name, status, ...rest } = this.form.value;

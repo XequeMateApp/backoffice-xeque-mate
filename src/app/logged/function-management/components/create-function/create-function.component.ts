@@ -29,6 +29,7 @@ export class CreateFunctionComponent implements OnInit {
   alertFieldsStatus = false;
   alertFieldsFunctions = false;
   formValues: string[] = [];
+
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -38,7 +39,7 @@ export class CreateFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       administrator: [''],
-      usuario: ['usuario'],
+      user: [''],
       products: [''],
       kyc: [''],
       customers: [''],
@@ -83,6 +84,7 @@ export class CreateFunctionComponent implements OnInit {
       this.form.controls['accesscontrol'].value === '' &&
       this.form.controls['marketing'].value === '' &&
       this.form.controls['category'].value === '' &&
+      this.form.controls['user'].value === '' &&
       this.form.controls['notifications'].value === ''
     ) {
       this.createfunction.nativeElement.classList.add("border-danger", "border", "text-danger");
@@ -106,6 +108,7 @@ export class CreateFunctionComponent implements OnInit {
       if (this.form.controls['notifications'].value !== '') this.form.controls['notifications'].setValue('notifications'); else this.form.controls['notifications'].setValue('')
       if (this.form.controls['marketing'].value !== '') this.form.controls['marketing'].setValue('marketing'); else this.form.controls['marketing'].setValue('')
       if (this.form.controls['category'].value !== '') this.form.controls['category'].setValue('category'); else this.form.controls['category'].setValue('')
+      if (this.form.controls['user'].value !== '') this.form.controls['user'].setValue('user'); else this.form.controls['user'].setValue('')
     }
       for (const controlName of Object.keys(this.form.controls)) {
         if (controlName !== 'name' && controlName !== 'status') {
@@ -121,7 +124,7 @@ export class CreateFunctionComponent implements OnInit {
   }
 
   confirm(): void {
-    this.verifiField();
+    // this.verifiField();
     if (
       this.form.controls['name'].value !== '' &&
       this.form.controls['status'].value !== ''
@@ -135,7 +138,6 @@ export class CreateFunctionComponent implements OnInit {
       console.log(this.request)
       this.roleService.register(this.request).subscribe({
         next: success => {
-
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

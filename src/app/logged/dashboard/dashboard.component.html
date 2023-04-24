@@ -68,6 +68,14 @@
                            [grid]="productRequest.grid"
                            [stroke]="productRequest.stroke"
                            [title]="productRequest.title"></apx-chart>
+                        <apx-chart *ngIf="!showGraphic"
+                           [series]="productNull.series"
+                           [chart]="productNull.chart"
+                           [xaxis]="productNull.xaxis"
+                           [dataLabels]="productNull.dataLabels"
+                           [grid]="productNull.grid"
+                           [stroke]="productNull.stroke"
+                           [title]="productNull.title"></apx-chart>
                      </div>
                   </div>
                </div>
@@ -89,6 +97,14 @@
                            [grid]="newClientsRequest.grid"
                            [stroke]="newClientsRequest.stroke"
                            [title]="newClientsRequest.title"></apx-chart>
+                        <apx-chart *ngIf="!showGraphic2"
+                           [series]="newClientsNull.series"
+                           [chart]="newClientsNull.chart"
+                           [xaxis]="newClientsNull.xaxis"
+                           [dataLabels]="newClientsNull.dataLabels"
+                           [grid]="newClientsNull.grid"
+                           [stroke]="newClientsNull.stroke"
+                           [title]="newClientsNull.title"></apx-chart>
                      </div>
                   </div>
                </div>
