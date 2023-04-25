@@ -8,6 +8,7 @@ import { PaginationInstance } from 'ngx-pagination';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { RoleResponseDto } from 'src/app/dto/logged/role-response.dto';
 import { RoleService } from 'src/services/role.service';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 @Component({
   selector: 'app-function-management',
@@ -56,9 +57,13 @@ export class FunctionManagementComponent implements OnInit {
   }
 
 
-  getColorsForFruit(values: string[]): string[] {
-    return values.map(role => this.rolesResolveMap[role] || 'desconhecida');
+  getrolesResolve(values: string[]): string[] {
+    const removeUsuario = values.includes('usuario');
+    const filterUsuario = removeUsuario ? values.filter(value => value !== 'usuario') : values;
+    const valorRoles = filterUsuario.map(role => this.rolesResolveMap[role] || 'desconhecida');
+    return valorRoles;
   }
+
 
 
   getRoles() {
@@ -67,7 +72,9 @@ export class FunctionManagementComponent implements OnInit {
         this.response = success;
         console.log(this.response)
       },
-      error => { console.error(error, 'data not collected') }
+      error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     )
   }
 

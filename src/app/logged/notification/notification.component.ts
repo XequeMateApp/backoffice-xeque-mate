@@ -8,6 +8,7 @@ import { PaginationInstance } from 'ngx-pagination';
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { NotificationService } from 'src/services/notification.service';
 import { NotificationResponsetDto } from 'src/app/dto/logged/notification-response.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 @Component({
   selector: 'app-notification',
@@ -18,7 +19,7 @@ import { NotificationResponsetDto } from 'src/app/dto/logged/notification-respon
 export class NotificationComponent implements OnInit {
 
   response: NotificationResponsetDto[];
-
+  responseData: any;
   @Input('data') meals: string[] = [];
   public config: PaginationInstance = {
     id: 'custom',
@@ -43,7 +44,9 @@ export class NotificationComponent implements OnInit {
         this.response = success;
         console.log(this.response)
       },
-      error: error => { console.error(error, 'data not collected') }
+      error: error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     });
   }
 
@@ -61,11 +64,11 @@ export class NotificationComponent implements OnInit {
   }
 
   openModals(tabName: string, info: string[]) {
-    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
     if (tabName == 'edit') {
       const modal = this.modalService.open(EditNotificationComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
       }, err => {
+        console.log('fechou')
         this.getNotifications();
       })
 
@@ -76,7 +79,9 @@ export class NotificationComponent implements OnInit {
         this.getNotifications();
       })
     }
+    LocalStorageUtil.set(LocalStorageKeys.responseData, info);
   }
+
   sortListByAlphabeticalOrder(): void {
     this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);

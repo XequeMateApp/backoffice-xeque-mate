@@ -29,6 +29,7 @@ export class CreateFunctionComponent implements OnInit {
   alertFieldsStatus = false;
   alertFieldsFunctions = false;
   formValues: string[] = [];
+
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -38,7 +39,7 @@ export class CreateFunctionComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       administrator: [''],
-      usuario: ['usuario'],
+      user: ['usuario'],
       products: [''],
       kyc: [''],
       customers: [''],
@@ -121,7 +122,7 @@ export class CreateFunctionComponent implements OnInit {
   }
 
   confirm(): void {
-    this.verifiField();
+    // this.verifiField();
     if (
       this.form.controls['name'].value !== '' &&
       this.form.controls['status'].value !== ''
@@ -135,7 +136,6 @@ export class CreateFunctionComponent implements OnInit {
       console.log(this.request)
       this.roleService.register(this.request).subscribe({
         next: success => {
-
           this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
         },

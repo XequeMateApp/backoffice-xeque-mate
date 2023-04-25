@@ -8,6 +8,7 @@ import { EditAdComponent } from './components/edit-ad/edit-ad.component';
 import { DeleteAdComponent } from './components/delete-ad/delete-ad.component';
 import { MarketingService } from 'src/services/marketing.service';
 import { MarketingResponseDto } from 'src/app/dto/logged/marketing-response.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 @Component({
   selector: 'app-marketing',
@@ -42,7 +43,10 @@ export class MarketingComponent implements OnInit {
         this.response = success;
         console.log(this.response)
       },
-      error => { console.error(error, 'data not collected') }
+      error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+
+        console.error(error, 'data not collected') }
     );
   }
 

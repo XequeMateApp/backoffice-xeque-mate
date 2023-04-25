@@ -8,6 +8,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { UserGetResponseDto } from 'src/app/dto/logged/user-get-response.dto';
 import { UserService } from 'src/services/user.service';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 
 @Component({
@@ -32,8 +33,9 @@ export class UserManagementComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private modalService: NgbModal,
-  ) {
-  }
+  ) { }
+
+
   ngAfterViewInit(): void {
     this.getUsers();
   }
@@ -41,37 +43,19 @@ export class UserManagementComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   getUsers() {
     this.userService.getUsers().subscribe({
       next: response => {
         this.response = response;
-        this.responseFilter = response.map(response => {
-          this.translateFilter(response);
-          return response;
-        });
-        const uniqueFilterDict = response.reduce<{ [filter: string]: boolean }>(
-          (uniqueFilter, { filter }) => {
-            uniqueFilter[filter] = true;
-            return uniqueFilter;
-          },
-          {}
-        );
-        this.uniqueFilter = Object.keys(uniqueFilterDict);
-        console.log(this.uniqueFilter);
-        console.log(this.response);
+        console.log(this.response)
+
       },
-      error: error => { console.error(error, 'data not collected') }
+      error: error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     })
   }
-  translateFilter(response: UserGetResponseDto) {
-    if (response.filter === 'ADMINISTRATOR') response.filter = 'Administrador';
-    else if (response.filter === 'PRODUCTS') response.filter = 'Produto';
-    else if (response.filter === 'KYC') response.filter = 'Kyc';
-    else if (response.filter === 'CUSTOMERS') response.filter = 'Cliente';
-    else if (response.filter === 'ACCESCONTROL') response.filter = 'Controle de acesso';
-    else if (response.filter === 'NOTIFICATIONS') response.filter = 'Notificações';
-  }
+
   backHome() {
     this.router.navigate(['/logged/dashboard']);
   }
@@ -98,11 +82,8 @@ export class UserManagementComponent implements OnInit {
     }, err => {
       this.getUsers();
     })
-    this.modalService.open(CreateUserComponent, { centered: true, backdrop: 'static', keyboard: false })
-
   }
   openModals(tabName: string, info: string[]) {
-    // enviando dados pro localhost
     LocalStorageUtil.set(LocalStorageKeys.responseData, info)
     if (tabName === 'Edit') {
       const modal = this.modalService.open(EditUserComponent, { centered: true, backdrop: 'static', keyboard: false })

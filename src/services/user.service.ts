@@ -7,7 +7,6 @@ import { UserUpdatePassword } from 'src/app/dto/user/user-update-password.dto';
 import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
 import { UserRegisterRequestDto } from 'src/app/dto/logged/user.register-request.dto';
-import { UserRegisterResponseDto } from 'src/app/dto/logged/user-register-response.dto';
 import { UserGetResponseDto } from 'src/app/dto/logged/user-get-response.dto';
 import { UserPutRequestDto } from 'src/app/dto/logged/user-put-request.dto';
 import { UserDeleteRequestDto } from 'src/app/dto/logged/user-delete-request.dto';
@@ -68,7 +67,7 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  register(dto: UserRegisterRequestDto): Observable<UserRegisterResponseDto> {
+  register(dto: UserRegisterRequestDto): Observable<UserGetResponseDto> {
     return this.httpClient
       .post(`${this.url}/register`, dto, this.anonymousHeader)
       .pipe(
@@ -77,7 +76,7 @@ export class UserService extends BaseService {
       );
   }
 
-  editUsers(userID: string, dto: UserPutRequestDto): Observable<UserRegisterResponseDto> {
+  editUsers(userID: string, dto: UserPutRequestDto): Observable<UserGetResponseDto> {
     return this.httpClient
       .put(`${this.url}/update/id/${userID}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));

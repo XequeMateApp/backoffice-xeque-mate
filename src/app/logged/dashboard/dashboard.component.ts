@@ -76,11 +76,100 @@ export class DashboardComponent implements OnInit {
     }
   };
 
+  // null graphics productRequest
+  public productNull: Partial<ChartOptions> = {
+    series: [
+      {
+        name: "Produtos",
+        data: [ 0,0,0,0,0,0]
+      }
+    ],
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: "straight"
+    },
+    title: {
+
+      align: "left"
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5
+      }
+    },
+    xaxis: {
+      categories: [
+        "Seg",
+        "Ter",
+        "Qua",
+        "Qui",
+        "Sex",
+        "Sab",
+        "Dom",
+      ]
+    }
+  };
+
+
   public newClientsRequest: Partial<ChartOptions> = {
     series: [
       {
         name: "Clientes",
         data: []
+      }
+    ],
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: "straight"
+    },
+    title: {
+
+      align: "left"
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5
+      }
+    },
+    xaxis: {
+      categories: [
+        "Seg",
+        "Ter",
+        "Qua",
+        "Qui",
+        "Sex",
+        "Sab",
+        "Dom",
+      ]
+    }
+  };
+
+  // null graphics newClientsRequest
+  public newClientsNull: Partial<ChartOptions> = {
+    series: [
+      {
+        name: "Clientes",
+        data: [ 0, 0, 0, 0, 0, 0]
       }
     ],
     chart: {
@@ -167,7 +256,7 @@ export class DashboardComponent implements OnInit {
         this.totalProductsFiltered = success.count.toString();
         console.log('produtos filtrados', success);
       },
-      error => { console.error(error, 'Erro ao recuperar dados') }
+      error => { console.log('Erro ao recuperar dados') }
     )
   }
 
@@ -205,7 +294,7 @@ export class DashboardComponent implements OnInit {
         // console.log('Produtos Cadastrados', success.count);
         this.showGraphic = true;
       },
-      error: error => { console.error(error, 'Erro ao recuperar dados') }
+      error: error => { console.log( 'Erro ao recuperar dados') }
     })
   }
 
@@ -243,7 +332,7 @@ export class DashboardComponent implements OnInit {
         // console.log('Produtos Cadastrados', success.count);
         this.showGraphic = true;
       },
-      error: error => { console.error(error, 'Erro ao recuperar dados') }
+      error: error => { console.log('Erro ao recuperar dados') }
     })
   }
 
@@ -281,7 +370,7 @@ export class DashboardComponent implements OnInit {
         // console.log('Produtos Cadastrados', success.count);
         this.showGraphic = true;
       },
-      error: error => { console.error(error, 'Erro ao recuperar dados') }
+      error: error => { console.log('Erro ao recuperar dados') }
     })
   }
 
@@ -320,7 +409,7 @@ export class DashboardComponent implements OnInit {
         this.totalClients = success.length.toString();
         // console.log('Total de clientes', success.count, success.length);
       },
-      error => { console.error(error, 'Erro ao recuperar dados') }
+      error => { console.log( 'Erro ao recuperar dados') }
     )
   }
 
