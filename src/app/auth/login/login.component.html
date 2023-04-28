@@ -6,19 +6,20 @@
             </div>
             <div class="pt-4">
                 <h3 class="text-start"><b>Entrar</b></h3>
-                <p class="text-start">Seja bem-vindo ao XEQUE-MATE! Para acessar seu perfil, por favor, faça o login.</p>
+                <p class="text-start">Seja bem-vindo ao XEQUE-MATE! Para acessar seu perfil, por favor, faça o login.
+                </p>
             </div>
             <form [formGroup]="form">
                 <div class="col-sm-12 col-md-12 form-group my-1 mx-auto">
                     <div class="d-sm-flex flex-column form-group col-sm-12 col-dm-7 my-1">
                         <label class="w-100 mb-0 small text-start">E-mail</label>
-                        <input type="email" class="input-icon-right btn br-16 py-3 border text-start w-100" formControlName="email"
-                            placeholder="e-mail">
+                        <input type="email" class="input-icon-right btn br-16 py-3 border text-start w-100"
+                            formControlName="email" placeholder="e-mail">
                     </div>
                     <div class="d-sm-flex flex-column form-group col-sm-12 col-dm-7 my-3">
                         <label class="w-100 mb-0 small text-start">Senha</label>
-                        <input type="password" class="input-icon-key-right br-16 py-3 text-start border btn w-100" formControlName="password"
-                            placeholder="Senha" formControlName="password" required>
+                        <input type="password" class="input-icon-key-right br-16 py-3 text-start border btn w-100"
+                            formControlName="password" placeholder="Senha" formControlName="password" required>
                     </div>
                     <div class="text-end">
                         <a class="text-end cursor-pointer" (click)="handlePasswordRecovery();">Esqueci a senha</a>
@@ -28,14 +29,20 @@
                 <div class="form-group col-sm-12 mb-2 pt-3 mx-auto">
                     <div class="row px-0 mx-0">
                         <div class="col-12 px-0 mt-2" role="group" aria-label="Vertical button group">
-                            <button (click)="confirm();" type="button" class="btn bg-dark-blue br-16 text-light btn-lg my-1 w-100">
+                            <button (click)="confirm();" type="button"
+                                class="btn bg-dark-blue br-16 text-light btn-lg my-1 w-100">
                                 <h5 class="mb-0 py-2">Entrar</h5>
                             </button>
                         </div>
                         <div class="col-12 px-0 mt-2" role="group" aria-label="Vertical button group">
-                            <button (click)="handleFirstAccess();" type="button" class="btn py-2 btn-lg my-1 text-dark-blue w-100 br-16" style="border: 1px solid var(--darkblue);"><h5 class="mb-0 py-2">Primeiro acesso</h5></button>
+                            <button (click)="handleFirstAccess();" type="button"
+                                class="btn py-2 btn-lg my-1 text-dark-blue w-100 br-16"
+                                style="border: 1px solid var(--darkblue);">
+                                <h5 class="mb-0 py-2">Primeiro acesso</h5>
+                            </button>
                         </div>
                     </div>
+                </div>
             </form>
         </section>
     </div>
