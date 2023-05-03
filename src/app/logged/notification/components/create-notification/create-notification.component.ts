@@ -31,6 +31,7 @@ export class CreateNotificationComponent implements OnInit {
   alertFieldContent = false;
   alertFieldFilter = false;
   alertFieldSpecification = false;
+  date: Date;
 
 
   constructor(
@@ -44,7 +45,7 @@ export class CreateNotificationComponent implements OnInit {
       status: [''],
       textarea: [''],
       repetition: [''],
-      dateStart: [''],
+      dateStart: [new Date()],
       time: [''],
       filter: [''],
     })
@@ -110,6 +111,15 @@ export class CreateNotificationComponent implements OnInit {
         this.alertFieldFilter = false;
       }, 3000);
     }
+
+    const { dateStart, time } = this.form.value;
+    const timeParts = time.split(':');
+     this.date = new Date(dateStart);
+    if ( this.date instanceof Date && !isNaN(Number( this.date))) {
+      this.date.setHours(parseInt(timeParts[0], 10));
+      this.date.setMinutes(parseInt(timeParts[1], 10));
+      console.log( this.date);
+    }
   }
 
 
@@ -120,8 +130,8 @@ export class CreateNotificationComponent implements OnInit {
       status: this.form.controls['status'].value,
       content: this.form.controls['textarea'].value,
       repetition: this.form.controls['repetition'].value,
-      start: this.form.controls['dateStart'].value,
-      hour: this.form.controls['time'].value,
+      start: this.date,
+      hour: ' ',
       filter: this.form.controls['filter'].value
     }
     console.log(this.request)

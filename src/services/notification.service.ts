@@ -19,6 +19,8 @@ export class NotificationService extends BaseService {
   constructor(private httpClient: HttpClient) {
     super();
   }
+
+  
   getNotifications(): Observable<any> {
     return this.httpClient
       .get(`${this.url}find-all-notification`, this.authorizedHeader)

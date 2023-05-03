@@ -60,6 +60,8 @@ export class SupplierComponent implements OnInit {
       })
     }
   }
+
+  
   sortListByAlphabeticalOrder(): void {
     this.response.sort((a, b) => {
       return a.name.localeCompare(b.name);
@@ -67,5 +69,6 @@ export class SupplierComponent implements OnInit {
     );
     console.log(this.response);
   }
+
 
 }

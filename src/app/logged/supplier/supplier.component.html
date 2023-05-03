@@ -58,7 +58,7 @@
                             <td style="width: 298px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 281px;">{{item?.name}}</h5></td>
                             <td style="width: 268px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 255px;">{{item?.email}}</h5></td>
                             <td style="width: 255px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 239px;">{{item?.cnpj}}</h5></td>
-                            <td><h5 class="mb-0 py-3 text-start">{{item.updatedAt | date:'dd/MM/yyyy' }}</h5></td>
+                            <td><h5 class="mb-0 py-3 text-start">{{item.createdAt | date:'dd/MM/yyyy' }}</h5></td>
                             <td><h5 role="button" (click)="openModals('verificar', item)" class="mb-0 fw-bolder text-center text-dark-blue py-3">Verificar</h5></td>
                         </tr>
                     </tbody>

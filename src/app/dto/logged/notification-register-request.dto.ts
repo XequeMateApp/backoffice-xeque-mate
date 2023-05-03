@@ -3,7 +3,7 @@ export abstract class NotificationRegisterRequestDto{
   status: string;
   content: string;
   repetition: string;
-  start: string;
+  start: Date;
   hour: string;
   filter: string
 }

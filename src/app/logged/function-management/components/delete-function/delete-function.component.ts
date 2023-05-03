@@ -11,6 +11,7 @@ import { RoleService } from 'src/services/role.service';
   templateUrl: './delete-function.component.html',
   styleUrls: ['./delete-function.component.scss']
 })
+
 export class DeleteFunctionComponent implements OnInit {
   form: FormGroup;
   productsData: any;
