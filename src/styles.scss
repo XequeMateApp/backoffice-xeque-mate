@@ -1,14 +1,14 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
 :root {
-  --darkblue: #0F214F;
+  --darkblue: #0f214f;
   --graylight: rgba(255, 255, 255, 0.8);
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Josefin Sans' !important;
+  font-family: "Josefin Sans" !important;
 }
 
 // GLOBAL classse´s
@@ -22,7 +22,7 @@
   margin: auto;
 }
 
-.custom-pagination>div {
+.custom-pagination > div {
   flex: 1;
   font-size: 18px;
   cursor: pointer;
@@ -34,7 +34,7 @@
   -ms-user-select: none;
 }
 
-.custom-pagination>div.current {
+.custom-pagination > div.current {
   border-bottom: 2px solid rgb(0, 128, 255);
   padding: 0 1rem;
   cursor: pointer;
@@ -44,6 +44,10 @@
   background-image: url(./assets/images/surface.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
@@ -68,7 +72,7 @@
 
 .section-dashboard {
   border-radius: 20px;
-  border: 1px solid #CCD1EB;
+  border: 1px solid #ccd1eb;
   padding: 25px 30px 30px 30px;
   width: 100%;
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);
@@ -96,9 +100,8 @@
   line-height: 21px;
 }
 
-
 .input-icon-right {
-  background-image: url('../src/assets/images/envelope-fill.svg');
+  background-image: url("../src/assets/images/envelope-fill.svg");
   background-position: right 10px center;
   background-repeat: no-repeat;
   padding-right: 35px;
@@ -106,7 +109,7 @@
 }
 
 .input-icon-key-right {
-  background-image: url('../src/assets/images/key-fill.svg');
+  background-image: url("../src/assets/images/key-fill.svg");
   background-position: right 10px center;
   background-repeat: no-repeat;
   padding-right: 35px;
@@ -114,7 +117,7 @@
 }
 
 .input-icon-lock-right {
-  background-image: url('../src/assets/images/lock-fill.svg');
+  background-image: url("../src/assets/images/lock-fill.svg");
   background-position: right 10px center;
   background-repeat: no-repeat;
   padding-right: 35px;
@@ -173,9 +176,11 @@
 .modal-content {
   border-radius: 16px !important;
   background-color: transparent !important;
-  border: none !important
+  border: none !important;
 }
-.modal{backdrop-filter: blur(22px);}
+.modal {
+  backdrop-filter: blur(22px);
+}
 
 .col-discription {
   width: 633px !important;
@@ -204,7 +209,7 @@
   }
   .col-description {
     min-width: 609px !important;
-}
+  }
 }
 
 @media (max-width: 991px) {
@@ -216,7 +221,6 @@
   .col-price {
     min-width: 239px !important;
   }
-
 }
 
 @media (min-width: 576px) {
@@ -225,7 +229,7 @@
   }
 }
 
-@media(max-width:1399px) {
+@media (max-width: 1399px) {
   .col-bar-3 {
     width: 244px !important;
   }
@@ -259,7 +263,7 @@
   }
 }
 
-@media(max-width:1199px) {
+@media (max-width: 1199px) {
   .col-bar-3 {
     width: 216px !important;
   }
