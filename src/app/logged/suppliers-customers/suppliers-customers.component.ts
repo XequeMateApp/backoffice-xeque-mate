@@ -43,7 +43,8 @@ export class SuppliersCustomersComponent implements OnInit {
     this.userService.getAllClients().subscribe(
       success => {
         this.response = success;
-        console.log(this.response)
+        this.response = this.response.filter(item => item.status !== 'inactive')
+       console.log('a response eh?', this.response)
       },
       error => {
          this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
