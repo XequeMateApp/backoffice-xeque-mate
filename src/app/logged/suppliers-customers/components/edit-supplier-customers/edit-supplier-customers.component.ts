@@ -48,12 +48,13 @@ export class EditSupplierCustomersComponent implements OnInit {
 
   downloadFile() {
     const link = document.createElement('a');
-    link.href = 'data:application/png;base64,' + btoa(this.FilesDoc);
-    link.download = `document-${this.responseData.name}`;
+    link.href = this.responseData.document;
+    link.download = `documento-de-solicitação-${this.responseData.name}`; // set the file name here
     document.body.appendChild(link);
     link.click();
     link.remove();
   }
+
   exit() {
     this.modalService.dismissAll()
   }
