@@ -32,10 +32,14 @@
                           <span>Baixe-o-documento-{{responseData.name}}</span>
                           <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
                       </div>
-                        <div class="form-check mt-4 form-switch">
-                            <input style="scale: 1.4;" class="form-check-input sz-md" formControlName="emphasis" type="checkbox" id="switchEdit">
-                            <label class="form-check-label h6 px-2 text-dark" for="switchEdit">Colocar fornecedor em destaque</label>
-                        </div>
+                      <label>Colocar fornecedor em destaque?</label>
+                      <select class="form-select input-purchased-products" style="width: 30%;" #target (change)="setEmphasis(target.value)">
+                        <option   value="false"  >Não</option>
+                        <option  [selected]="this.check === true" value="true">Sim</option>
+                        
+                      
+                      </select>
+         
                     </div>
                     <div class="col-12 mb-3">
                         <div class="row">

@@ -19,11 +19,14 @@ export class EditSupplierCustomersComponent implements OnInit {
   FilesDoc: any;
   truephone: string;
   emphasis: string;
+   check: any
+
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastrService: ToastrService,
+  
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -34,6 +37,8 @@ export class EditSupplierCustomersComponent implements OnInit {
       doc: [''],
     })
   }
+
+  //645e395575913e9b2454f3e5
   ngOnInit(): void {
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.FilesDoc = this.responseData.doc;
@@ -41,9 +46,11 @@ export class EditSupplierCustomersComponent implements OnInit {
     this.form.controls['cnpj'].setValue(this.responseData.cnpj);
     this.form.controls['phone'].setValue(this.responseData.phone);
     this.form.controls['email'].setValue(this.responseData.email);
-    console.log(this.FilesDoc, this.form.controls['emphasis'].value, this.emphasis);
+    console.log('arquivo:', this.form.controls);
     if (this.form.controls['phone'].value) console.log('tem')
     else console.log('não')
+
+    this.check = this.responseData.emphasis
   }
 
   downloadFile() {
@@ -57,6 +64,24 @@ export class EditSupplierCustomersComponent implements OnInit {
 
   exit() {
     this.modalService.dismissAll()
+  }
+
+  setEmphasis(value: any){
+    const dto = {
+      emphasis: value
+    }
+
+    // console.log('os dados que eu vou passar sao>', this.responseData.email, value)
+    this.userService.changeEmphasis(this.responseData.email, dto).subscribe(
+      success => {
+        this.toastrService.success('Destaque do fornecedor alterado com sucesso!', '', { progressBar: true });
+        //this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao editar', '', { progressBar: true });
+      }
+    )
   }
 
   confirm() {
