@@ -15,6 +15,7 @@ import { SupplierRegisterRequestDto } from 'src/app/dto/logged/supplier-register
 import { SupplierCustomersResponsetDto } from 'src/app/dto/logged/supplier-costumers-response.dto';
 import { SupplierCustomersPutRequestDto } from 'src/app/dto/logged/supplier-customers-put-request.dto';
 import { SupplierCustomersSuppliersPutRequesttDto } from 'src/app/dto/logged/supplier-costumers-suppliers-put-request.dto';
+import { ChangeUserEmphasesDto } from 'src/app/dto/logged/change-emphases-user-request.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -129,5 +130,12 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+  
+  changeEmphasis(email: string, dto: ChangeUserEmphasesDto): Observable<any> {
+    console.log('qual o dto', dto.emphasis)
+    return this.httpClient
+      .put(`${this.url}/change-emphases/${email}`,  dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
 
 }
