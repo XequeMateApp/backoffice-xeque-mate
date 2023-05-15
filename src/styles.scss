@@ -11,6 +11,11 @@
   font-family: "Josefin Sans" !important;
 }
 
+.col-description{
+  width: 636px;
+}
+
+
 // GLOBAL classse´s
 .apexcharts-menu-icon {
   display: none !important;
@@ -221,7 +226,7 @@
     padding-right: 0px;
   }
   .col-description {
-    min-width: 609px !important;
+    min-width: 511px !important;
   }
 }
 
@@ -256,7 +261,7 @@
   }
 
   .col-description {
-    width: 598px !important;
+    width: 506px ;
   }
 
   .col-type {
