@@ -30,10 +30,15 @@
                 </div>
                 <div class="col-md-6">
                 <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
-                <input type="text" id="edit-code" [maxLength]="15" class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
+                <input type="tel" id="edit-code" [maxLength]="15" class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
                 placeholder="Digite o código" formControlName="code" />
               </div>
             </div>
+          </div>
+          <div class="col-12">
+            <label class="h6 mt-3 text-dark" for="edit-stock">Estoque</label>
+            <input type="tel" id="edit-stock" [maxLength]="15" class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
+            placeholder="Insira uma quantidade" formControlName="quantity" />
           </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="create-category">Categoria</label>
