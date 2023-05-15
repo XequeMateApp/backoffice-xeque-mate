@@ -50,6 +50,7 @@ export class EditProductComponent implements OnInit {
       category: [''],
       selectPhotos: [''],
       description: [''],
+      quantity: [''],
       specification: [''],
       price: [''],
       cnpj: [''],
@@ -67,6 +68,7 @@ export class EditProductComponent implements OnInit {
     this.form.controls['name'].setValue(this.responseData.name)
     this.form.controls['price'].setValue(this.responseData.value)
     this.form.controls['cnpj'].setValue(this.responseData.cnpj)
+    this.form.controls['quantity'].setValue(this.responseData.quantity)
     this.form.controls['code'].setValue(Number(this.responseData.code))
     this.form.controls['category'].setValue(this.responseData.category)
     this.form.controls['description'].setValue(this.responseData.description)
@@ -163,6 +165,7 @@ export class EditProductComponent implements OnInit {
       code: this.form.controls['code'].value,
       category: this.categories,
       image: this.supplierImg,
+      quantity: Number(this.form.controls['quantity'].value),
       description: this.form.controls['description'].value,
       specifications: this.form.controls['specification'].value,
       value: this.form.controls['price'].value,

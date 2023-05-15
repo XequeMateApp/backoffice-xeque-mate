@@ -46,6 +46,7 @@ export class AnalysisProductComponent implements OnInit {
       selectCategory: [''],
       selectPhotos: [''],
       description: [''],
+      quantity: [''],
       specification: [''],
       price: [''],
       status: [''],
@@ -62,6 +63,7 @@ export class AnalysisProductComponent implements OnInit {
     this.form.controls['name'].setValue(this.responseData.name)
     this.form.controls['price'].setValue(this.responseData.value)
     this.form.controls['code'].setValue(Number(this.responseData.code))
+    this.form.controls['quantity'].setValue(Number(this.responseData.quantity))
     this.form.controls['material'].setValue(this.responseData.material)
     this.form.controls['selectCategory'].setValue(this.responseData.category)
     this.form.controls['description'].setValue(this.responseData.description)
