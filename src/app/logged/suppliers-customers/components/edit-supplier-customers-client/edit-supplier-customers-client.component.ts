@@ -41,15 +41,15 @@ export class EditSupplierCustomersClientComponent implements OnInit {
     this.form.controls['cpf'].setValue(this.responseData.cpf);
     this.form.controls['phone'].setValue(this.responseData.phone);
     this.form.controls['email'].setValue(this.responseData.email);
-    console.log(this.FilesDoc,  this.form.controls['phone'].value);
-    if (this.form.controls['phone'].value)   console.log('tem')
+    console.log(this.FilesDoc, this.form.controls['phone'].value);
+    if (this.form.controls['phone'].value) console.log('tem')
     else console.log('não')
   }
 
   downloadFile() {
     const link = document.createElement('a');
-    link.href = 'data:application/png;base64,' + btoa(this.FilesDoc);
-    link.download = `document-${this.responseData.name}`;
+    link.href = this.responseData.document;
+    link.download = `documento-de-solicitação-${this.responseData.name}`; // set the file name here
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -61,7 +61,7 @@ export class EditSupplierCustomersClientComponent implements OnInit {
 
   confirm() {
     if (this.form.controls['phone'].value === undefined || this.form.controls['phone'].value === '') this.truephone = '';
-    else if(this.form.controls['phone'].value) this.truephone = this.form.controls['phone'].value;
+    else if (this.form.controls['phone'].value) this.truephone = this.form.controls['phone'].value;
     else this.truephone = `+55${this.form.controls['phone'].value}`;
     this.request = {
       phone: this.truephone,

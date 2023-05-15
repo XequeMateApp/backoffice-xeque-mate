@@ -43,7 +43,9 @@ export class SuppliersCustomersComponent implements OnInit {
     this.userService.getAllClients().subscribe(
       success => {
         this.response = success;
-        console.log(this.response)
+         this.response = this.response.filter(item => item.status !== 'inactive')
+    
+       console.log('a response eh?', this.response)
       },
       error => {
          this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
@@ -57,6 +59,7 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
   openModals(tabName: string, info: any) {
+    
     if (tabName == 'editclient') {
       const modal = this.modalService.open(EditSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
@@ -70,8 +73,10 @@ export class SuppliersCustomersComponent implements OnInit {
         this.getListUsert();
       })
     } else if (tabName == 'editsupplier') {
+      
       const modal = this.modalService.open(EditSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
+      
       }, err => {
         this.getListUsert();
       })

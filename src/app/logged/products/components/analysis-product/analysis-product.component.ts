@@ -63,10 +63,10 @@ export class AnalysisProductComponent implements OnInit {
     this.form.controls['price'].setValue(this.responseData.value)
     this.form.controls['code'].setValue(Number(this.responseData.code))
     this.form.controls['material'].setValue(this.responseData.material)
+    this.form.controls['quantity'].setValue(this.responseData.quantity || 0)
     this.form.controls['selectCategory'].setValue(this.responseData.category)
     this.form.controls['description'].setValue(this.responseData.description)
     this.form.controls['specification'].setValue(this.responseData.specifications)
-    this.getImagesFromLocalStorage();
     this.getCategorys();
   }
 
@@ -74,44 +74,11 @@ export class AnalysisProductComponent implements OnInit {
     this.categoryService.getCategory().subscribe(
       success => {
         this.responseCategory = success;
-        // console.log(this.responseCategory)
       },
       error => { console.error(error, 'category not collected') }
     )
   }
 
-  getImagesFromLocalStorage() {
-    const imagesData = JSON.parse(localStorage.getItem('responseData'));
-    if (imagesData.image && Array.isArray(imagesData.image)) {
-      this.supplierImg = imagesData.image;
-    }
-    console.log(this.supplierImg, 'qwedrfghjk');
-  }
-
-
-  // functions-photos
-  onSelectFileProductImage(event) {
-    if (event.target.files && event.target.files[0]) {
-      this.notImage = false;
-      var filesAmount = event.target.files.length;
-      for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.supplierImg.push(event.target.result as string);
-        };
-        reader.readAsDataURL(event.target.files[i]);
-      }
-    }
-  }
-
-
-  removeFile(index: number) {
-    this.supplierImg.splice(index, 1);
-    this.form.controls['selectPhotos'].setValue(null);
-    // this.selectFile = null;
-    this.notImage = true;
-    this.selectedImageUrl = '';
-  }
 
   // docs
   // downloadFile() {
@@ -130,7 +97,6 @@ export class AnalysisProductComponent implements OnInit {
       _id: this.responseData._id,
       status: 'APPROVED'
     }
-
     this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
       success => {
 
@@ -152,7 +118,6 @@ export class AnalysisProductComponent implements OnInit {
     }
     this.productService.putAnalisysProduct(dto._id, dto.status, dto).subscribe(
       success => {
-
         this.toastrService.success('Recusado com sucesso!', '', { progressBar: true });
         this.modalService.dismissAll();
       },

@@ -1,121 +1,125 @@
 
 <main class="w-100 d-flex justify-content-center mt-5 mb-5">
-    <div class="row px-0 mt-5 container">
-        <div class="col-12">
-            <div class="row px-0 mt-4 justify-content-between">
-                <div class="col-md mt-3">
-                    <div class="w-auto h-100 d-flex align-items-center">
-                        <img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
-                        <h3 class="text-dark fw-bolder mb-0">Fornecedores e Clientes</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 mt-2">
-            <div class="row align-items-center">
-                <div class="col-md-8 mt-3">
-                    <div class="input-group mt-3">
-                        <input type="search" name="search" [(ngModel)]="filterTerm"  class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
-                    </div>
-                </div>
-                <div class="col-md-4 mt-3">
-                   <div class="row mx-0 px-0">
-                    <div class="col-md-6 mt-3 p0-important">
-                        <div class="dropdown">
-                            <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
-                              Tipo
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                              <li role="button"><a (click)="sortListByType('fornecedor')" class="dropdown-item">Fornecedor</a></li>
-                              <li role="button"><a (click)="sortListByType('cliente')" class="dropdown-item">Cliente</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mt-3 p0-important">
-                        <div class="dropdown">
-                            <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16 dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
-                              Ordenar por
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                              <li role="button"><a (click)="sortListByAlphabeticalOrder()" class="dropdown-item">Nome A-Z</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                   </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mx-0 overflow-x-scroll">
-            <div class="col-12 mt-5 px-0">
-                <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                    <div style="width: 280px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 fw-bolder">Nome</b>
-                    </div>
-                    <div style="width: 292px !important;"  class="col-2 h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 fw-bolder">E-mail</b>
-                    </div>
-                    <div style="width: 124px;" class="col-2 col-type h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 fw-bolder">Tipo</b>
-                    </div>
-                    <div style="max-width: 219px;" class="col col-tel h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 text-nowrap fw-bolder">Contato</b>
-                    </div>
-                    <div class="col h-100 br-16 align-items-center d-flex">
-                        <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
-                    </div>
-                </div>
-            </div>
-            <div style="min-width: 1064px;"class="col-12 w3-white mt-3 px-0">
-                <table class="table table-office mb-0 table-striped">
-                    <tbody>
-                      <tr *ngFor="let item of response | paginate: config | filter: filterTerm;  let i= index; ">
-                        <td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 276px;">{{item.name}}</h5></td>
-                        <td style="width: 295px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 265px;">{{item.email}}</h5></td>
-                        <td style="width: 120px;">
-                          <h5  *ngIf="item.profile === 'provider'" class="mb-0 py-3 d-inline-block text-truncate">Fornecedor</h5>
-                          <h5  *ngIf="item.profile === 'client'" class="mb-0 py-3 d-inline-block text-truncate">Cliente</h5>
-                        </td>
-                        <td class="td-phone" style="width: 222px;"><h5 class="mb-0 py-3 text-start">{{item.phone | mask: '(00) 00000-0000' || '..'}}</h5></td>
-                        <td>
-                            <h6 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h6>
-                            <h6 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inactive</h6>
-                        </td>
-                        <td>
-                            <!-- caso email seja padrão para o fornecedores -->
-                            <h6  *ngIf="item.profile === 'client'" class="mb-0 d-flex justify-content-center py-3">
-                                <i role='button' (click)="openModals('editclient', item)" class="bi h3  bi-gear"></i>
-                                <i role='button' (click)="openModals('deleteclient', item)" class="bi h3 ms-3  text-danger bi-trash3"></i>
-                            </h6>
-                            <h6  *ngIf="item.profile === 'provider'"  class="mb-0  d-flex justify-content-center py-3">
-                                <i role='button' (click)="openModals('editsupplier' , item)" class="bi h3  bi-gear"></i>
-                                <i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 ms-3  text-danger bi-trash3"></i>
-                            </h6>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+	<div class="row px-0 mt-5 container">
+		<div class="col-12">
+			<div class="row px-0 mt-4 justify-content-between">
+				<div class="col-md mt-3">
+					<div class="w-auto h-100 d-flex align-items-center">
+						<img role="button" (click)="backHome()" src="../../../assets/icons/arrow-left.svg" class="me-5" />
+						<h3 class="text-dark fw-bolder mb-0">Fornecedores e Clientes</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 mt-2">
+			<div class="row align-items-center">
+				<div class="col-md-8 mt-3">
+					<div class="input-group mt-3">
+						<input type="search" name="search" [(ngModel)]="filterTerm" class="form-control py-3 br-16 bg-search pe-5"
+							placeholder="Pesquisar" />
+					</div>
+				</div>
+				<div class="col-md-4 mt-3">
+					<div class="row mx-0 px-0">
+						<div class="col-md-6 mt-3 p0-important">
+							<div class="dropdown">
+								<button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16
+									dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
+									Tipo
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="orderbysupplier">
+									<li role="button"><a (click)="sortListByType('fornecedor')" class="dropdown-item">Fornecedor</a></li>
+									<li role="button"><a (click)="sortListByType('cliente')" class="dropdown-item">Cliente</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6 mt-3 p0-important">
+							<div class="dropdown">
+								<button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16
+									dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
+									Ordenar por
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="orderbysupplier">
+									<li role="button"><a (click)="sortListByAlphabeticalOrder()" class="dropdown-item">Nome A-Z</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mx-0 overflow-x-scroll">
+			<div class="col-12 mt-5 px-0">
+				<div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
+					<div style="width: 280px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+						<b class="mb-0 h5 fw-bolder">Nome</b>
+					</div>
+					<div style="width: 292px !important;" class="col-2 h-100 br-16 align-items-center d-flex">
+						<b class="mb-0 h5 fw-bolder">E-mail</b>
+					</div>
+					<div style="width: 124px;" class="col-2 col-type h-100 br-16 align-items-center d-flex">
+						<b class="mb-0 h5 fw-bolder">Tipo</b>
+					</div>
+					<div style="max-width: 219px;" class="col col-tel h-100 br-16 align-items-center d-flex">
+						<b class="mb-0 h5 text-nowrap fw-bolder">Contato</b>
+					</div>
+					<div class="col h-100 br-16 align-items-center d-flex">
+						<b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
+					</div>
+				</div>
+			</div>
+			<div style="min-width: 1064px;" class="col-12 w3-white mt-3 px-0">
+				<table class="table table-office mb-0 table-striped">
+					<tbody>
+						<tr *ngFor="let item of response | paginate: config | filter: filterTerm; let i= index; ">
+							<td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 276px;">{{item.name}}</h5></td>
+							<td style="width: 295px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 265px;">{{item.email}}</h5></td>
+							<td style="width: 120px;">
+								<h5 *ngIf="item.profile === 'provider'" class="mb-0 py-3 d-inline-block text-truncate">Fornecedor</h5>
+								<h5 *ngIf="item.profile === 'client'" class="mb-0 py-3 d-inline-block text-truncate">Cliente</h5>
+							</td>
+							<td class="td-phone" style="width: 222px;"><h5 class="mb-0 py-3 text-start">{{item.phone | mask: '(00) 00000-0000' ||
+									'..'}}</h5></td>
+							<td>
+								<h6 *ngIf="item.status === 'active'" class="mb-0 py-3 text-success">Ativo</h6>
+								<h6 *ngIf="item.status === 'inactive'" class="mb-0 py-3 text-danger">Inactive</h6>
+							</td>
+							<td>
+								<!-- caso email seja padrão para o fornecedores -->
+								<h6 *ngIf="item.profile === 'client'" class="mb-0 d-flex justify-content-center py-3">
+									<i role='button' (click)="openModals('editclient', item)" class="bi h3 bi-gear"></i>
+									<i role='button' (click)="openModals('deleteclient', item)" class="bi h3 ms-3 text-danger bi-trash3"></i>
+								</h6>
+								<h6 *ngIf="item.profile === 'provider'" class="mb-0 d-flex justify-content-center py-3">
+									<i role='button' (click)="openModals('editsupplier' , item)" class="bi h3 bi-gear"></i>
+									<i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 ms-3 text-danger bi-trash3"></i>
+								</h6>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-        <div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length >= 0">
-            <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
-                <div class="custom-pagination">
-                    <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
-                        <a *ngIf="!p.isFirstPage()" (click)="p.previous()"><</a>
-                    </div>
-                    <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-                        <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
-                            <span>{{ page.label }}</span>
-                        </a>
-                        <div *ngIf="p.getCurrent() === page.value">
-                            <span>{{ page.label }}</span>
-                        </div>
-                    </div>
-                    <div class="pagination-next" [class.disabled]="p.isLastPage()">
-                        <a *ngIf="!p.isLastPage()" (click)="p.next()"> > </a>
-                    </div>
-                </div>
-            </pagination-template>
-        </div>
-    </div>
-</main>
+		<div class="col-12 mt-3 d-flex justify-content-end" *ngIf="response.length>= 0">
+			<pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage= $event">
+				<div class="custom-pagination">
+					<div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+						<a *ngIf="!p.isFirstPage()" (click)="p.previous()"><</a>
+						</div>
+						<div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+							<a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+								<span>{{ page.label }}</span>
+							</a>
+							<div *ngIf="p.getCurrent() === page.value">
+								<span>{{ page.label }}</span>
+							</div>
+						</div>
+						<div class="pagination-next" [class.disabled]="p.isLastPage()">
+							<a *ngIf="!p.isLastPage()" (click)="p.next()"> > </a>
+						</div>
+					</div>
+				</pagination-template>
+			</div>
+		</div>
+	</main>
