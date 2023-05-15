@@ -46,6 +46,12 @@
   background-size: cover;
 }
 
+.bg-model{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -226,7 +232,7 @@
   }
 
   .col-price {
-    min-width: 239px !important;
+    min-width: 152px !important;
   }
 }
 
@@ -258,7 +264,7 @@
   }
 
   .col-price {
-    width: 275px !important;
+    width: 183px !important;
   }
 
   .col-tel {
@@ -284,7 +290,7 @@
   }
 
   .col-price {
-    width: 222px !important;
+    width: 148px !important;
   }
 
   .col-tel {
