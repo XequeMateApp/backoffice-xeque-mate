@@ -37,6 +37,7 @@ export class EditUnityComponent implements OnInit {
   confirm() {
     this.request = {
       name: this.form.controls['name'].value,
+      description: this.responseData?.description
     }
     console.log(this.request)
     this.productService.unityEdit(this.responseData._id, this.request).subscribe({

@@ -62,7 +62,8 @@ export class UnityComponent implements OnInit {
 
   create() {
     this.request = {
-      name: this.form.controls['name'].value
+      name: this.form.controls['name'].value,
+      description : "default"
     }
     this.productService.unityCreate(this.request).subscribe({
       next: success => {

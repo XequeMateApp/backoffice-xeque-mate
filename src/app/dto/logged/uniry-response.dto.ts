@@ -1,4 +1,6 @@
 export abstract class UnityResponsetDto {
-    name?: string;
-  }
-  
+  _id: string;
+  name?: string;
+  description?: string;
+
+}

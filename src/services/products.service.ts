@@ -100,7 +100,7 @@ export class ProductService extends BaseService {
 
   unityEdit(Id: string, dto: UnityRequestDto): Observable<any> {
     return this.httpClient
-      .post(`${this.url}measurement/update/${Id}`, dto, this.authorizedHeader)
+      .put(`${this.url}measurement/update/${Id}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
