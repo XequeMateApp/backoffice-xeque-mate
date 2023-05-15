@@ -178,6 +178,13 @@
   background-color: transparent !important;
   border: none !important;
 }
+
+.bg-model{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .modal {
   backdrop-filter: blur(22px);
 }

@@ -53,13 +53,13 @@
       <div class="row mx-0 overflow-y-scroll ">
           <div class="col-12 mt-5 px-0">
               <div style="min-width: 1127px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                  <div class="h-100 col-name br-16 align-items-center d-flex">
+                  <div  style="width: 250px; margin-left: 280px;" class="h-100 col-name br-16 align-items-center d-flex">
                       <b class="mb-0 h5 fw-bolder">Nome</b>
                   </div>
-                  <div style="width: 633px;" class="h-100 col-description br-16 align-items-center d-flex">
+                  <div style="width: 510px;" class="h-100 col-description br-16 align-items-center d-flex">
                       <b class="mb-0 h5 fw-bolder">Descrição</b>
                   </div>
-                  <div style="width: 133px;" class="h-100 br-16 align-items-center d-flex">
+                  <div style="width: 33px;" class="h-100 br-16 align-items-center d-flex">
                       <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
                   </div>
 
@@ -69,6 +69,9 @@
               <table class="table table-office mb-0 table-striped">
                   <tbody>
                     <tr *ngFor="let item of response | paginate: config | filter: filterTerm;  let i= index; ">
+                        <td style="min-width: 277px;width: 277px;">
+                            <div class="bg-model border br-16" style="background-image: url({{item?.image}}); height: 100px; width: 100px;"></div>
+                        </td>
                       <td style="min-width: 277px;width: 277px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate w-100" style="max-width: 240px">{{item?.name}}</h5></td>
                       <td style="width: 633px;"class="text-left" ><h5 class="mb-0 w-100 py-3 text-left d-inline-block text-truncate" style="max-width: 581px;">{{item?.description}}</h5></td>
                       <td>
