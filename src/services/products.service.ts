@@ -8,6 +8,7 @@ import { ProductRegisterRequestDto } from 'src/app/dto/logged/product-register-r
 import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
 import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
 import { ProductPutAnalisysRequestDto } from 'src/app/dto/logged/product-put-analisys-reuqest.dto';
+import { ProductPromoUpdateRequestDto } from 'src/app/dto/logged/product-promo-update-request.dto';
 
 
 @Injectable({
@@ -20,6 +21,14 @@ export class ProductService extends BaseService {
   constructor(private httpClient: HttpClient) {
     super();
   }
+
+  setPromoDate(id: string, dto: ProductPromoUpdateRequestDto): Observable<any> {
+    
+    return this.httpClient
+      .put(`${this.url}product/update-product-promoDate/${id}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
 
   getProducts(status: string): Observable<ProductsRegisterResponseDto[]> {
     return this.httpClient

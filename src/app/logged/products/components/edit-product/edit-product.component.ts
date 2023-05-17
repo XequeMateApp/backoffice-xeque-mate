@@ -36,6 +36,15 @@ export class EditProductComponent implements OnInit {
   selectedCategories: string[];
   categories: string[];
 
+
+  productInPromo: boolean = false
+
+  startPromoDate: string = ''
+
+  endPromoDate: string = ''
+
+  promoDiscount: string = '0'
+
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
@@ -59,6 +68,7 @@ export class EditProductComponent implements OnInit {
 
 
   ngOnInit(): void {
+  
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.FilesDoc = this.responseData.doc;
     console.log(this.FilesDoc);
@@ -74,7 +84,7 @@ export class EditProductComponent implements OnInit {
     this.getImagesFromLocalStorage();
     this.getCategorys();
 
-
+    console.log('o item sele', this.responseData)
   }
 
 
@@ -92,6 +102,7 @@ export class EditProductComponent implements OnInit {
     const selectedOption = this.responseCategory.find(option => option._id === optionId);
     if (selectedOption && !this.selectedItems.includes(selectedOption)) {
       this.selectedItems.push(selectedOption);
+      
     }
     this.selectedCategories = this.selectedItems.map(item => item.name);
     console.log(this.selectedCategories);
@@ -125,6 +136,37 @@ export class EditProductComponent implements OnInit {
         reader.readAsDataURL(event.target.files[i]);
       }
     }
+  }
+
+  setPromo() {
+    this.productInPromo = !this.productInPromo
+    if(this.productInPromo === false) {
+      this.startPromoDate = ''
+      this.endPromoDate = ''
+      this.promoDiscount = '0'
+    }
+    
+  }
+
+  setStartPromoDate(value: string) {
+
+
+    this.startPromoDate = value
+
+
+  }
+
+  setPromoDiscount(value: string) {
+ 
+    this.promoDiscount = value
+
+
+  }
+
+  setEndPromoDate(value: string) {
+
+    this.endPromoDate = value
+   
   }
 
 
@@ -171,13 +213,34 @@ export class EditProductComponent implements OnInit {
     this.productService.putProduct(this.responseData._id, this.request).subscribe(
       success => {
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
-        this.modalService.dismissAll();
+        if (this.productInPromo === false) {
+          this.modalService.dismissAll();
+        }
+        
       },
       error => {
         console.log(error)
         this.toastrService.error('Erro ao editar', '', { progressBar: true });
       }
     )
+    if (this.productInPromo === true) {
+      const dto = {
+        start_promo_date: this.startPromoDate,
+        end_promo_date: this.endPromoDate,
+        cnpj: this.responseData.cnpj
+      }
+      this.productService.setPromoDate(this.responseData._id, dto).subscribe(
+        success => {
+          this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
+          this.modalService.dismissAll();
+          
+        },
+        error => {
+          console.log(error)
+          this.toastrService.error('Erro ao editar', '', { progressBar: true });
+        }
+      )
+    }
   }
 
 
