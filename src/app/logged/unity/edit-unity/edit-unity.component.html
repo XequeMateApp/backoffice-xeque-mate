@@ -1,0 +1,37 @@
+<main class="row mx-2 justify-content-center">
+    <div class="col-12 w3-white br-16 p-4 ">
+      <div class="row px-0">
+        <div class="col-12 d-flex align-content-center justify-content-between">
+          <h2 class="mb-0 fw-bolder text-center">Editar Unidade</h2>
+          <img (click)="exit()" role="button"
+            src="../../../../../assets/icons/x.png"
+            style="height: fit-content;">
+        </div>
+        <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
+              <input type="text" id="edit-name" class="form-control fw-bolder br-16 bordder py-3"
+                 placeholder="Edite o nome" formControlName="name" />
+            </div>
+            
+            <div class="col-12 mb-3">
+              <div class="row">
+                <div class="col-md-6 mt-4">
+                  <button class="btn w3-white br-16 text-dark-blue w-100" (click)="exit()" type="button">
+                    <h6 class="fw-bolder mb-0 py-2">Cancelar</h6>
+                  </button>
+                </div>
+                <div class="col-md-6 mt-4">
+                  <button class="btn br-16 bg-dark-blue text-light w-100" (click)="confirm()" type="button">
+                    <h6 class="fw-bolder mb-0 py-2">Salvar</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  
