@@ -6,6 +6,7 @@ import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
 import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
 import { CategoryService } from 'src/services/category.service';
 import { ProductService } from 'src/services/products.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -36,6 +37,9 @@ export class EditProductComponent implements OnInit {
   selectedCategories: string[];
   categories: string[];
 
+  measureUnits: any = []
+
+  choosedMeasureUnit: string = ''
 
   productInPromo: boolean = false
 
@@ -51,6 +55,7 @@ export class EditProductComponent implements OnInit {
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private categoryService: CategoryService,
+    private userService: UserService
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -83,6 +88,7 @@ export class EditProductComponent implements OnInit {
     this.form.controls['specification'].setValue(this.responseData.specifications)
     this.getImagesFromLocalStorage();
     this.getCategorys();
+    this.getMeasurementList()
 
     console.log('o item sele', this.responseData)
   }
@@ -123,6 +129,19 @@ export class EditProductComponent implements OnInit {
     }
   }
 
+  getMeasurementList() {
+    this.userService.listMeasureUnits().subscribe(
+      async success => {
+        console.log('as unidades de medida sao?',success);
+        this.measureUnits = success;
+        this.measureUnits = this.measureUnits.filter(item => item !== this.responseData.measure_unit)
+      },
+      async error => {
+        // this.toastrService.error('Erro ao recuperar dados!', '', { progressBar: true })
+      }
+    );
+  }
+
   // functions-photos
   onSelectFileProductImage(event) {
     if (event.target.files && event.target.files[0]) {
@@ -154,6 +173,11 @@ export class EditProductComponent implements OnInit {
     this.startPromoDate = value
 
 
+  }
+
+  setMeasureUnit(value: string) {
+    this.choosedMeasureUnit = value
+    
   }
 
   setPromoDiscount(value: string) {
@@ -208,6 +232,7 @@ export class EditProductComponent implements OnInit {
       description: this.form.controls['description'].value,
       specifications: this.form.controls['specification'].value,
       value: this.form.controls['price'].value,
+      measure_unit: this.choosedMeasureUnit,
     }
     console.log(this.request)
     this.productService.putProduct(this.responseData._id, this.request).subscribe(

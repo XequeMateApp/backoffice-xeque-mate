@@ -7,4 +7,6 @@ export interface ProductPutRequestDto {
   name: string,
   cnpj: string,
   image: string[],
+  measure_unit: string,
+
 }
