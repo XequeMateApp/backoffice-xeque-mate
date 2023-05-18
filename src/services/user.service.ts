@@ -22,6 +22,7 @@ import { ChangeUserEmphasesDto } from 'src/app/dto/logged/change-emphases-user-r
 })
 export class UserService extends BaseService {
   url = `${environment.api.xequeMateApi}backoffice/user`;
+  urlBackOffice = `${environment.api.xequeMateApi}backoffice`;
   profilePicture: Subject<string> = new Subject();
   modalRegisterForm: UserRegisterRequestDto;
 
@@ -43,6 +44,12 @@ export class UserService extends BaseService {
       `${this.url}/verify-code/${email}/${code}`,
       this.anonymousHeader
     );
+  }
+
+  listMeasureUnits():Observable<any> {
+    return this.httpClient
+      .get(`${this.urlBackOffice}/measurement/list`)
+      .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
   updatePassword(dto: UserUpdatePassword): Observable<any> {
