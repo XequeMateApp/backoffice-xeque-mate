@@ -144,7 +144,7 @@ export class CreateNotificationComponent implements OnInit {
              
               localStorage.setItem('notifcations', JSON.stringify(success));
               window.location.reload()
-              this.modalService.dismissAll();
+              this.modalService.dismissAll()
      
             },
             error: error => {
