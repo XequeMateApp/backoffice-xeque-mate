@@ -41,8 +41,10 @@ export class NotificationComponent implements OnInit {
   getNotifications() {
     this.notificationService.getNotifications().subscribe({
       next: success => {
-        this.response = success;
-        console.log(this.response)
+        
+        localStorage.setItem('notifcations', JSON.stringify(success));
+        this.response = JSON.parse(localStorage.getItem('notifcations'));
+        console.log('o response com as notificacoes sao',this.response)
       },
       error: error => {
         this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })

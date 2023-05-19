@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { NotificationRegisterRequestDto } from 'src/app/dto/logged/notification-register-request.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 import { NotificationService } from 'src/services/notification.service';
 
 
@@ -38,6 +40,7 @@ export class CreateNotificationComponent implements OnInit {
     private toastrService: ToastrService,
     private notificationService: NotificationService,
     private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -136,8 +139,20 @@ export class CreateNotificationComponent implements OnInit {
     ) {
       this.notificationService.register(this.request).subscribe(
         success => {
-          this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-          this.modalService.dismissAll();
+          this.notificationService.getNotifications().subscribe({
+            next: success => {
+             
+              localStorage.setItem('notifcations', JSON.stringify(success));
+              window.location.reload()
+              this.modalService.dismissAll();
+     
+            },
+            error: error => {
+              this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+              console.error(error, 'data not collected') }
+          });
+   
+         // this.modalService.dismissAll();
         },
         error => {
           console.log(error)
