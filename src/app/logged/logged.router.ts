@@ -12,6 +12,7 @@ import { ProductsComponent } from "./products/products.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { CategorysComponent } from "./categorys/categorys.component";
 import { MarketingComponent } from "./marketing/marketing.component";
+import { BlockedUsersComponent } from "./blocked-users/blocked-users.component";
 const routerConfig: Routes = [
   {
     path: 'logged',
@@ -28,6 +29,9 @@ const routerConfig: Routes = [
       },
       {
         path: 'user-profile', component: UserProfileComponent
+      },
+      {
+        path: 'blocked-user-list', component: BlockedUsersComponent
       },
       {
         path: 'supplier', component: SupplierComponent
