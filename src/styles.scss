@@ -11,6 +11,11 @@
   font-family: "Josefin Sans" !important;
 }
 
+.col-description{
+  width: 636px;
+}
+
+
 // GLOBAL classse´s
 .apexcharts-menu-icon {
   display: none !important;
@@ -42,6 +47,12 @@
 
 .bg-body {
   background-image: url(./assets/images/surface.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-model{
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -178,6 +189,13 @@
   background-color: transparent !important;
   border: none !important;
 }
+
+.bg-model{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .modal {
   backdrop-filter: blur(22px);
 }
@@ -208,7 +226,7 @@
     padding-right: 0px;
   }
   .col-description {
-    min-width: 609px !important;
+    min-width: 511px !important;
   }
 }
 
@@ -219,7 +237,7 @@
   }
 
   .col-price {
-    min-width: 239px !important;
+    min-width: 152px !important;
   }
 }
 
@@ -243,7 +261,7 @@
   }
 
   .col-description {
-    width: 598px !important;
+    width: 506px ;
   }
 
   .col-type {
@@ -251,7 +269,7 @@
   }
 
   .col-price {
-    width: 275px !important;
+    width: 183px !important;
   }
 
   .col-tel {
@@ -277,7 +295,7 @@
   }
 
   .col-price {
-    width: 222px !important;
+    width: 148px !important;
   }
 
   .col-tel {

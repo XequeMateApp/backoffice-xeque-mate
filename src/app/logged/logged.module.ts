@@ -48,7 +48,13 @@ import { CreateAdComponent } from './marketing/components/create-ad/create-ad.co
 import { EditAdComponent } from './marketing/components/edit-ad/edit-ad.component';
 import { DeleteAdComponent } from './marketing/components/delete-ad/delete-ad.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+
 import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
+
+import { UnityComponent } from './unity/unity.component';
+import { EditUnityComponent } from './unity/edit-unity/edit-unity.component';
+import { DeleteUnityComponent } from './unity/delete-unity/delete-unity.component';
+
 
 
 @NgModule({
@@ -92,6 +98,10 @@ import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
     EditAdComponent,
     DeleteAdComponent,
     BlockedUsersComponent,
+    UnityComponent,
+    EditUnityComponent,
+    DeleteUnityComponent,
+
   ],
   imports: [
     CommonModule,

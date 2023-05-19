@@ -8,7 +8,12 @@ import { ProductRegisterRequestDto } from 'src/app/dto/logged/product-register-r
 import { ProductsRegisterResponseDto } from 'src/app/dto/logged/product-register-response.dto';
 import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
 import { ProductPutAnalisysRequestDto } from 'src/app/dto/logged/product-put-analisys-reuqest.dto';
+
 import { ProductPromoUpdateRequestDto } from 'src/app/dto/logged/product-promo-update-request.dto';
+
+import { UnityRequestDto } from 'src/app/dto/logged/unity-request.dto';
+import { UnityResponsetDto } from 'src/app/dto/logged/uniry-response.dto';
+
 
 
 @Injectable({
@@ -87,6 +92,33 @@ export class ProductService extends BaseService {
   getAllFilteredProductsByDate(days: number): Observable<any> {
     return this.httpClient
       .get(`${this.url}product/${days}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+
+  // UNITY
+
+  unityCreate(dto: UnityRequestDto): Observable<any> {
+    return this.httpClient
+      .post(`${this.url}measurement/register`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  unityList(): Observable<UnityResponsetDto[]> {
+    return this.httpClient
+      .get(`${this.url}measurement/list`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  unityEdit(Id: string, dto: UnityRequestDto): Observable<any> {
+    return this.httpClient
+      .put(`${this.url}measurement/update/${Id}`, dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  unityDelete(Id: string): Observable<any> {
+    return this.httpClient
+      .delete(`${this.url}measurement/delete/${Id}`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
