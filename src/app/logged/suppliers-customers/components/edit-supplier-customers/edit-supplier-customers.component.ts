@@ -46,11 +46,12 @@ export class EditSupplierCustomersComponent implements OnInit {
     this.form.controls['cnpj'].setValue(this.responseData.cnpj);
     this.form.controls['phone'].setValue(this.responseData.phone);
     this.form.controls['email'].setValue(this.responseData.email);
-    console.log('arquivo:', this.form.controls);
+    //console.log('arquivo:', this.form.controls);
     if (this.form.controls['phone'].value) console.log('tem')
     else console.log('não')
 
     this.check = this.responseData.emphasis
+    console.log('a response eh', this.responseData)
   }
 
   downloadFile() {
@@ -65,7 +66,21 @@ export class EditSupplierCustomersComponent implements OnInit {
   exit() {
     this.modalService.dismissAll()
   }
-
+  setCanLogin(value: string) {
+    const dto = {
+      can_login: value
+    }
+    this.userService.updateCanLogin(this.responseData._id, dto).subscribe(
+      success => {
+        this.toastrService.success('Destaque do fornecedor alterado com sucesso!', '', { progressBar: true });
+        //this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao editar', '', { progressBar: true });
+      }
+    )
+  }
   setEmphasis(value: any){
     const dto = {
       emphasis: value
