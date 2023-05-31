@@ -8,4 +8,6 @@ export interface ProductPutRequestDto {
   quantity: number,
   cnpj: string,
   image: string[],
+  measure_unit: string,
+
 }

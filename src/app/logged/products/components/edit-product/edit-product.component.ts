@@ -6,6 +6,7 @@ import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
 import { ProductPutRequestDto } from 'src/app/dto/logged/product-put-request.dto';
 import { CategoryService } from 'src/services/category.service';
 import { ProductService } from 'src/services/products.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -36,12 +37,25 @@ export class EditProductComponent implements OnInit {
   selectedCategories: string[];
   categories: string[];
 
+  measureUnits: any = []
+
+  choosedMeasureUnit: string = ''
+
+  productInPromo: boolean = false
+
+  startPromoDate: string = ''
+
+  endPromoDate: string = ''
+
+  promoDiscount: string = '0'
+
   constructor(
     private modalService: NgbModal,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private categoryService: CategoryService,
+    private userService: UserService
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -60,6 +74,7 @@ export class EditProductComponent implements OnInit {
 
 
   ngOnInit(): void {
+  
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.FilesDoc = this.responseData.doc;
     console.log(this.FilesDoc);
@@ -75,8 +90,9 @@ export class EditProductComponent implements OnInit {
     this.form.controls['specification'].setValue(this.responseData.specifications)
     this.getImagesFromLocalStorage();
     this.getCategorys();
+    this.getMeasurementList()
 
-
+    console.log('o item sele', this.responseData)
   }
 
 
@@ -94,6 +110,7 @@ export class EditProductComponent implements OnInit {
     const selectedOption = this.responseCategory.find(option => option._id === optionId);
     if (selectedOption && !this.selectedItems.includes(selectedOption)) {
       this.selectedItems.push(selectedOption);
+      
     }
     this.selectedCategories = this.selectedItems.map(item => item.name);
     console.log(this.selectedCategories);
@@ -114,6 +131,19 @@ export class EditProductComponent implements OnInit {
     }
   }
 
+  getMeasurementList() {
+    this.userService.listMeasureUnits().subscribe(
+      async success => {
+        console.log('as unidades de medida sao?',success);
+        this.measureUnits = success;
+        this.measureUnits = this.measureUnits.filter(item => item !== this.responseData.measure_unit)
+      },
+      async error => {
+        // this.toastrService.error('Erro ao recuperar dados!', '', { progressBar: true })
+      }
+    );
+  }
+
   // functions-photos
   onSelectFileProductImage(event) {
     if (event.target.files && event.target.files[0]) {
@@ -127,6 +157,42 @@ export class EditProductComponent implements OnInit {
         reader.readAsDataURL(event.target.files[i]);
       }
     }
+  }
+
+  setPromo() {
+    this.productInPromo = !this.productInPromo
+    if(this.productInPromo === false) {
+      this.startPromoDate = ''
+      this.endPromoDate = ''
+      this.promoDiscount = '0'
+    }
+    
+  }
+
+  setStartPromoDate(value: string) {
+
+
+    this.startPromoDate = value
+
+
+  }
+
+  setMeasureUnit(value: string) {
+    this.choosedMeasureUnit = value
+    
+  }
+
+  setPromoDiscount(value: string) {
+ 
+    this.promoDiscount = value
+
+
+  }
+
+  setEndPromoDate(value: string) {
+
+    this.endPromoDate = value
+   
   }
 
 
@@ -169,18 +235,40 @@ export class EditProductComponent implements OnInit {
       description: this.form.controls['description'].value,
       specifications: this.form.controls['specification'].value,
       value: this.form.controls['price'].value,
+      measure_unit: this.choosedMeasureUnit,
     }
     console.log(this.request)
     this.productService.putProduct(this.responseData._id, this.request).subscribe(
       success => {
         this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
-        this.modalService.dismissAll();
+        if (this.productInPromo === false) {
+          this.modalService.dismissAll();
+        }
+        
       },
       error => {
         console.log(error)
         this.toastrService.error('Erro ao editar', '', { progressBar: true });
       }
     )
+    if (this.productInPromo === true) {
+      const dto = {
+        start_promo_date: this.startPromoDate,
+        end_promo_date: this.endPromoDate,
+        cnpj: this.responseData.cnpj
+      }
+      this.productService.setPromoDate(this.responseData._id, dto).subscribe(
+        success => {
+          this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
+          this.modalService.dismissAll();
+          
+        },
+        error => {
+          console.log(error)
+          this.toastrService.error('Erro ao editar', '', { progressBar: true });
+        }
+      )
+    }
   }
 
 

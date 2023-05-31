@@ -36,8 +36,13 @@
                       <select class="form-select input-purchased-products" style="width: 30%;" #target (change)="setEmphasis(target.value)">
                         <option   value="false"  >Não</option>
                         <option  [selected]="this.check === true" value="true">Sim</option>
-                        
-                      
+
+                      </select>
+                      <label>Liberar acesso a plataforma?</label>
+                      <select class="form-select input-purchased-products" style="width: 30%;" #ele (change)="setCanLogin(ele.value)">
+                        <option  [selected]="this.responseData.can_login === false" value="false"  >Não</option>
+                        <option   value="true">Sim</option>
+
                       </select>
          
                     </div>
