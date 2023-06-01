@@ -68,11 +68,11 @@ export class EditSupplierCustomersComponent implements OnInit {
   }
   setCanLogin(value: string) {
     const dto = {
-      can_login: value
+      status: value
     }
     this.userService.updateCanLogin(this.responseData._id, dto).subscribe(
       success => {
-        this.toastrService.success('Destaque do fornecedor alterado com sucesso!', '', { progressBar: true });
+        this.toastrService.success('Permissão de login do fornecedor alterado com sucesso!', '', { progressBar: true });
         //this.modalService.dismissAll();
       },
       error => {

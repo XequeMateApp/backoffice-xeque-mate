@@ -40,8 +40,9 @@
                       </select>
                       <label>Liberar acesso a plataforma?</label>
                       <select class="form-select input-purchased-products" style="width: 30%;" #ele (change)="setCanLogin(ele.value)">
-                        <option  [selected]="this.responseData.can_login === false" value="false"  >Não</option>
-                        <option   value="true">Sim</option>
+                       
+                        <option   value="active">Sim</option>
+                        <option  [selected]="this.responseData.status === 'inactive'" value="inactive"  >Não</option>
 
                       </select>
          

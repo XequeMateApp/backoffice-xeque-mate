@@ -32,6 +32,13 @@
                         <b class="text-secondary">Nenhum documento identificado</b>
                         <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
                     </div>
+                    <label>Liberar acesso a plataforma?</label>
+                    <select class="form-select input-purchased-products" style="width: 30%;" #ele (change)="setCanLogin(ele.value)">
+                      
+                      <option   value="active">Sim</option>
+                      <option  [selected]="this.responseData.status === 'inactive'" value="inactive"  >Não</option>
+
+                    </select>
                       <div *ngIf="responseData.document" role="button" (click)="downloadFile()" id="edit-doc" class="border my-2 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
                           <span>Baixe-o-documento-{{responseData.name}}</span>
                           <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
@@ -44,6 +51,7 @@
                                   <h6 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h6>
                               </button>
                           </div>
+          
                           <div class="col-md-6 mt-4">
                               <button class="btn br-16 text-light bg-dark-blue w-100" (click)="confirm()"
                                   type="button">
