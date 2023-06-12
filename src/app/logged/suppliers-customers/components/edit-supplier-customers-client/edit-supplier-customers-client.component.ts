@@ -18,6 +18,7 @@ export class EditSupplierCustomersClientComponent implements OnInit {
   responseData: any;
   FilesDoc: string;
   truephone: string;
+  activeOrInactive: string;
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
@@ -59,6 +60,23 @@ export class EditSupplierCustomersClientComponent implements OnInit {
     this.modalService.dismissAll()
   }
 
+  setCanLogin(value: string) {
+    this.activeOrInactive = value
+    const dto = {
+      status: value
+    }
+    this.userService.updateCanLogin(this.responseData._id, dto).subscribe(
+      success => {
+        this.toastrService.success('Permissão de login do cliente alterado com sucesso!', '', { progressBar: true });
+        //this.modalService.dismissAll();
+      },
+      error => {
+        console.log(error)
+        this.toastrService.error('Erro ao editar', '', { progressBar: true });
+      }
+    )
+  }
+
   confirm() {
     if (this.form.controls['phone'].value === undefined || this.form.controls['phone'].value === '') this.truephone = '';
     else if (this.form.controls['phone'].value) this.truephone = this.form.controls['phone'].value;
@@ -68,7 +86,7 @@ export class EditSupplierCustomersClientComponent implements OnInit {
       email: this.form.controls['email'].value,
       name: this.form.controls['name'].value,
       cpf: this.form.controls['cpf'].value,
-      status: 'active',
+      status: this.activeOrInactive,
     }
     console.log(this.request)
     this.userService.updateSupplierCustomers(this.responseData._id, this.request).subscribe(

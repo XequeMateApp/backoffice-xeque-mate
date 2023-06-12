@@ -59,6 +59,7 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
   openModals(tabName: string, info: any) {
+    console.log('o item eh ', info)
     
     if (tabName == 'editclient') {
       const modal = this.modalService.open(EditSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
