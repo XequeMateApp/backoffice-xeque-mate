@@ -1,0 +1,72 @@
+.has-tooltip {
+    cursor: help;
+    padding: 0.5em;
+    position: relative;
+    width: 200px;
+    -webkit-transform: translateZ(0); 
+    -webkit-font-smoothing: antialiased; 
+  }
+  
+  .has-tooltip .tooltip {
+    background: black;
+    color: #fff;
+    display: block;font-size: 18px;
+    opacity: 0;
+    border-radius: 10px;
+    padding: 1em;
+    position: absolute;
+    visibility: hidden;
+    width: fit-content;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+  }
+  
+  /* This bridges the gap so you can mouse into the tooltip without it disappearing */
+  .has-tooltip .tooltip:before {
+    content: " ";
+    display: block;
+    height: 1em;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .has-tooltip:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(0px) translateY(0px) !important;
+    -moz-transform: translateX(0px) translateY(0px) !important;
+    -ms-transform: translateX(0px) translateY(0px) !important;
+    -o-transform: translateX(0px) translateY(0px) !important;
+    transform: translateX(0px) translateY(0px) !important;
+  }
+  
+  /* TOOLTIPS 'NORTH' VERSION */
+  .has-tooltip.north .tooltip {
+    bottom: 100%;
+    top: auto;
+    left: -1em;
+    right: auto;
+    margin-left: 0%;
+    margin-right: auto;
+    margin-bottom: 0.6em;
+    -webkit-transform: translateX(0px) translateY(10px);
+    -moz-transform: translateX(0px) translateY(10px);
+    -ms-transform: translateX(0px) translateY(10px);
+    -o-transform: translateX(0px) translateY(10px);
+    transform: translateX(0px) translateY(10px);
+  }
+  
+  .has-tooltip.north .tooltip:before {
+    bottom: -1em;
+    left: 0;
+    height: 100%;
+    width: 1em;
+  }

@@ -119,8 +119,8 @@ import { DeleteUnityComponent } from './unity/delete-unity/delete-unity.componen
   ],
   providers: [],
   schemas: [
-    // CUSTOM_ELEMENTS_SCHEMA,
-    // NO_ERRORS_SCHEMA
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ],
 
 })
