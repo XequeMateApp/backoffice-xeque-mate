@@ -36,7 +36,10 @@
         </div>
       </div>
       <div class="col-md-5">
-        <label class="h6 mt-3 text-dark" for="create-img">Adicionar imagem</label>
+        <div class="has-tooltip north">
+          Adicionar imagem
+          <span class="tooltip">Resolução para os Banners <strong>1459x598</strong></span>
+      </div>
         <div *ngFor="let file of selectFile"
           style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; height: 279px;"
           class="br-16 border w-100"></div>
