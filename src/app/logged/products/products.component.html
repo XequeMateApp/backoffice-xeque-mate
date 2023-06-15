@@ -84,7 +84,7 @@
                             <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 270px;">{{item?.name}}</h5></td>
                             <td style="min-width: 200px; width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 170px;">{{item?.category}}</h5></td>
                             <td style="min-width: 100px; width: 100px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 70px;">{{item?.quantity || '0'}}</h5></td>
-                            <td style="width: 181px;"><h5 *ngIf="item.value"  class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 151px;">R$ {{item?.value | currency: 'BRL' }}</h5></td>
+                            <td style="width: 181px;"><h5 *ngIf="item.value"  class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 151px;">{{item?.value | currency: 'BRL' }}</h5></td>
                             <td>
                                 <h6 *ngIf="item?.status === 'PENDING'" class="mb-0 py-3 text-secondary">Pendente</h6>
                                 <h6 *ngIf="item?.status === 'APPROVED'" class="mb-0 py-3 text-success">Ativo</h6>
