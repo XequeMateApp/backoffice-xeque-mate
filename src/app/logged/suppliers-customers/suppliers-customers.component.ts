@@ -32,22 +32,22 @@ export class SuppliersCustomersComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getListUsert();
   }
 
-  getListUsert(): void{
+  getListUsert(): void {
     this.userService.getAllClients().subscribe(
       success => {
         this.response = success;
-         this.response = this.response.filter(item => item.status !== 'inactive')
-    
-       console.log('a response eh?', this.response)
+        this.response = this.response.filter(item => item.status !== 'inactive')
+
+        console.log('a response eh?', this.response)
       },
       error => {
-         this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
         console.error(error, 'data not collected')
       }
     )
@@ -59,7 +59,7 @@ export class SuppliersCustomersComponent implements OnInit {
 
   openModals(tabName: string, info: any) {
     console.log('o item eh ', info)
-    
+
     if (tabName == 'editclient') {
       const modal = this.modalService.open(EditSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
@@ -73,10 +73,10 @@ export class SuppliersCustomersComponent implements OnInit {
         this.getListUsert();
       })
     } else if (tabName == 'editsupplier') {
-      
+
       const modal = this.modalService.open(EditSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
-      
+
       }, err => {
         this.getListUsert();
       })
@@ -91,11 +91,17 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
 
-  sortListByAlphabeticalOrder(): void {
-    this.response.sort((a, b) => {
-      return a.name.localeCompare(b.name);
+  sortListByTime(value: string): void {
+    if (value === 'bigger') {
+      this.response.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    }else if(value === 'smaller'){
+      this.response.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
     }
-    );
+
   }
 
   sortListByType(value: string) {
