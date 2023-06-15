@@ -105,7 +105,7 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
   sortListByType(value: string) {
-    if (value === 'cliente') this.response.sort((a, b) => { return a.profile.localeCompare(b.profile); });
-    else if (value === 'fornecedor') this.response.sort((a, b) => { return b.profile.localeCompare(a.profile); });
+    if (value === 'cliente') this.response.sort((a, b) =>  a.profile.localeCompare(b.profile));
+    else if (value === 'fornecedor') this.response.sort((a, b) => b.profile.localeCompare(a.profile));
   }
 }
