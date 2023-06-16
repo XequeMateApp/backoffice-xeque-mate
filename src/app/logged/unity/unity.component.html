@@ -14,30 +14,19 @@
         </div>
         <div class="col-12 mt-2">
             <div class="row align-items-center">
-                <div class="col-md-8 mt-3">
+                <div class="col-md-12 mt-3">
                     <div class="input-group mt-3">
                         <input type="search" name="search" [(ngModel)]="filterTerm" class="form-control py-3 br-16 bg-search pe-5" placeholder="Pesquisar" />
                     </div>
                 </div>
-                <div class="col-md-4 mt-3">
-                    <div class="row mx-0 px-0">
-                        <!-- <div class="col-md-4 mt-3 p0-important">
-                            <div class="dropdown">
-                                <button class="btn w3-white border d-flex justify-content-between text-start align-items-center py-3 w-100 br-16
-                                    dropdown-toggle" type="button" id="orderbysupplier" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{OrderBy}}
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-                                    <li role="button"><a (click)="sortListByAlphabeticalOrder()" class="dropdown-item">Nome A-Z</a></li>
-                                </ul>
-                            </div>
-                        </div> -->
-                        <!-- <label for="name" class="form-label mb-0">Insira uma unidade</label> -->
-                        <form [formGroup]="form"  class="col-md-12 mt-3 d-flex align-items-center p0-important">
+                <div class="col-md-12 mt-3  mx-0 px-0">
+                    <div class="row mx-0 mt-3 px-0">
+                        <label for="name">Adicione uma unidade de venda</label>
+                        <form [formGroup]="form"  class="col-md-5 d-flex align-items-center p0-important">
                             <div class="input-group">
-                                <input type="text"  id="name" [maxlength]="100" style="border-radius: 16px 0px 0px 16px;" formControlName="name" placeholder="Digite a unidade desejada"class="border-end-0 py-3 form-control" aria-label="Digite a unidade desejada" aria-describedby="sumbit-name">
-                                <button (click)="create()" style="border-radius: 0px 16px 16px 0px;"  class="border-start-0  btn w3-white border" type="submit" id="sumbit-name">
-                                    <i class="bi px-0 m-0 text-success h3 bi-check-lg"></i>
+                                <input type="text"  id="name" [maxlength]="100" formControlName="name" placeholder="Ex: Unidade, Lote, etc" class="border-end-0 py-3 form-control" aria-label="Adicione uma unidade de venda" aria-describedby="sumbit-name">
+                                <button (click)="create()"  class="btn btn-outline-success pb-0" type="submit" id="sumbit-name">
+                                    <i class="bi px-0 m-0 h3 bi-plus"></i>
                                 </button>
                               </div>
                         </form>

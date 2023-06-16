@@ -63,12 +63,12 @@ export class UnityComponent implements OnInit {
   create() {
     this.request = {
       name: this.form.controls['name'].value,
-      description : "default"
+      description: "default"
     }
     this.productService.unityCreate(this.request).subscribe({
       next: success => {
         this.toastrService.success('Cadastrado com sucesso!', '', { progressBar: true });
-    this.getUnity();
+        this.getUnity();
       },
       error: error => {
         this.toastrService.error('Erro ao Cadastrar!', '', { progressBar: true });
