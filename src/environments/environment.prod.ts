@@ -13,7 +13,7 @@ export const environment = {
   maxDocumentSize: 10485760,
   api: {
     // xequeMateApi: 'https://xequemate.tgtdigital.io/'
-    xequeMateApi: 'http://localhost:3000/'
+    xequeMateApi: 'https://marketplace-inkluziva.tgtdigital.io/xeque/'
   },
   encryptKey: '567e61fddbe8a715df61d805f2551b8a'
 };
