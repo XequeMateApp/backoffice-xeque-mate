@@ -25,6 +25,7 @@ export class BlockedUsersComponent implements OnInit {
   };
   response: any
   filterTerm!: string;
+  selectedType: string = '';
 
   constructor(
     private router: Router,
@@ -37,17 +38,16 @@ export class BlockedUsersComponent implements OnInit {
   }
 
   getListUsert(): void{
-    this.userService.getBlockedUsers().subscribe(
-      success => {
+    this.userService.getBlockedUsers().subscribe({
+      next: success => {
         this.response = success;
-    
-       console.log('a response eh?', this.response)
+        console.log('a response eh?', this.response)
       },
-      error => {
-         this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
-        console.error(error, 'data not collected')
+      error: error => {
+        //  this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'dados não coletados!!')
       }
-    )
+  })
   }
 
   backHome() {
@@ -55,15 +55,19 @@ export class BlockedUsersComponent implements OnInit {
   }
 
   sortListByType(value: string) {
-    if (value === 'cliente') this.response.sort((a, b) => { return a.profile.localeCompare(b.profile); });
-    else if (value === 'fornecedor') this.response.sort((a, b) => { return b.profile.localeCompare(a.profile); });
+    this.selectedType = value;
   }
 
-  sortListByAlphabeticalOrder(): void {
-    this.response.sort((a, b) => {
-      return a.name.localeCompare(b.name);
+  sortListByTime(value: string): void {
+    if (value === 'new') {
+      this.response.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    } else if (value === 'old') {
+      this.response.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
     }
-    );
+  }
+  sortListByAlphabeticalOrder(value: string): void {
+    if(value === 'A') this.response.sort((a, b) => {return a.name.localeCompare(b.name);});
+    else if (value === 'B') this.response.sort((a, b) => {return b.name.localeCompare(a.name);});
   }
 
 
