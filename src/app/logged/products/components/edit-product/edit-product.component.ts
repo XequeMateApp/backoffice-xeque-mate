@@ -74,7 +74,7 @@ export class EditProductComponent implements OnInit {
 
 
   ngOnInit(): void {
-  
+
     this.responseData = JSON.parse(localStorage.getItem('responseData'));
     this.FilesDoc = this.responseData.doc;
     console.log(this.FilesDoc);
@@ -110,7 +110,7 @@ export class EditProductComponent implements OnInit {
     const selectedOption = this.responseCategory.find(option => option._id === optionId);
     if (selectedOption && !this.selectedItems.includes(selectedOption)) {
       this.selectedItems.push(selectedOption);
-      
+
     }
     this.selectedCategories = this.selectedItems.map(item => item.name);
     console.log(this.selectedCategories);
@@ -134,7 +134,7 @@ export class EditProductComponent implements OnInit {
   getMeasurementList() {
     this.userService.listMeasureUnits().subscribe(
       async success => {
-        console.log('as unidades de medida sao?',success);
+        console.log('as unidades de medida sao?', success);
         this.measureUnits = success;
         this.measureUnits = this.measureUnits.filter(item => item !== this.responseData.measure_unit)
       },
@@ -161,12 +161,12 @@ export class EditProductComponent implements OnInit {
 
   setPromo() {
     this.productInPromo = !this.productInPromo
-    if(this.productInPromo === false) {
+    if (this.productInPromo === false) {
       this.startPromoDate = ''
       this.endPromoDate = ''
       this.promoDiscount = '0'
     }
-    
+
   }
 
   setStartPromoDate(value: string) {
@@ -179,11 +179,11 @@ export class EditProductComponent implements OnInit {
 
   setMeasureUnit(value: string) {
     this.choosedMeasureUnit = value
-    
+
   }
 
   setPromoDiscount(value: string) {
- 
+
     this.promoDiscount = value
 
 
@@ -192,7 +192,7 @@ export class EditProductComponent implements OnInit {
   setEndPromoDate(value: string) {
 
     this.endPromoDate = value
-   
+
   }
 
 
@@ -244,7 +244,7 @@ export class EditProductComponent implements OnInit {
         if (this.productInPromo === false) {
           this.modalService.dismissAll();
         }
-        
+
       },
       error => {
         console.log(error)
@@ -254,14 +254,14 @@ export class EditProductComponent implements OnInit {
     if (this.productInPromo === true) {
       const dto = {
         start_promo_date: this.startPromoDate,
-        end_promo_date: this.endPromoDate,
+        end_promo_date: '2030-09-30',
         cnpj: this.responseData.cnpj
       }
       this.productService.setPromoDate(this.responseData._id, dto).subscribe(
         success => {
           this.toastrService.success('Editado com sucesso!', '', { progressBar: true });
           this.modalService.dismissAll();
-          
+
         },
         error => {
           console.log(error)

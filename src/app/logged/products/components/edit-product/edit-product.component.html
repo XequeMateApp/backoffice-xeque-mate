@@ -12,34 +12,44 @@
           <div class="col-md-6">
             <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
             <input type="text" id="edit-name" class="form-control fw-bolder br-16 bordder py-3"
-               placeholder="Digite o nome" formControlName="name" />
+              placeholder="Digite o nome" formControlName="name" />
           </div>
-           <div class="col-md-6">
-                <label class="h6 mt-3 text-dark" for="edit-valor">Valor</label>
-                <input type="tel" id="edit-valor" [maxlength]="15"
-                  mask="separator.2" thousandSeparator="." prefix="R$ "
-                  class="form-control fw-bolder br-16 bordder py-3"
-                  placeholder="Digite o valor" formControlName="price" />
-            </div>
+          <div class="col-md-6">
+            <label class="h6 mt-3 text-dark" for="edit-valor">Valor</label>
+            <input type="tel" id="edit-valor" [maxlength]="15"
+              mask="separator.2" thousandSeparator="." prefix="R$ "
+              class="form-control fw-bolder br-16 bordder py-3"
+              placeholder="Digite o valor" formControlName="price" />
+          </div>
+
           <div class="col-12">
             <div class="row">
-                <div class="col-md-6">
-                  <label class="h6 mt-3 text-dark" for="edit-cnpj">Fornecedor CNPJ</label>
-                  <input type="text" id="edit-cnpj" mask="00.000.000/0000-00"
-                    class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
-                </div>
-                <div class="col-md-6">
+              <div class="col-md-6">
+                <label class="h6 mt-3 text-dark" for="edit-cnpj">Fornecedor CNPJ</label>
+                <input type="text" id="edit-cnpj" mask="00.000.000/0000-00"
+                  class="form-control fw-bolder br-16 bordder py-3" placeholder="Digite o CNPJ" formControlName="cnpj" />
+              </div>
+              <div class="col-md-6">
                 <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
                 <input type="tel" id="edit-code" [maxLength]="15" class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
-                placeholder="Digite o código" formControlName="code" />
+                  placeholder="Digite o código" formControlName="code" />
               </div>
             </div>
           </div>
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-stock">Estoque</label>
             <input type="tel" id="edit-stock" [maxLength]="15" class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
-            placeholder="Insira uma quantidade" formControlName="quantity" />
+              placeholder="Insira uma quantidade" formControlName="quantity" />
           </div>
+
+          <div class="col-md-12">
+            <label class="h6 mt-3 text-dark">Porcentagem de desconto</label>
+            <input type="text" id="create-valor" required
+              #target (change)="setPromoDiscount(target.value)"
+              class="form-control input-purchased-products"
+              placeholder="Porcentagem de desconto" />
+          </div>
+          
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="create-category">Categoria</label>
             <select #selectOptions class="form-select fw-bolder text-dark-blue
@@ -54,7 +64,7 @@
             <ul class="list-group mt-3 br-16 ">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of selectedItems">
                 <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{item.name}}</h6>
-                <input type="text" readonly formControlName="category" class="text-dark mb-0 align-self-center d-none"/>
+                <input type="text" readonly formControlName="category" class="text-dark mb-0 align-self-center d-none" />
                 <i (click)="removeItem(item)" role="button" class="bi mb-0 bi-x h3 text-danger"></i>
               </li>
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of responseData.category">
@@ -65,74 +75,67 @@
             <label class="h6 mt-3 text-dark" for="unidade-venda">Unidades de venda</label>
             <select id="unidade-venda" class="form-select fw-bolder text-dark-blue
             br-16 border py-3" aria-label="Default select example" #orderBy
-            (change)="setMeasureUnit(orderBy.value)" >
-            <option selected value={{this.responseData.measure_unit}} >{{responseData.measure_unit}}</option>
-            <option *ngFor="let unidade of measureUnits" value={{unidade.name}} >{{unidade.name}}</option>
-            
-          </select>
-            <label class="label-profile-payment-method">Produto em promoção?</label>
-            <input type="checkbox" placeholder="Produto em promoção?" [checked]="this.productInPromo" style="margin-left: 1%;" (click)="setPromo()"/>
-          </div>
-     
-      
-        <div *ngIf="this.productInPromo === true">
-            <label class="label-profile-payment-method">Data de início da promoção</label>
-            <input type="date"   
-                #target (change)="setStartPromoDate(target.value)"
-                class="form-control input-purchased-products"
-                placeholder="xx-xx-xxxx"
-                />
-        </div>
-        <div *ngIf="this.productInPromo === true">
-                <label class="label-profile-payment-method">Data de término da promoção</label>
-                <input type="date"   
-                    #target (change)="setEndPromoDate(target.value)"
-                    class="form-control input-purchased-products"
-                    placeholder="xx-xx-xxxx"
-                    />
-        </div>
-        <div *ngIf="this.productInPromo === true">
-            <label class="label-profile-payment-method">Porcentagem de desconto</label>
-            <input type="text" id="create-valor" 
-                    thousandSeparator="." prefix="R$ " required
-                    #target (change)="setPromoDiscount(target.value)"
-                    class="form-control input-purchased-products"
-                    placeholder="Porcentagem de desconto"
-            />
+              (change)="setMeasureUnit(orderBy.value)">
+              <option selected value={{this.responseData.measure_unit}}>{{responseData.measure_unit}}</option>
+              <option *ngFor="let unidade of measureUnits" value={{unidade.name}}>{{unidade.name}}</option>
 
-        </div>
+            </select>
+            <label class="label-profile-payment-method mt-2">Especificar data para o lançamento do produto?</label>
+            <input type="checkbox" [checked]="this.productInPromo" style="margin-left: 1%;" (click)="setPromo()" />
+          </div>
+
+          <div *ngIf="this.productInPromo === true">
+            <label class="label-profile-payment-method">Data de início do lançamento</label>
+            <input type="date"
+              #target (change)="setStartPromoDate(target.value)"
+              class="form-control input-purchased-products"
+              placeholder="xx-xx-xxxx" />
+          </div>
+          <!-- <div *ngIf="this.productInPromo === true">
+            <label class="label-profile-payment-method">Data de término da promoção</label>
+            <input type="date"
+              #target (change)="setEndPromoDate(target.value)"
+              class="form-control input-purchased-products"
+              placeholder="xx-xx-xxxx" />
+          </div> -->
 
           <div class="col-12">
             <label class="h6 mt-3 text-dark" for="edit-doc">Images</label>
             <div class="w-100 d-flex overflow-y border p-2 br-16 align-items-center">
               <div class="d-flex align-items-center overflow-x-scroll overflow-y-hidden">
                 <div *ngFor="let imgs of supplierImg; let i = index" class="d-flex align-items-center">
-                  <div *ngIf="selectedImageUrl !== null" style="background-image: url({{imgs}});"class="br-16 d-flex justify-content-end illustration border">
-                    <img src="../../../../../assets/icons/x.svg" class="w3-white rounded-pill w-fit h-fit mt-2 me-2" (click)="removeFile(i)" role="button"/>
+                  <div *ngIf="selectedImageUrl !== null" style="background-image: url({{imgs}});"
+                    class="br-16 d-flex justify-content-end illustration border">
+                    <img src="../../../../../assets/icons/x.svg" class="w3-white rounded-pill w-fit h-fit mt-2 me-2" (click)="removeFile(i)"
+                      role="button" />
                   </div>
-                  <div *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});"class="br-16 d-flex justify-content-end illustration border">
+                  <div *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});"
+                    class="br-16 d-flex justify-content-end illustration border">
                   </div>
                 </div>
                 <div class="br-16 ms-1 d-flex justify-content-end illustration border">
                   <div class="br-16  d-block justify-content-end illustration border">
-                    <input role="button" [multiple]="true" type="file" class="illustration position-relative z-10" style="opacity:0;" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"  accept="image/*">
+                    <input role="button" [multiple]="true" type="file" class="illustration position-relative z-10" style="opacity:0;"
+                      formControlName="selectPhotos" (change)="onSelectFileProductImage($event)" accept="image/*">
                     <i role="button" class="bi mb-0 bi-plus position-relative" style="bottom: 77%; font-size: 40px;left: 29%;"></i>
                   </div>
                 </div>
               </div>
-          </div>
-          <div class="col-12 mt-4 pb-3">
-            <div class="row">
-              <div class="col-md-6">
-                <label for="exempleDescription">Descrição</label>
-                <textarea formControlName="description" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
-              </div>
-              <div class="col-md-6">
-                <label for="exempleSpecification">Especificações</label>
-                <textarea formControlName="specification" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
+            </div>
+            <div class="col-12 mt-4 pb-3">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="exempleDescription">Descrição</label>
+                  <textarea formControlName="description" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription"
+                    rows="3"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label for="exempleSpecification">Especificações</label>
+                  <textarea formControlName="specification" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification"
+                    rows="3"></textarea>
+                </div>
               </div>
             </div>
-          </div>
           </div>
           <div class="col-12 mb-3">
             <div class="row">
