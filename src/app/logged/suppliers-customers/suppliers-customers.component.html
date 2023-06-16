@@ -28,8 +28,8 @@
 									Tipo
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="orderbysupplier">
-									<li role="button"><a (click)="sortListByType('fornecedor')" class="dropdown-item">Fornecedor</a></li>
-									<li role="button"><a (click)="sortListByType('cliente')" class="dropdown-item">Cliente</a></li>
+									<li role="button"><a (click)="sortListByType('provider')" class="dropdown-item">Fornecedor</a></li>
+									<li role="button"><a (click)="sortListByType('client')" class="dropdown-item">Cliente</a></li>
 								</ul>
 							</div>
 						</div>
@@ -73,6 +73,7 @@
 				<table class="table table-office mb-0 table-striped">
 					<tbody>
 						<tr *ngFor="let item of response | paginate: config | filter: filterTerm; let i= index; ">
+							<ng-container *ngIf="selectedType === '' || selectedType === item.profile">
 							<td style="width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 276px;">{{item.name}}</h5></td>
 							<td style="width: 295px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 265px;">{{item.email}}</h5></td>
 							<td style="width: 120px;">
@@ -96,6 +97,7 @@
 									<i role='button' (click)="openModals('deletesupplier', item)" class="bi h3 ms-3 text-danger bi-trash3"></i>
 								</h6>
 							</td>
+							</ng-container>
 						</tr>
 					</tbody>
 				</table>

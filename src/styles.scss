@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
+
 :root {
   --darkblue: #0f214f;
   --graylight: rgba(255, 255, 255, 0.8);
@@ -11,7 +12,7 @@
   font-family: "Josefin Sans" !important;
 }
 
-.col-description{
+.col-description {
   width: 636px;
 }
 
@@ -27,7 +28,7 @@
   margin: auto;
 }
 
-.custom-pagination > div {
+.custom-pagination>div {
   flex: 1;
   font-size: 18px;
   cursor: pointer;
@@ -39,7 +40,7 @@
   -ms-user-select: none;
 }
 
-.custom-pagination > div.current {
+.custom-pagination>div.current {
   border-bottom: 2px solid rgb(0, 128, 255);
   padding: 0 1rem;
   cursor: pointer;
@@ -51,7 +52,7 @@
   background-size: cover;
 }
 
-.bg-model{
+.bg-model {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -190,7 +191,7 @@
   border: none !important;
 }
 
-.bg-model{
+.bg-model {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -216,6 +217,8 @@
   overflow-y: hidden;
 }
 
+
+
 .col-name {
   width: 257px;
 }
@@ -225,6 +228,7 @@
     padding-left: 0px;
     padding-right: 0px;
   }
+
   .col-description {
     min-width: 511px !important;
   }
@@ -261,7 +265,11 @@
   }
 
   .col-description {
-    width: 506px ;
+    width: 506px;
+  }
+
+  .col-category {
+    width: 493px !important;
   }
 
   .col-type {
