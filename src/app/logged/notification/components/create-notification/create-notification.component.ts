@@ -149,7 +149,7 @@ export class CreateNotificationComponent implements OnInit {
             },
             error: error => {
               this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
-              console.error(error, 'data not collected') }
+              console.error(error, 'dados não coletados!!') }
           });
    
          // this.modalService.dismissAll();

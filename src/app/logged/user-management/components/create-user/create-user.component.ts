@@ -68,7 +68,7 @@ export class CreateUserComponent implements OnInit {
       next: success => {
         this.response = success;
       },
-      error: error => { console.error(error, 'data not collected'); }
+      error: error => { console.error(error, 'dados não coletados!!'); }
     });
   }
 
