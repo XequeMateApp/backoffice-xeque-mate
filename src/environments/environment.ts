@@ -16,7 +16,7 @@ export const environment = {
   maxImgageSize: 10485760,
   maxDocumentSize: 10485760,
   api: {
-    xequeMateApi: 'https://xequemate.tgtdigital.io/'
+    xequeMateApi: 'https://marketplace-inkluziva.tgtdigital.io/xeque/'
     // xequeMateApi: 'http://localhost:3000/'
   },
   encryptKey: '567e61fddbe8a715df61d805f2551b8a'

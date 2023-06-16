@@ -81,7 +81,7 @@ export class UnityComponent implements OnInit {
   getUnity() {
     this.productService.unityList().subscribe({
       next: success => {
-        this.response = success;
+        this.response = success.data;
         console.log(this.response, 'lisat de unidades')
       },
       error: error => { console.error(error, 'category not collected') }
