@@ -49,7 +49,7 @@ export class SuppliersCustomersComponent implements OnInit {
       },
       error => {
         this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
-        console.error(error, 'data not collected')
+        console.error(error, 'dados não coletados!!')
       }
     )
   }
@@ -102,8 +102,10 @@ export class SuppliersCustomersComponent implements OnInit {
 
   sortListByType(value: string) {
     this.selectedType = value;
+  }
 
-    // if (value === 'cliente') this.response.sort((a, b) =>  a.profile.localeCompare(b.profile));
-    // else if (value === 'fornecedor') this.response.sort((a, b) => b.profile.localeCompare(a.profile));
+  sortListByAlphabeticalOrder(value: string): void {
+    if(value === 'A') this.response.sort((a, b) => {return a.name.localeCompare(b.name);});
+    else if (value === 'B') this.response.sort((a, b) => {return b.name.localeCompare(a.name);});
   }
 }

@@ -65,7 +65,7 @@ export class EditFunctionComponent implements OnInit {
           if (role === 'category') this.form.controls['category'].setValue('category');
         });
       },
-      error: error => { console.error(error, 'data not collected') }
+      error: error => { console.error(error, 'dados não coletados!!') }
     })
   }
 

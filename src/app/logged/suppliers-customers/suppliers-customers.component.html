@@ -42,6 +42,8 @@
 								<ul class="dropdown-menu" aria-labelledby="orderbysupplier">
 									<li role="button"><a (click)="sortListByTime('old')" class="dropdown-item">mais antigo > mais novo</a></li>
 									<li role="button"><a (click)="sortListByTime('new')" class="dropdown-item">mais novo < mais antigo</a></li>
+									<li role="button"><a (click)="sortListByAlphabeticalOrder('A')" class="dropdown-item">A-Z</a></li>
+									<li role="button"><a (click)="sortListByAlphabeticalOrder('Z')" class="dropdown-item">Z-A</a></li>
 								</ul>
 							</div>
 						</div>
@@ -83,7 +85,7 @@
 							<td class="td-phone" style="width: 222px;"><h5 class="mb-0 py-3 text-start">{{item.phone | mask: '(00) 00000-0000' || '..'}}</h5></td>
 							<td>
 								<h6 *ngIf="item.status === 'active'" class="mb-0 py-3 text-success">Ativo</h6>
-								<h6 *ngIf="item.status === 'inactive'" class="mb-0 py-3 text-danger">Inactive</h6>
+								<h6 *ngIf="item.status === 'inactive'" class="mb-0 py-3 text-danger">Inativo</h6>
 							</td>
 							<td>
 								<!-- caso email seja padrão para o fornecedores -->
