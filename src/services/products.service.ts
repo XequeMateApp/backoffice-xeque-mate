@@ -104,10 +104,11 @@ export class ProductService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  unityList(): Observable<UnityResponsetDto[]> {
+  unityList(): Observable<any> {
     return this.httpClient
       .get(`${this.url}measurement/list`, this.authorizedHeader)
-      .pipe(map(this.extractData), catchError(this.serviceError));
+      .pipe(map(response => response), catchError(error => { console.log(error); return error; })
+      );
   }
 
   unityEdit(Id: string, dto: UnityRequestDto): Observable<any> {
