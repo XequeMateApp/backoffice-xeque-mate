@@ -5,6 +5,9 @@ export interface ProductPutRequestDto {
   specifications: string,
   value: string,
   name: string,
+  quantity: number,
   cnpj: string,
   image: string[],
+  measure_unit: string,
+
 }

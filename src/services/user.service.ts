@@ -7,7 +7,6 @@ import { UserUpdatePassword } from 'src/app/dto/user/user-update-password.dto';
 import { environment } from 'src/environments/environment';
 import { BaseService } from './base.service';
 import { UserRegisterRequestDto } from 'src/app/dto/logged/user.register-request.dto';
-import { UserRegisterResponseDto } from 'src/app/dto/logged/user-register-response.dto';
 import { UserGetResponseDto } from 'src/app/dto/logged/user-get-response.dto';
 import { UserPutRequestDto } from 'src/app/dto/logged/user-put-request.dto';
 import { UserDeleteRequestDto } from 'src/app/dto/logged/user-delete-request.dto';
@@ -16,12 +15,15 @@ import { SupplierRegisterRequestDto } from 'src/app/dto/logged/supplier-register
 import { SupplierCustomersResponsetDto } from 'src/app/dto/logged/supplier-costumers-response.dto';
 import { SupplierCustomersPutRequestDto } from 'src/app/dto/logged/supplier-customers-put-request.dto';
 import { SupplierCustomersSuppliersPutRequesttDto } from 'src/app/dto/logged/supplier-costumers-suppliers-put-request.dto';
+import { ChangeUserEmphasesDto } from 'src/app/dto/logged/change-emphases-user-request.dto';
+import { UserCanLoginRequestDto } from 'src/app/dto/user/user-can-login-request.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService extends BaseService {
   url = `${environment.api.xequeMateApi}backoffice/user`;
+  urlBackOffice = `${environment.api.xequeMateApi}backoffice`;
   profilePicture: Subject<string> = new Subject();
   modalRegisterForm: UserRegisterRequestDto;
 
@@ -45,9 +47,22 @@ export class UserService extends BaseService {
     );
   }
 
+  listMeasureUnits():Observable<any> {
+    return this.httpClient
+      .get(`${this.urlBackOffice}/measurement/list`)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
   updatePassword(dto: UserUpdatePassword): Observable<any> {
     return this.httpClient
       .put(`${this.url}/password-confirmation`, this.encrypt(dto), this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  updateCanLogin(id:string, dto: UserCanLoginRequestDto): Observable<any> {
+    console.log('no service eh?', dto)
+    return this.httpClient
+      .put(`${this.url}/change-login-permit/${id}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
@@ -62,13 +77,19 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+  getBlockedUsers(): Observable<UserGetResponseDto[]> {
+    return this.httpClient
+      .get(`${this.url}/list-user-blocked`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
   getUserInfo(): Observable<UserGetResponseDto[]> {
     return this.httpClient
       .get(`${this.url}/user-info`, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-  register(dto: UserRegisterRequestDto): Observable<UserRegisterResponseDto> {
+  register(dto: UserRegisterRequestDto): Observable<UserGetResponseDto> {
     return this.httpClient
       .post(`${this.url}/register`, dto, this.anonymousHeader)
       .pipe(
@@ -77,7 +98,7 @@ export class UserService extends BaseService {
       );
   }
 
-  editUsers(userID: string, dto: UserPutRequestDto): Observable<UserRegisterResponseDto> {
+  editUsers(userID: string, dto: UserPutRequestDto): Observable<UserGetResponseDto> {
     return this.httpClient
       .put(`${this.url}/update/id/${userID}`, dto, this.authorizedHeader)
       .pipe(map(this.extractData), catchError(this.serviceError));
@@ -130,5 +151,12 @@ export class UserService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
+  
+  changeEmphasis(email: string, dto: ChangeUserEmphasesDto): Observable<any> {
+    console.log('qual o dto', dto.emphasis)
+    return this.httpClient
+      .put(`${this.url}/change-emphases/${email}`,  dto, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
 
 }

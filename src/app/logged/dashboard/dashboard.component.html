@@ -11,12 +11,11 @@
                         <button class="btn bg-transparent dropdown-toggle" type="button" id="dropDatas" data-bs-toggle="dropdown"
                            aria-expanded="false">
                            {{dropDatas}} &nbsp; <img role="button" class="" src="../../../assets/icons/arrow-b.svg" alt="arrow">
-
                         </button>
                         <ul class="dropdown-menu br-16 p-2 m-0 l-auto end-0" aria-labelledby="dropDatas">
-                           <li class="text-center"><a (click)="changeDatas('7days')" class="dropdown-item py-1 border-bottom text-secondary">7 Dias</a></li>
-                           <li class="text-center"><a (click)="changeDatas('15days')" class="dropdown-item py-1 border-bottom text-secondary">15 Dias</a></li>
-                           <li class="text-center"><a (click)="changeDatas('1month')" class="dropdown-item py-1 border-bottom text-secondary">1 Mês</a></li>
+                           <li role="button" class="text-center"><a (click)="changeDatas('7days')" class="dropdown-item py-1 border-bottom text-secondary">7 Dias</a></li>
+                           <li role="button" class="text-center"><a (click)="changeDatas('15days')" class="dropdown-item py-1 border-bottom text-secondary">15 Dias</a></li>
+                           <li role="button" class="text-center"><a (click)="changeDatas('1month')" class="dropdown-item py-1 border-bottom text-secondary">1 Mês</a></li>
                         </ul>
                      </div>
                   </div>
@@ -61,7 +60,7 @@
                   </div>
                   <div class="d-flex justify-content-end">
                      <div class="w-100 h-100 mb-3">
-                        <apx-chart
+                        <apx-chart *ngIf="showGraphic"
                            [series]="productRequest.series"
                            [chart]="productRequest.chart"
                            [xaxis]="productRequest.xaxis"
@@ -69,6 +68,14 @@
                            [grid]="productRequest.grid"
                            [stroke]="productRequest.stroke"
                            [title]="productRequest.title"></apx-chart>
+                        <apx-chart *ngIf="!showGraphic"
+                           [series]="productNull.series"
+                           [chart]="productNull.chart"
+                           [xaxis]="productNull.xaxis"
+                           [dataLabels]="productNull.dataLabels"
+                           [grid]="productNull.grid"
+                           [stroke]="productNull.stroke"
+                           [title]="productNull.title"></apx-chart>
                      </div>
                   </div>
                </div>
@@ -82,7 +89,7 @@
                   </div>
                   <div class="d-flex justify-content-end">
                      <div class="w-100 h-100 mb-3">
-                        <apx-chart
+                        <apx-chart *ngIf="showGraphic2"
                            [series]="newClientsRequest.series"
                            [chart]="newClientsRequest.chart"
                            [xaxis]="newClientsRequest.xaxis"
@@ -90,6 +97,14 @@
                            [grid]="newClientsRequest.grid"
                            [stroke]="newClientsRequest.stroke"
                            [title]="newClientsRequest.title"></apx-chart>
+                        <apx-chart *ngIf="!showGraphic2"
+                           [series]="newClientsNull.series"
+                           [chart]="newClientsNull.chart"
+                           [xaxis]="newClientsNull.xaxis"
+                           [dataLabels]="newClientsNull.dataLabels"
+                           [grid]="newClientsNull.grid"
+                           [stroke]="newClientsNull.stroke"
+                           [title]="newClientsNull.title"></apx-chart>
                      </div>
                   </div>
                </div>

@@ -15,80 +15,88 @@
               placeholder="Digite o nome" formControlName="name" />
           </div>
           <div class="col-12">
-            <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
-            <input type="tel" id="edit-code" [maxLength]="15" readonly
-              class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
-              placeholder="Digite o código" formControlName="code" />
+            <div class="row">
+              <div class="col-md-6">
+                <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
+                <input type="tel" id="edit-code" [maxLength]="15" readonly
+                  class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
+                  placeholder="Digite o código" formControlName="code" />
+              </div>
+              <div class="col-md-6">
+                <label class="h6 mt-3 text-dark" for="edit-stock">Estoque</label>
+                <input type="tel" id="edit-stock" [maxLength]="15" readonly
+                  class="form-control br-16 text-dark-blue fw-bolder bordder py-3"
+                  placeholder="Quantidade não informada" formControlName="quantity" />
+              </div>
+            </div>
+
           </div>
           <div class="col-12">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label class="h6 mt-3 text-dark" for="edit-valor">Valor</label>
                 <input type="tel" id="edit-valor" [maxlength]="15" readonly
                   mask="separator.2" thousandSeparator="." prefix="R$ "
                   class="form-control fw-bolder br-16 bordder py-3"
                   placeholder="Digite o valor" formControlName="price" />
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
+                <label class="h6 mt-3 text-dark" for="edit-quantidade">Quantidade</label>
+                <input type="tel" id="edit-quantidade" [maxlength]="15" readonly
+                  mask="separator.2" thousandSeparator="."
+                  class="form-control fw-bolder br-16 bordder py-3"
+                  [placeholder]="responseData.quantity || 0" formControlName="quantity" />
+              </div>
+              <div class="col-md-4">
                 <label class="h6 mt-3 text-dark" for="edit-status">Status</label>
                 <select formControlName="status" id="edit-status"
                   class="form-select py-3 br-16"
                   aria-label="Default status">
-                  <!-- <option [selected]="responseData.status === 'APPROVED'" value="APPROVED">🟢 Aprovado</option>
-                  <option [selected]="responseData.status === 'DENIED'" value="DENIED">🔴 Negado</option> -->
-                  <option *ngIf="responseData.status === 'PENDING'" [selected]="true" value="PENDING">⚪ Pendente</option>
+                  <option [disabled]="true" *ngIf="responseData.status === 'APPROVED'" [selected]="responseData.status === 'APPROVED'"
+                    value="APPROVED">🟢 Aprovado</option>
+                  <option [disabled]="true" *ngIf="responseData.status === 'DENIED'" [selected]="responseData.status === 'DENIED'" value="DENIED">🔴
+                    Negado</option>
+                  <option [disabled]="true" *ngIf="responseData.status === 'PENDING'" [selected]="true" value="PENDING">⚪ Pendente</option>
                 </select>
               </div>
             </div>
           </div>
           <div class="col-12">
-            <label class="h6 mt-3 text-dark" for="edit-category">Categoria</label>
+            <label class="h6 mt-3 text-dark" for="edit-category">Categorias</label>
             <!-- esse aqui tá dificil -->
-            <select #selectOptions class="form-select fw-bolder text-dark-blue
+            <!-- <select #selectOptions class="form-select fw-bolder text-dark-blue
               br-16 border py-3" required
               aria-label="Default select category">
               <option [selected]="true" [disabled]="true">Items selecionados</option>
-            </select>
-            <ul class="list-group mt-3 br-16">
+            </select> -->
+            <ul class="list-group br-16">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of responseData.category">
                 <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item }}</h6>
-                <i role="button" class="bi mb-0 bi-x h3 text-danger"></i>
               </li>
             </ul>
           </div>
           <div class="col-12">
-
             <label class="h6 mt-3 text-dark" for="edit-doc">Imagens</label>
             <div class="w-100 d-flex overflow-y border p-2 br-16 align-items-center">
               <div class="d-flex align-items-center overflow-x-scroll overflow-y-hidden">
-                <div *ngFor="let imgs of supplierImg; let i= index" class="d-flex align-items-center">
-                  <div *ngIf="selectedImageUrl !== null" style="background-image: url({{imgs}});" class="br-16 d-flex justify-content-end illustration
+                <div *ngFor="let imgs of responseData.image; let i= index" class="d-flex align-items-center">
+                  <div style="background-image: url({{imgs}});" class="br-16 d-flex justify-content-end illustration
                     border">
-                    <!-- <img src="../../../../../assets/icons/x.svg" class="w3-white rounded-pill w-fit h-fit mt-2 me-2" (click)="removeFile(i)" role="button"/> -->
-                  </div>
-                  <div *ngIf="selectedImageUrl === null" style="background-image: url({{selectFile}});" class="br-16 d-flex justify-content-end
-                    illustration border">
                   </div>
                 </div>
-                <!-- <div class="br-16 ms-1 d-flex justify-content-end illustration border">
-                  <div class="br-16  d-block justify-content-end illustration border">
-                    <input role="button" readonly [multiple]="true" type="file" class="illustration position-relative z-10" style="opacity:0;" formControlName="selectPhotos" (change)="onSelectFileProductImage($event)"  accept="image/*">
-                    <i role="button" class="bi mb-0 bi-plus position-relative" style="bottom: 77%; font-size: 40px;left: 29%;"></i>
-                  </div>
-                </div> -->
               </div>
             </div>
             <div class="col-12 mt-4 pb-3">
               <div class="row">
                 <div class="col-md-6">
                   <label for="exempleDescription">Descrição</label>
-                  <textarea readonly formControlName="description" class="form-control overflow-scroll border w3-white br-16 p-3"
-                    id="exempleDescription" rows="3"></textarea>
+                  <textarea formControlName="description" readonly [placeholder]="responseData.description"
+                    class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
                 </div>
                 <div class="col-md-6">
                   <label for="exempleSpecification">Especificações</label>
-                  <textarea readonly formControlName="specification" class="form-control overflow-scroll border w3-white br-16 p-3"
-                    id="exempleSpecification" rows="3"></textarea>
+                  <textarea formControlName="specification" readonly [placeholder]="responseData.specifications"
+                    class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
                 </div>
               </div>
             </div>
@@ -112,7 +120,7 @@
               </div>
               <div class="col-md-6 mt-4">
                 <button class="btn br-16 bg-success text-dark w-100"
-                  (click)="confirm()"
+                  (click)="confirm()" [disabled]="!responseData.quantity"
                   type="button">
                   <h6 class="fw-bolder mb-0 py-2">Aprovar</h6>
                 </button>

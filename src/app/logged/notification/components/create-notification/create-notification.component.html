@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="confirm()" class="row mx-2 w3-white p-4 br-16">
     <div class="col-12 d-flex align-items-center justify-content-between">
-        <h2 class="text-dark mb-0 fw-bolder">Nova Notificação</h2>
+        <h2 class="text-dark mb-0 fw-bolder">Nova Notificação!</h2>
         <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png" class=""/>
     </div>
     <div class="col-12 mt-3">
@@ -87,7 +87,7 @@
                         </button>
                     </div>
                     <div class="col-md-6 mt-3">
-                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16">
+                        <button type="submit" class="btn bg-dark-blue h1 text-light w-100 py-3 br-16" (click)="exit()">
                             <h6 class="mb-0">Concluir</h6>
                         </button>
                     </div>

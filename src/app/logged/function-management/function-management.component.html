@@ -57,7 +57,7 @@
                     <div style="width: 308px;" class="col-3 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Nome</b>
                     </div>
-                    <div style="width: 406px;" class="col-2 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 418px;" class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Permições</b>
                     </div>
                     <div class="col h-100 br-16 align-items-center d-flex">
@@ -70,16 +70,9 @@
                     <tbody>
                       <tr *ngFor="let item of response | paginate: config | filter: filterTerm;  let i= index; ">
                         <td style="width: 325px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 325px;">{{item.name}}</h5></td>
-                        <td style="width: 410px;">
-                          <h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 410px;">
-                          {{item.administrator === 'active' ? 'Administrador,': ''}}
-                          {{item.products === 'active' ? 'Produto,': ''}}
-                          {{item.customers === 'active' ? 'Cliente,': ''}}
-                          {{item.kyc === 'active' ? 'Kyc,': ''}}
-                          {{item.accesscontrol === 'active' ? 'Controle de acesso,': ''}}
-                          {{item.notifications === 'active' ? 'Notificações,': ''}}
-                        </h5>
-                      </td>
+                        <td style="width: 421px;">
+                          <h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 410px;">{{getrolesResolve(item.roles).join(', ') }}</h5>
+                        </td>
                         <td>
                             <h6 *ngIf="item.status === 'active'" class="mb-0  py-3 text-success">Ativo</h6>
                             <h6 *ngIf="item.status === 'inactive'" class="mb-0  py-3 text-danger">Inativo</h6>

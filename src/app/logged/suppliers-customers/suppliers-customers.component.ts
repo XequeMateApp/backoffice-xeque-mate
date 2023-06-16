@@ -2,8 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
-import { DatamockService } from 'src/services/datamock.service';
-import { SupplierInterface } from 'src/app/interface/supplier.interface';
 import { EditSupplierCustomersClientComponent } from './components/edit-supplier-customers-client/edit-supplier-customers-client.component';
 import { CloseSupplierCustomersClientComponent } from './components/close-supplier-customers-client/close-supplier-customers-client.component';
 import { EditSupplierCustomersComponent } from './components/edit-supplier-customers/edit-supplier-customers.component';
@@ -11,6 +9,7 @@ import { CloseSupplierCustomersComponent } from './components/close-supplier-cus
 import LocalStorageUtil, { LocalStorageKeys } from 'src/app/utils/localstorage.util';
 import { UserService } from 'src/services/user.service';
 import { SupplierCustomersResponsetDto } from 'src/app/dto/logged/supplier-costumers-response.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 @Component({
   selector: 'app-suppliers-customers',
   templateUrl: './suppliers-customers.component.html',
@@ -33,19 +32,24 @@ export class SuppliersCustomersComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getListUsert();
   }
 
-  getListUsert(): void{
+  getListUsert(): void {
     this.userService.getAllClients().subscribe(
       success => {
         this.response = success;
-        console.log(this.response)
+        this.response = this.response.filter(item => item.status !== 'inactive')
+
+        console.log('a response eh?', this.response)
       },
-      error => { console.error(error, 'data not collected') }
+      error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected')
+      }
     )
   }
 
@@ -54,6 +58,8 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
   openModals(tabName: string, info: any) {
+    console.log('o item eh ', info)
+
     if (tabName == 'editclient') {
       const modal = this.modalService.open(EditSupplierCustomersClientComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
@@ -67,8 +73,10 @@ export class SuppliersCustomersComponent implements OnInit {
         this.getListUsert();
       })
     } else if (tabName == 'editsupplier') {
+
       const modal = this.modalService.open(EditSupplierCustomersComponent, { centered: true, backdrop: 'static', keyboard: false })
       modal.result.then((result) => {
+
       }, err => {
         this.getListUsert();
       })
@@ -83,11 +91,17 @@ export class SuppliersCustomersComponent implements OnInit {
   }
 
 
-  sortListByAlphabeticalOrder(): void {
-    this.response.sort((a, b) => {
-      return a.name.localeCompare(b.name);
+  sortListByTime(value: string): void {
+    if (value === 'bigger') {
+      this.response.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    }else if(value === 'smaller'){
+      this.response.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
     }
-    );
+
   }
 
   sortListByType(value: string) {

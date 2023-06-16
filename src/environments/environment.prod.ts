@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
- 
   firebaseConfig: {
     apiKey: "AIzaSyD-t9J7dyLCFeMBW_VnfcAVVJYjRO2N9uY",
     authDomain: "xeque-mate-2916e.firebaseapp.com",
@@ -13,9 +12,8 @@ export const environment = {
   maxImgageSize: 10485760,
   maxDocumentSize: 10485760,
   api: {
-    xequeMateApi: 'https://marketplace-inkluziva.tgtdigital.io/xeque/'
+    // xequeMateApi: 'https://xequemate.tgtdigital.io/'
+    xequeMateApi: 'http://localhost:3000/'
   },
   encryptKey: '567e61fddbe8a715df61d805f2551b8a'
-
 };
-

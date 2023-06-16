@@ -56,16 +56,22 @@
         <div class="row mx-0 overflow-y-scroll ">
             <div class="col-12 mt-5 px-0">
                 <div style="min-width: 1064px;" class="row bg-blur bg-opacity-50 border mx-0 br-16 p-3">
-                    <div style="width: 277px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 115px !important;" class="col-1 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 fw-bolder">Fotos</b>
+                    </div>
+                     <div style="width: 277px !important;" class="col-3 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Fornecedor</b>
                     </div>
-                    <div style="width: 296px !important;" class="col-2 h-100 br-16 align-items-center d-flex">
+                    <div style="width: 200px !important;" class="col-2 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 fw-bolder">Categoria</b>
                     </div>
-                    <div style="width: 286px;" class="col-2 col-price h-100 br-16 align-items-center d-flex">
+                    <div style="width: 100px;" class="col-2 h-100 br-16 align-items-center d-flex">
+                        <b class="mb-0 h5 text-nowrap fw-bolder">Estoque</b>
+                    </div>
+                    <div style="width: 180px;" class="col-2 col-price h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Valor</b>
                     </div>
-                    <div style="width: 242px;"class="col h-100 br-16 align-items-center d-flex">
+                    <div style="width: 80px;"class="col-1 h-100 br-16 align-items-center d-flex">
                         <b class="mb-0 h5 text-nowrap fw-bolder">Status</b>
                     </div>
                 </div>
@@ -74,13 +80,15 @@
                 <table class="table table-office mb-0 table-striped">
                     <tbody>
                         <tr *ngFor="let item of response | paginate: config | filter: filterTerm; let i= index; ">
+                            <td style="min-width: 100px; width: 100px;"><div style="background-image: url({{item?.image}});" style="width: 100px; height: 100px;" class="br-16 border bg-model"></div></td>
                             <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 ps-4 d-inline-block text-truncate" style="max-width: 270px;">{{item?.name}}</h5></td>
-                            <td style="min-width: 300px; width: 300px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 270px;">{{item?.category}}</h5></td>
-                            <td style="width: 281px;"><h5 *ngIf="item.value"  class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 181px;">R$ {{item?.value }}</h5></td>
+                            <td style="min-width: 200px; width: 200px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 170px;">{{item?.category}}</h5></td>
+                            <td style="min-width: 100px; width: 100px;"><h5 class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 70px;">{{item?.quantity || '0'}}</h5></td>
+                            <td style="width: 181px;"><h5 *ngIf="item.value"  class="mb-0 py-3 d-inline-block text-truncate" style="max-width: 151px;">{{item?.value | currency: 'BRL' }}</h5></td>
                             <td>
                                 <h6 *ngIf="item?.status === 'PENDING'" class="mb-0 py-3 text-secondary">Pendente</h6>
-                                <h6 *ngIf="item?.status === 'APROVED'" class="mb-0 py-3 text-success">Ativo</h6>
-                                <h6 *ngIf="item?.status === 'DENINED'" class="mb-0 py-3 text-danger">Inativo</h6>
+                                <h6 *ngIf="item?.status === 'APPROVED'" class="mb-0 py-3 text-success">Ativo</h6>
+                                <h6 *ngIf="item?.status === 'DENIED'" class="mb-0 py-3 text-danger">Inativo</h6>
                             </td>
                             <td>
                                 <h6 class="mb-0 d-flex justify-content-center py-3">

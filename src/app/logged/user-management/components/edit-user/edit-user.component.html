@@ -13,8 +13,8 @@
               <label for="edit-status">Status</label>
               <select formControlName="status" id="edit-status" class="form-select py-3 br-16" aria-label="Default status">
                   <option [disabled]="true" [selected]="true">Selecione</option>
-                  <option [selected]="editStatus === 'active'" value="Active" value="active">🟢 Ativo</option>
-                  <option [selected]="editStatus === 'inactive'" value="Inactive" value="inactive">🔴 Inativo</option>
+                  <option [selected]="editStatus === 'active'"  value="active">🟢 Ativo</option>
+                  <option [selected]="editStatus === 'inactive'"  value="inactive">🔴 Inativo</option>
               </select>
           </div>
           <div class="col-md-6 mt-3">
@@ -26,74 +26,20 @@
             <input type="tel" id="edit-tel" mask="(00) 00000-0000" class="form-control br-16  bordder py-3" placeholder="Digite o telefone" formControlName="phone" />
         </div>
           <div class="col-12 mt-4 mb-2">
-            <label class="" for="edit-content">Filtro</label>
-            <div class="row">
-              <div class="col-md-12">
-                  <div class="row">
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="ADMINISTRATOR"
-                              [checked]="form.controls['filter'].value === 'ADMINISTRATOR'" type="radio"
-                              id="filterADM" class="form-check-input p-2">
-                              <label class="form-check-label px-2" for="filterADM">
-                                  Administrador
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input type="radio" [checked]="form.controls['filter'].value === 'PRODUCTS'" id="filterProducts"
-                              formControlName="filter" value="PRODUCTS" class="form-check-input p-2" >
-                              <label class="form-check-label px-2" for="filterProducts">
-                                  Produtos
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="KYC"  [checked]="form.controls['filter'].value === 'KYC'"
-                              class="form-check-input p-2" type="radio" id="filterKYC">
-                              <label class="form-check-label px-2" for="filterKYC">
-                                  KYC
-                              </label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="CUSTOMERS"
-                              [checked]="form.controls['filter'].value === 'CUSTOMERS'" class="form-check-input p-2"
-                              type="radio" id="filterClients">
-                              <label class="form-check-label px-2" for="filterClients">
-                                  Clientes
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="ACCESCONTROL"
-                              [checked]="form.controls['filter'].value === 'ACCESCONTROL'"
-                              class="form-check-input p-2"
-                              type="radio" id="filterControl">
-                              <label class="form-check-label text-nowrap px-2" for="filterControl">
-                                  Controle de acesso
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div role="button" class="form-check align-items-baseline d-flex">
-                              <input formControlName="filter" value="NOTIFICATIONS"
-                              [checked]="form.controls['filter'].value === 'NOTIFICATIONS'" class="form-check-input p-2"
-                              type="radio" id="filterNotification">
-                              <label class="form-check-label px-2" for="filterNotification">
-                                  Notificações
-                              </label>
-                          </div>
-                      </div>
-                  </div>
+            <label class="" for="edit-content">Permições</label>
+            <div #createroleFake  class="col-md-12 br-16">
+              <div class="row overflow-y-scroll" style="max-height: 300px;">
+                <div *ngFor="let item of response; let i = index" class="col-md-4 my-2">
+                    <div role="button" class="d-flex">
+                      <input role="button" (change)="updateCheckboxValues(item._id)" [checked]="responseData?.roles.includes(item._id)" #permitionRole type="checkbox"
+                      class="outline-none check br-darkblue rounded bg-transparent position-relative">
+                        <label class="form-check-label px-2">
+                            {{item?.name}}
+                        </label>
+                    </div>
+                </div>
               </div>
-          </div>
+            </div>
               <div class="col-12">
                   <div class="row px-0">
                       <div class="col-md-6 mt-3">

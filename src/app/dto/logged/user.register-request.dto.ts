@@ -4,5 +4,5 @@ export abstract class UserRegisterRequestDto {
   phone: string;
   password: string;
   status: string;
-  filter: string;
+  roles: string[];
 }

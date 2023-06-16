@@ -21,6 +21,9 @@ export class CreateAdComponent implements OnInit {
   request: MarketingRegisterRequestDto;
   selectFile: any = [];
 
+  tooltip: string = '1459x598';
+  left: number = 0;
+  top: number = 0;
 
   alertFieldTitle = false;
   alertFieldStatus = false;
@@ -43,6 +46,7 @@ export class CreateAdComponent implements OnInit {
 
 
   ngOnInit(): void {
+
   }
 
 

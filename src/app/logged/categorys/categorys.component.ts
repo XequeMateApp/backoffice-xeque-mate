@@ -8,6 +8,7 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
 import { DeleteCategoryComponent } from './components/delete-category/delete-category.component';
 import { CategoryService } from 'src/services/category.service';
 import { CategoryResponseDto } from 'src/app/dto/logged/category-response.dto';
+import { Page404Component } from 'src/app/shared/page404/page404.component';
 
 @Component({
   selector: 'app-categorys',
@@ -46,7 +47,9 @@ export class CategorysComponent implements OnInit {
         this.response = success;
         console.log(this.response)
       },
-      error => { console.error(error, 'data not collected') }
+      error => {
+        this.modalService.open(Page404Component, { centered: true, backdrop: 'static', keyboard: false })
+        console.error(error, 'data not collected') }
     )
   }
 

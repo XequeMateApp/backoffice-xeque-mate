@@ -22,10 +22,19 @@ export class RoleService extends BaseService {
   register(dto: RoleRegisterRequestDto): Observable<RoleResponseDto> {
     return this.httpClient
       .post(`${this.url}register`, dto, this.authorizedHeader)
-      .pipe(
-        map(this.extractData),
-        catchError(this.serviceError)
-      );
+      .pipe(map(this.extractData),catchError(this.serviceError));
+  }
+
+  getRole(): Observable<RoleResponseDto[]> {
+    return this.httpClient
+      .get(`${this.url}list`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
+  }
+
+  getRoleId(roleId: string): Observable<RoleResponseDto> {
+    return this.httpClient
+      .get(`${this.url}id/${roleId}`, this.authorizedHeader)
+      .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
 
@@ -42,10 +51,4 @@ export class RoleService extends BaseService {
       .pipe(map(this.extractData), catchError(this.serviceError));
   }
 
-
-  getRole(): Observable<RoleResponseDto[]> {
-    return this.httpClient
-      .get(`${this.url}list`, this.authorizedHeader)
-      .pipe(map(this.extractData), catchError(this.serviceError));
-  }
 }

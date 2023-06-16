@@ -49,6 +49,13 @@ import { EditAdComponent } from './marketing/components/edit-ad/edit-ad.componen
 import { DeleteAdComponent } from './marketing/components/delete-ad/delete-ad.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 
+import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
+
+import { UnityComponent } from './unity/unity.component';
+import { EditUnityComponent } from './unity/edit-unity/edit-unity.component';
+import { DeleteUnityComponent } from './unity/delete-unity/delete-unity.component';
+
+
 
 @NgModule({
   declarations: [
@@ -90,6 +97,11 @@ import { NgApexchartsModule } from "ng-apexcharts";
     CreateAdComponent,
     EditAdComponent,
     DeleteAdComponent,
+    BlockedUsersComponent,
+    UnityComponent,
+    EditUnityComponent,
+    DeleteUnityComponent,
+
   ],
   imports: [
     CommonModule,
@@ -107,8 +119,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
   ],
   providers: [],
   schemas: [
-    // CUSTOM_ELEMENTS_SCHEMA,
-    // NO_ERRORS_SCHEMA
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ],
 
 })

@@ -20,7 +20,6 @@
               class="form-control br-16 bordder p-3 overflow-scroll text-dark"
               placeholder="Digite a descrição" formControlName="description"></textarea>
             <label class="text-danger mt-1" *ngIf="alertFieldDescription" for="create-description">Campo descrição está vazio</label>
-
           </div>
           <div class="col-md-12 ">
             <label class="h6 mt-3 text-dark" for="create-status">Status</label>
@@ -31,12 +30,14 @@
               <option value="inactive">🔴 Inativo</option>
             </select>
             <label class="text-danger mt-1" *ngIf="alertFieldStatus" for="create-status">Campo status está vazio</label>
-
           </div>
         </div>
       </div>
       <div class="col-md-5">
-        <label class="h6 mt-3 text-dark" for="create-img">Adicionar imagem</label>
+        <div class="has-tooltip north">
+          Adicionar imagem
+          <span class="tooltip">Resolução para os Banners <strong>1459x598</strong></span>
+      </div>
         <div *ngFor="let file of selectFile"
           style="background-image: url({{file}}); background-position: center; background-repeat: no-repeat; background-size: cover; height: 279px;"
           class="br-16 border w-100"></div>

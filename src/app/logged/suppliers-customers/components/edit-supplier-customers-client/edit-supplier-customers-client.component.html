@@ -1,12 +1,12 @@
 <main class="row mx-2 justify-content-center">
   <div class="col-md-8 w3-white br-16 p-4 ">
-      <div class="row px-0">
+    <div class="row px-0">
           <div class="col-12 d-flex align-content-center justify-content-between">
               <h2 class="mb-0 fw-bolder text-center">Editar</h2>
               <img (click)="exit()" role="button" src="../../../../../assets/icons/x.png"
                   style="height: fit-content;">
           </div>
-          <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
+      <form [formGroup]="form" (ngSubmit)="confirm()" class="col-12 mt-4">
               <div class="row">
                   <div class="col-md-12">
                       <label class="h6 mt-3 text-dark" for="edit-name">Nome</label>
@@ -32,6 +32,13 @@
                         <b class="text-secondary">Nenhum documento identificado</b>
                         <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
                     </div>
+                    <label>Liberar acesso a plataforma?</label>
+                    <select class="form-select input-purchased-products" style="width: 30%;" #ele (change)="setCanLogin(ele.value)">
+                      
+                      <option   value="active">Sim</option>
+                      <option  [selected]="this.responseData.status === 'inactive'" value="inactive"  >Não</option>
+
+                    </select>
                       <div *ngIf="responseData.document" role="button" (click)="downloadFile()" id="edit-doc" class="border my-2 br-16 w3-white p-3 d-flex justify-content-between w-100 align-content-center">
                           <span>Baixe-o-documento-{{responseData.name}}</span>
                           <img src="../../../../../assets/icons/upload.png" style="height: fit-content;" />
@@ -44,6 +51,7 @@
                                   <h6 class="fw-bolder text-dark-blue mb-0 py-2">Cancelar</h6>
                               </button>
                           </div>
+          
                           <div class="col-md-6 mt-4">
                               <button class="btn br-16 text-light bg-dark-blue w-100" (click)="confirm()"
                                   type="button">
@@ -53,7 +61,7 @@
                       </div>
                   </div>
               </div>
-          </form>
-      </div>
+      </form>
+    </div>
   </div>
 </main>

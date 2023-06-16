@@ -8,11 +8,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoggedModule } from './logged/logged.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+import { Page404Component } from './shared/page404/page404.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    Page404Component,
   ],
   imports: [
     BrowserModule,
