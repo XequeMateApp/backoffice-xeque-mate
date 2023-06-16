@@ -35,9 +35,9 @@
                         <!-- <label for="name" class="form-label mb-0">Insira uma unidade</label> -->
                         <form [formGroup]="form"  class="col-md-12 mt-3 d-flex align-items-center p0-important">
                             <div class="input-group">
-                                <input type="text"  id="name" [maxlength]="100" style="border-radius: 16px 0px 0px 16px;" formControlName="name" placeholder="Digite a unidade desejada"class="border-end-0 py-3 form-control" aria-label="Digite a unidade desejada" aria-describedby="sumbit-name">
-                                <button (click)="create()" style="border-radius: 0px 16px 16px 0px;"  class="border-start-0  btn w3-white border" type="submit" id="sumbit-name">
-                                    <i class="bi px-0 m-0 text-success h3 bi-check-lg"></i>
+                                <input type="text"  id="name" [maxlength]="100" formControlName="name" placeholder="Adicione uma unidade de venda" class="border-end-0 py-3 form-control" aria-label="Adicione uma unidade de venda" aria-describedby="sumbit-name">
+                                <button (click)="create()"  class="btn btn-outline-success pb-0" type="submit" id="sumbit-name">
+                                    <i class="bi px-0 m-0 h3 bi-plus"></i>
                                 </button>
                               </div>
                         </form>
