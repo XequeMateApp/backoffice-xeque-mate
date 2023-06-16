@@ -80,19 +80,6 @@ export class AnalysisProductComponent implements OnInit {
     )
   }
 
-
-  // docs
-  // downloadFile() {
-  //   const link = document.createElement('a');
-  //   link.href = 'data:application/pdf;base64,' + btoa(this.FilesDoc);
-  //   link.download = this.FilesDoc;
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   link.remove();
-  // }
-
-
-
   confirm() {
     const dto = {
       _id: this.responseData._id,

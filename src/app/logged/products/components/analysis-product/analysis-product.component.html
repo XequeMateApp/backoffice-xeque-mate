@@ -15,7 +15,7 @@
               placeholder="Digite o nome" formControlName="name" />
           </div>
           <div class="col-12">
-            <div class="row"> 
+            <div class="row">
               <div class="col-md-6">
                 <label class="h6 mt-3 text-dark" for="edit-code">Código</label>
                 <input type="tel" id="edit-code" [maxLength]="15" readonly
@@ -29,7 +29,7 @@
                   placeholder="Quantidade não informada" formControlName="quantity" />
               </div>
             </div>
-           
+
           </div>
           <div class="col-12">
             <div class="row">
@@ -45,29 +45,31 @@
                 <input type="tel" id="edit-quantidade" [maxlength]="15" readonly
                   mask="separator.2" thousandSeparator="."
                   class="form-control fw-bolder br-16 bordder py-3"
-                 [placeholder]="responseData.quantity || 0" formControlName="quantity" />
+                  [placeholder]="responseData.quantity || 0" formControlName="quantity" />
               </div>
               <div class="col-md-4">
                 <label class="h6 mt-3 text-dark" for="edit-status">Status</label>
                 <select formControlName="status" id="edit-status"
                   class="form-select py-3 br-16"
                   aria-label="Default status">
-                    <option [disabled]="true"  *ngIf="responseData.status === 'APPROVED'" [selected]="responseData.status === 'APPROVED'" value="APPROVED">🟢 Aprovado</option>
-                  <option [disabled]="true"  *ngIf="responseData.status === 'DENIED'"[selected]="responseData.status === 'DENIED'" value="DENIED">🔴 Negado</option>
-                  <option [disabled]="true"  *ngIf="responseData.status === 'PENDING'" [selected]="true" value="PENDING">⚪ Pendente</option>
+                  <option [disabled]="true" *ngIf="responseData.status === 'APPROVED'" [selected]="responseData.status === 'APPROVED'"
+                    value="APPROVED">🟢 Aprovado</option>
+                  <option [disabled]="true" *ngIf="responseData.status === 'DENIED'" [selected]="responseData.status === 'DENIED'" value="DENIED">🔴
+                    Negado</option>
+                  <option [disabled]="true" *ngIf="responseData.status === 'PENDING'" [selected]="true" value="PENDING">⚪ Pendente</option>
                 </select>
               </div>
             </div>
           </div>
           <div class="col-12">
-            <label class="h6 mt-3 text-dark" for="edit-category">Categoria</label>
+            <label class="h6 mt-3 text-dark" for="edit-category">Categorias</label>
             <!-- esse aqui tá dificil -->
-            <select #selectOptions class="form-select fw-bolder text-dark-blue
+            <!-- <select #selectOptions class="form-select fw-bolder text-dark-blue
               br-16 border py-3" required
               aria-label="Default select category">
               <option [selected]="true" [disabled]="true">Items selecionados</option>
-            </select>
-            <ul class="list-group mt-3 br-16">
+            </select> -->
+            <ul class="list-group br-16">
               <li class="list-group-item d-flex justify-content-between align-content-center" *ngFor="let item of responseData.category">
                 <h6 class="text-dark mb-0 align-self-center d-inline-block text-truncate" style="max-width: 200px;"> {{ item }}</h6>
               </li>
@@ -88,11 +90,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="exempleDescription">Descrição</label>
-                  <textarea formControlName="description" readonly [placeholder]="responseData.description" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
+                  <textarea formControlName="description" readonly [placeholder]="responseData.description"
+                    class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleDescription" rows="3"></textarea>
                 </div>
                 <div class="col-md-6">
                   <label for="exempleSpecification">Especificações</label>
-                  <textarea formControlName="specification"  readonly [placeholder]="responseData.specifications" class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
+                  <textarea formControlName="specification" readonly [placeholder]="responseData.specifications"
+                    class="form-control overflow-scroll border w3-white br-16 p-3" id="exempleSpecification" rows="3"></textarea>
                 </div>
               </div>
             </div>
