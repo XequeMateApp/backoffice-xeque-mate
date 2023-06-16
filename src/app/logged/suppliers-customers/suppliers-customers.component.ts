@@ -28,6 +28,7 @@ export class SuppliersCustomersComponent implements OnInit {
   filterTerm!: string;
   user: any;
   officerAdm: string;
+  selectedType: string = '';
   constructor(
     private router: Router,
     private modalService: NgbModal,
@@ -42,7 +43,7 @@ export class SuppliersCustomersComponent implements OnInit {
     this.userService.getAllClients().subscribe(
       success => {
         this.response = success;
-        this.response = this.response.filter(item => item.status !== 'inactive')
+        // this.response = this.response.filter(item => item.status !== 'inactive')
 
         console.log('a response eh?', this.response)
       },
@@ -92,20 +93,17 @@ export class SuppliersCustomersComponent implements OnInit {
 
 
   sortListByTime(value: string): void {
-    if (value === 'bigger') {
-      this.response.sort((a, b) => {
-        return a.name.localeCompare(b.name);
-      });
-    }else if(value === 'smaller'){
-      this.response.sort((a, b) => {
-        return b.name.localeCompare(a.name);
-      });
+    if (value === 'new') {
+      this.response.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    } else if (value === 'old') {
+      this.response.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
     }
-
   }
 
   sortListByType(value: string) {
-    if (value === 'cliente') this.response.sort((a, b) =>  a.profile.localeCompare(b.profile));
-    else if (value === 'fornecedor') this.response.sort((a, b) => b.profile.localeCompare(a.profile));
+    this.selectedType = value;
+
+    // if (value === 'cliente') this.response.sort((a, b) =>  a.profile.localeCompare(b.profile));
+    // else if (value === 'fornecedor') this.response.sort((a, b) => b.profile.localeCompare(a.profile));
   }
 }
